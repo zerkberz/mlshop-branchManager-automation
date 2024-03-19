@@ -1,4 +1,4 @@
-package utilities.logger;
+package utilities.Logger;
 
 
 import org.slf4j.LoggerFactory;
