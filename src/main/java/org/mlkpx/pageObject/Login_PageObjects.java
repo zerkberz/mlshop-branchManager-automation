@@ -5,10 +5,9 @@ import org.openqa.selenium.WebElement;
 
 import static utilities.Driver.DriverManager.getDriver;
 
-import utilities.Logger.LoggingUtils;
 import utilities.ReusableComponents.GeneralMethod;
 
-public class loginPageObjects extends GeneralMethod{
+public class Login_PageObjects extends GeneralMethod{
     public static By login_btn=By.cssSelector("button[type='submit']"); 
     public static By mobileNumber_field=By.id("OTP"); 
     public static By objMobileNumber_errorPrompt=By.xpath("//p[@class=' text-xs mt-1 text-red-500']");
@@ -40,7 +39,6 @@ public class loginPageObjects extends GeneralMethod{
     public void typeNumber(){
         type(mobileNumber_field(), "Mobile Number", "0999999912");
         click(login_btn(), "Login btn");
-        LoggingUtils.info(getText(login_btn()));
     }
 
 }

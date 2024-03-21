@@ -4,14 +4,12 @@
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>
         </Console>
-        <ReportPortalLog4j2Appender name="ReportPortalAppender">
-            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable"/>
-        </ReportPortalLog4j2Appender>
     </Appenders>
     <Loggers>
+        <logger name="org.apache.hc.client5.http" level="WARN" />
+        <logger name="io.github.bonigarcia" level="WARN"/>
         <Root level="INFO">
             <AppenderRef ref="ConsoleAppender"/>
-            <AppenderRef ref="ReportPortalAppender"/>
             <AppenderRef ref="FILE" />
         </Root>
     </Loggers>

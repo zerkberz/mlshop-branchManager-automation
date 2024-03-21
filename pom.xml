@@ -27,7 +27,7 @@
         <loggerjava.version>5.0.1</loggerjava.version>
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
-        <targetUrl>https://mlshoppreprod.mlhuillier.com/</targetUrl>
+        <targetUrl>https://ml-kpx-qa.df.r.appspot.com/</targetUrl>
         <threads>1</threads>
         <browser>chrome</browser>
         <headless>false</headless>
@@ -36,6 +36,7 @@
         <platform></platform>
         <browserVersion />
         <projectBuildDir>${project.build.directory}</projectBuildDir>
+        <token>vzfx lhji qtv3 b6yv wfff jrlo tqsi 63zl</token>
     </properties>
 
     <profiles>
@@ -91,7 +92,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.4.14</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -104,6 +104,12 @@
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-otp-java</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
     </dependencies>
@@ -137,6 +143,7 @@
                         <desiredPlatform>${platform}</desiredPlatform>
                         <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
                         <dataproviderthreadcount>${threads}</dataproviderthreadcount>
+                        <emamilToken>${token}</emamilToken>
                     </systemPropertyVariables>
                     <!--suppress UnresolvedMavenProperty -->
                     <groups>${groups}</groups>

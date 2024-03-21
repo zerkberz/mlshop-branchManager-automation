@@ -1,0 +1,10 @@
+ROLE:
+  Admin:
+    Credentials:
+      Email:
+      Password:
+
+  Teller:
+    Credentials:
+      Email:
+      Password:

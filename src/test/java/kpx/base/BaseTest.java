@@ -5,11 +5,11 @@ import org.testng.annotations.*;
 import static utilities.Driver.DriverManager.*;
 import utilities.Driver.DriverType;
 
-import org.mlkpx.pageObject.loginPageObjects;
+import org.mlkpx.pageObject.Login_PageObjects;
 import utilities.Logger.LoggingUtils;
 
 public class BaseTest{
-    protected loginPageObjects loginPage;
+    protected Login_PageObjects loginPage;
 
     @Parameters("browser")
     @BeforeClass (alwaysRun = true)
@@ -24,11 +24,12 @@ public class BaseTest{
         } else {
             getDriver().get(System.getProperty("targetUrl"));
         }
-        this.loginPage = new loginPageObjects();
+        this.loginPage = new Login_PageObjects();
     }
     @AfterMethod(alwaysRun = true)
     public void clean(){
-        LoggingUtils.info("Redirect back to home");
+        LoggingUtils.info("------>>>Test Ended<<<-------");
+        LoggingUtils.info("Redirecting back to home");
         getDriver().get(System.getProperty("targetUrl"));
     }
 

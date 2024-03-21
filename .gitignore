@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+Reports/
+Screenshots/
+src/test/java/resources/testData.yaml
