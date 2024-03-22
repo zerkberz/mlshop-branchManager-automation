@@ -1,5 +1,6 @@
 package kpx.base;
 
+import org.mlkpx.pageObject.Google_PageObjects;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
@@ -10,11 +11,13 @@ import utilities.Logger.LoggingUtils;
 
 public class BaseTest{
     protected Login_PageObjects loginPage;
+    protected Google_PageObjects googlePageObjects;
 
     @Parameters("browser")
     @BeforeClass (alwaysRun = true)
     public void setUp(final String browser){
         createDriver(DriverType.valueOf(browser.toUpperCase()));
+        getDriver().manage().deleteAllCookies();
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -24,13 +27,15 @@ public class BaseTest{
         } else {
             getDriver().get(System.getProperty("targetUrl"));
         }
+        this.googlePageObjects = new Google_PageObjects();
         this.loginPage = new Login_PageObjects();
     }
     @AfterMethod(alwaysRun = true)
     public void clean(){
         LoggingUtils.info("------>>>Test Ended<<<-------");
         LoggingUtils.info("Redirecting back to home");
-        getDriver().get(System.getProperty("targetUrl"));
+        //getDriver().get(System.getProperty("targetUrl"));
+
     }
 
     @AfterClass(alwaysRun = true)

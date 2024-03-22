@@ -5,18 +5,19 @@ import org.openqa.selenium.WebElement;
 
 import static utilities.Driver.DriverManager.getDriver;
 import utilities.ReusableComponents.GeneralMethod;
+import utilities.ReusableComponents.TOTPGenerator;
 
 public class Google_PageObjects extends GeneralMethod {
     public WebElement googleContainer (){
-        return getDriver().findElement(By.id("container")) ;
+        return getDriver().findElement(By.cssSelector("[role='button']"));
     }
 
     public WebElement emailField(){
-        return getDriver().findElement(By.id("identifierId"));
+        return getDriver().findElement(By.cssSelector("[id='identifierId']"));
     }
 
     public WebElement emailNextButton(){
-        return getDriver().findElement(By.id("identifierNext"));
+        return getDriver().findElement(By.cssSelector("[id='identifierNext']"));
     }
 
     public WebElement passwordField(){
@@ -24,7 +25,7 @@ public class Google_PageObjects extends GeneralMethod {
     }
 
     public WebElement passNextButton(){
-        return getDriver().findElement(By.id("passwordNext"));
+        return getDriver().findElement(By.cssSelector("[id='passwordNext']"));
     }
 
     public WebElement anotherWayButton(){
@@ -32,29 +33,26 @@ public class Google_PageObjects extends GeneralMethod {
     }
 
     public WebElement selectGoogleAuthenticator(){
-        return getDriver().findElement(By.cssSelector("[data-challengetype='6']"));
+        return getDriver().findElement(By.xpath("//*[contains(text(), 'Google Authenticator')]"));
     }
 
     public WebElement codeField(){
         return getDriver().findElement(By.cssSelector("[type='tel']"));
     }
     public WebElement totpNextButton(){
-        return getDriver().findElement(By.id("totpNext"));
+        return getDriver().findElement(By.cssSelector("[id='totpNext']"));
     }
-
-    // method for google login
-    // click sign in google
-    // switch driver window
-    // input credentials
-    // click for google authenticator
-    // enter totp code and next
-    // switch driver window back
 
     public void signViaGoogle(){
-        click(googleContainer(), "Google Container");
-        switchTab(1);
-        typeEnter();
+        click(googleContainer(), getText(googleContainer()));
+        switchToNextTab();
+        typeEnter(emailField(), "Email Field", reader.getEmailByRole("admin"));
+        typeEnter(passwordField(), "Password Field", reader.getPasswordByRole("admin"));
+        //click(anotherWayButton(), getText(anotherWayButton()));
+        click(selectGoogleAuthenticator(), getText(selectGoogleAuthenticator()));
+        typeEnter(codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
+        switchToPreviousTab();
+        waitSleep(5000);
 
     }
-
 }

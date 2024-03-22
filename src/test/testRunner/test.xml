@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Suite" thread-count="6" >
     <listeners>
-        <listener class-name="utilities.ExtentReport.ExtentReport" />
+        <listener class-name="utilities.ExtentReport.ExtentReporter" />
     </listeners>
 
     <test name="Test">
         <parameter name="browser" value="chrome">
             <classes>
-                <class name="actual.LoginT">
+                <class name="kpx.actual.LoginT">
                 </class>
             </classes>
         </parameter>

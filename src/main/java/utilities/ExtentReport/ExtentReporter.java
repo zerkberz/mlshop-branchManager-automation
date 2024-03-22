@@ -2,7 +2,6 @@ package utilities.ExtentReport;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.apache.commons.io.FileUtils;
@@ -20,14 +19,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static utilities.Driver.DriverManager.getDriver;
-public class ExtentReport implements ITestListener {
+public class ExtentReporter implements ITestListener {
 
     private static ExtentReports extent;
     private static final ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
@@ -72,7 +69,7 @@ public class ExtentReport implements ITestListener {
                 extentTest.addScreenCaptureFromPath(screenshotPath).pass(message);
                 break;
             case "fail":
-                extentTest.addScreenCaptureFromPath(screenshotPath).fail(message);
+                extentTest.createNode("Reason for Failure: "+extentTest.getModel().getName()).addScreenCaptureFromPath(screenshotPath).fail(message);
                 break;
             case "info":
                 extentTest.addScreenCaptureFromPath(screenshotPath).info(message);
@@ -89,7 +86,7 @@ public class ExtentReport implements ITestListener {
             String screenshotPath = getScreenshotDirectoryPath() + File.separator + testName + "_" + timestamp + ".png";
             File screenshotFile = new File(screenshotPath);
             FileUtils.copyFile(src, screenshotFile);
-            LoggingUtils.info("Screenshot captured: " + screenshotFile.getAbsolutePath());
+            //LoggingUtils.info("Screenshot captured: " + screenshotFile.getAbsolutePath());
             return screenshotFile.getAbsolutePath();
         } catch (IOException e) {
             LoggingUtils.error(e.getMessage());
@@ -131,8 +128,8 @@ public class ExtentReport implements ITestListener {
     @Override
     public synchronized void onTestFailure(ITestResult result){
         if(getDriver() != null){
-            captureScreenshot(result.getTestName());
-            extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed");
+            logFail(result.getThrowable().getMessage());
+            //extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed " + result.getThrowable().getLocalizedMessage());
             LoggingUtils.info("------->>>Test: "+ result.getName() + " Failed<<<--------");
         }
     }

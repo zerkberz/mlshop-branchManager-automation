@@ -1,10 +1,14 @@
-ROLE:
-  Admin:
-    Credentials:
-      Email:
-      Password:
+Roles:
+  - role: admin
+    gmail_email: dominic.melgo@mlhuillier.com
+    gmail_password: Y0yong26
+    kpx_username: DOMINIC
+    kpx_password: 1234567
 
-  Teller:
-    Credentials:
-      Email:
-      Password:
+  - role: teller
+    gmail_email: dominic.melgo@mlhuillier.com
+    gmail_password: Y0yong26
+    kpx_username: MELG20229793
+    kpx_password: 20229793
+
+AccessKey: dywq hftx qjvr tkbf 3yfa fhal fszr 2kpl
