@@ -27,7 +27,7 @@
         <loggerjava.version>5.0.1</loggerjava.version>
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
-        <targetUrl>https://ml-kpx-qa.df.r.appspot.com/</targetUrl>
+        <targetUrl>https://wanwan.mlhuillier.com/</targetUrl>
         <threads>1</threads>
         <browser>chrome</browser>
         <headless>false</headless>

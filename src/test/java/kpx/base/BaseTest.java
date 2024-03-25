@@ -1,6 +1,7 @@
 package kpx.base;
 
 import org.mlkpx.pageObject.Google_PageObjects;
+import org.mlkpx.pageObject.Home_PageObjects;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
@@ -13,6 +14,7 @@ public class BaseTest{
     protected Login_PageObjects loginPage;
     protected Google_PageObjects googlePageObjects;
 
+    protected Home_PageObjects homePageObjects;
 
 
     @Parameters("browser")
@@ -31,6 +33,7 @@ public class BaseTest{
         }
         this.googlePageObjects = new Google_PageObjects();
         this.loginPage = new Login_PageObjects();
+        this.homePageObjects = new Home_PageObjects();
     }
     @AfterMethod(alwaysRun = true)
     public void clean(){
