@@ -17,13 +17,17 @@ public class Login_PageObjects extends GeneralMethod{
     public WebElement passwordField(){
         return getDriver().findElement(By.name("password"));
     }
+
+    public WebElement invalidCredText(){
+        return getDriver().findElement(By.cssSelector("[class='sc-aXZVg FiXoI']"));
+    }
     public WebElement loginButton(){
         return getDriver().findElement(By.cssSelector("[type='submit']"));
     }
-    public void loginKpx(){
+    public void loginKpx(String role){
         if(isInLoginPage()){
-            type(userNameField(), "kpx username field", reader.getKpxUsername("admin"));
-            type(passwordField(), "kpx password field", reader.getKpxPassword("admin"));
+            type(userNameField(), "kpx username field", reader.getKpxUsername(role));
+            type(passwordField(), "kpx password field", reader.getKpxPassword(role));
             click(loginButton(), "Login button");
         }
     }
@@ -37,6 +41,15 @@ public class Login_PageObjects extends GeneralMethod{
             LoggingUtils.error("Failed to load login page");
             return false;
         }
+    }
+
+    public void isInvalidAccount(){
+        if(isVisible(invalidCredText(), getText(invalidCredText()))){
+            ExtentReporter.logPass("Successfully Validated Invalid Account");
+        }else{
+            ExtentReporter.logFail("Failed to Validate");
+        }
+
     }
 
 }

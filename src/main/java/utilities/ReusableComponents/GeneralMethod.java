@@ -67,7 +67,7 @@ public class GeneralMethod extends ExtentReporter{
     public boolean isVisible(WebElement locator, String elementName){
         try {
             wait.until(ExpectedConditions.visibilityOf(locator));
-            //LoggingUtils.info(">>Element: " + elementName + ", is visible");
+            LoggingUtils.info(">>Element: " + elementName + ", is visible");
         } catch (NoSuchElementException e) {
             ExtentReporter.logFail(">>Element: " + elementName + ", is not visible");
             LoggingUtils.error(">>Element: " + elementName + ", is not visible");
@@ -93,15 +93,14 @@ public class GeneralMethod extends ExtentReporter{
 
     }
 
-    public boolean assertEqual(String actual, String expected){
-        try{
-            assertEqual(actual, expected);
-            return true;
-        }catch(Exception e){
-            LoggingUtils.error(">>Assertion error: "+ e.getMessage());
-        }
-        return false;
-    }
+//    public boolean assertEqual(String actual, String expected){
+//        try{
+//            assertEqual(actual, expected);
+//        }catch(Exception e){
+//            LoggingUtils.error(">>Assertion error: "+ e.getMessage());
+//        }
+//        return false;
+//    }
 
     public void waitImplicitly(int seconds){
         try{

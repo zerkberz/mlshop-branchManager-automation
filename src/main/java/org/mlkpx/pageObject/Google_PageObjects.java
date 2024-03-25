@@ -43,11 +43,11 @@ public class Google_PageObjects extends GeneralMethod {
         return getDriver().findElement(By.cssSelector("[id='totpNext']"));
     }
 
-    public void signViaGoogle(){
+    public void signViaGoogle(String role){
         click(googleContainer(), getText(googleContainer()));
         switchToNextTab();
-        typeEnter(emailField(), "Email Field", reader.getEmailByRole("admin"));
-        typeEnter(passwordField(), "Password Field", reader.getPasswordByRole("admin"));
+        typeEnter(emailField(), "Email Field", reader.getEmailByRole(role));
+        typeEnter(passwordField(), "Password Field", reader.getPasswordByRole(role));
         if(isVisible(anotherWayButton(), "Another way option")){
             click(anotherWayButton(), getText(anotherWayButton()));
         }
@@ -56,4 +56,5 @@ public class Google_PageObjects extends GeneralMethod {
         switchToPreviousTab();
         waitSleep(5000);
     }
+
 }
