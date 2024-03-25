@@ -43,7 +43,7 @@ public class DriverManager {
         options.addArguments("--disable-infobars");
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
-        options.addArguments("--start-maximized"); // Set window size to maximum
+        options.addArguments("--window-size=1920,1080"); // Set window size to maximum
 
         options.setExperimentalOption("prefs", chromePreferences);
         setDriver(WebDriverManager.chromedriver().capabilities(options).create());

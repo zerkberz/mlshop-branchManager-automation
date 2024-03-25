@@ -39,4 +39,5 @@ build/
 
 Reports/
 Screenshots/
-src/test/java/resources/
+src/test/java/resources/testData.yaml
+src/test/java/resources/testData.properties

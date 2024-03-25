@@ -48,11 +48,12 @@ public class Google_PageObjects extends GeneralMethod {
         switchToNextTab();
         typeEnter(emailField(), "Email Field", reader.getEmailByRole("admin"));
         typeEnter(passwordField(), "Password Field", reader.getPasswordByRole("admin"));
-        //click(anotherWayButton(), getText(anotherWayButton()));
+        if(isVisible(anotherWayButton(), "Another way option")){
+            click(anotherWayButton(), getText(anotherWayButton()));
+        }
         click(selectGoogleAuthenticator(), getText(selectGoogleAuthenticator()));
         typeEnter(codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
         switchToPreviousTab();
         waitSleep(5000);
-
     }
 }
