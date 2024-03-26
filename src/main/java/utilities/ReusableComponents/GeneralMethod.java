@@ -79,7 +79,16 @@ public class GeneralMethod extends ExtentReporter{
         }
         return true;
     }
-
+    public boolean isDisplayed(WebElement locator, String elementName)throws NoSuchElementException{
+        try{
+            if(locator.isDisplayed()){
+                return true;
+            }
+        }catch (NoSuchElementException e){
+            LoggingUtils.error(">>Element "+  elementName +" is not displayed " + e.getMessage());
+        }
+        return false;
+    }
     public String getText(WebElement locator){
         String val = null;
         try{

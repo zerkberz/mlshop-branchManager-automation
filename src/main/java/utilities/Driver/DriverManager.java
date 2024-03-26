@@ -2,7 +2,9 @@ package utilities.Driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import utilities.Logger.LoggingUtils;
 
 import java.time.Duration;
@@ -28,25 +30,25 @@ public class DriverManager {
     public static void setupChrome(){
         LoggingUtils.info("Setting up chrome driver...");
         HashMap<String, Object> chromePreferences = new HashMap<>();
-        chromePreferences.put("profile.password_manager_enabled", false);
-        chromePreferences.put("intl.accept_languages", "en-US,en");
-        chromePreferences.put("profile.default_content_settings.popups", 0);
-
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless=new");
+        options.addArguments("enable-automation");
         options.addArguments("--no-sandbox");
-        options.addArguments("--no-default-browser-check");
-        options.addArguments("--lang=en");
-        options.addArguments("--ignore-ssl-errors=yes");
-        options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-infobars");
+        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
-        options.addArguments("--window-size=1920,1080"); // Set window size to maximum
+        options.addArguments("--window-size=1920,1080");
 
         options.setExperimentalOption("prefs", chromePreferences);
-        setDriver(WebDriverManager.chromedriver().capabilities(options).create());
+        // Create desired capabilities
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        // Set ChromeOptions as an argument while creating the WebDriver
+        WebDriverManager.chromedriver().capabilities(desiredCapabilities).setup();
+
+        setDriver(new ChromeDriver(options));
         LoggingUtils.info("Chrome Driver created successfully");
     }
 

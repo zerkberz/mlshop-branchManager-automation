@@ -42,6 +42,13 @@ public class Google_PageObjects extends GeneralMethod {
     public WebElement totpNextButton(){
         return getDriver().findElement(By.cssSelector("[id='totpNext']"));
     }
+    public WebElement chooseCurrentAccount(){
+        return getDriver().findElement(By.cssSelector("[aria-labelledby='picker-item-label-0']"));
+    }
+    public WebElement useOtherAccount(){
+        return getDriver().findElement(By.cssSelector("[id='use-other']"));
+    }
+
 
     public void signViaGoogle(String role){
         click(googleContainer(), getText(googleContainer()));

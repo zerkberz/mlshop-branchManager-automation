@@ -22,6 +22,8 @@ public class BaseTest{
     public void setUp(final String browser){
         createDriver(DriverType.valueOf(browser.toUpperCase()));
         getDriver().manage().deleteAllCookies();
+
+
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -39,12 +41,14 @@ public class BaseTest{
     public void clean(){
         LoggingUtils.info("------>>>Test Ended<<<-------");
         LoggingUtils.info("Redirecting back to home");
-        //getDriver().get(System.getProperty("targetUrl"));
+        getDriver().navigate().refresh();
+        getDriver().get(System.getProperty("targetUrl"));
 
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown () {
         quitDriver();
+
     }
 }
