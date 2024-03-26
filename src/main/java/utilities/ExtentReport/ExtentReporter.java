@@ -113,7 +113,7 @@ public class ExtentReporter implements ITestListener {
     @Override
     public synchronized void onTestStart(ITestResult result){
         try{
-            ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName()).createNode(result.getTestName(), "Dynamic Description ");
+            ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName());
             extentTestThreadLocal.set(extentTest);
             LoggingUtils.info("------->>>Test: "+ result.getName() + " Started<<<--------");
         }catch (Exception e){
