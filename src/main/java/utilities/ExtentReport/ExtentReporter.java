@@ -113,7 +113,7 @@ public class ExtentReporter implements ITestListener {
     @Override
     public synchronized void onTestStart(ITestResult result){
         try{
-            ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName());
+            ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName()).createNode(result.getTestName(), "Dynamic Description ");
             extentTestThreadLocal.set(extentTest);
             LoggingUtils.info("------->>>Test: "+ result.getName() + " Started<<<--------");
         }catch (Exception e){
@@ -138,5 +138,11 @@ public class ExtentReporter implements ITestListener {
         extentTestThreadLocal.get().log(Status.SKIP, result.getName()+ " has been Skipped");
         LoggingUtils.info("------->>>Test: "+ result.getName() + " Skipped<<<--------");
     }
+    @Override
+    public synchronized void onTestSuccess(ITestResult result){
+        extentTestThreadLocal.get().log(Status.PASS, result.getName()+ " has been Skipped");
+        LoggingUtils.info("------->>>Test: "+ result.getName() + " Passed<<<--------");
+    }
+
 
 }
