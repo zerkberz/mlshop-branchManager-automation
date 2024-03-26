@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test Suite" thread-count="6" >
+<suite name="KYC" thread-count="2" >
     <listeners>
         <listener class-name="utilities.ExtentReport.ExtentReporter" />
     </listeners>
 
-    <test name="Test">
+    <test name="KYC Input">
         <parameter name="browser" value="chrome">
             <classes>
-                <class name="kpx.actual.LoginT">
+                <class name="kpx.actual.Kyc_Tests">
                 </class>
             </classes>
         </parameter>

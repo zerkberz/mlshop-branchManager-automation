@@ -16,7 +16,7 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
     private final WebDriver driver = getDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     public final yamlReader reader = new yamlReader();
     public void click(WebElement locator, String elementName){
        try {
@@ -72,13 +72,41 @@ public class GeneralMethod extends ExtentReporter{
             ExtentReporter.logFail(">>Element: " + elementName + ", is not visible");
             LoggingUtils.error(">>Element: " + elementName + ", is not visible");
             throw new AssertionError(">>Element: " + elementName + ", is not visible", e);
-        } catch (Exception ex) {
+        } catch (StaleElementReferenceException e){
+            // Retry the visibility check
+            for (int i = 0; i < 3; i++) {
+                try {
+                    wait.until(ExpectedConditions.visibilityOf(locator));
+                    LoggingUtils.info(">> Element: " + elementName + " is visible after retry");
+                    return true;
+                } catch (StaleElementReferenceException ex) {
+                    // Wait for a short duration before retrying
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException ignored) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            }
+            ExtentReporter.logFail(">> Element: " + elementName + " is not visible after retries");
+            LoggingUtils.error(">> Element: " + elementName + " is not visible after retries");
+            throw new AssertionError(">> Element: " + elementName + " is not visible after retries", e);
+        }
+        catch (Exception ex) {
             ExtentReporter.logFail(">>An exception occurred while checking element visibility: " + ex.getMessage());
             LoggingUtils.error(">>An exception occurred while checking element visibility: " + ex.getMessage());
             throw ex;
         }
         return true;
     }
+
+    /**
+     * boolean return type for conditions
+     *
+     * @param locator
+     * @return
+     * @throws NoSuchElementException
+     */
     public boolean isDisplayed(WebElement locator, String elementName)throws NoSuchElementException{
         try{
             if(locator.isDisplayed()){
@@ -129,17 +157,54 @@ public class GeneralMethod extends ExtentReporter{
     }
 
     public void switchToNextTab() {
-        String currentWindowHandle = getWebDriver().getWindowHandle();
-        Set<String> windowHandles = getWebDriver().getWindowHandles();
+        String currentWindowHandle = getDriver().getWindowHandle();
+        Set<String> windowHandles = getDriver().getWindowHandles();
 
         for (String windowHandle : windowHandles) {
             if (!windowHandle.equals(currentWindowHandle)) {
-                getWebDriver().switchTo().window(windowHandle);
+                getDriver().switchTo().window(windowHandle);
                 LoggingUtils.info("Switch to " + currentWindowHandle);
                 ExtentReporter.logInfo("Switch to " + currentWindowHandle);
                 break;
             }
         }
+    }
+    public void switchToNextTabClose() {
+        String currentWindowHandle = getDriver().getWindowHandle();
+        Set<String> windowHandles = getDriver().getWindowHandles();
+
+        // Check if there are multiple windows/tabs open
+        if (windowHandles.size() <= 1) {
+            LoggingUtils.info("No next tab/window to switch to or close");
+            ExtentReporter.logInfo("No next tab/window to switch to or close");
+            return;
+        }
+
+        boolean foundNextWindow = false;
+
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(currentWindowHandle)) {
+                try {
+                    getDriver().switchTo().window(windowHandle);
+                    getDriver().close();
+                    LoggingUtils.info("Closed window: " + windowHandle);
+                    ExtentReporter.logInfo("Closed window: " + windowHandle);
+                    foundNextWindow = true;
+                } catch (NoSuchWindowException e) {
+                    LoggingUtils.error("Failed to switch to/close window: " + windowHandle);
+                    ExtentReporter.logFail("Failed to switch to/close window: " + windowHandle);
+                }
+                break;
+            }
+        }
+
+        if (!foundNextWindow) {
+            LoggingUtils.error("No next tab/window found to switch to or close");
+            ExtentReporter.logFail("No next tab/window found to switch to or close");
+        }
+
+        // Switch driver focus back to the original window/tab
+        getDriver().switchTo().window(currentWindowHandle);
     }
 
     public void switchToPreviousTab() {

@@ -4,10 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static utilities.Driver.DriverManager.getDriver;
-import utilities.ReusableComponents.GeneralMethod;
-import utilities.ReusableComponents.TOTPGenerator;
 
-public class Google_PageObjects extends GeneralMethod {
+public class Google_PageObjects {
     public WebElement googleContainer (){
         return getDriver().findElement(By.cssSelector("[role='button']"));
     }
@@ -49,19 +47,8 @@ public class Google_PageObjects extends GeneralMethod {
         return getDriver().findElement(By.cssSelector("[id='use-other']"));
     }
 
-
-    public void signViaGoogle(String role){
-        click(googleContainer(), getText(googleContainer()));
-        switchToNextTab();
-        typeEnter(emailField(), "Email Field", reader.getEmailByRole(role));
-        typeEnter(passwordField(), "Password Field", reader.getPasswordByRole(role));
-        if(isVisible(anotherWayButton(), "Another way option")){
-            click(anotherWayButton(), getText(anotherWayButton()));
-        }
-        click(selectGoogleAuthenticator(), getText(selectGoogleAuthenticator()));
-        typeEnter(codeField(), "Auth Key Field", TOTPGenerator.getTwoFactorCode());
-        switchToPreviousTab();
-        waitSleep(5000);
+    public WebElement googleContainer2 (){
+        return getDriver().findElement(By.cssSelector("[class='haAclf']"));
     }
 
 }

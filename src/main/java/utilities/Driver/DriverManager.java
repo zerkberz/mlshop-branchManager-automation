@@ -9,6 +9,7 @@ import utilities.Logger.LoggingUtils;
 
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.Set;
 
 public class DriverManager {
     //thread local for web driver
@@ -31,7 +32,7 @@ public class DriverManager {
         LoggingUtils.info("Setting up chrome driver...");
         HashMap<String, Object> chromePreferences = new HashMap<>();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+       // options.addArguments("--headless=new");
         options.addArguments("enable-automation");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-extensions");
@@ -66,14 +67,26 @@ public class DriverManager {
 //        }
 //    }
     //method for quitting driver
-    public static void quitDriver() {
-        WebDriver driver = DRIVER.get();
-        if (driver != null) {
-            LoggingUtils.info("Quitting Driver...");
-            driver.quit();
-            DRIVER.remove();
+public static void closeWebBrowser() {
+    //waitTime(5000);
+    WebDriver driver = getDriver();
+    if (driver != null) {
+        String currentWindowHandle = driver.getWindowHandle();
+        Set<String> windowHandles = driver.getWindowHandles();
+        // Close all windows except the current one
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(currentWindowHandle)) {
+                driver.switchTo().window(windowHandle);
+                LoggingUtils.info("Switch to window " + windowHandle);
+                driver.close();
+                LoggingUtils.info("Driver closed");
+            }
         }
+        // Switch back to the current window and close it
+        driver.switchTo().window(currentWindowHandle);
+        driver.quit();
     }
+}
 
     //method for setting up driver
     private static void setDriver (WebDriver driver){
