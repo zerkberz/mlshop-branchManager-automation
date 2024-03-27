@@ -32,5 +32,7 @@ public class Kyc_PageObjects {
     public List<WebElement> buttonList(){
         return getDriver().findElements(By.cssSelector("[type='button']"));
     }
+    public WebElement lastName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'Last name is required.')]"));}
+    public WebElement firstName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'First name is required.')]"));}
 
 }

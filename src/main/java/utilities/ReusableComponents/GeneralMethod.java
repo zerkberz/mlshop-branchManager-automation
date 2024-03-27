@@ -5,12 +5,14 @@ import org.openqa.selenium.*;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.List;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 import utilities.yamlReader.yamlReader;
+import org.testng.Assert;
 
 import static utilities.Driver.DriverManager.getDriver;
 
@@ -18,6 +20,7 @@ public class GeneralMethod extends ExtentReporter{
     private final WebDriver driver = getDriver();
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     public final yamlReader reader = new yamlReader();
+    private JavascriptExecutor js;
     public void click(WebElement locator, String elementName){
        try {
            if(isVisible(locator, elementName)){
@@ -130,14 +133,18 @@ public class GeneralMethod extends ExtentReporter{
 
     }
 
-//    public boolean assertEqual(String actual, String expected){
-//        try{
-//            assertEqual(actual, expected);
-//        }catch(Exception e){
-//            LoggingUtils.error(">>Assertion error: "+ e.getMessage());
-//        }
-//        return false;
-//    }
+    public boolean assertEqual(String actual, String expected){
+        try{
+            Assert.assertEquals(actual, expected);
+            LoggingUtils.info(actual +  " and " + expected + " are matched");
+            ExtentReporter.logInfo(actual +  " and " + expected + " are matched");
+        }catch(Exception e){
+            LoggingUtils.error(">>Assertion error: "+ e.getMessage());
+            ExtentReporter.logFail(">>Assertion error: "+ e.getMessage());
+            throw new AssertionError(">>Assertion error: "+ e.getMessage());
+        }
+        return false;
+    }
 
     public void waitImplicitly(int seconds){
         try{
@@ -227,5 +234,28 @@ public class GeneralMethod extends ExtentReporter{
             throw new IllegalStateException("No previous tab found");
         }
     }
+    public void scrollToBottomOfPageWEB() {
+        js = (JavascriptExecutor) getWebDriver();
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 
+    public  void scrollToTopOfPageWEB() {
+        js= (JavascriptExecutor) getWebDriver();
+        js.executeScript("window.scrollBy(0,-250)", "");
+    }
+
+    public List<WebElement> staleException_Click(WebElement locator) {
+        List<WebElement> outcome = null;
+        int repeat = 0;
+        while (repeat <= 6) {
+            try {
+                List<WebElement> ele = getDriver().findElements((By) locator);
+                break;
+            } catch (StaleElementReferenceException e) {
+                e.printStackTrace();
+            }
+            repeat++;
+        }
+        return outcome;
+    }
 }

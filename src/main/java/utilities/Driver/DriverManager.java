@@ -32,7 +32,7 @@ public class DriverManager {
         LoggingUtils.info("Setting up chrome driver...");
         HashMap<String, Object> chromePreferences = new HashMap<>();
         ChromeOptions options = new ChromeOptions();
-       // options.addArguments("--headless=new");
+        options.addArguments("--headless=new");
         options.addArguments("enable-automation");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-extensions");
@@ -40,7 +40,10 @@ public class DriverManager {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
-        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--start-maximized");
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--incognito");
 
         options.setExperimentalOption("prefs", chromePreferences);
         // Create desired capabilities

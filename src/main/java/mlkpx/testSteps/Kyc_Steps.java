@@ -29,4 +29,18 @@ public class Kyc_Steps extends Base_Steps {
         }
     }
 
+    public void searchRegisteredKYC_Invalid(){
+        try{
+            type(kycPageObjects.lastName_field(), "Last name field", "");
+            type(kycPageObjects.firstName_field(), "First name field", "");
+            click(kycPageObjects.searchBtn(), "Search button");
+            assertEqual(getText(kycPageObjects.lastName_required()),"LAST NAME IS REQUIRED.");
+            assertEqual(getText(kycPageObjects.firstName_required()),"FIRST NAME IS REQUIRED.");
+            //or use isVisible
+            // if(isVisible(kycPageObjects.firstName_field())){}
+
+        }catch (Exception e){
+            ExtentReporter.logFail(""+e);
+        }
+    }
 }

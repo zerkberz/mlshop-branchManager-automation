@@ -9,16 +9,26 @@ public class Kyc_Tests extends BaseTest {
     public void loginGoogle() throws Exception {
         this.loginSteps.signInGoogle("admin");
         this.loginSteps.loginKpx("admin");
+        if(this.homeSteps.isInHomePage()){
+            ExtentReporter.logPass("Login, Passed!!");
+        }
     }
 
-    @Test(dependsOnMethods = "loginGoogle" , description = "To verify Search Rexistered KYC inputs using valid data")
+    @Test(dependsOnMethods = "loginGoogle" , priority = 1)
     public void KYC_TC_02()throws Exception{
-        this.loginSteps.signInGoogleV2();
-        this.loginSteps.loginKpx("admin");
         if(this.homeSteps.isInHomePage()){
             this.kycSteps.navigateKycPage();
             this.kycSteps.searchRegisteredKYC_Valid();
-            ExtentReporter.logPass("KYC_TC_02, Passed!!");
+
+        }
+    }
+
+    @Test(dependsOnMethods = "loginGoogle" , priority = 2)
+    public void KYC_TC_03()throws Exception{
+        if(this.homeSteps.isInHomePage()){
+            this.kycSteps.navigateKycPage();
+            this.kycSteps.searchRegisteredKYC_Invalid();
+
         }
     }
 }
