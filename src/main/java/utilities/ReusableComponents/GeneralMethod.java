@@ -17,7 +17,7 @@ import org.testng.Assert;
 import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
-    private final WebDriver driver = getDriver();
+    protected final WebDriver driver = getDriver();
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;

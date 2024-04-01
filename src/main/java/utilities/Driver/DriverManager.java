@@ -32,7 +32,7 @@ public class DriverManager {
         LoggingUtils.info("Setting up chrome driver...");
         HashMap<String, Object> chromePreferences = new HashMap<>();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+//        options.addArguments("--headless=new");
         options.addArguments("enable-automation");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-extensions");
