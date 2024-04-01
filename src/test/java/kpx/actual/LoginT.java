@@ -11,8 +11,8 @@ public class LoginT extends BaseTest {
 
     @Test(priority = 1)
     public void loginValid()throws Exception{
-       this.loginSteps.signInGoogle("admin");
-       this.loginSteps.loginKpx("admin");
+       this.loginSteps.signInGoogle("teller");
+       this.loginSteps.loginKpx("teller");
        if(this.homeSteps.isInHomePage()){
            ExtentReporter.logPass("Login Successful");
        }
