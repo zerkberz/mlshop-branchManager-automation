@@ -110,6 +110,7 @@ public class ExtentReporter implements ITestListener {
             }
         }
     }
+
     @Override
     public synchronized void onTestStart(ITestResult result){
         try{

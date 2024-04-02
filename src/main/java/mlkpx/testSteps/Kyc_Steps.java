@@ -1,9 +1,12 @@
 package mlkpx.testSteps;
 
 import org.mlkpx.pageObject.Kyc_PageObjects;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 public class Kyc_Steps extends Base_Steps {
     public void navigateKycPage()throws Exception{
         try{
@@ -90,18 +93,95 @@ public class Kyc_Steps extends Base_Steps {
         public void AddNewKYC_Valid(){
             try{
                 click(kycPageObjects.kyc_link(), "Kyc Page");
-                type(kycPageObjects.lastName_field(), "Last name field", "");
-                type(kycPageObjects.firstName_field(), "First name field", "");
-                click(kycPageObjects.birthDate(), "Add BirthDate");
-                click(kycPageObjects.searchOtherDevice(), "Search in other Systems");
+                type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("ELName"));
+                type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("EFName"));
+                click(kycPageObjects.searchBtn(), "Search button");
+                click(kycPageObjects.birthdate_field(), "Birthdate field");
+                type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("year"));
+                kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
+                type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("month"));
+                kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
+                kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
+                type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("day"));
+                click(kycPageObjects.searchInOtherSystemButton(), "Search in other Systems");
+                if (kycPageObjects.kycNotFoundText().getText().contains("KYC Not Found!")) {
+                    ExtentReporter.logPass("KYC Not Found!, Please add the customer KYC details");
 
-
+                }
             }catch (Exception e){
                 ExtentReporter.logFail(""+e);
             }
 
-
         }
+    public void AddNewKYC01(){
+        try{
+            if (kycPageObjects.AddLName().isEnabled()) {
+                type(kycPageObjects.AddLName(), "Last name field", "Siarot");
+                ExtentReporter.logPass("Inputted Last name will display and editable");
+            } else if (kycPageObjects.AddFName().isEnabled()) {
+                type(kycPageObjects.AddFName(), "First name field", "Enrique");
+                ExtentReporter.logPass("Inputted First name will display and editable");
+                wait(5000);
+            }
+            type(kycPageObjects.AddFName(), "Middle name field", "Alferez");
+            click(kycPageObjects.Checkbox(), "Chick Check Button");
+            click(kycPageObjects.AddSuffix(), "Select Suffix");
+            type(kycPageObjects.AddBirthPlace(), "Edit/Input Valid BirthDate", "Bohol, Philippines");
+            click(kycPageObjects.SelectNational(), "Select Nationality");
+            click(kycPageObjects.SelectCivilStatus(), "Select Civil Status");
+            click(kycPageObjects.SelectGender(), "Select Gender at Birth");
+            click(kycPageObjects.SelectCountry(), "Select Country Birth");
+            if (kycPageObjects.ContactInfo().getText().contains("Contact Information")) {
+                type(kycPageObjects.MobileField(),"Input Mobile Number","0920-344-7377");
+                type(kycPageObjects.TelephoneField(),"Input Telephone","02454321345");
+                type(kycPageObjects.EmailField(),"Input Email","testing@gmail.com");
+                click(kycPageObjects.MobileCheckout(),"Click Checkout");
+
+            }
+            if (kycPageObjects.CAddressInfo().getText().contains("CURRENT ADDRESS")) {
+                click(kycPageObjects.SelectProvince(),"Select Province");
+                click(kycPageObjects.SelectMunicipality(),"Select Municipality");
+                type(kycPageObjects.HouseStreetInfo(),"House No, Street/ Sitio/Baranggay","Testing,testing,testing");
+
+            }
+            if (kycPageObjects.PAddressInfo().getText().contains("PERMANENT ADDRESS")) {
+                click(kycPageObjects.PSelectProvince(), "Select Permanent Province");
+                click(kycPageObjects.PSelectMunicipality(), "Select Permanent Municipality");
+                type(kycPageObjects.PHouseStreetInfo(), "House No, Street/ Sitio/Baranggay", "Testing,testing,testing");
+                click(kycPageObjects.SameCurrentAddress(), "Click Checkout");
+
+            }
+            if (kycPageObjects.WorkNature().getText().contains("Nature of Work")) {
+                click(kycPageObjects.SourceIncome(), "Select Source of Income");
+                type(kycPageObjects.CompanyName(), "Select Company Employee Name","Mlhuillier");
+                click(kycPageObjects.ProductOffered(), "Select Product and Services");
+                type(kycPageObjects.WorkAddress(), "Input Work Address","Cebu City");
+                click(kycPageObjects.PositionAtWork(), "Select Position at Work");
+                click(kycPageObjects.NatureOfWork(), "Select Nature of Work");
+
+            }
+            if (kycPageObjects.Identification().getText().contains("ID")) {
+                click(kycPageObjects.IDType(), "Select ID Type");
+                type(kycPageObjects.IDNumber(), "Input ID Number","1234567891011213");
+
+            }
+            if (kycPageObjects.FrontID().getText().contains("FRONT ID")) {
+                click(kycPageObjects.FCamera(), "Select Camera");
+                click(kycPageObjects.FCapture(), "Select Capture Photo");
+                click(kycPageObjects.FSet(), "Select Set Photo");
+            }
+            if (kycPageObjects.BackID().getText().contains("BACK ID")) {
+                click(kycPageObjects.BCamera(), "Select Camera");
+                click(kycPageObjects.BCapture(), "Select Capture Photo");
+                click(kycPageObjects.BSet(), "Select Set Photo");
+            }
+
+
+
+        }catch (Exception e){
+            ExtentReporter.logFail(""+e);
+        }
+    }
 
 
 
