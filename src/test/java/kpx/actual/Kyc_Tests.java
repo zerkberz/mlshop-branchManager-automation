@@ -29,37 +29,13 @@ public class Kyc_Tests extends BaseTest {
         if(this.homeSteps.isInHomePage()){
             this.kycSteps.navigateKycPage();
             this.kycSteps.searchRegisteredKYC_Invalid();
-            ExtentReporter.logPass("LASTNAME and FIRSTNAME IS REQUIRED.");
+            this.kycSteps.searchRegisteredKYC_Invalid03();
+            this.kycSteps.searchRegisteredKYC_Invalid04();
+            this.kycSteps.searchRegisteredKYC_Invalid05();
 
         }
     }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 3)
-    public void KYC_TC_03_1()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.kycSteps.navigateKycPage();
-            this.kycSteps.searchRegisteredKYC_InvalidInputNumbers();
-            ExtentReporter.logPass("LAST NAME IS REQUIRED.");
 
-        }
-    }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 4)
-    public void KYC_TC_03_2()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.kycSteps.navigateKycPage();
-            this.kycSteps.searchRegisteredKYC_InvalidInputSpecialCharacters();
-            ExtentReporter.logPass("Cannot proceed to search or No Data");
-
-        }
-    }
-    @Test(dependsOnMethods = "loginGoogle" , priority = 5)
-    public void KYC_TC_03_3()throws Exception{
-        if(this.homeSteps.isInHomePage()){
-            this.kycSteps.navigateKycPage();
-            this.kycSteps.searchRegisteredKYC_InvalidInputMoreThan60Characters();
-            ExtentReporter.logPass("MAXIMUM OF 60 CHARACTERS.");
-
-        }
-    }
     @Test(dependsOnMethods = "loginGoogle" , priority = 6)
     public void KYC_TC_04()throws Exception{
         if(this.homeSteps.isInHomePage()){
@@ -68,6 +44,4 @@ public class Kyc_Tests extends BaseTest {
 
         }
     }
-
-
 }

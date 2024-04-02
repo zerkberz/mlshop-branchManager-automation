@@ -44,4 +44,16 @@ public class Kyc_PageObjects {
 
     public WebElement kycNotFoundText(){return getDriver().findElement(By.cssSelector("[class=\"container alert alert-warning fade show\"]"));}
 
+
+    public WebElement birthDate(){
+        return getDriver().findElement(By.xpath("//input[@placeholder='Birth Date']"));
+    }
+    public WebElement searchOtherDevice(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='Search in Other Systems']"));
+    }
+
+    public WebElement lastName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[1]/div/small"));}
+    public WebElement firstName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[2]/div/small"));}
+    public WebElement middleName_max60(){return getDriver().findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/div/form/div/div[3]/div/small"));}
+
 }
