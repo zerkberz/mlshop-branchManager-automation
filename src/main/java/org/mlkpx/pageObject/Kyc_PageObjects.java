@@ -52,7 +52,7 @@ public class Kyc_PageObjects {
     public WebElement searchInOtherSystemButton() {
         return getDriver().findElement(By.cssSelector("[class='btn btn-primary']"));
     }
-    public WebElement kycNotFoundText(){return getDriver().findElement(By.cssSelector("[class=\"container alert alert-warning fade show\"]"));}
+    public WebElement kycNotFoundText(){return getDriver().findElement(By.xpath("//div[@role='alert']"));}
     public WebElement AddLName(){return getDriver().findElement(By.xpath("//input[@placeholder='Last Name']"));}
     public WebElement AddFName(){return getDriver().findElement(By.xpath("//input[@placeholder='First Name']"));}
     public WebElement AddMName(){return getDriver().findElement(By.xpath("//input[@placeholder='Middle Name']"));}
@@ -65,7 +65,7 @@ public class Kyc_PageObjects {
     public WebElement SelectCountry(){return getDriver().findElement(By.xpath("//option[@value='PHILIPPINES']"));}
     public WebElement ContactInfo(){return getDriver().findElement(By.xpath("//h5[contains(text(),'Contact Information')]"));}
     public WebElement MobileField(){return getDriver().findElement(By.xpath("//input[@name='cellphoneNumber']"));}
-    public WebElement MobileCheckout(){return getDriver().findElement(By.xpath("//input[@name='hasNoMobileNumber']"));}
+    public WebElement MobileCheckout(){return getDriver().findElement(By.cssSelector("[name='hasNoMobileNumber'"));}
     public WebElement TelephoneField(){return getDriver().findElement(By.xpath("//input[@name='telephoneNumber']"));}
     public WebElement EmailField(){return getDriver().findElement(By.xpath("//input[@name='email']"));}
 
@@ -96,15 +96,29 @@ public class Kyc_PageObjects {
     public WebElement IDNumber(){return getDriver().findElement(By.xpath("(//input[@placeholder='ID No'])[1]"));}
 
 
-    public WebElement FrontID(){return getDriver().findElement(By.xpath("//label[contains(text(),'FRONT ID')]"));}
+    public WebElement FrontID(){return getDriver().findElement(By.xpath("(//label[contains(text(),'ID')])[6]"));}
     public WebElement FCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[1]"));}
-    public WebElement FCapture(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Capture Photo'])[1]"));}
-    public WebElement FSet(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Set Photo'])[1]"));}
+    public WebElement FCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
+    public WebElement FSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
 
 
-    public WebElement BackID(){return getDriver().findElement(By.xpath("//label[contains(text(),'BACK ID')]"));}
-    public WebElement BCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[1]"));}
-    public WebElement BCapture(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Capture Photo'])[1]"));}
-    public WebElement BSet(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Set Photo'])[1]"));}
+    public WebElement BackID(){return getDriver().findElement(By.xpath("(//label[contains(text(),'ID')])[7]"));}
+    public WebElement BCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[2]"));}
+    public WebElement BCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
+    public WebElement BSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
+
+
+    public WebElement CustomerPhoto(){return getDriver().findElement(By.xpath("(//label[@class='subheading'])[4]"));}
+    public WebElement CCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[4]"));}
+    public WebElement CCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
+    public WebElement CSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
+
+    public WebElement ActiveStatus(){return getDriver().findElement(By.xpath("//label[contains(text(),'Is Customer Active?')]"));}
+    public WebElement KYCEdit(){return getDriver().findElement(By.cssSelector("[class='btn-sm btn btn-secondary'"));}
+    public WebElement YesActive(){return getDriver().findElement(By.xpath("(//input[@value='1'])[3]"));}
+    public WebElement KYCDone(){return getDriver().findElement(By.xpath("//button[normalize-space()='Done']"));}
+    public WebElement SaveNewKYC(){return getDriver().findElement(By.xpath("//button[normalize-space()='Save New KYC']"));}
+
+
 
 }

@@ -1,13 +1,11 @@
 package mlkpx.testSteps;
 
-import org.mlkpx.pageObject.Google_PageObjects;
-import org.mlkpx.pageObject.Home_PageObjects;
-import org.mlkpx.pageObject.Kyc_PageObjects;
-import org.mlkpx.pageObject.Login_PageObjects;
+import org.mlkpx.pageObject.*;
 import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
 
 public abstract class Base_Steps extends GeneralMethod {
+    Payout_PageObjects payoutPageObjects = new Payout_PageObjects();
     Kyc_PageObjects kycPageObjects = new Kyc_PageObjects();
     Home_PageObjects homePageObjects = new Home_PageObjects();
     Login_PageObjects loginPageObjects = new Login_PageObjects();

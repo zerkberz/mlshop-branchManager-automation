@@ -3,6 +3,7 @@ package kpx.base;
 import mlkpx.testSteps.Home_Steps;
 import mlkpx.testSteps.Kyc_Steps;
 import mlkpx.testSteps.Login_Steps;
+import mlkpx.testSteps.Payout_Steps;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
@@ -14,6 +15,8 @@ public class BaseTest {
     protected Home_Steps homeSteps;
     protected Login_Steps loginSteps;
     protected Kyc_Steps kycSteps;
+    protected Payout_Steps payoutSteps;
+
 
 
     @Parameters("browser")
@@ -33,6 +36,7 @@ public class BaseTest {
         this.loginSteps = new Login_Steps();
         this.homeSteps = new Home_Steps();
         this.kycSteps = new Kyc_Steps();
+        this.payoutSteps = new Payout_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

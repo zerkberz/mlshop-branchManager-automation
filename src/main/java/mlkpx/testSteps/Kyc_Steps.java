@@ -102,10 +102,13 @@ public class Kyc_Steps extends Base_Steps {
             kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
             type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("day"));
             click(kycPageObjects.searchInOtherSystemButton(), "Search in other Systems");
-            if (kycPageObjects.kycNotFoundText().getText().contains("KYC Not Found!")) {
-                ExtentReporter.logPass("KYC Not Found!, Please add the customer KYC details");
 
+            if(!kycPageObjects.buttonList().isEmpty()){
+                ExtentReporter.logPass("KYC Not Found! Please add the customer KYC details.");
             }
+
+
+
         } catch (Exception e) {
             ExtentReporter.logFail("" + e);
         }
@@ -122,18 +125,20 @@ public class Kyc_Steps extends Base_Steps {
                 wait(5000);
             }
             type(kycPageObjects.AddFName(), "Middle name field", "Alferez");
-            click(kycPageObjects.Checkbox(), "Chick Check Button");
+            click(kycPageObjects.Checkbox(), "Check Button");
             click(kycPageObjects.AddSuffix(), "Select Suffix");
             type(kycPageObjects.AddBirthPlace(), "Edit/Input Valid BirthDate", "Bohol, Philippines");
             click(kycPageObjects.SelectNational(), "Select Nationality");
             click(kycPageObjects.SelectCivilStatus(), "Select Civil Status");
             click(kycPageObjects.SelectGender(), "Select Gender at Birth");
             click(kycPageObjects.SelectCountry(), "Select Country Birth");
+
             if (kycPageObjects.ContactInfo().getText().contains("Contact Information")) {
-                type(kycPageObjects.MobileField(), "Input Mobile Number", "0920-344-7377");
+                type(kycPageObjects.MobileField(), "Input Mobile Number", "09203447377");
+                click(kycPageObjects.MobileCheckout(), "Check if No Mobile Number");
                 type(kycPageObjects.TelephoneField(), "Input Telephone", "02454321345");
                 type(kycPageObjects.EmailField(), "Input Email", "testing@gmail.com");
-                click(kycPageObjects.MobileCheckout(), "Click Checkout");
+
 
             }
             if (kycPageObjects.CAddressInfo().getText().contains("CURRENT ADDRESS")) {
@@ -160,18 +165,34 @@ public class Kyc_Steps extends Base_Steps {
             }
             if (kycPageObjects.Identification().getText().contains("ID")) {
                 click(kycPageObjects.IDType(), "Select ID Type");
-                type(kycPageObjects.IDNumber(), "Input ID Number", "1234567891011213");
+                type(kycPageObjects.IDNumber(), "Input ID Number", "1234567891011");
 
             }
-            if (kycPageObjects.FrontID().getText().contains("FRONT ID")) {
+            if (kycPageObjects.FrontID().getText().contains("ID1")) {
                 click(kycPageObjects.FCamera(), "Select Camera");
                 click(kycPageObjects.FCapture(), "Select Capture Photo");
+                waitSleep(4);
                 click(kycPageObjects.FSet(), "Select Set Photo");
             }
-            if (kycPageObjects.BackID().getText().contains("BACK ID")) {
+
+            if (kycPageObjects.BackID().getText().contains("ID2")) {
                 click(kycPageObjects.BCamera(), "Select Camera");
                 click(kycPageObjects.BCapture(), "Select Capture Photo");
+                waitSleep(4);
                 click(kycPageObjects.BSet(), "Select Set Photo");
+            }
+//            if (kycPageObjects.CustomerPhoto().getText().contains("CUSTOMER'S PHOTO")) {
+//                click(kycPageObjects.CCamera(), "Select Camera");
+//                click(kycPageObjects.CCapture(), "Select Capture Photo");
+//                waitSleep(4);
+//                click(kycPageObjects.CSet(), "Select Set Photo");
+//            }
+//
+            if (kycPageObjects.ActiveStatus().getText().contains("Is Customer Active?")) {
+                click(kycPageObjects.KYCEdit(), "Edit");
+                click(kycPageObjects.YesActive(), "Yes");
+                click(kycPageObjects.KYCDone(), "Done");
+                click(kycPageObjects.SaveNewKYC(), "Save New KYC");
             }
 
 

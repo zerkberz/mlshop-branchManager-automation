@@ -18,9 +18,7 @@ public class Kyc_Tests extends BaseTest {
     public void KYC_TC_02()throws Exception{
         if(this.homeSteps.isInHomePage()){
             this.kycSteps.navigateKycPage();
-
 //            this.kycSteps.searchRegisteredKYC_Valid();
-
             this.kycSteps.searchRegisteredKYC_Valid();
             ExtentReporter.logPass("Registered KYC records will display");
 
@@ -49,4 +47,5 @@ public class Kyc_Tests extends BaseTest {
 
         }
     }
+
 }
