@@ -1,11 +1,13 @@
 package mlkpx.testSteps;
 
 import org.mlkpx.pageObject.Kyc_PageObjects;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ISelect;
+
+import utilities.Driver.DriverManager;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 public class Kyc_Steps extends Base_Steps {
     public void navigateKycPage()throws Exception{
@@ -21,8 +23,9 @@ public class Kyc_Steps extends Base_Steps {
 
     public void searchRegisteredKYC_Valid()throws Exception{
         try{
-            type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("First_name"));
+
             type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("Last_name"));
+            type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("First_name"));
             click(kycPageObjects.searchBtn(), "Search button");
             if(!kycPageObjects.buttonList().isEmpty()){
                 ExtentReporter.logPass("Successfully Search KYC");
@@ -39,8 +42,6 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.searchBtn(), "Search button");
             assertEqual(getText(kycPageObjects.lastName_required()),"LAST NAME IS REQUIRED.");
             assertEqual(getText(kycPageObjects.firstName_required()),"FIRST NAME IS REQUIRED.");
-
-
         }catch (Exception e){
             ExtentReporter.logFail(""+e);
         }
@@ -52,69 +53,66 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.searchBtn(), "Search button");
             ExtentReporter.logPass("Can't Input Numbers" +
                     " Cannot proceed to search or No Dat");
-
-
         }catch (Exception e){
             ExtentReporter.logFail(""+e);
         }
     }
-    public void searchRegisteredKYC_Invalid04(){
-        try{
+
+    public void searchRegisteredKYC_Invalid04() {
+        try {
             type(kycPageObjects.lastName_field(), "Special Character Last name field", "#$%@$%%#^^");
             type(kycPageObjects.firstName_field(), "Special Character First name field", "#$%@$%%#^^");
             click(kycPageObjects.searchBtn(), "Search button");
             ExtentReporter.logPass("Can't Input Special Characters" +
                     "- Cannot proceed to search or No Data");
-
         }catch (Exception e){
             ExtentReporter.logFail(""+e);
         }
     }
-    public void searchRegisteredKYC_Invalid05(){
-        try{
+
+    public void searchRegisteredKYC_Invalid05() {
+        try {
             type(kycPageObjects.lastName_field(), "60 Character Last name field", propertyReader.getproperty("MLast_name"));
             type(kycPageObjects.firstName_field(), "60 Character First name field", propertyReader.getproperty("MFirst_name"));
             type(kycPageObjects.middleName_field(), "60 Character Middle name field", propertyReader.getproperty("MMiddle_name"));
             type(kycPageObjects.suffix_field(), "Suffix field", "JRRRR");
             click(kycPageObjects.searchBtn(), "Search button");
-            assertEqual(getText(kycPageObjects.lastName_max60()),"MAXIMUM OF 60 CHARACTERS.");
-            assertEqual(getText(kycPageObjects.firstName_max60()),"MAXIMUM OF 60 CHARACTERS.");
+            assertEqual(getText(kycPageObjects.lastName_max60()), "MAXIMUM OF 60 CHARACTERS.");
+            assertEqual(getText(kycPageObjects.firstName_max60()), "MAXIMUM OF 60 CHARACTERS.");
             ExtentReporter.logPass("Can input only 5 letters in Suffix" +
                     "- Search button disabled");
+
 
         }catch (Exception e){
             ExtentReporter.logFail(""+e);
         }
     }
+    public void AddNewKYC_Valid() {
+        try {
+            click(kycPageObjects.kyc_link(), "Kyc Page");
 
+            type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("ELName"));
+            type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("EFName"));
+            click(kycPageObjects.searchBtn(), "Search button");
+            click(kycPageObjects.birthdate_field(), "Birthdate field");
+            type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("year"));
+            kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
+            type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("month"));
+            kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
+            kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
+            type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("day"));
+            click(kycPageObjects.searchInOtherSystemButton(), "Search in other Systems");
+            if (kycPageObjects.kycNotFoundText().getText().contains("KYC Not Found!")) {
+                ExtentReporter.logPass("KYC Not Found!, Please add the customer KYC details");
 
-
-
-        public void AddNewKYC_Valid(){
-            try{
-                click(kycPageObjects.kyc_link(), "Kyc Page");
-                type(kycPageObjects.lastName_field(), "Last name field", propertyReader.getproperty("ELName"));
-                type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("EFName"));
-                click(kycPageObjects.searchBtn(), "Search button");
-                click(kycPageObjects.birthdate_field(), "Birthdate field");
-                type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("year"));
-                kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
-                type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("month"));
-                kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
-                kycPageObjects.birthdate_field().sendKeys(Keys.ARROW_LEFT);
-                type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("day"));
-                click(kycPageObjects.searchInOtherSystemButton(), "Search in other Systems");
-                if (kycPageObjects.kycNotFoundText().getText().contains("KYC Not Found!")) {
-                    ExtentReporter.logPass("KYC Not Found!, Please add the customer KYC details");
-
-                }
-            }catch (Exception e){
-                ExtentReporter.logFail(""+e);
             }
-
+        } catch (Exception e) {
+            ExtentReporter.logFail("" + e);
         }
-    public void AddNewKYC01(){
-        try{
+
+    }
+    public void AddNewKYC01 () {
+        try {
             if (kycPageObjects.AddLName().isEnabled()) {
                 type(kycPageObjects.AddLName(), "Last name field", "Siarot");
                 ExtentReporter.logPass("Inputted Last name will display and editable");
@@ -132,16 +130,16 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.SelectGender(), "Select Gender at Birth");
             click(kycPageObjects.SelectCountry(), "Select Country Birth");
             if (kycPageObjects.ContactInfo().getText().contains("Contact Information")) {
-                type(kycPageObjects.MobileField(),"Input Mobile Number","0920-344-7377");
-                type(kycPageObjects.TelephoneField(),"Input Telephone","02454321345");
-                type(kycPageObjects.EmailField(),"Input Email","testing@gmail.com");
-                click(kycPageObjects.MobileCheckout(),"Click Checkout");
+                type(kycPageObjects.MobileField(), "Input Mobile Number", "0920-344-7377");
+                type(kycPageObjects.TelephoneField(), "Input Telephone", "02454321345");
+                type(kycPageObjects.EmailField(), "Input Email", "testing@gmail.com");
+                click(kycPageObjects.MobileCheckout(), "Click Checkout");
 
             }
             if (kycPageObjects.CAddressInfo().getText().contains("CURRENT ADDRESS")) {
-                click(kycPageObjects.SelectProvince(),"Select Province");
-                click(kycPageObjects.SelectMunicipality(),"Select Municipality");
-                type(kycPageObjects.HouseStreetInfo(),"House No, Street/ Sitio/Baranggay","Testing,testing,testing");
+                click(kycPageObjects.SelectProvince(), "Select Province");
+                click(kycPageObjects.SelectMunicipality(), "Select Municipality");
+                type(kycPageObjects.HouseStreetInfo(), "House No, Street/ Sitio/Baranggay", "Testing,testing,testing");
 
             }
             if (kycPageObjects.PAddressInfo().getText().contains("PERMANENT ADDRESS")) {
@@ -153,16 +151,16 @@ public class Kyc_Steps extends Base_Steps {
             }
             if (kycPageObjects.WorkNature().getText().contains("Nature of Work")) {
                 click(kycPageObjects.SourceIncome(), "Select Source of Income");
-                type(kycPageObjects.CompanyName(), "Select Company Employee Name","Mlhuillier");
+                type(kycPageObjects.CompanyName(), "Select Company Employee Name", "Mlhuillier");
                 click(kycPageObjects.ProductOffered(), "Select Product and Services");
-                type(kycPageObjects.WorkAddress(), "Input Work Address","Cebu City");
+                type(kycPageObjects.WorkAddress(), "Input Work Address", "Cebu City");
                 click(kycPageObjects.PositionAtWork(), "Select Position at Work");
                 click(kycPageObjects.NatureOfWork(), "Select Nature of Work");
 
             }
             if (kycPageObjects.Identification().getText().contains("ID")) {
                 click(kycPageObjects.IDType(), "Select ID Type");
-                type(kycPageObjects.IDNumber(), "Input ID Number","1234567891011213");
+                type(kycPageObjects.IDNumber(), "Input ID Number", "1234567891011213");
 
             }
             if (kycPageObjects.FrontID().getText().contains("FRONT ID")) {
@@ -177,13 +175,11 @@ public class Kyc_Steps extends Base_Steps {
             }
 
 
-
-        }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+        } catch (Exception e) {
+            ExtentReporter.logFail("" + e);
         }
+
+
     }
-
-
-
 
 }

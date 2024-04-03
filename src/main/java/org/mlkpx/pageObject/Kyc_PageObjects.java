@@ -34,7 +34,8 @@ public class Kyc_PageObjects {
     }
     public WebElement lastName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'Last name is required.')]"));}
     public WebElement firstName_required(){return getDriver().findElement(By.xpath("//*[contains(text(), 'First name is required.')]"));}
-
+    public WebElement birthdate1_field(){return getDriver().findElement(By.cssSelector("[max=\"2024-04-01\"]"));}
+    public WebElement birthdate2_field(){return getDriver().findElement(By.cssSelector("[class = form-control-sm form-control]"));}
 
     public WebElement birthDate(){
         return getDriver().findElement(By.xpath("//input[@placeholder='Birth Date']"));
