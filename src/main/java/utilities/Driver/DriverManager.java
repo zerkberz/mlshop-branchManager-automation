@@ -44,6 +44,7 @@ public class DriverManager {
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-notifications");
         options.addArguments("--incognito");
+        options.addArguments("use-fake-ui-for-media-stream");
 
         options.setExperimentalOption("prefs", chromePreferences);
         // Create desired capabilities
