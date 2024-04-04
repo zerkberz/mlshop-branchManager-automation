@@ -14,7 +14,7 @@ public class LoginT extends BaseTest {
        this.loginSteps.signInGoogle("teller");
        this.loginSteps.loginKpx("teller");
        if(this.homeSteps.isInHomePage()){
-           ExtentReporter.logPass("Login Successful");
+           ExtentReporter.logPass("loginValid","Login Successful");
        }
     }
 

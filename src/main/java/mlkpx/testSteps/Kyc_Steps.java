@@ -26,10 +26,10 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.firstName_field(), "First name field", propertyReader.getproperty("First_name"));
             click(kycPageObjects.searchBtn(), "Search button");
             if(!kycPageObjects.buttonList().isEmpty()){
-                ExtentReporter.logPass("Successfully Search KYC");
+                ExtentReporter.logPass("searchRegisteredKYC_Valid","Successfully Search KYC");
             }
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_Valid",""+e);
         }
     }
 
@@ -41,7 +41,7 @@ public class Kyc_Steps extends Base_Steps {
             assertEqual(getText(kycPageObjects.lastName_required()),"LAST NAME IS REQUIRED.");
             assertEqual(getText(kycPageObjects.firstName_required()),"FIRST NAME IS REQUIRED.");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_Invalid",""+e);
         }
     }
     public void searchRegisteredKYC_Invalid03(){
@@ -49,10 +49,10 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.lastName_field(), "Numeric Last name field", "45645");
             type(kycPageObjects.firstName_field(), "Numeric First name field", "456456");
             click(kycPageObjects.searchBtn(), "Search button");
-            ExtentReporter.logPass("Can't Input Numbers" +
+            ExtentReporter.logPass("searchRegisteredKYC_Invalid03","Can't Input Numbers" +
                     " Cannot proceed to search or No Dat");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_Invalid03",""+e);
         }
     }
 
@@ -61,8 +61,12 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.lastName_field(), "Special Character Last name field", "#$%@$%%#^^");
             type(kycPageObjects.firstName_field(), "Special Character First name field", "#$%@$%%#^^");
             click(kycPageObjects.searchBtn(), "Search button");
-            ExtentReporter.logPass("Can't Input Special Characters" +
+            ExtentReporter.logPass("searchRegisteredKYC_Invalid04","Can't Input Special Characters" +
                     "- Cannot proceed to search or No Data");
+        }catch (Exception e){
+            ExtentReporter.logFail( "searchRegisteredKYC_Invalid04",""+e);
+        }
+    }
 
     public void searchRegisteredKYC_InvalidInputNumbers(){
         try{
@@ -70,7 +74,7 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.firstName_field(), "First name field", "12312");
             click(kycPageObjects.searchBtn(), "Search button");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_InvalidInputNumbers",""+e);
         }
     }
     public void searchRegisteredKYC_Invalid05(){
@@ -82,8 +86,12 @@ public class Kyc_Steps extends Base_Steps {
             click(kycPageObjects.searchBtn(), "Search button");
             assertEqual(getText(kycPageObjects.lastName_max60()),"MAXIMUM OF 60 CHARACTERS.");
             assertEqual(getText(kycPageObjects.firstName_max60()),"MAXIMUM OF 60 CHARACTERS.");
-            ExtentReporter.logPass("Can input only 5 letters in Suffix" +
+            ExtentReporter.logPass("searchRegisteredKYC_Invalid05","Can input only 5 letters in Suffix" +
                     "- Search button disabled");
+        }catch (Exception e){
+            ExtentReporter.logFail("searchRegisteredKYC_Invalid05",""+e);
+        }
+    }
 
     public void searchRegisteredKYC_InvalidInputSpecialCharacters(){
         try{
@@ -91,7 +99,7 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.firstName_field(), "First name field", "$@@!()$)(@$");
             click(kycPageObjects.searchBtn(), "Search button");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_InvalidInputSpecialCharacters",""+e);
         }
     }
     public void searchRegisteredKYC_InvalidInputMoreThan60Characters(){
@@ -100,7 +108,7 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.firstName_field(), "First name field", "sfsdfdsfffffffffffffffffffffffffffSDDDDDDDFFfdsffffffffffffffffffffffffffffffffasfffffffffaaaaaaaaasfccc");
             click(kycPageObjects.searchBtn(), "Search button");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("searchRegisteredKYC_InvalidInputMoreThan60Characters ",""+e);
         }
     }
 
@@ -112,7 +120,7 @@ public class Kyc_Steps extends Base_Steps {
                 click(kycPageObjects.birthDate(), "Add BirthDate");
                 click(kycPageObjects.searchOtherDevice(), "Search in other Systems");
         }catch (Exception e){
-            ExtentReporter.logFail(""+e);
+            ExtentReporter.logFail("AddNewKYC_Valid,",""+e);
         }
     }
 
@@ -131,10 +139,10 @@ public class Kyc_Steps extends Base_Steps {
             type(kycPageObjects.birthdate_field(), "Birthdate field", propertyReader.getproperty("day"));
             click(kycPageObjects.searchInOtherSystemButton(), "Search in other system");
             if (kycPageObjects.kycNotFoundText().getText().contains("KYC Not Found!")) {
-                ExtentReporter.logPass("KYC Not Found!, Please add the customer KYC details");
+                ExtentReporter.logPass("ValidInputsInAddKYCNameSectionPositiveTesting ","KYC Not Found!, Please add the customer KYC details");
             }
         } catch (Exception e) {
-            ExtentReporter.logFail("" + e);
+            ExtentReporter.logFail("ValidInputsInAddKYCNameSectionPositiveTesting ","" + e);
         }
     }
 }

@@ -3,7 +3,6 @@ package utilities.ReusableComponents;
 import org.openqa.selenium.*;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.List;
 
@@ -21,17 +20,18 @@ public class GeneralMethod extends ExtentReporter{
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
+    
     public void click(WebElement locator, String elementName){
        try {
            if(isVisible(locator, elementName)){
                WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
                element.click();
-               LoggingUtils.info(">>Clicked on element: " + elementName);
-               ExtentReporter.logInfo(">>Clicked on element: " + elementName);
+               LoggingUtils.info("Clicked on element: " + elementName);
+               ExtentReporter.logInfo("Clicked on element: " + elementName, "");
            }
         } catch (Exception e) {
-           ExtentReporter.logFail(">>Failed to click element: "+ elementName);
-           LoggingUtils.error(">>Failed to click element: "+ elementName + e.getMessage());
+           ExtentReporter.logFail("Failed to click element: "+ elementName, "");
+           LoggingUtils.error("Failed to click element: "+ elementName + e.getMessage());
         }
     }
 
@@ -40,14 +40,13 @@ public class GeneralMethod extends ExtentReporter{
             if(isVisible(locator, elementName)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
                 element.sendKeys(text);
-                LoggingUtils.info(">>Typed into field: " + elementName + ", Value: "+ text);
-                ExtentReporter.logInfo(">>Typed into field: " + elementName + ", Value: "+ text);
-            }else{
-                ExtentReporter.logFail(">>Failed to type into field: "+ elementName + ", Value: "+ text);
+                LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
+                ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
             }
         } catch (Exception e) {
-        LoggingUtils.error(">>Failed to type into field: "+ elementName + ", Value: "+ text);
-        ExtentReporter.logFail(">>Failed to type into field: "+ elementName + ", Value: "+ text);
+        LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);
+        ExtentReporter.logFail("Failed to type into field: "+ elementName , " Typed Value:: "+ text);
+        throw new AssertionError("Failed to type into field: "+ elementName + ", Value: "+ text);
         }
     }
 
@@ -56,31 +55,31 @@ public class GeneralMethod extends ExtentReporter{
             if(isVisible(locator, elementName)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
                 element.sendKeys(text + Keys.ENTER);
-                LoggingUtils.info(">>Typed into field: " + elementName + ", Value: "+ text);
-                ExtentReporter.logInfo(">>Typed into field: " + elementName + ", Value: "+ text);
-            }else{
-                ExtentReporter.logFail(">>Failed to type into field: "+ elementName + ", Value: "+ text);
+                LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
+                ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
             }
         } catch (Exception e) {
-            LoggingUtils.error(">>Failed to type into field: "+ elementName + ", Value: "+ text);
-            ExtentReporter.logFail(">>Failed to type into field: "+ elementName + ", Value: "+ text);
+            LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);
+            ExtentReporter.logFail("Failed to type into field: "+ elementName , "Typed Value: "+ text);
+            throw new AssertionError("Failed to type into field: "+ elementName + ", Value: "+ text);
         }
     }
 
     public boolean isVisible(WebElement locator, String elementName){
         try {
             wait.until(ExpectedConditions.visibilityOf(locator));
-            LoggingUtils.info(">>Element: " + elementName + ", is visible");
+            LoggingUtils.info("Element: " + elementName + ", is visible");
+            return true;
         } catch (NoSuchElementException e) {
-            ExtentReporter.logFail(">>Element: " + elementName + ", is not visible");
-            LoggingUtils.error(">>Element: " + elementName + ", is not visible");
-            throw new AssertionError(">>Element: " + elementName + ", is not visible", e);
+            ExtentReporter.logFail("Element: " + elementName + " is not visible", "Caused: "+ e);
+            LoggingUtils.error("Element: " + elementName + ", is not visible");
+            throw new AssertionError("Element: " + elementName + ", is not visible", e);
         } catch (StaleElementReferenceException e){
             // Retry the visibility check
             for (int i = 0; i < 3; i++) {
                 try {
                     wait.until(ExpectedConditions.visibilityOf(locator));
-                    LoggingUtils.info(">> Element: " + elementName + " is visible after retry");
+                    LoggingUtils.info(" Element: " + elementName + " is visible after retry");
                     return true;
                 } catch (StaleElementReferenceException ex) {
                     // Wait for a short duration before retrying
@@ -91,16 +90,15 @@ public class GeneralMethod extends ExtentReporter{
                     }
                 }
             }
-            ExtentReporter.logFail(">> Element: " + elementName + " is not visible after retries");
-            LoggingUtils.error(">> Element: " + elementName + " is not visible after retries");
-            throw new AssertionError(">> Element: " + elementName + " is not visible after retries", e);
+            ExtentReporter.logFail(" Element: " + elementName + " is not visible after retries", "Caused: "+ e);
+            LoggingUtils.error(" Element: " + elementName + " is not visible after retries");
+            throw new AssertionError(" Element: " + elementName + " is not visible after retries", e);
         }
         catch (Exception ex) {
-            ExtentReporter.logFail(">>An exception occurred while checking element visibility: " + ex.getMessage());
-            LoggingUtils.error(">>An exception occurred while checking element visibility: " + ex.getMessage());
-            throw ex;
+            ExtentReporter.logFail("An exception occurred while checking element visibility: " + ex.getMessage(), "Caused: "+ ex);
+            LoggingUtils.error("An exception occurred while checking element visibility: " + ex.getMessage());
+            throw new AssertionError("An exception occurred while checking element visibility: " + ex.getMessage());
         }
-        return true;
     }
 
     /**
@@ -116,7 +114,7 @@ public class GeneralMethod extends ExtentReporter{
                 return true;
             }
         }catch (NoSuchElementException e){
-            LoggingUtils.error(">>Element "+  elementName +" is not displayed " + e.getMessage());
+            LoggingUtils.error("Element "+  elementName +" is not displayed " + e.getMessage());
         }
         return false;
     }
@@ -126,40 +124,40 @@ public class GeneralMethod extends ExtentReporter{
             WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
             val = element.getText();
         }catch(Exception e){
-            ExtentReporter.logFail(">>Cannot get text for element" + e.getMessage());
-            LoggingUtils.error(">>Cannot get text for element" + e.getMessage());
+            ExtentReporter.logFail("Cannot get text for element" + e.getMessage(), "Caused: "+ e);
+            LoggingUtils.error("Cannot get text for element" + e.getMessage());
+            throw new AssertionError("Cannot get text for element" + e.getMessage());
         }
        return val;
 
     }
 
-    public boolean assertEqual(String actual, String expected){
+    public void assertEqual(String actual, String expected){
         try{
             Assert.assertEquals(actual, expected);
             LoggingUtils.info(actual +  " and " + expected + " are matched");
-            ExtentReporter.logInfo(actual +  " and " + expected + " are matched");
+            ExtentReporter.logInfo("Assertion: "+actual +  " and " + expected + " are matched" , "asserted values " + actual + " and " + expected);
         }catch(Exception e){
-            LoggingUtils.error(">>Assertion error: "+ e.getMessage());
-            ExtentReporter.logFail(">>Assertion error: "+ e.getMessage());
-            throw new AssertionError(">>Assertion error: "+ e.getMessage());
+            LoggingUtils.error("Assertion error: "+ e.getMessage());
+            ExtentReporter.logFail("Assertion error: "+ e.getMessage(), "Caused: "+ e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
-        return false;
     }
 
     public void waitImplicitly(int seconds){
         try{
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
-            LoggingUtils.info(">>Waiting implicitly for: " + seconds + " seconds");
+            LoggingUtils.info("Waiting implicitly for: " + seconds + " seconds");
         }catch(Exception e){
-            LoggingUtils.error(">>waitImplicitly error: "+ e.getMessage());
+            LoggingUtils.error("waitImplicitly error: "+ e.getMessage());
         }
     }
     public void waitSleep(int seconds){
         try{
             Thread.sleep(seconds);
-            LoggingUtils.info(">>Waiting for: " + seconds + " miliseconds");
+            LoggingUtils.info("Waiting for: " + seconds + " miliseconds");
         }catch(Exception e){
-            LoggingUtils.error(">>wait error: "+ e.getMessage());
+            LoggingUtils.error("wait error: "+ e.getMessage());
         }
     }
 
@@ -171,7 +169,7 @@ public class GeneralMethod extends ExtentReporter{
             if (!windowHandle.equals(currentWindowHandle)) {
                 getDriver().switchTo().window(windowHandle);
                 LoggingUtils.info("Switch to " + currentWindowHandle);
-                ExtentReporter.logInfo("Switch to " + currentWindowHandle);
+                ExtentReporter.logInfo("Switch Next Tab" , "Window ID: "+currentWindowHandle);
                 break;
             }
         }
@@ -183,7 +181,7 @@ public class GeneralMethod extends ExtentReporter{
         // Check if there are multiple windows/tabs open
         if (windowHandles.size() <= 1) {
             LoggingUtils.info("No next tab/window to switch to or close");
-            ExtentReporter.logInfo("No next tab/window to switch to or close");
+            ExtentReporter.logInfo("No Tab to Switch", "No Tab to Switch");
             return;
         }
 
@@ -195,11 +193,11 @@ public class GeneralMethod extends ExtentReporter{
                     getDriver().switchTo().window(windowHandle);
                     getDriver().close();
                     LoggingUtils.info("Closed window: " + windowHandle);
-                    ExtentReporter.logInfo("Closed window: " + windowHandle);
+                    ExtentReporter.logInfo("Closed window: " + windowHandle, "");
                     foundNextWindow = true;
                 } catch (NoSuchWindowException e) {
                     LoggingUtils.error("Failed to switch to/close window: " + windowHandle);
-                    ExtentReporter.logFail("Failed to switch to/close window: " + windowHandle);
+                    ExtentReporter.logFail("Failed to switch to/close window: " + windowHandle, "");
                 }
                 break;
             }
@@ -207,7 +205,7 @@ public class GeneralMethod extends ExtentReporter{
 
         if (!foundNextWindow) {
             LoggingUtils.error("No next tab/window found to switch to or close");
-            ExtentReporter.logFail("No next tab/window found to switch to or close");
+            ExtentReporter.logFail("No next tab/window found to switch to or close", "");
         }
 
         // Switch driver focus back to the original window/tab
@@ -229,7 +227,7 @@ public class GeneralMethod extends ExtentReporter{
         if (previousWindowHandle != null) {
             getWebDriver().switchTo().window(previousWindowHandle);
             LoggingUtils.info("Switch to " + previousWindowHandle);
-            ExtentReporter.logInfo("Switch to " + currentWindowHandle);
+            ExtentReporter.logInfo("Switch Previous Tab " ,"Previous Tab ID: "+ currentWindowHandle);
         } else {
             throw new IllegalStateException("No previous tab found");
         }
@@ -258,4 +256,5 @@ public class GeneralMethod extends ExtentReporter{
         }
         return outcome;
     }
+
 }
