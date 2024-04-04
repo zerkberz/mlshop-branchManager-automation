@@ -10,6 +10,8 @@
             <classes>
                 <class name="kpx.actual.Kyc_Tests">
                 </class>
+<!--                <class name="kpx.actual.Payout_Tests">-->
+<!--                </class>-->
             </classes>
         </parameter>
     </test>

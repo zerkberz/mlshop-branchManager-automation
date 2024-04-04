@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -50,29 +51,29 @@ public class ExtentReporter implements ITestListener {
         return extent;
     }
 
-    public static synchronized void logPass(String message) {
-        logStatusWithScreenshot(extentTestThreadLocal.get(), message, "pass");
+    public static synchronized void logPass(String step,String message) {
+        logStatusWithScreenshot(extentTestThreadLocal.get(),step, message, "pass");
     }
 
-    public static synchronized void logFail(String message) {
-        logStatusWithScreenshot(extentTestThreadLocal.get(), message, "fail");
+    public static synchronized void logFail(String step,String message) {
+        logStatusWithScreenshot(extentTestThreadLocal.get(),step, message, "fail");
 
     }
-    public static synchronized void logInfo(String message){
-        logStatusWithScreenshot(extentTestThreadLocal.get(), message, "info");
+    public static synchronized void logInfo(String step, String message){
+        logStatusWithScreenshot(extentTestThreadLocal.get(),step ,message, "info");
     }
-    private static synchronized void logStatusWithScreenshot(ExtentTest extentTest, String message, String logType) {
+    private static synchronized void logStatusWithScreenshot(ExtentTest extentTest,String step ,String message, String logType) {
         String screenshotPath = captureScreenshot(extentTest.getModel().getName());
 
         switch (logType.toLowerCase()) {
             case "pass":
-                extentTest.addScreenCaptureFromPath(screenshotPath).pass(message);
+                extentTest.createNode(step).addScreenCaptureFromPath(screenshotPath).pass(message);
                 break;
             case "fail":
-                extentTest.createNode("Reason for Failure: "+extentTest.getModel().getName()).addScreenCaptureFromPath(screenshotPath).fail(message);
+                extentTest.createNode(step).addScreenCaptureFromPath(screenshotPath).fail(message);
                 break;
             case "info":
-                extentTest.addScreenCaptureFromPath(screenshotPath).info(message);
+                extentTest.createNode(step).addScreenCaptureFromPath(screenshotPath).info(message);
                 break;
             default:
                 break;
@@ -110,10 +111,11 @@ public class ExtentReporter implements ITestListener {
             }
         }
     }
+
     @Override
     public synchronized void onTestStart(ITestResult result){
         try{
-            ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName());
+            ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
             extentTestThreadLocal.set(extentTest);
             LoggingUtils.info("------->>>Test: "+ result.getName() + " Started<<<--------");
         }catch (Exception e){
@@ -128,9 +130,9 @@ public class ExtentReporter implements ITestListener {
     @Override
     public synchronized void onTestFailure(ITestResult result){
         if(getDriver() != null){
-            logFail(result.getThrowable().getMessage());
-            //extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed " + result.getThrowable().getLocalizedMessage());
-            LoggingUtils.info("------->>>Test: "+ result.getName() + " Failed<<<--------");
+            // logFail(result.getName(),result.getThrowable().getMessage());
+            extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed " + result.getThrowable().getLocalizedMessage());
+            LoggingUtils.error("------->>>Test: "+ result.getName() + " Failed<<<--------");
         }
     }
     @Override
@@ -140,9 +142,8 @@ public class ExtentReporter implements ITestListener {
     }
     @Override
     public synchronized void onTestSuccess(ITestResult result){
-        extentTestThreadLocal.get().log(Status.PASS, result.getName()+ " has been Skipped");
+        extentTestThreadLocal.get().log(Status.PASS, result.getName()+ " Passed");
         LoggingUtils.info("------->>>Test: "+ result.getName() + " Passed<<<--------");
     }
-
 
 }

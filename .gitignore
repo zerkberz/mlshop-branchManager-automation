@@ -43,3 +43,6 @@ src/test/java/resources/testData.yaml
 src/test/java/resources/testData.properties
 /testData.yaml
 *.yml
+
+.idea
+.vscode

@@ -44,14 +44,14 @@ public class Login_Steps extends Base_Steps {
             click(loginPageObjects.loginButton(), "Login button");
 
         }catch (Exception e){
-            ExtentReporter.logFail("error "+ e);
+            ExtentReporter.logFail("loginKpx, ","error "+ e);
         }
     }
     public void isInvalidAccount(){
         if(isVisible(loginPageObjects.invalidCredText(), getText(loginPageObjects.invalidCredText()))){
-            ExtentReporter.logPass("Successfully Validated Invalid Account");
+            ExtentReporter.logPass("isInvalidAccount ","Successfully Validated Invalid Account");
         }else{
-            ExtentReporter.logFail("Failed to Validate");
+            ExtentReporter.logFail("isInvalidAccount ","Failed to Validate");
         }
 
     }
