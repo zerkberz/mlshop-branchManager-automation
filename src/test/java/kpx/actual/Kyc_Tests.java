@@ -16,7 +16,7 @@ public class Kyc_Tests extends BaseTest {
         }
     }
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Test to verify display of registered kyc records")
+    @Test(dependsOnMethods = "loginGoogle", priority = 2, description = "Test to verify display of registered kyc records")
     public void KYC_TC_02() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.kycSteps.navigateKycPage();
@@ -36,7 +36,7 @@ public class Kyc_Tests extends BaseTest {
         }
     }
 
-    @Test(dependsOnMethods = "loginGoogle", priority = 6, description = "Test to ADD KYC")
+    @Test(dependsOnMethods = "loginGoogle", priority = 1, description = "Test to ADD KYC")
     public void KYC_TC_04() throws Exception {
         if (this.homeSteps.isInHomePage()) {
             this.kycSteps.navigateKycPage();

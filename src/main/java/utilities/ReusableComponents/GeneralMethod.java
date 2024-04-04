@@ -17,33 +17,34 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
     protected final WebDriver driver = getDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
     
     public void click(WebElement locator, String elementName){
-       try {
-           if(isVisible(locator, elementName)){
-               WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-               element.click();
-               LoggingUtils.info("Clicked on element: " + elementName);
-               ExtentReporter.logInfo("Clicked on element: " + elementName, "");
-           }
-        } catch (Exception e) {
-           ExtentReporter.logFail("Failed to click element: "+ elementName, "");
-           LoggingUtils.error("Failed to click element: "+ elementName + e.getMessage());
+        try {
+            if (isDisplayed(locator)) {
+                WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+                element.click();
+                LoggingUtils.info("Clicked on element: " + elementName);
+                ExtentReporter.logInfo("Clicked on element: " + elementName, "");
+            }
+        } catch (NoSuchElementException e) {
+            ExtentReporter.logFail("Failed to click element: " + elementName, "Caused: " + e);
+            LoggingUtils.error("Failed to click element: " + elementName);
+            throw new AssertionError("Failed to click element: " + elementName);
         }
     }
 
     public void type(WebElement locator, String elementName, String text){
         try {
-            if(isVisible(locator, elementName)) {
+            if(isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
                 element.sendKeys(text);
                 LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
                 ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
             }
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
         LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);
         ExtentReporter.logFail("Failed to type into field: "+ elementName , " Typed Value:: "+ text);
         throw new AssertionError("Failed to type into field: "+ elementName + ", Value: "+ text);
@@ -52,13 +53,13 @@ public class GeneralMethod extends ExtentReporter{
 
     public void typeEnter(WebElement locator, String elementName, String text){
         try {
-            if(isVisible(locator, elementName)) {
+            if(isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
                 element.sendKeys(text + Keys.ENTER);
                 LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
                 ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
             }
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);
             ExtentReporter.logFail("Failed to type into field: "+ elementName , "Typed Value: "+ text);
             throw new AssertionError("Failed to type into field: "+ elementName + ", Value: "+ text);
@@ -66,38 +67,14 @@ public class GeneralMethod extends ExtentReporter{
     }
 
     public boolean isVisible(WebElement locator, String elementName){
-        try {
+        try{
             wait.until(ExpectedConditions.visibilityOf(locator));
             LoggingUtils.info("Element: " + elementName + ", is visible");
             return true;
-        } catch (NoSuchElementException e) {
-            ExtentReporter.logFail("Element: " + elementName + " is not visible", "Caused: "+ e);
-            LoggingUtils.error("Element: " + elementName + ", is not visible");
-            throw new AssertionError("Element: " + elementName + ", is not visible", e);
-        } catch (StaleElementReferenceException e){
-            // Retry the visibility check
-            for (int i = 0; i < 3; i++) {
-                try {
-                    wait.until(ExpectedConditions.visibilityOf(locator));
-                    LoggingUtils.info(" Element: " + elementName + " is visible after retry");
-                    return true;
-                } catch (StaleElementReferenceException ex) {
-                    // Wait for a short duration before retrying
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException ignored) {
-                        Thread.currentThread().interrupt();
-                    }
-                }
-            }
-            ExtentReporter.logFail(" Element: " + elementName + " is not visible after retries", "Caused: "+ e);
-            LoggingUtils.error(" Element: " + elementName + " is not visible after retries");
-            throw new AssertionError(" Element: " + elementName + " is not visible after retries", e);
-        }
-        catch (Exception ex) {
-            ExtentReporter.logFail("An exception occurred while checking element visibility: " + ex.getMessage(), "Caused: "+ ex);
-            LoggingUtils.error("An exception occurred while checking element visibility: " + ex.getMessage());
-            throw new AssertionError("An exception occurred while checking element visibility: " + ex.getMessage());
+        }catch (NoSuchElementException e){
+            ExtentReporter.logFail("Element: " + elementName + "not visible", "Caused: ");
+            LoggingUtils.error("Element: " + elementName + "not visible");
+            throw new AssertionError("Element: " + elementName + " not visible" );
         }
     }
 
@@ -108,15 +85,13 @@ public class GeneralMethod extends ExtentReporter{
      * @return
      * @throws NoSuchElementException
      */
-    public boolean isDisplayed(WebElement locator, String elementName)throws NoSuchElementException{
-        try{
-            if(locator.isDisplayed()){
-                return true;
-            }
-        }catch (NoSuchElementException e){
-            LoggingUtils.error("Element "+  elementName +" is not displayed " + e.getMessage());
+    public boolean isDisplayed(WebElement locator) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(locator));
+            return locator.isDisplayed();
+        } catch (NoSuchElementException | TimeoutException e) {
+            return false;
         }
-        return false;
     }
     public String getText(WebElement locator){
         String val = null;

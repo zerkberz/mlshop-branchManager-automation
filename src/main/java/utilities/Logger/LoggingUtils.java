@@ -35,7 +35,6 @@ public class LoggingUtils {
 
     public static void error(String message) {
         LOGGER.error(message);
-        throw new AssertionError(message);
     }
 
     public static void error(Exception message) {
