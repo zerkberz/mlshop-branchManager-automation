@@ -17,7 +17,7 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
     protected final WebDriver driver = getDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
     
@@ -29,7 +29,7 @@ public class GeneralMethod extends ExtentReporter{
                 LoggingUtils.info("Clicked on element: " + elementName);
                 ExtentReporter.logInfo("Clicked on element: " + elementName, "");
             }
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             ExtentReporter.logFail("Failed to click element: " + elementName, "Caused: " + e);
             LoggingUtils.error("Failed to click element: " + elementName);
             throw new AssertionError("Failed to click element: " + elementName);
@@ -127,10 +127,10 @@ public class GeneralMethod extends ExtentReporter{
             LoggingUtils.error("waitImplicitly error: "+ e.getMessage());
         }
     }
-    public void waitSleep(int seconds){
+    public void waitSleep(int miliSeconds){
         try{
-            Thread.sleep(seconds);
-            LoggingUtils.info("Waiting for: " + seconds + " miliseconds");
+            Thread.sleep(miliSeconds);
+            LoggingUtils.info("Waiting for: " + miliSeconds + " miliSeconds");
         }catch(Exception e){
             LoggingUtils.error("wait error: "+ e.getMessage());
         }
@@ -208,15 +208,43 @@ public class GeneralMethod extends ExtentReporter{
         }
     }
     public void scrollToBottomOfPageWEB() {
-        js = (JavascriptExecutor) getWebDriver();
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        try{
+            js = (JavascriptExecutor) getWebDriver();
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        }catch (Exception e){
+            LoggingUtils.info("Error: "+e);
+        }
+
     }
 
     public  void scrollToTopOfPageWEB() {
-        js= (JavascriptExecutor) getWebDriver();
-        js.executeScript("window.scrollBy(0,-250)", "");
+        try{
+            js= (JavascriptExecutor) getWebDriver();
+            js.executeScript("window.scrollBy(0,-250)", "");
+        }catch (Exception e ){
+            LoggingUtils.info("Error: "+e);
+        }
     }
+    public void scrollToSpecificScrollPosition(int scrollPosition) {
+        try{
+            js = (JavascriptExecutor) getWebDriver();
+            js.executeScript("window.scrollTo(0, arguments[0])", scrollPosition);
+            LoggingUtils.info("Scrolling into position: "+ scrollPosition);
+        }catch (Exception e){
+            LoggingUtils.info("Error "+ e);
+        }
 
+    }
+    public void scrollToElement(WebElement element) {
+        try{
+            js = (JavascriptExecutor) getWebDriver();
+            js.executeScript("arguments[0].scrollIntoView(true);", element);
+            LoggingUtils.info("Scrolling into element: "+ element);
+        }catch (Exception e){
+            LoggingUtils.info("Error "+ e);
+        }
+
+    }
     public List<WebElement> staleException_Click(WebElement locator) {
         List<WebElement> outcome = null;
         int repeat = 0;

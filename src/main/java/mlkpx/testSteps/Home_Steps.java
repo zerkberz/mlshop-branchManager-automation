@@ -11,7 +11,6 @@ public class Home_Steps extends Base_Steps {
         try{
             if(isVisible(homePageObjects.searchField(), "Search Field")){
                 LoggingUtils.info("Successfully directed to the Homepage");
-                ExtentReporter.logPass("isInHomePage", "Successfully directed to the Homepage");
                 return true;
             }
         }catch (Exception e){

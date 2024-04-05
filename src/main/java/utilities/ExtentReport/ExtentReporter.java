@@ -130,8 +130,8 @@ public class ExtentReporter implements ITestListener {
     @Override
     public synchronized void onTestFailure(ITestResult result){
         if(getDriver() != null){
-            // logFail(result.getName(),result.getThrowable().getMessage());
-            extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed " + result.getThrowable().getLocalizedMessage());
+             logFail(result.getName(),result.getThrowable().getMessage());
+            //extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed " + result.getThrowable().getLocalizedMessage());
             LoggingUtils.error("------->>>Test: "+ result.getName() + " Failed<<<--------");
         }
     }

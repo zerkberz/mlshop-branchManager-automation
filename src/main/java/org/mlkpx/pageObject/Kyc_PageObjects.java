@@ -103,18 +103,18 @@ public class Kyc_PageObjects {
 
 
     public WebElement BackID(){return getDriver().findElement(By.xpath("(//label[contains(text(),'ID')])[7]"));}
-    public WebElement BCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[2]"));}
+    public WebElement BCamera(){return getDriver().findElement(By.cssSelector("[type='button'][name='id2File']"));}
     public WebElement BCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
     public WebElement BSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
 
 
     public WebElement CustomerPhoto(){return getDriver().findElement(By.xpath("(//label[@class='subheading'])[4]"));}
-    public WebElement CCamera(){return getDriver().findElement(By.xpath("(//button[normalize-space()='Camera'])[4]"));}
+    public WebElement CCamera(){return getDriver().findElement(By.cssSelector("[name='customerPhoto']"));}
     public WebElement CCapture(){return getDriver().findElement(By.xpath("//button[normalize-space()='Capture Photo']"));}
     public WebElement CSet(){return getDriver().findElement(By.xpath("//button[normalize-space()='Set Photo']"));}
 
     public WebElement ActiveStatus(){return getDriver().findElement(By.xpath("//label[contains(text(),'Is Customer Active?')]"));}
-    public WebElement KYCEdit(){return getDriver().findElement(By.cssSelector("[class='btn-sm btn btn-secondary'"));}
+    public WebElement KYCEdit(){return getDriver().findElement(By.xpath("(//button[@class='btn-sm btn btn-secondary'])[4]"));}
     public WebElement YesActive(){return getDriver().findElement(By.xpath("(//input[@value='1'])[3]"));}
     public WebElement KYCDone(){return getDriver().findElement(By.xpath("//button[normalize-space()='Done']"));}
     public WebElement SaveNewKYC(){return getDriver().findElement(By.xpath("//button[normalize-space()='Save New KYC']"));}
