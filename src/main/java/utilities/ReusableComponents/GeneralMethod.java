@@ -17,7 +17,7 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
     protected final WebDriver driver = getDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
     

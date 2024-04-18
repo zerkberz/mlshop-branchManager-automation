@@ -1,27 +1,23 @@
-package kpx.base;
+package MLshopBuilders.base;
 
-import mlkpx.testSteps.Home_Steps;
-import mlkpx.testSteps.Kyc_Steps;
-import mlkpx.testSteps.Login_Steps;
-import mlkpx.testSteps.Payout_Steps;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
 import utilities.Driver.DriverType;
 
 import utilities.Logger.LoggingUtils;
+import mlshopbuilder.testSteps.Login_Steps;
+import mlshopbuilder.testSteps.SignUp_Steps;
+
+import java.time.Duration;
+
 
 public class BaseTest {
-    protected Home_Steps homeSteps;
     protected Login_Steps loginSteps;
-    protected Kyc_Steps kycSteps;
-    protected Payout_Steps payoutSteps;
-
-
-
+    protected SignUp_Steps signUpSteps;
     @Parameters("browser")
     @BeforeClass (alwaysRun = true)
-    public void setUp(final String browser){
+    public void setUp(final String browser) throws InterruptedException {
         if (browser == null || browser.isEmpty()) {
             throw new IllegalArgumentException("Browser parameter cannot be null or empty");
         }
@@ -30,13 +26,12 @@ public class BaseTest {
         if (getDriver().toString().contains("RemoteWebDriver")) {
             getDriver().get(System.getProperty("targetUrl"));
         } else {
+            Thread.sleep(3000);
             getDriver().get(System.getProperty("targetUrl"));
             LoggingUtils.info("Redirecting back to home");
         }
-        this.loginSteps = new Login_Steps();
-        this.homeSteps = new Home_Steps();
-        this.kycSteps = new Kyc_Steps();
-        this.payoutSteps = new Payout_Steps();
+        loginSteps = new Login_Steps();
+        signUpSteps = new SignUp_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {
@@ -46,8 +41,9 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUpTests(){
-        getDriver().get(System.getProperty("homeUrl"));
+        getDriver().get(System.getProperty("targetUrl"));
     }
+
     @AfterMethod(alwaysRun = true)
     public void clean(){
         LoggingUtils.info("------>>>Test Ended<<<-------");

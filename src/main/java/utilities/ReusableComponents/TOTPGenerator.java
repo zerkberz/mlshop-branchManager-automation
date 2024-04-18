@@ -7,5 +7,4 @@ public class TOTPGenerator {
         Totp totp = new Totp(reader.getAccessKey());
         return totp.now();
     }
-
 }

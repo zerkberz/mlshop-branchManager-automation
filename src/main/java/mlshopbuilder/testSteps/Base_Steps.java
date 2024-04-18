@@ -1,16 +1,16 @@
-package mlkpx.testSteps;
+package mlshopbuilder.testSteps;
 
-import org.mlkpx.pageObject.*;
+import mlshopbuilder.pageObject.Login_PageObjects;
+import mlshopbuilder.pageObject.SignUp_Register_PageObjects;
 import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
+import org.testng.Assert;
 
 public abstract class Base_Steps extends GeneralMethod {
-    Payout_PageObjects payoutPageObjects = new Payout_PageObjects();
-    Kyc_PageObjects kycPageObjects = new Kyc_PageObjects();
-    Home_PageObjects homePageObjects = new Home_PageObjects();
     Login_PageObjects loginPageObjects = new Login_PageObjects();
-    Google_PageObjects googlePageObjects = new Google_PageObjects();
+    SignUp_Register_PageObjects signUpRegisterPageObjects = new SignUp_Register_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
+    Login_Steps loginSteps = new Login_Steps();
 
 }
