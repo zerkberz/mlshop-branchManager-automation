@@ -1,4 +1,4 @@
-package org.mlkpx.pageObject;
+package org.mlshopbuilder.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,5 +20,6 @@ public class Login_PageObjects{
     public WebElement loginButton(){
         return getDriver().findElement(By.cssSelector("[type='submit']"));
     }
+
 
 }
