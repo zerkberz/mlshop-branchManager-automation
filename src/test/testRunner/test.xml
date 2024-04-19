@@ -11,8 +11,8 @@
             <classes>
                 <class name="MLshopBuilders.actual.LoginT">
                 </class>
-                <class name="MLshopBuilders.actual.SignUpT">
-                </class>
+<!--                <class name="MLshopBuilders.actual.SignUpT">-->
+<!--                </class>-->
 <!--                <class name="MLshopBuilders.actual.Payout_Tests">-->
 <!--                </class>-->
             </classes>

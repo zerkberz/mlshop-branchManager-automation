@@ -51,7 +51,7 @@ public class DriverManager {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
         // Set ChromeOptions as an argument while creating the WebDriver
-        WebDriverManager.chromedriver().capabilities(desiredCapabilities).setup();
+        WebDriverManager.chromedriver().clearDriverCache().capabilities(desiredCapabilities).setup();
 
         setDriver(new ChromeDriver(options));
         LoggingUtils.info("Chrome Driver created successfully");
