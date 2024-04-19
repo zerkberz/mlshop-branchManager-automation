@@ -11,6 +11,4 @@ public abstract class Base_Steps extends GeneralMethod {
     SignUp_Register_PageObjects signUpRegisterPageObjects = new SignUp_Register_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     propertyReader propertyReader = new propertyReader(filepath);
-    Login_Steps loginSteps = new Login_Steps();
-
 }
