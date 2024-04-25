@@ -81,7 +81,7 @@ public class SignUp_Register_PageObjects{
 //    }
 
     public WebElement Selection1(){
-        return getDriver().findElement(By.xpath("//div[contains(@class, 'css-10wo9uf-option') and @aria-disabled='false' and @id='react-select-2-option-0' and text()='ABRA']"));
+        return getDriver().findElement(By.cssSelector("[id='react-select-2-input']"));
     }
     public WebElement Selection2(){
         return getDriver().findElement(By.xpath("//div[contains(@class, 'css-13cymwt-option') and @aria-disabled='false' and @id='react-select-2-option-0' and text()='BANGUED']"));

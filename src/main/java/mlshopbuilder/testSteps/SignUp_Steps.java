@@ -102,8 +102,9 @@ public class SignUp_Steps extends Base_Steps {
 //            type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", propertyReader.getproperty("InvStoreEmail2"));
 
             click(signUpRegisterPageObjects.dropdown1(), "Province");
-            click(signUpRegisterPageObjects.Selection1(),"ABRA");
-
+            typeEnter(signUpRegisterPageObjects.Selection1(), "Province Input", "Cebu");
+            waitSleep(2000);
+            //todo follow this sht
             click(signUpRegisterPageObjects.dropdown2(), "City");
             click(signUpRegisterPageObjects.Selection2(),"BANGUED");
 
