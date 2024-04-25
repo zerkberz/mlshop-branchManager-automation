@@ -1,5 +1,6 @@
 package MLshopBuilders.base;
 
+import mlshopbuilder.testSteps.Merchant_Steps;
 import org.testng.annotations.*;
 
 import static utilities.Driver.DriverManager.*;
@@ -15,6 +16,7 @@ import java.time.Duration;
 public class BaseTest {
     protected Login_Steps loginSteps;
     protected SignUp_Steps signUpSteps;
+    protected Merchant_Steps merchantSteps;
     @Parameters("browser")
     @BeforeClass (alwaysRun = true)
     public void setUp(final String browser) throws InterruptedException {
@@ -32,6 +34,7 @@ public class BaseTest {
         }
         loginSteps = new Login_Steps();
         signUpSteps = new SignUp_Steps();
+        merchantSteps = new Merchant_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {
