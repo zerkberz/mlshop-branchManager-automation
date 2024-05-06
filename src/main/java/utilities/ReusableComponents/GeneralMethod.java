@@ -31,7 +31,7 @@ public class GeneralMethod extends ExtentReporter{
             }
         } catch (Exception e) {
             ExtentReporter.logFail("Failed to click element: " + elementName, "Caused: " + e);
-            LoggingUtils.error("Failed to click element: " + elementName);
+            LoggingUtils.error("Failed to click element: " + elementName + "Caused"  + e);
             throw new AssertionError("Failed to click element: " + elementName);
         }
     }
@@ -40,6 +40,7 @@ public class GeneralMethod extends ExtentReporter{
         try {
             if(isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+                element.clear();
                 element.sendKeys(text);
                 LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
                 ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);

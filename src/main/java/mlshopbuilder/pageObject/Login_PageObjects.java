@@ -24,21 +24,12 @@ public class Login_PageObjects {
     public WebElement Login_pass() {
         return getDriver().findElement(By.cssSelector("[id='password']"));
     }
-    public WebElement Continuebtn() {
-        return getDriver().findElement(By.xpath("(//button[contains(text(),'Continue')])"));
-    }
-    public WebElement Status() {
-        return getDriver().findElement(By.xpath("//div[@role='status' and contains(text(), 'Invalid credentials')]"));
-    }
-    public WebElement CreateanAcct_btn() {
-        return getDriver().findElement(By.xpath("//div[@class='text-neutral-800 cursor-pointer hover:underline']"));
-    }
-    public WebElement ExitPopup_btn() {
-        return getDriver().findElement(By.xpath("(//*[name()='path' and contains(@d,'M405 136.7')]"));
-    }
-    public WebElement EmailError_Warning() {
-        return getDriver().findElement(By.xpath("//span[contains(text(), 'The email address is invalid and incorrect')]"));
-    }
+    public WebElement Continuebtn() { return getDriver().findElement(By.xpath("(//button[contains(text(),'Continue')])"));}
+    public WebElement Status() {return getDriver().findElement(By.xpath("//div[@role='status' and contains(text(), 'Invalid credentials')]"));}
+    public WebElement CreateanAcct_btn() {return getDriver().findElement(By.xpath("//div[@class='text-neutral-800 cursor-pointer hover:underline']"));}
+    public WebElement ExitPopup_btn() {return getDriver().findElement(By.xpath("(//*[name()='path' and contains(@d,'M405 136.7')]"));}
+    public WebElement EmailError_Warning() {return getDriver().findElement(By.xpath("//span[contains(text(), 'The email address is invalid and incorrect')]"));}
+
     // sign up
     public WebElement Msignupbtn() {
         return getDriver().findElement(By.xpath("//div[normalize-space()='Sign up']"));
@@ -49,9 +40,7 @@ public class Login_PageObjects {
     public WebElement MsignupNametxtbox() {
         return getDriver().findElement(By.xpath("//input[@id='name']"));
     }
-    public WebElement MsignupPasswordtxtbox() {
-        return getDriver().findElement(By.xpath("//input[@id='initialPassword']"));
-    }
+    public WebElement MsignupPasswordtxtbox() { return getDriver().findElement(By.xpath("//input[@id='initialPassword']"));}
     public WebElement MsignupRepasstxtbox() {
         return getDriver().findElement(By.xpath("//input[@id='password']"));
     }
