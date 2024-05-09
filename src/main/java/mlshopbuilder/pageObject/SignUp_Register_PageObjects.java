@@ -48,43 +48,32 @@ public class SignUp_Register_PageObjects{
     public WebElement exitbtn() {
         return getDriver().findElement(By.xpath("(//button)[1]"));
     }
-
-    //Dropdown
-    public WebElement dropdown1(){
-        return getDriver().findElement(By.xpath("(//div[contains(@class, 'css-13cymwt-control')])[1]"));
+    public WebElement provincetxtbox(){
+        return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[1]"));
     }
-    public WebElement dropdown2(){
-        return getDriver().findElement(By.xpath("(//div[contains(@class, 'css-13cymwt-control')])[2]"));
+    public WebElement ProvDropDown(){
+        return getDriver().findElement(By.xpath("//input[@id='react-select-2-input']"));
     }
-    public WebElement dropdown3(){
-        return getDriver().findElement(By.xpath("(//div[contains(@class, 'css-13cymwt-control')])[3]"));
+    public WebElement CityDropDown(){
+        return getDriver().findElement(By.xpath("//input[@id='react-select-3-input']"));
     }
-    public WebElement dropdown4(){
-        return getDriver().findElement(By.xpath("(//div[contains(@class, 'css-13cymwt-control')])[4]"));
+    public WebElement BranchDropDown(){
+        return getDriver().findElement(By.xpath("//input[@id='react-select-5-input']"));
     }
-
-//    public WebElement provincetxtbox(){
-//        return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[1]"));
-//    }
-//    public WebElement Manilaprovincetxtbox(){
-//        return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[1]"));
-//    }
-//    //div[contains(@class, 'css-10wo9uf-option') and @aria-disabled='false' and @id='react-select-2-option-74' and text()='MANILA']
-//    public WebElement citytxtbox(){
-//        return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[2]"));
-//    }
-//    public WebElement zonetxtbox(){
-//        return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[3]"));
-//    }
-//    public WebElement branchtxtbox(){
-//        return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[4]"));
-//    }
-
-    public WebElement Selection1(){
-        return getDriver().findElement(By.cssSelector("[id='react-select-2-input']"));
+    public WebElement StoreEmailError(){
+        return getDriver().findElement(By.xpath("//span[contains(@class, 'text-rose-500') and contains(@class, 'text-sm') and contains(@class, 'mt-1') and contains(text(), 'The email address is invalid and incorrect')]"));
     }
-    public WebElement Selection2(){
-        return getDriver().findElement(By.xpath("//div[contains(@class, 'css-13cymwt-option') and @aria-disabled='false' and @id='react-select-2-option-0' and text()='BANGUED']"));
+    public WebElement ContactNumberError(){
+        return getDriver().findElement(By.xpath("//span[@class='text-rose-500 text-sm mt-[-15px]' and contains(text(),'The contact number should be 11 digits')]"));
+    }
+    public WebElement BranchnameError(){
+        return getDriver().findElement(By.xpath("//div[@role=\"status\" and contains(@class, \"go3958317564\") and contains(text(), \"Branch Name has been selected by another merchant\")]"));
+    }
+    public WebElement SignUpsuccessful(){
+        return getDriver().findElement(By.xpath("//p[contains(text(),'Successfully registered!')]"));
+    }
+    public WebElement ConfirmBtn(){
+        return getDriver().findElement(By.xpath("//button[contains(text(),'Confirm')]"));
     }
 }
 

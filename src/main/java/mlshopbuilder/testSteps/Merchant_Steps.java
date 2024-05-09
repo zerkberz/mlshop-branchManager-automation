@@ -1,10 +1,7 @@
 package mlshopbuilder.testSteps;
 
-import mlshopbuilder.pageObject.Merchant_Objects;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
-import utilities.PropertyReader.propertyReader;
 import utilities.Logger.LoggingUtils;
 
 public class Merchant_Steps extends Base_Steps {
@@ -63,6 +60,12 @@ public class Merchant_Steps extends Base_Steps {
         loginByRole("merchant");
         click(merchantObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(merchantObjects.Addproduct(), "Add product button");
+    }
+
+    public void goingtoViewproductpage(String role){
+        loginByRole("merchant");
+        click(merchantObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
+        click(merchantObjects.viewproductbtn(), "View products button");
     }
 
 
@@ -149,12 +152,13 @@ public class Merchant_Steps extends Base_Steps {
         goingtoAddproductpage("merchant");
         waitSleep(4000);
         inputsAddproduct("merchant");
+        isDisplayed(merchantObjects.Amparitotickbox());
 
         LoggingUtils.info("SBR TC 09 Sales info Inputs Successful");
         logout("merchant");
     }
 
-//    public void SBR_TC_10(){
+//    public void SBR_TC_10_ImageUpload(){
 //
 //    }
 
@@ -175,14 +179,119 @@ public class Merchant_Steps extends Base_Steps {
         logout("merchant");
     }
 
+//    public void SBR_TC_12_SubmitandPublish(){
+//
+//    }
+
+    public void SBR_TC_13_Viewproduct(){
+        goingtoViewproductpage("merchant");
+
+        LoggingUtils.info("SBR TC 13 Redirection to View Products Successful");
+        logout("merchant");
+    }
+    public void SBR_TC_14_Incorrectsearch(){
+        goingtoViewproductpage("merchant");
+        type(merchantObjects.Searchtxtbx(), "Search Textbox", propertyReader.getproperty("InvStoreNum"));
+
+        LoggingUtils.info("SBR_TC_14 Incorrect search leads to blank page: Successful");
+        logout("merchant");
+    }
+
+    public void SBR_TC_15_ShowEntries() {
+        goingtoViewproductpage("merchant");
+        waitSleep(5000);
+
+        click(merchantObjects.entrydropdown(),"Entries");
+        click(merchantObjects.entryoption10down(),"10 Entries");;
+        LoggingUtils.info("clicked 10");
+        click(merchantObjects.entrydropdown(),"Entries");
+        click(merchantObjects.entryoption25down(),"25 Entries");
+        LoggingUtils.info("clicked 25");
+        click(merchantObjects.entrydropdown(),"Entries");
+        click(merchantObjects.entryoption50down(),"50 Entries");
+        LoggingUtils.info("clicked 50");
+        click(merchantObjects.entrydropdown(),"Entries");
+        click(merchantObjects.entryoption75down(),"75 Entries");
+        LoggingUtils.info("clicked 75");
+        click(merchantObjects.entrydropdown(),"Entries");
+        click(merchantObjects.entryoption100down(),"100 Entries");
+        LoggingUtils.info("clicked 100");
+        click(merchantObjects.entrydropdown(),"Entries");
+        click(merchantObjects.entryoptionalldown(),"All Entries");
+        LoggingUtils.info("clicked All entries");
+
+        LoggingUtils.info("SBR_TC_15 Show Entries: Successful");
+        logout("merchant");
+    }
+
+    public void SBR_TC_16_Viewdetails() {
+        goingtoViewproductpage("merchant");
+        click(merchantObjects.Viewdetailsbtn(),"View details button");
+        waitSleep(1500);
+        isDisplayed(merchantObjects.Amparitotickbox2());
+
+        LoggingUtils.info("SBR_TC_16 View details: Successful");
+        logout("merchant");
+    }
+    public void SBR_TC_Searches() {
+        goingtoViewproductpage("merchant");
+        waitSleep(3000);
+
+        type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("productID"));
+        isDisplayed(merchantObjects.Viewdetailsbtn2());
+        merchantObjects.Searchtxtbx().clear();
+        waitSleep(3000);
+        type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("Barcode"));
+        isDisplayed(merchantObjects.Viewdetailsbtn2());
+        merchantObjects.Searchtxtbx().clear();
+        waitSleep(3000);
+        type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("LotNumber"));
+        isDisplayed(merchantObjects.Viewdetailsbtn2());
+        merchantObjects.Searchtxtbx().clear();
+        waitSleep(3000);
+        type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("styleName"));
+        isDisplayed(merchantObjects.Viewdetailsbtn2());
+        merchantObjects.Searchtxtbx().clear();
+        waitSleep(3000);
+        type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("productType"));
+        isDisplayed(merchantObjects.Viewdetailsbtn2());
+        merchantObjects.Searchtxtbx().clear();
+        waitSleep(3000);
 
 
+        LoggingUtils.info("SBR_TC_Searches: Successful");
+        LoggingUtils.info("SBR TC 17-21 Successful");
+        logout("merchant");
+    }
+    public void SBR_TC_22_NoDisplayDatefilter() {
+        goingtoViewproductpage("merchant");
+        waitSleep(4000);
 
+        type(merchantObjects.Fromdateinput(), "", "02");
+        type(merchantObjects.Fromdateinput(), "", "27");
+        type(merchantObjects.Fromdateinput(), "", "1997");
 
+        type(merchantObjects.Todateinput(), "","02");
+        type(merchantObjects.Todateinput(), "","28");
+        type(merchantObjects.Todateinput(), "","1997");
 
+        LoggingUtils.info("SBR_TC_22 No Display Date Filter: Successful");
+        logout("merchant");
+    }
 
+    public void SBR_TC_23_Datefilter() {
+        goingtoViewproductpage("merchant");
+        waitSleep(4000);
+        type(merchantObjects.Todateinput(), "","04");
+        type(merchantObjects.Todateinput(), "","20");
+        type(merchantObjects.Todateinput(), "","2024");
 
+        LoggingUtils.info("SBR TC 23 Date Filter: Successful");
+        logout("merchant");
+    }
 
+    public void SBR_TC_24_logout() {
+    }
 
 
 
