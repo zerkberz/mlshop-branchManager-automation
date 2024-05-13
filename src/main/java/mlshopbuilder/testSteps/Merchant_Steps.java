@@ -47,7 +47,6 @@ public class Merchant_Steps extends Base_Steps {
         type(merchantObjects.ItemWeighttxtbox(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
         type(merchantObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"));
         type(merchantObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
-        LoggingUtils.info("SBR TC 08 Product info Inputs Successful");
 
         type(merchantObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"));
         type(merchantObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"));
@@ -152,6 +151,7 @@ public class Merchant_Steps extends Base_Steps {
         goingtoAddproductpage("merchant");
         waitSleep(4000);
         inputsAddproduct("merchant");
+        LoggingUtils.info("SBR TC 08 Product info Inputs Successful");
         isDisplayed(merchantObjects.Amparitotickbox());
 
         LoggingUtils.info("SBR TC 09 Sales info Inputs Successful");
@@ -239,24 +239,24 @@ public class Merchant_Steps extends Base_Steps {
 
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("productID"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("Barcode"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("LotNumber"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("styleName"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("productType"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
 
 
         LoggingUtils.info("SBR_TC_Searches: Successful");
