@@ -19,6 +19,7 @@ public class BaseTest {
     protected SignUp_Steps signUpSteps;
     protected Merchant_Steps merchantSteps;
     protected SupportAdmin_Steps supportAdminSteps;
+   
     @Parameters("browser")
     @BeforeClass (alwaysRun = true)
     public void setUp(final String browser) throws InterruptedException {
