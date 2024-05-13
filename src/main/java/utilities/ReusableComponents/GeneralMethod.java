@@ -13,6 +13,8 @@ import utilities.Logger.LoggingUtils;
 import utilities.yamlReader.yamlReader;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.model.Log;
+
 import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
@@ -259,6 +261,26 @@ public class GeneralMethod extends ExtentReporter{
             repeat++;
         }
         return outcome;
+    }
+    public void uploadFile(WebElement locator, String filename){
+        try{
+            ((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('hidden');", locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'block';", locator);
+            locator.sendKeys(filename);
+            LoggingUtils.info("Uploading file: " + filename);
+            ExtentReporter.logInfo("Uploading file: " + filename, "");
+        }catch(Exception e){
+            ExtentReporter.logFail("Error in Upload File: ", ""+ e);
+        }
+    }
+    public void failTest(String testName, String message){
+        ExtentReporter.logFail(testName, message);
+        Assert.fail(testName +": "+ message);
+    }
+
+    public void passTest(String testName, String message){
+        ExtentReporter.logPass(testName, message);
+        LoggingUtils.info(testName +": "+ message);
     }
 
 }

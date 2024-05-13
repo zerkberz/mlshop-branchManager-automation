@@ -67,12 +67,14 @@ public class Merchant_Objects {
     public WebElement Fromdateinput(){return  getDriver().findElement(By.xpath("(//input[@value=''])[2]"));}
     public WebElement Todateinput(){return  getDriver().findElement(By.xpath("//input[2]"));}
 
-
-
-
-
-
-
-
+    //file input
+    public WebElement coverPhoto(){return  getDriver().findElement(By.id("cover-file"));}
+    public WebElement imageContent(){return  getDriver().findElement(By.id("dropzone-file"));}
+    public WebElement selectedCoverPhoto(){return getDriver().findElement(By.cssSelector("[alt='selectedCoverImage']"));}
+    public WebElement inputRequiredText(){return getDriver().findElement(By.cssSelector("[class='inline-flex text-sm text-red-700 ml-3']"));}
+    public WebElement selectedImageContent(){return getDriver().findElement(By.cssSelector("[class='flex flex-col items-center justify-center pt-2 pb-2 mx-3']"));}
+    
+    //Button
+    public WebElement specifyButton(String text){return getDriver().findElement(By.xpath("//button[contains(text(), '"+text+"')]"));}
 
 }
