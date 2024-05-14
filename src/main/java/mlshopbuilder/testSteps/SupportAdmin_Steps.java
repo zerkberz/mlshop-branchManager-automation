@@ -45,10 +45,10 @@ public class SupportAdmin_Steps extends Base_Steps {
         supportAdminPageObjects.Notetxtbox().clear();
         click(supportAdminPageObjects.Barcodetxtbox(), "Barcode Textbox");
         supportAdminPageObjects.Barcodetxtbox().clear();
-        supportAdminPageObjects.Lotnumbertxtbox().clear();
-        supportAdminPageObjects.Costofsalestxtbox().clear();
-        supportAdminPageObjects.grosssalestxtbox().clear();
-        supportAdminPageObjects.pricetxtbox().clear();
+        supportAdminPageObjects.Lotnumber2txtbox().clear();
+        supportAdminPageObjects.Costofsales2txtbox().clear();
+        supportAdminPageObjects.grosssales2txtbox().clear();
+        supportAdminPageObjects.price2txtbox().clear();
     }
 
     public void changeandrevertchanges(String role){
@@ -68,10 +68,10 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(supportAdminPageObjects.Notetxtbox(), "Changed Value", "testing the test");
 
         type(supportAdminPageObjects.Barcodetxtbox(), "Changed Value", "7654321");
-        type(supportAdminPageObjects.Lotnumbertxtbox(), "Changed Value", "87654321");
-        type(supportAdminPageObjects.Costofsalestxtbox(), "Changed Value", "2000");
-        type(supportAdminPageObjects.grosssalestxtbox(), "Changed Value", "3000");
-        type(supportAdminPageObjects.pricetxtbox(), "Changed Value", "2999");
+        type(supportAdminPageObjects.Lotnumber2txtbox(), "Changed Value", "87654321");
+        type(supportAdminPageObjects.Costofsales2txtbox(), "Changed Value", "2000");
+        type(supportAdminPageObjects.grosssales2txtbox(), "Changed Value", "3000");
+        type(supportAdminPageObjects.price2txtbox(), "Changed Value", "2999");
 
         waitSleep(3000);
         click(supportAdminPageObjects.updateandsubmit(),"Update & Submit");
@@ -98,10 +98,10 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(supportAdminPageObjects.Notetxtbox(), "Reverted Value", "this is for testing");
 
         type(supportAdminPageObjects.Barcodetxtbox(), "Reverted Value", "123567");
-        type(supportAdminPageObjects.Lotnumbertxtbox(), "Reverted Value", "12345678");
-        type(supportAdminPageObjects.Costofsalestxtbox(), "Reverted Value", "1000");
-        type(supportAdminPageObjects.grosssalestxtbox(), "Reverted Value", "5000.");
-        type(supportAdminPageObjects.pricetxtbox(), "Reverted Value", "4999");
+        type(supportAdminPageObjects.Lotnumber2txtbox(), "Reverted Value", "12345678");
+        type(supportAdminPageObjects.Costofsales2txtbox(), "Reverted Value", "1000");
+        type(supportAdminPageObjects.grosssales2txtbox(), "Reverted Value", "5000.");
+        type(supportAdminPageObjects.price2txtbox(), "Reverted Value", "4999");
 
         click(supportAdminPageObjects.updateandsubmit(),"Update & Submit");
         LoggingUtils.info("Reverted Changes: Successful");
@@ -156,7 +156,22 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(merchantObjects.ItemWeighttxtbox(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
         type(merchantObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"));
         type(merchantObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
-        LoggingUtils.info("SBR TC 08 Product info Inputs Successful");
+        LoggingUtils.info("SBR: Product info Inputs Successful");
+
+        type(merchantObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"));
+        type(merchantObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"));
+        type(merchantObjects.Costofsalestxtbox(), "Cost of Sales Textbox", propertyReader.getproperty("costofsale"));
+        type(merchantObjects.grosssalestxtbox(), "Gross Sales Textbox", propertyReader.getproperty("grosssale"));
+        type(merchantObjects.pricetxtbox(), "Price Textbox", propertyReader.getproperty("price"));
+    }
+
+    public void inputsAddproduct2(String role){
+        type(merchantObjects.Quantitytxtbox(), "Quantity Textbox", propertyReader.getproperty("Quantity"));
+        type(merchantObjects.ItemWeighttxtbox(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
+        type(merchantObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"));
+        type(merchantObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
+        type(merchantObjects.diamondweight(), "Diamond Weight Textbox", propertyReader.getproperty("diaweight"));
+        LoggingUtils.info("SBR: Product info Inputs Successful");
 
         type(merchantObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"));
         type(merchantObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"));
@@ -317,6 +332,8 @@ public class SupportAdmin_Steps extends Base_Steps {
         logout("supportadmin");
     }
 
+
+    /////////////////////////////////////////////////////////////// this
     public void SBL_TC_18_to_21_AddBanner() {
         loginByRole("supportadmin");
 
@@ -328,7 +345,14 @@ public class SupportAdmin_Steps extends Base_Steps {
 
 
         //SBL TC 19 Img Related, need research
-
+        uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
+        uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
+        if(isVisible(merchantObjects.selectedCoverPhoto(), "Selected Photo" )||
+                isVisible(merchantObjects.selectedImageContent(), "Select Image Content")) {
+            passTest("SBR_TC_10_ImageUpload", "Successfully uploaded photo");
+        }else{
+            failTest("SBR_TC_10_ImageUpload", "Failed to upload photo");
+        }
 
         waitSleep(2000);
         click(supportAdminPageObjects.bannerscreensize(),"banner screen size");
@@ -369,9 +393,19 @@ public class SupportAdmin_Steps extends Base_Steps {
         logout("supportadmin");
     }
 
-//    public void SBR_TC_25_ImageUpload(){
-//
-//    }
+    public void SBR_TC_25_ImageUpload(){
+        goingtoAddproductpage("supportadmin");
+
+        uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
+        uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
+        if(isVisible(merchantObjects.selectedCoverPhoto(), "Selected Photo" )||
+                isVisible(merchantObjects.selectedImageContent(), "Select Image Content")) {
+            passTest("SBR_TC_25_ImageUpload", "Successfully uploaded photo");
+        }else{
+            failTest("SBR_TC_25_ImageUpload", "Failed to upload photo");
+        }
+        logout("supportadmin");
+    }
 
     public void SBL_TC_26_InputsRequired(){
         goingtoAddproductpage("supportadmin");
@@ -390,9 +424,31 @@ public class SupportAdmin_Steps extends Base_Steps {
         logout("supportadmin");
     }
 
-//    public void SBL_TC_27_SubmitandPublish(){
-//
-//    }
+    public void SBL_TC_27_SubmitandPublish(){
+        goingtoAddproductpage("supportadmin");
+
+        click(merchantObjects.brouchselection(),"brouch");
+        click(merchantObjects.fourteenK(),"14k");
+        click(merchantObjects.whitegold(),"white gold");
+        click(merchantObjects.mens(),"mens");
+        click(merchantObjects.diamonds(),"diamonds");
+        click(merchantObjects.redselection(),"Red");
+        click(merchantObjects.newselection(),"New");
+        waitSleep(1500);
+        inputsAddproduct2("supportadmin");
+        uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
+        uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
+        if(isVisible(merchantObjects.selectedCoverPhoto(), "Selected Photo" )||
+                isVisible(merchantObjects.selectedImageContent(), "Select Image Content")) {
+            passTest("SBR_TC_27_ImageUpload", "Successfully uploaded photo");
+        }else{
+            failTest("SBR_TC_27_ImageUpload", "Failed to upload photo");
+        }
+
+        click(supportAdminPageObjects.Publlishbtnadd(),"Publish Button");
+        LoggingUtils.info("SBL TC 27: Publish: Success");
+        logout("supportadmin");
+    }
 
     public void SBL_TC_28_ViewProductRedirection() {
         goingtoViewproductpage("supportadmin");
@@ -567,10 +623,10 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(supportAdminPageObjects.Notetxtbox(), "Changed Value", "testing the test");
 
         type(supportAdminPageObjects.Barcodetxtbox(), "Changed Value", "7654321");
-        type(supportAdminPageObjects.Lotnumbertxtbox(), "Changed Value", "87654321");
-        type(supportAdminPageObjects.Costofsalestxtbox(), "Changed Value", "2000");
-        type(supportAdminPageObjects.grosssalestxtbox(), "Changed Value", "3000");
-        type(supportAdminPageObjects.pricetxtbox(), "Changed Value", "2999");
+        type(supportAdminPageObjects.Lotnumber2txtbox(), "Changed Value", "87654321");
+        type(supportAdminPageObjects.Costofsales2txtbox(), "Changed Value", "2000");
+        type(supportAdminPageObjects.grosssales2txtbox(), "Changed Value", "3000");
+        type(supportAdminPageObjects.price2txtbox(), "Changed Value", "2999");
 
         LoggingUtils.info("SBL TC 41 Edited Info: Successful");
         logout("supportadmin");
@@ -782,6 +838,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         logout("supportadmin");
     }
 
+    //merchant issue: use arrow keys to get merchant in drop down
     public void SBL_TC_54() {
         loginByRole("supportadmin");
         waitSleep(2000);
@@ -799,16 +856,29 @@ public class SupportAdmin_Steps extends Base_Steps {
         logout("supportadmin");
     }
 
-    public void SBL_TC_55() {
+    //?
+    public void SBL_TC_55_AddstorestoMerchant() {
         loginByRole("supportadmin");
         waitSleep(2000);
         merchantnavigation("supportadmin");
 
-        click(supportAdminPageObjects.editablemerchant2btn(),"View Merchant Details button");
+        click(supportAdminPageObjects.editablemerchantbtn(),"View Merchant Details button");
+        waitSleep(2000);
+        click(supportAdminPageObjects.viewstores(),"View Stores");
+        waitSleep(1500);
+        click(supportAdminPageObjects.mercadodefrancis(),"Store Selected");
+        click(supportAdminPageObjects.mlshopjewlery(),"Store Selected");
+        click(supportAdminPageObjects.submitbtnmerchant(),"Submit Button");
         waitSleep(2000);
 
+        click(supportAdminPageObjects.editablemerchantbtn(),"View Merchant Details button");
+        waitSleep(2000);
+        click(supportAdminPageObjects.viewstores(),"View Stores");
+        waitSleep(1500);
+        click(supportAdminPageObjects.exitbutton(),"Exit Button");
 
-        LoggingUtils.info("SBL TC 55 : Successful");
+        LoggingUtils.info("SBL TC 55 Chosen and Verified Store Changes: Successful");
+        waitSleep(1500);
         logout("supportadmin");
     }
 

@@ -191,13 +191,15 @@ public class Merchant_Steps extends Base_Steps {
         }
     }
 
-   public void SBR_TC_12_SubmitandPublish(){
+   public void SBR_TC_12_Publish(){
         goingtoAddproductpage();
         waitSleep(4000);
         inputsAddproduct("merchant");
         uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
         uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
-        
+
+        click(merchantObjects.publishbtn(),"Save button");
+       LoggingUtils.info("SBR TC 12 Publishing Product: Successful");
    }
 
     public void SBR_TC_13_Viewproduct(){

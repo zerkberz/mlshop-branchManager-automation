@@ -13,10 +13,10 @@
 <!--                </class>-->
 <!--                <class name="MLshopBuilders.actual.SignUpT">-->
 <!--                </class>-->
-               <class name="MLshopBuilders.actual.MerchantT">
-               </class>
-                <!-- <class name="MLshopBuilders.actual.SupportAdminT">
-                </class> -->
+<!--               <class name="MLshopBuilders.actual.MerchantT">-->
+<!--               </class>-->
+                <class name="MLshopBuilders.actual.SupportAdminT">
+                </class>
 <!--                <class name="MLshopBuilders.actual.Payout_Tests">-->
 <!--                </class>-->
             </classes>

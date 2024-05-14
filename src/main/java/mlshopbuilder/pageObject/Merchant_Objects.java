@@ -37,6 +37,8 @@ public class Merchant_Objects {
     public WebElement errorStyleNametxtbox(){return  getDriver().findElement(By.xpath(""));}
     public WebElement Notetxtbox(){return  getDriver().findElement(By.xpath("//textarea[@id='description']"));}
     public WebElement errorNotetxtbox(){return  getDriver().findElement(By.xpath(""));}
+    public WebElement diamondweight(){return  getDriver().findElement(By.xpath("//label[@for='diamondweight']"));}
+
 
     //sales Information
     public WebElement Barcodetxtbox(){return  getDriver().findElement(By.xpath("//input[@id='barcode']"));}
@@ -76,5 +78,15 @@ public class Merchant_Objects {
     
     //Button
     public WebElement specifyButton(String text){return getDriver().findElement(By.xpath("//button[contains(text(), '"+text+"')]"));}
+    public WebElement savebtn(){return getDriver().findElement(By.xpath("//button[normalize-space()='Save']"));}
+    public WebElement publishbtn(){return getDriver().findElement(By.xpath("//button[normalize-space()='Publish']"));}
+
+    public WebElement brouchselection(){return  getDriver().findElement(By.id("brouch"));}
+    public WebElement fourteenK(){return  getDriver().findElement(By.id("14k"));}
+    public WebElement whitegold(){return  getDriver().findElement(By.id("White Gold"));}
+    public WebElement mens(){return  getDriver().findElement(By.id("Mens"));}
+    public WebElement diamonds(){return  getDriver().findElement(By.id("Diamond"));}
+    public WebElement redselection(){return  getDriver().findElement(By.id("Red"));}
+    public WebElement newselection(){return  getDriver().findElement(By.id("New"));}
 
 }

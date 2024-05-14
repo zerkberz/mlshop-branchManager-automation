@@ -46,6 +46,9 @@ public class SupportAdmin_PageObjects {
 
     //Add Product page
     public WebElement Amparitotickbox() {return getDriver().findElement(By.cssSelector("[for='amparito']"));}
+    public WebElement Savebtnadd() {return getDriver().findElement(By.xpath("//button[normalize-space()='Save']"));}
+    public WebElement Publlishbtnadd() {return getDriver().findElement(By.xpath("//button[normalize-space()='Publish']"));}
+
     //Product Information
     public WebElement Quantitytxtbox(){return  getDriver().findElement(By.xpath("//input[@id='quantity']"));}
     public WebElement errorQuantitytxtbox(){return  getDriver().findElement(By.xpath("//body/div[contains(@class,'pt-15')]/div[contains(@class,'max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4')]/div[contains(@class,'pt-16')]/div/div/div/div/div/div[contains(@class,'')]/div[contains(@class,'ps-8 mb-3 ml-5 text-gray-900 dark:text-black-950')]/form/div[contains(@class,'m-6')]/span[1]"));}
@@ -61,12 +64,16 @@ public class SupportAdmin_PageObjects {
     public WebElement Barcodetxtbox(){return  getDriver().findElement(By.xpath("//input[@id='barcode']"));}
     public WebElement errorBarcodetxtbox(){return  getDriver().findElement(By.xpath("//div[contains(@class,'ps-8 mb-3 ml-10 text-gray-500 dark:text-gray-400')]//span[1]"));}
     public WebElement Lotnumbertxtbox(){return  getDriver().findElement(By.xpath("//input[@id='lotnumber']"));}
+    public WebElement Lotnumber2txtbox(){return  getDriver().findElement(By.xpath("//input[@id='lotnumber']"));}
     public WebElement errorLotnumbertxtbox(){return  getDriver().findElement(By.xpath("//div[contains(@class,'ps-8 mb-3 ml-10 text-gray-500 dark:text-gray-400')]//span[2]"));}
     public WebElement Costofsalestxtbox(){return  getDriver().findElement(By.xpath("//input[@id='sales']"));}
+    public WebElement Costofsales2txtbox(){return  getDriver().findElement(By.xpath("//input[@id='costSales']"));}
     public WebElement errorCostofsalestxtbox(){return  getDriver().findElement(By.xpath("//div[contains(@class,'ps-8 mb-3 ml-10 text-gray-500 dark:text-gray-400')]//span[3]"));}
     public WebElement grosssalestxtbox(){return  getDriver().findElement(By.xpath("//input[@id='gprice']"));}
+    public WebElement grosssales2txtbox(){return  getDriver().findElement(By.xpath("//input[@id='grossPrice']"));}
     public WebElement errorgrosssalestxtbox(){return  getDriver().findElement(By.xpath("//div[contains(@class,'ps-8 mb-3 ml-10 text-gray-500 dark:text-gray-400')]//span[4]"));}
     public WebElement pricetxtbox(){return  getDriver().findElement(By.xpath("//input[@id='price']"));}
+    public WebElement price2txtbox(){return  getDriver().findElement(By.xpath("//input[@id='price']"));}
     public WebElement errorpricetxtbox(){return  getDriver().findElement(By.xpath("//div[contains(@class,'ps-8 mb-3 ml-10 text-gray-500 dark:text-gray-400')]//span[5]"));}
 
     //View Products
@@ -121,7 +128,7 @@ public class SupportAdmin_PageObjects {
     public WebElement editinfomerchant(){return getDriver().findElement(By.xpath("//p[@class=\"text-sm text-blue-500 hover:bg-slate-200 pl-2 pr-2 cursor-pointer\" and text()=\"Edit info\"]"));}
     public WebElement Statusdropdown(){return getDriver().findElement(By.xpath("(//input[@id='react-select-2-input'])[1]"));}
     public WebElement submitbtnmerchant(){return getDriver().findElement(By.xpath("//button[normalize-space()='Submit']"));}
-    public WebElement editablemerchantbtn(){return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[9]"));}
+    public WebElement editablemerchantbtn(){return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[8]"));}
     //edit placing per text cases
     public WebElement editablemerchant2btn(){return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[10]"));}
 
@@ -139,6 +146,8 @@ public class SupportAdmin_PageObjects {
     public WebElement mlshopjewlery(){return getDriver().findElement(By.xpath("//div[contains(text(),'ML Shop Jewelry Store')]"));}
     public WebElement statustextboxmerchant(){return getDriver().findElement(By.xpath("//div[@class=' css-19bb58m']"));}
 
+    public WebElement mlshopjewleryconfirmation(){return getDriver().findElement(By.xpath("//div[contains(@class, 'border') and contains(@class, 'border-red-500') and contains(@class, 'bg-red-500') and contains(@class, 'text-white') and contains(@class, 'rounded-md') and contains(@class, 'p-3') and contains(@class, 'cursor-pointer') and contains(@class, 'text-center') and contains(@class, 'text-[14px]') and contains(@class, 'md:text-[12px]') and contains(text(), 'ML Shop Jewelry Store')]"));}
+    public WebElement mercadodefrancisconfirmation(){return getDriver().findElement(By.xpath("//div[contains(@class, 'border') and contains(@class, 'border-red-500') and contains(@class, 'bg-red-500') and contains(@class, 'text-white') and contains(@class, 'rounded-md') and contains(@class, 'p-3') and contains(@class, 'cursor-pointer') and contains(@class, 'text-center') and contains(@class, 'text-[14px]') and contains(@class, 'md:text-[12px]') and contains(text(), 'Mercado de Francis')]"));}
 
 
 

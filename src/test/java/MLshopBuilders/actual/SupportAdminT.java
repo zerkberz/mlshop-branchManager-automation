@@ -63,18 +63,19 @@ public class SupportAdminT extends BaseTest{
     public void SBL_TC_23_and_24_ProductandSalesInput() throws Exception {
         supportAdminSteps.SBL_TC_23_and_24_ProductandSalesInput();
     }
-//    @Test(priority =15)
-//    public void SBR_TC_25_ImageUpload() throws Exception {
-//        supportAdminSteps.SBR_TC_25_ImageUpload();
-//    }
+    @Test(priority =15)
+    public void SBR_TC_25_ImageUpload() throws Exception {
+        supportAdminSteps.SBR_TC_25_ImageUpload();
+    }
 @Test(priority =16)
 public void SBL_TC_26_InputsRequired() throws Exception {
     supportAdminSteps.SBL_TC_26_InputsRequired();
 }
-//    @Test(priority =17)
-//    public void SBL_TC_27_SubmitandPublish() throws Exception {
-//        supportAdminSteps.SBL_TC_27_SubmitandPublish();
-//    }
+
+    @Test(priority =0)
+    public void SBL_TC_27_SubmitandPublish() throws Exception {
+        supportAdminSteps.SBL_TC_27_SubmitandPublish();
+    }
     @Test(priority =18)
     public void SBL_TC_28_ViewProductRedirection() throws Exception {
     supportAdminSteps.SBL_TC_28_ViewProductRedirection();
@@ -115,11 +116,11 @@ public void SBL_TC_26_InputsRequired() throws Exception {
     public void SBL_TC_40_EditabilityofEditInfo() throws Exception {
         supportAdminSteps.SBL_TC_40_EditabilityofEditInfo();
     }
-    @Test(priority =28)
+    @Test(priority =0)
     public void SBL_TC_41_EditInfo() throws Exception {
         supportAdminSteps.SBL_TC_41_EditInfo();
     }
-    @Test(priority =29)
+    @Test(priority =0)
     public void SBL_TC_42_BlankFields_NeedInputs() throws Exception {
         supportAdminSteps.SBL_TC_42_BlankFields_NeedInputs();
     }
@@ -131,7 +132,7 @@ public void SBL_TC_26_InputsRequired() throws Exception {
     public void SBL_TC_44_DropDown_Functionality() throws Exception {
         supportAdminSteps.SBL_TC_44_DropDown_Functionality();
     }
-    @Test(priority =32)
+    @Test(priority =0)
     public void SBL_TC_45_ValidateChangesMade() throws Exception {
         supportAdminSteps.SBL_TC_45_ValidateChangesMade();
     }
@@ -159,13 +160,15 @@ public void SBL_TC_26_InputsRequired() throws Exception {
     public void SBL_TC_53_UpdateInfoMerchant() throws Exception {
         supportAdminSteps.SBL_TC_53_UpdateInfoMerchant();
     }
+
+    //way labot pa
 //    @Test(priority =38)
 //    public void SBL_TC_54() throws Exception {
 //        supportAdminSteps.SBL_TC_54();
 //    }
 @Test(priority =39)
-public void SBL_TC_55() throws Exception {
-    supportAdminSteps.SBL_TC_55();
+public void SBL_TC_55_AddstorestoMerchant() throws Exception {
+    supportAdminSteps.SBL_TC_55_AddstorestoMerchant();
 }
 
 
