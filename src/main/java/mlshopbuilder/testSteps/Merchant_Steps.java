@@ -45,7 +45,6 @@ public class Merchant_Steps extends Base_Steps {
         type(merchantObjects.ItemWeighttxtbox(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
         type(merchantObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"));
         type(merchantObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
-        LoggingUtils.info("SBR TC 08 Product info Inputs Successful");
 
         type(merchantObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"));
         type(merchantObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"));
@@ -153,6 +152,7 @@ public class Merchant_Steps extends Base_Steps {
         goingtoAddproductpage();
         waitSleep(4000);
         inputsAddproduct("merchant");
+        LoggingUtils.info("SBR TC 08 Product info Inputs Successful");
         isDisplayed(merchantObjects.Amparitotickbox());
         LoggingUtils.info("SBR TC 09 Sales info Inputs Successful");
     }
@@ -189,21 +189,15 @@ public class Merchant_Steps extends Base_Steps {
         }
     }
 
-   public void SBR_TC_12_SubmitandPublish(){
+   public void SBR_TC_12_Publish(){
         goingtoAddproductpage();
         waitSleep(4000);
         inputsAddproduct("merchant");
         uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
         uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
-        //TODO: buttons
-        //click(merchantObjects.specifyButton(reader.getRandomTags("Type")), "Type button");//type
-        // click(merchantObjects.specifyButton("Ring"), "Type button");//gold karats
-        // click(merchantObjects.specifyButton("Ring"), "Type button");//gold colors
-        // click(merchantObjects.specifyButton("Ring"), "Type button");//genders
-        // click(merchantObjects.specifyButton("Ring"), "Type button");//stone
-        // click(merchantObjects.specifyButton("Ring"), "Type button");//stone color
-        // click(merchantObjects.specifyButton("Ring"), "Type button"); //condition
-       
+
+        click(merchantObjects.publishbtn(),"Save button");
+       LoggingUtils.info("SBR TC 12 Publishing Product: Successful");
    }
 
     public void SBR_TC_13_Viewproduct(){
@@ -259,24 +253,24 @@ public class Merchant_Steps extends Base_Steps {
 
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("productID"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("Barcode"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("LotNumber"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("styleName"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
         type(merchantObjects.Searchtxtbx(), "", propertyReader.getproperty("productType"));
         isDisplayed(merchantObjects.Viewdetailsbtn2());
-        merchantObjects.Searchtxtbx().clear();
         waitSleep(3000);
+        merchantObjects.Searchtxtbx().clear();
 
 
         LoggingUtils.info("SBR_TC_Searches: Successful");

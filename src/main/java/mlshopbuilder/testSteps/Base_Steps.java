@@ -16,6 +16,7 @@ public abstract class Base_Steps extends GeneralMethod {
     Merchant_Objects merchantObjects = new Merchant_Objects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     final String imgName = "testImage.jpg";
+
     propertyReader propertyReader = new propertyReader(filepath);
     FilePathUtils filePathUtils = new FilePathUtils(imgName);
     
