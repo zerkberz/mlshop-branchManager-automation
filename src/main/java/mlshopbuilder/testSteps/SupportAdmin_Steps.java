@@ -207,13 +207,10 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.addbannerbtn(), "Add Banner");
         waitSleep(2000);
-        isVisible(supportAdminPageObjects.choosefile(), "Choose File Button");
         LoggingUtils.info("SBL TC 18: Add Banner function: Success");
-
-
-        //SBL TC 19 Img Related, need research
-
-
+        //TODO 
+        //banner upload image
+        uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
         waitSleep(2000);
         click(supportAdminPageObjects.bannerscreensize(),"banner screen size");
         waitSleep(2000);

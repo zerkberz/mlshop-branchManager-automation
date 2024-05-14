@@ -39,11 +39,15 @@ public class SupportAdmin_PageObjects {
     public WebElement editbanner() {return getDriver().findElement(By.xpath("//p[normalize-space()='Edit Banner']"));}
     public WebElement canceleditbanner() {return getDriver().findElement(By.xpath("//p[normalize-space()='Cancel Edit']"));}
     public WebElement addbannerbtn() {return getDriver().findElement(By.xpath("//p[normalize-space()='Add Banner']"));}
-    public WebElement choosefile() {return getDriver().findElement(By.xpath("//input[@id='src']"));}
-    public WebElement bannerscreensize() {return getDriver().findElement(By.xpath("//input[@id='react-select-2-input']"));}
-    public WebElement bannerposition() {return getDriver().findElement(By.xpath("//input[@id='react-select-3-input']"));}
+    public WebElement chooseBanner(){
+        return getDriver().findElement(By.id("src"));
+    }
+    public WebElement bannerscreensize() {return getDriver().findElement(By.id("size"));}
+    public WebElement bannerposition() {return getDriver().findElement(By.id("position"));}
 
 
     //Add Product page
 
+
+   
 }

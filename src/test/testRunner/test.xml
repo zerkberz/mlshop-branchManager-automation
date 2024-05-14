@@ -3,7 +3,7 @@
 <suite name="KYC" thread-count="1" >
     <listeners>
         <listener class-name="utilities.ExtentReport.ExtentReporter" />
-        <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>
+        <!-- <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/> -->
     </listeners>
 
     <test name="KYC Input">
@@ -13,10 +13,10 @@
 <!--                </class>-->
 <!--                <class name="MLshopBuilders.actual.SignUpT">-->
 <!--                </class>-->
-               <class name="MLshopBuilders.actual.MerchantT">
-               </class>
-                <!-- <class name="MLshopBuilders.actual.SupportAdminT">
-                </class> -->
+               <!-- <class name="MLshopBuilders.actual.MerchantT">
+               </class> -->
+                <class name="MLshopBuilders.actual.SupportAdminT">
+                </class>
 <!--                <class name="MLshopBuilders.actual.Payout_Tests">-->
 <!--                </class>-->
             </classes>

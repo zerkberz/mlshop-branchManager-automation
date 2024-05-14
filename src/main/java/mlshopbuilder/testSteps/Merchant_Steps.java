@@ -1,7 +1,5 @@
 package mlshopbuilder.testSteps;
 
-import org.testng.Assert;
-import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
 public class Merchant_Steps extends Base_Steps {
@@ -197,7 +195,15 @@ public class Merchant_Steps extends Base_Steps {
         inputsAddproduct("merchant");
         uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
         uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
-        
+        //TODO: buttons
+        //click(merchantObjects.specifyButton(reader.getRandomTags("Type")), "Type button");//type
+        // click(merchantObjects.specifyButton("Ring"), "Type button");//gold karats
+        // click(merchantObjects.specifyButton("Ring"), "Type button");//gold colors
+        // click(merchantObjects.specifyButton("Ring"), "Type button");//genders
+        // click(merchantObjects.specifyButton("Ring"), "Type button");//stone
+        // click(merchantObjects.specifyButton("Ring"), "Type button");//stone color
+        // click(merchantObjects.specifyButton("Ring"), "Type button"); //condition
+       
    }
 
     public void SBR_TC_13_Viewproduct(){

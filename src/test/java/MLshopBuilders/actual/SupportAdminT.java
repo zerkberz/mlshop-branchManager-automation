@@ -50,14 +50,14 @@ public class SupportAdminT extends BaseTest{
 //    public void SBL_TC_16_17_EditBannerAndCancelEditBanner() throws Exception {
 //        supportAdminSteps.SBL_TC_16_17_EditBannerAndCancelEditBanner();
 //    }
-//    @Test(priority =12)
-//    public void SBL_TC_18_to_21_AddBanner() throws Exception {
-//        supportAdminSteps.SBL_TC_18_to_21_AddBanner();
-//    }
-    @Test(priority =13)
-    public void SBL_TC_22() throws Exception {
-        supportAdminSteps.SBL_TC_22();
-    }
+   @Test(priority =12)
+   public void SBL_TC_18_to_21_AddBanner() throws Exception {
+       supportAdminSteps.SBL_TC_18_to_21_AddBanner();
+   }
+    // @Test(priority =13)
+    // public void SBL_TC_22() throws Exception {
+    //     supportAdminSteps.SBL_TC_22();
+    // }
 
 
 

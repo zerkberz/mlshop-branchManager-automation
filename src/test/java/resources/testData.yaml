@@ -22,3 +22,12 @@ Roles:
   - role: noInput
     gmail_email: ""
     gmail_password: ""
+
+
+Type: [Ring,Necklace,Bracelets,Earrings,Pendant,Sets,Brouch,Engagement]
+GoldKarats: [10k,14k,18k,20k,21k,22k,12k]
+GoldColors: [Yellow Gold,White Gold,Rose Gold,Two - Tone,Tri - Tone]
+Gender: [Ladies,Mens,Unisex]
+Stone: [Various,Diamond,Emerald,Sapphire,Citrine,Jade,Ruby,Amethyst,Quartz,Turquoise,Garnet,Opal,Onyx,Topaz,Aquamarine,Pearl,Birthstone,Cubic Zirconia]
+StoneColor: [Clear/White,Red,Pink,Yellow,Blue,Green,Purple,Orange,Multi-Color,Black,Violet]
+Condition: [New,Refurbished]
