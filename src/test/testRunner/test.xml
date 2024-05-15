@@ -3,7 +3,7 @@
 <suite name="KYC" thread-count="1" >
     <listeners>
         <listener class-name="utilities.ExtentReport.ExtentReporter" />
-        <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>
+        <!-- <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/> -->
     </listeners>
 
     <test name="KYC Input">
@@ -21,4 +21,3 @@
         </parameter>
     </test>
 </suite>
-

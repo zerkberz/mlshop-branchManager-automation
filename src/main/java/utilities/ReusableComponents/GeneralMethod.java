@@ -1,6 +1,7 @@
 package utilities.ReusableComponents;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 import java.util.Set;
@@ -128,6 +129,7 @@ public class GeneralMethod extends ExtentReporter{
             LoggingUtils.info("Waiting implicitly for: " + seconds + " seconds");
         }catch(Exception e){
             LoggingUtils.error("waitImplicitly error: "+ e.getMessage());
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
     }
     public void waitSleep(int miliSeconds){
@@ -136,6 +138,7 @@ public class GeneralMethod extends ExtentReporter{
             LoggingUtils.info("Waiting for: " + miliSeconds + " miliSeconds");
         }catch(Exception e){
             LoggingUtils.error("wait error: "+ e.getMessage());
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
     }
 
@@ -184,6 +187,7 @@ public class GeneralMethod extends ExtentReporter{
         if (!foundNextWindow) {
             LoggingUtils.error("No next tab/window found to switch to or close");
             ExtentReporter.logFail("No next tab/window found to switch to or close", "");
+            throw new AssertionError("Assertion error: ");
         }
 
         // Switch driver focus back to the original window/tab
@@ -208,6 +212,7 @@ public class GeneralMethod extends ExtentReporter{
             ExtentReporter.logInfo("Switch Previous Tab " ,"Previous Tab ID: "+ currentWindowHandle);
         } else {
             throw new IllegalStateException("No previous tab found");
+            
         }
     }
     public void scrollToBottomOfPageWEB() {
@@ -216,6 +221,7 @@ public class GeneralMethod extends ExtentReporter{
             js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         }catch (Exception e){
             LoggingUtils.info("Error: "+e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
 
     }
@@ -226,6 +232,7 @@ public class GeneralMethod extends ExtentReporter{
             js.executeScript("window.scrollBy(0,-250)", "");
         }catch (Exception e ){
             LoggingUtils.info("Error: "+e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
     }
     public void scrollToSpecificScrollPosition(int scrollPosition) {
@@ -235,6 +242,7 @@ public class GeneralMethod extends ExtentReporter{
             LoggingUtils.info("Scrolling into position: "+ scrollPosition);
         }catch (Exception e){
             LoggingUtils.info("Error "+ e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
 
     }
@@ -245,6 +253,7 @@ public class GeneralMethod extends ExtentReporter{
             LoggingUtils.info("Scrolling into element: "+ element);
         }catch (Exception e){
             LoggingUtils.info("Error "+ e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
 
     }
@@ -271,6 +280,7 @@ public class GeneralMethod extends ExtentReporter{
             ExtentReporter.logInfo("Uploading file: " + filename, "");
         }catch(Exception e){
             ExtentReporter.logFail("Error in Upload File: ", ""+ e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
         }
     }
     public void failTest(String testName, String message){
@@ -282,5 +292,28 @@ public class GeneralMethod extends ExtentReporter{
         ExtentReporter.logPass(testName, message);
         LoggingUtils.info(testName +": "+ message);
     }
-
+    public void arrowKeyDown(int option){
+        try{
+            LoggingUtils.info("Arrow key down option: " + option);
+            Actions action = new Actions(driver);
+            for(int i=0; i< option; i++){
+                action.keyDown(Keys.SHIFT).sendKeys(Keys.ENTER)
+                .perform();
+            }
+        }catch(Exception e){
+            throw new AssertionError("Assertion error: "+ e.getMessage());
+        }
+    }   
+    public void arrowKeyUp(int option){
+        try{
+            LoggingUtils.info("Arrow key up option: " + option);
+            Actions action = new Actions(driver);
+            for(int i=0; i< option; i++){
+                action.keyUp(Keys.SHIFT).sendKeys(Keys.ENTER)
+                .perform();
+            }
+        }catch(Exception e){
+            throw new AssertionError("Assertion error: "+ e.getMessage());
+        }
+    }   
 }

@@ -1,7 +1,5 @@
 package mlshopbuilder.testSteps;
 
-import org.testng.Assert;
-import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
 public class Merchant_Steps extends Base_Steps {

@@ -5,6 +5,7 @@ import utilities.Logger.LoggingUtils;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 public class yamlReader {
     /** The YAML file name. */
     private String yamlFileName;
@@ -73,5 +74,21 @@ public class yamlReader {
 
     public String getAccessKey() {
         return (String) yamlData.get("AccessKey");
+    }
+    public String getRandomTags(String tagName){
+            try {
+            List<String> randomTags = (List<String>) yamlData.get(tagName);
+            if (randomTags == null || randomTags.isEmpty()) {
+                LoggingUtils.error("Tag not available");
+                return null;
+            }
+            int randomIndex = new Random().nextInt(randomTags.size());
+            String randomTagValue = randomTags.get(randomIndex);
+            randomTags.remove(randomIndex);   
+            return randomTagValue;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
