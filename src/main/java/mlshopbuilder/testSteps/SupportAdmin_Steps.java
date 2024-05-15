@@ -27,13 +27,13 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void goingtoAddproductpage(String role){
-        loginByRole("supportadmin");
+       
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.Addproduct(), "Add product button");
     }
 
     public void goingtoViewproductpage(String role){
-        loginByRole("supportadmin");
+       
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.viewproductbtn(), "View products button");
     }
@@ -108,7 +108,7 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void goingtoViewDetailspage(String role){
-        loginByRole("supportadmin");
+       
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.viewproductbtn(), "View products button");
         click(supportAdminPageObjects.Editviewdetailsbtn(),"View Product Details");
@@ -182,52 +182,49 @@ public class SupportAdmin_Steps extends Base_Steps {
 
     //Test Cases
     public void SBL_TC_01_SuppAdminLogIn() {
-        loginByRole("supportadmin");
-
+       loginByRole("supportadmin");
         if(isInHomePage()){
             ExtentReporter.logPass("SBL_TC_01_SuppAdminLogIn", "Successfully Logged in Support Admin");
         }
         else{
             ExtentReporter.logFail("", "Failed to Log In as Support Admin");
             Assert.fail("");
-        }
-        logout("supportadmin");
+        }  
     }
 
     public void SBL_TC_02_ShopbuilderpageNavigation() {
-        loginByRole("supportadmin");
-
+       
         dashboardnavigation("supportadmin");
         isDisplayed(supportAdminPageObjects.newlyaddedstore());
         isDisplayed(supportAdminPageObjects.totalstorecount());
         waitSleep(2000);
         LoggingUtils.info("SBL TC 02 Shopbuilder Page Navigation: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_03_MerchantNavigation() {
-        loginByRole("supportadmin");
+       
 
         dashboardnavigation("supportadmin");
         click(supportAdminPageObjects.merchantsbtn(),"Merchant button");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_04_and_05_TotalStores_and_NewlyAddedStore() {
-        loginByRole("supportadmin");
+       
 
         dashboardnavigation("supportadmin");
         isDisplayed(supportAdminPageObjects.newlyaddedstore());
         isDisplayed(supportAdminPageObjects.totalstorecount());
         LoggingUtils.info("SBL TC 04 and 05 Visibility of Total Stores and New added store: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_06_and_07_ShopBuilderNavigation_and_TotalStoreCount() {
-        loginByRole("supportadmin");
+       
 
         shopbuildernavigation("supportadmin");
         waitSleep(2000);
@@ -239,11 +236,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.TotalStore());
         LoggingUtils.info("SBL TC 07 Total Store Count: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_08_InvalidStoreSearch() {
-        loginByRole("supportadmin");
+       
 
         waitSleep(2000);
         type(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "Watczzz");
@@ -251,11 +248,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.InvalidSearch());
         LoggingUtils.info("SBL TC 08 Invalid Store Search: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_09_ValidStoreSearch() {
-        loginByRole("supportadmin");
+       
 
         waitSleep(2000);
         type(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watch");
@@ -263,33 +260,33 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.StoreSearchWatches());
         LoggingUtils.info("SBL TC 09 Valid Store Search: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_10_jewelryShopRedirection() {
-        loginByRole("supportadmin");
+       
 
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         isDisplayed(supportAdminPageObjects.Addproduct());
         isDisplayed(supportAdminPageObjects.viewproductbtn());
         LoggingUtils.info("SBL TC 10 Jewelry Shop Redirection: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_11_MLWatchShopRedirection() {
-        loginByRole("supportadmin");
+       
 
         click(supportAdminPageObjects.StoreSearchWatches(), "ML Watch");
         isDisplayed(supportAdminPageObjects.Addproduct());
         isDisplayed(supportAdminPageObjects.viewproductbtn());
         LoggingUtils.info("SBL TC 11 ML Watch Shop Redirection: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_12_to_15_EditProfile() {
-        loginByRole("supportadmin");
+       
 
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.EditProfile(), "Edit Profile Button");
@@ -316,11 +313,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         waitSleep(2000);
         LoggingUtils.info("Successfully Reverted Changes");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_16_17_EditBannerAndCancelEditBanner() {
-        loginByRole("supportadmin");
+       
 
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.editbanner(), "ML Shop Jewelry Store Banner");
@@ -329,13 +326,13 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.canceleditbanner(),"ML Shop Jewelry Store Banner");
         LoggingUtils.info("SBL TC 17: Edit Banner function: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
 
     /////////////////////////////////////////////////////////////// this
     public void SBL_TC_18_to_21_AddBanner() {
-        loginByRole("supportadmin");
+       
 
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.addbannerbtn(), "Add Banner");
@@ -344,8 +341,6 @@ public class SupportAdmin_Steps extends Base_Steps {
         //TODO 
         //banner upload image
         uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
-
-
         //SBL TC 19 Img Related, need research
         uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
         uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
@@ -355,7 +350,6 @@ public class SupportAdmin_Steps extends Base_Steps {
         }else{
             failTest("SBR_TC_10_ImageUpload", "Failed to upload photo");
         }
-
         waitSleep(2000);
         click(supportAdminPageObjects.bannerscreensize(),"banner screen size");
         waitSleep(2000);
@@ -374,14 +368,14 @@ public class SupportAdmin_Steps extends Base_Steps {
         //delete after image works
         click(supportAdminPageObjects.exitbutton(),"Exit button");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_22_AddproductRedirection() {
         goingtoAddproductpage("supportadmin");
         LoggingUtils.info("SBL TC 22 Add Product Page Redirection: Success");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_23_and_24_ProductandSalesInput(){
@@ -392,7 +386,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.Amparitotickbox());
         LoggingUtils.info("SBL TC 23 & 24: Product & Sales Inputs Successful");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBR_TC_25_ImageUpload(){
@@ -406,7 +400,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         }else{
             failTest("SBR_TC_25_ImageUpload", "Failed to upload photo");
         }
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_26_InputsRequired(){
@@ -423,7 +417,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         supportAdminPageObjects.pricetxtbox().clear();
         LoggingUtils.info("SBL TC 26: Inputs Required Visible");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_27_SubmitandPublish(){
@@ -449,7 +443,7 @@ public class SupportAdmin_Steps extends Base_Steps {
 
         click(supportAdminPageObjects.Publlishbtnadd(),"Publish Button");
         LoggingUtils.info("SBL TC 27: Publish: Success");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_28_ViewProductRedirection() {
@@ -459,7 +453,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         isVisible(supportAdminPageObjects.Viewdetailsbtn2(),"View Details Button");
 
         LoggingUtils.info("SBL TC 28: View Product Page Redirection: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_29_IncorrectSearch() {
@@ -468,7 +462,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(supportAdminPageObjects.Searchtxtbx(), "Search Textbox", propertyReader.getproperty("InvStoreNum"));
         LoggingUtils.info("SBL TC 29: Incorrect search leads to blank page: Successful");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_30_ShowEntries() {
@@ -495,7 +489,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         LoggingUtils.info("clicked All entries");
         LoggingUtils.info("SBL TC 30: Show Entries: Successful");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_31_ShowEntriesPageNavigation() {
@@ -521,7 +515,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.previousbtn(), "Previous Button");
 
         LoggingUtils.info("SBL TC 31: Page Navigation: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_32_to_36_Searches() {
@@ -554,7 +548,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         supportAdminPageObjects.Searchtxtbx().clear();
 
         LoggingUtils.info("SBL TC 32: Searches: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_37_DateFilter_EmptyList() {
@@ -570,7 +564,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(supportAdminPageObjects.Todateinput(), "","1997");
 
         LoggingUtils.info("SBL_TC_37 No Display Date Filter: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_38_DateFilter() {
@@ -588,7 +582,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         isVisible(supportAdminPageObjects.Viewdetailsbtn(),"View Details");
 
         LoggingUtils.info("SBL TC 38 Date Filter: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_39_EditPageRedirection() {
@@ -597,7 +591,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.editinfobtn());
 
         LoggingUtils.info("SBL TC 39 Edit Page Redirection: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_40_EditabilityofEditInfo() {
@@ -609,7 +603,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.editinfobtn());
         LoggingUtils.info("SBL TC 40 Editability Function: Successful");
 
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_41_EditInfo() {
@@ -631,7 +625,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         type(supportAdminPageObjects.price2txtbox(), "Changed Value", "2999");
 
         LoggingUtils.info("SBL TC 41 Edited Info: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_42_BlankFields_NeedInputs() {
@@ -644,7 +638,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.updateandsubmit(),"Update & Submit");
 
         LoggingUtils.info("SBL TC 42 Input Indicators Visibility: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_43_ShippingDetailsFunctionality() {
@@ -664,7 +658,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.courierchoice(),"Courier Choice");
 
         LoggingUtils.info("SBL TC 43 Shipping Details Functionality: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_44_DropDown_Functionality() {
@@ -682,7 +676,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         waitSleep(3000);
 
         LoggingUtils.info("SBL TC 44 Drop Down Functionality: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_45_ValidateChangesMade() {
@@ -694,7 +688,7 @@ public class SupportAdmin_Steps extends Base_Steps {
         changeandrevertchanges("supportadmin");
 
         LoggingUtils.info("SBL TC 45 Changes Made: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_46_CancelButtonFunctionality() {
@@ -708,11 +702,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.editinfobtn());
 
         LoggingUtils.info("SBL TC 46 Cancel Button Functionality: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_47_MerchantTabRedirection() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
 
         dashboardnavigation("supportadmin");
@@ -721,11 +715,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         isDisplayed(supportAdminPageObjects.viewmerchantbtn());
 
         LoggingUtils.info("SBL TC 47 Merchant Tab Redirection: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_48_UpdateMerchantPopUp() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
 
         merchantnavigation("supportadmin");
@@ -735,11 +729,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.exitbutton(),"Exit Button");
 
         LoggingUtils.info("SBL TC 48 View Merchant Pop-up: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_49_and_50_and_51_StatusChangeAndSubmitButtonFeature() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
         merchantnavigation("supportadmin");
 
@@ -764,11 +758,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         waitSleep(2000);
 
         LoggingUtils.info("SBL TC 51 Submit Button Utilization: Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_52_EmptyfieldErrors() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
         merchantnavigation("supportadmin");
 
@@ -788,11 +782,11 @@ public class SupportAdmin_Steps extends Base_Steps {
         click(supportAdminPageObjects.exitbutton(),"Exit Button");
 
         LoggingUtils.info("SBL TC 52 Empty Field Errors : Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     public void SBL_TC_53_UpdateInfoMerchant() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
         merchantnavigation("supportadmin");
 
@@ -837,12 +831,12 @@ public class SupportAdmin_Steps extends Base_Steps {
         waitSleep(2500);
 
         LoggingUtils.info("SBL TC 53 Update Info : Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     //merchant issue: use arrow keys to get merchant in drop down
     public void SBL_TC_54() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
         merchantnavigation("supportadmin");
 
@@ -855,12 +849,12 @@ public class SupportAdmin_Steps extends Base_Steps {
 
 
         LoggingUtils.info("SBL TC 54 : Successful");
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
     //?
     public void SBL_TC_55_AddstorestoMerchant() {
-        loginByRole("supportadmin");
+       
         waitSleep(2000);
         merchantnavigation("supportadmin");
 
@@ -881,7 +875,7 @@ public class SupportAdmin_Steps extends Base_Steps {
 
         LoggingUtils.info("SBL TC 55 Chosen and Verified Store Changes: Successful");
         waitSleep(1500);
-        logout("supportadmin");
+       // logout("supportadmin");
     }
 
 
