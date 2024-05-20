@@ -9,11 +9,13 @@
     <test name="KYC Input">
         <parameter name="browser" value="chrome">
             <classes>
-
+<!--                <class name="MLshopBuilders.actual.MerchantT">-->
+<!--                </class>-->
 <!--                <class name="MLshopBuilders.actual.SignUpT">-->
 <!--                </class>-->
-
-                <class name="MLshopBuilders.actual.SupportAdminT">
+<!--                <class name="MLshopBuilders.actual.SupportAdminT">-->
+<!--                </class>-->
+                <class name="MLshopBuilders.actual.AdminT">
                 </class>
 <!--                <class name="MLshopBuilders.actual.Payout_Tests">-->
 <!--                </class>-->

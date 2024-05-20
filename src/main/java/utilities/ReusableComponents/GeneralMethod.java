@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.List;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
@@ -315,5 +316,25 @@ public class GeneralMethod extends ExtentReporter{
         }catch(Exception e){
             throw new AssertionError("Assertion error: "+ e.getMessage());
         }
-    }   
+    }
+    public void navigateBack(){
+        try{
+            driver.navigate().back();
+            LoggingUtils.info("Navigating back");
+            ExtentReporter.logInfo("Navigating Back" , "Previous Page");
+        }catch (Exception e){
+            throw new AssertionError("Cannot get value for element" + e.getMessage());
+        }
+    }
+    public void selectByValue(WebElement locator, String value){
+        Select select = new Select(locator);
+        try{
+            wait.until(ExpectedConditions.visibilityOf(locator));
+            select.selectByValue(value);
+            LoggingUtils.info("Selected Value: " + value);
+            ExtentReporter.logInfo("Selected Value: " , value);
+        }catch (Exception e){
+            throw new AssertionError("No Selected Value" + e.getMessage());
+        }
+    }
 }
