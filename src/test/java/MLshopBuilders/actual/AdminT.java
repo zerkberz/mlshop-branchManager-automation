@@ -119,8 +119,6 @@ public class AdminT extends BaseTest {
 //    public void SBA_TC_30_AgentConfigNavigation() throws Exception {
 //        adminSteps.SBA_TC_30_AgentConfigNavigation();
 //    }
-
-
 //    @Test(priority = 24)
 //    public void SBA_TC_31() throws Exception {
 //        adminSteps.SBA_TC_31();

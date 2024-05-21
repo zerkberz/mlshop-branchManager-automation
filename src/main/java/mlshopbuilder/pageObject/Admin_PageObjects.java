@@ -170,7 +170,10 @@ public class Admin_PageObjects {
     public WebElement SearchOrderID(){return getDriver().findElement(By.xpath("//input[@placeholder='Enter Order ID']"));}
     public WebElement Searchbtn(){return getDriver().findElement(By.xpath("//p[normalize-space()='Search']"));}
 
-
+    //td
+    public WebElement td_firstEmail(){
+        return getDriver().findElement(By.xpath("(//tr)[2]/td[2]"));
+    }
 
 
 

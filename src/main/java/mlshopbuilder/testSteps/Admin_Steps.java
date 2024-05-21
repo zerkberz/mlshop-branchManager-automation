@@ -374,35 +374,6 @@ public class Admin_Steps extends Base_Steps {
         } else {
             failTest("SBA_TC_20", "Failed to Validate Adding Sub Account");
         }
-
-//
-//        //Deactivate and Activation of Merchant
-//        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
-//        waitSleep(1500);
-//        click(adminPageObjects.deactivatemerchant(),"Deactivate Merchant Button");
-//        waitSleep(2000);
-//        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
-//        waitSleep(1500);
-//        click(adminPageObjects.activatemerchant(),"Activate Merchant Button");
-//        LoggingUtils.info("Sub Account Added = Register As Merchant: Success");
-//        waitSleep(3500);
-//
-//        //Edit Sub Acount
-//        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
-//        waitSleep(2000);
-//        type(adminPageObjects.namesub(),"Name","Cadoodle");
-//        type(adminPageObjects.emailsub(),"Email","francis.mercadudes@mlhuillier.com");
-//        click(adminPageObjects.submitbtn(),"Submit Button");
-//        //reverse
-//        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
-//        waitSleep(2000);
-//        type(adminPageObjects.namesub(),"Name","RoginaTest");
-//        type(adminPageObjects.emailsub(),"Email","rogina.rolloque@mlhuillier.com");
-//        click(adminPageObjects.submitbtn(),"Submit Button");
-//        LoggingUtils.info("SBA TC 22: Sub Account Added = Edit Sub Account Information: Success");
-//
-//
-//        LoggingUtils.info("SBA TC 20: Edit Profile Functionality: Success");
     }
 
     public void SBA_TC_21_AddingAndRemovingStore(){
@@ -437,14 +408,16 @@ public class Admin_Steps extends Base_Steps {
 
         click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
         waitSleep(2000);
+        String currentEmail = getValue(adminPageObjects.emailsub());
         type(adminPageObjects.namesub(),"Name","Cadoodle");
         type(adminPageObjects.emailsub(),"Email","francis.mercadudes@mlhuillier.com");
-        String currentEmail = getValue(adminPageObjects.emailsub());
         click(adminPageObjects.submitbtn(),"Submit Button");
+        waitSleep(2000);
 
         //TODO
         // get value of first TD email
 
+        String newEmail = getText(adminPageObjects.td_firstEmail());
 
         //reverse
 //        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
