@@ -405,31 +405,35 @@ public class Admin_Steps extends Base_Steps {
 
     public void SBA_TC_22(){
         dashboardnavigation("admin");
-
-        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+        click(adminPageObjects.subacctbtn(),"Sub Accounts");
+        click(adminPageObjects.editIcon1st(),"Edit Button");
         waitSleep(2000);
         String currentEmail = getValue(adminPageObjects.emailsub());
-        type(adminPageObjects.namesub(),"Name","Cadoodle");
-        type(adminPageObjects.emailsub(),"Email","francis.mercadudes@mlhuillier.com");
+        String currentName = getValue(adminPageObjects.namesub());
+        type(adminPageObjects.namesub(),"Name","Cadoodle"+ getRandomNumber());
+        type(adminPageObjects.emailsub(),"Email","francis.mercadudes"+getRandomNumber()+"@mlhuillier.com");
         click(adminPageObjects.submitbtn(),"Submit Button");
         waitSleep(2000);
 
         //TODO
         // get value of first TD email
-
         String newEmail = getText(adminPageObjects.td_firstEmail());
+        String newName = getValue(adminPageObjects.td_firstName());
+        assertNotEqual(newEmail,currentEmail);
+        assertNotEqual(newName, currentName);
 
         //reverse
-//        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
-//        waitSleep(2000);
-//        type(adminPageObjects.namesub(),"Name","RoginaTest");
-//        type(adminPageObjects.emailsub(),"Email","rogina.rolloque@mlhuillier.com");
-//        click(adminPageObjects.submitbtn(),"Submit Button");
+        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+        waitSleep(2000);
+        type(adminPageObjects.namesub(),"Name",currentName);
+        type(adminPageObjects.emailsub(),"Email",currentEmail);
+        assertEqual(getValue(adminPageObjects.namesub()), currentName);
+        assertEqual(getValue(adminPageObjects.emailsub()), currentEmail);
+        click(adminPageObjects.submitbtn(),"Submit Button");
+        waitSleep(2000);
 
+        passTest("SBA_TC_22", "Successfully Validated Updating Sub Accounts Information");
 
-//        Assert.assertNotEquals(currentEmail);
-
-        LoggingUtils.info("SBA TC 22: Edit Profile Functionality: Success");
     }
 
     public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount(){

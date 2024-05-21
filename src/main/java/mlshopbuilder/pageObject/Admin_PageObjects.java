@@ -128,8 +128,8 @@ public class Admin_PageObjects {
     public WebElement viewMerchantIcon(){
         return getDriver().findElement(By.xpath("//tr/td[6]/child::div/child::div[2]"));
     }
-    public WebElement editIcon(){
-        return getDriver().findElement(By.xpath("//tr/td[6]/child::div/child::div"));
+    public WebElement editIcon1st(){
+        return getDriver().findElement(By.xpath("(//tr/td[6]/child::div/child::div)[1]"));
     }
     public WebElement viewStores(){
         return getDriver().findElement(By.xpath("//p[text()='View Stores']"));
@@ -173,6 +173,9 @@ public class Admin_PageObjects {
     //td
     public WebElement td_firstEmail(){
         return getDriver().findElement(By.xpath("(//tr)[2]/td[2]"));
+    }
+    public WebElement td_firstName(){
+        return getDriver().findElement(By.xpath("(//tr)[2]/td[1]"));
     }
 
 
