@@ -138,11 +138,37 @@ public class Admin_PageObjects {
         return getDriver().findElement(By.xpath("(//div[@class='mt-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-2'])[1]/child::div[1]"));
     }
 
+    //main account
+    public WebElement mainaccountbtn() {return getDriver().findElement(By.xpath("//a[normalize-space()='Main Accounts']"));}
+    public WebElement editablemerchantinfo() {return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[1]"));}
+
+    //merchant tab
+    public WebElement viewmerchantbtn(){return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[1]"));}
+    public WebElement editinfomerchant(){return getDriver().findElement(By.xpath("//p[@class=\"text-sm text-blue-500 hover:bg-slate-200 pl-2 pr-2 cursor-pointer\" and text()=\"Edit info\"]"));}
+    public WebElement Statusdropdown(){return getDriver().findElement(By.xpath("(//input[@id='react-select-2-input'])[1]"));}
+    public WebElement submitbtnmerchant(){return getDriver().findElement(By.xpath("//button[normalize-space()='Submit']"));}
+    public WebElement editablemerchantbtn(){return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[1]"));}
+    //edit placing per text cases
+    public WebElement editablemerchant2btn(){return getDriver().findElement(By.xpath("(//p[normalize-space()='View'])[10]"));}
+
+    //update merchant info
+    public WebElement contactnum(){return getDriver().findElement(By.xpath("//input[@id='storeNumber']"));}
+    public WebElement storeemail(){return getDriver().findElement(By.xpath("//input[@id='storeEmail']"));}
+    public WebElement provincedrop(){return getDriver().findElement(By.xpath("//input[@id='react-select-3-input']"));}
+    public WebElement citydrop(){return getDriver().findElement(By.xpath("//input[@id='react-select-4-input']"));}
+    public WebElement zonecodedrop(){return getDriver().findElement(By.xpath("//input[@id='react-select-5-input']"));}
+    public WebElement branchnamedrop(){return getDriver().findElement(By.xpath("//input[@id='react-select-6-input']"));}
+    public WebElement errorstore(){return getDriver().findElement(By.xpath("//*[contains(text(), 'The email address is invalid and incorrect')]"));}
+    public WebElement viewstores(){return getDriver().findElement(By.xpath("//p[@class='text-[12px]' and contains(text(), 'View Stores')]"));}
+    public WebElement hidestores(){return getDriver().findElement(By.xpath("//p[@class='text-[12px]' and contains(text(), 'Hide Stores')]"));}
+    public WebElement mercadodefrancis(){return getDriver().findElement(By.xpath("//div[contains(text(),'Mercado de Francis')]"));}
+    public WebElement mlshopjewlery(){return getDriver().findElement(By.xpath("//div[contains(text(),'ML Shop Jewelry Store')]"));}
+    public WebElement statustextboxmerchant(){return getDriver().findElement(By.xpath("//div[@class=' css-19bb58m']"));}
 
 
-
-
-
+    // Agent Config
+    public WebElement SearchOrderID(){return getDriver().findElement(By.xpath("//input[@placeholder='Enter Order ID']"));}
+    public WebElement Searchbtn(){return getDriver().findElement(By.xpath("//p[normalize-space()='Search']"));}
 
 
 

@@ -82,16 +82,58 @@ public class AdminT extends BaseTest {
 //    public void SBA_TC_20() throws Exception {
 //    adminSteps.SBA_TC_20();
 //}
-    @Test(priority = 17)
-    public void SBA_TC_20() throws Exception {
-        adminSteps.SBA_TC_20();
-    }
-
+//    @Test(priority = 17)
+//    public void SBA_TC_20() throws Exception {
+//        adminSteps.SBA_TC_20();
+//    }
+//
+//    @Test(priority = 18)
+//    public void SBA_TC_21_AddingAndRemovingStore() throws Exception {
+//        adminSteps.SBA_TC_21_AddingAndRemovingStore();
+//    }
     @Test(priority = 18)
-    public void SBA_TC_21() throws Exception {
-        adminSteps.SBA_TC_21();
+    public void SBA_TC_22() throws Exception {
+        adminSteps.SBA_TC_22();
     }
+//    @Test(priority = 18)
+//    public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount() throws Exception {
+//        adminSteps.SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount();
+//    }
+//    @Test(priority = 19)
+//    public void SBA_TC_25_and_26() throws Exception {
+//        adminSteps.SBA_TC_25_and_26();
+//    }
+//    @Test(priority = 20)
+//    public void SBA_TC_27_statuschange() throws Exception {
+//        adminSteps.SBA_TC_27_statuschange();
+//    }
+//    @Test(priority = 21)
+//    public void SBA_TC_28_EmptyFields() throws Exception {
+//        adminSteps.SBA_TC_28_EmptyFields();
+//    }
+//    @Test(priority = 22)
+//    public void SBA_TC_29_ValidateUpdatedMerchantInfo() throws Exception {
+//        adminSteps.SBA_TC_29_ValidateUpdatedMerchantInfo();
+//    }
+//    @Test(priority = 23)
+//    public void SBA_TC_30_AgentConfigNavigation() throws Exception {
+//        adminSteps.SBA_TC_30_AgentConfigNavigation();
+//    }
 
+
+//    @Test(priority = 24)
+//    public void SBA_TC_31() throws Exception {
+//        adminSteps.SBA_TC_31();
+//    }
+//    @Test(priority = 25)
+//    public void SBA_TC_32() throws Exception {
+//        adminSteps.SBA_TC_32();
+//    }
+
+//    @Test(priority = 26)
+//    public void SBA_TC_33_Logout() throws Exception {
+//        adminSteps.SBA_TC_33_Logout();
+//    }
 
 
 

@@ -47,6 +47,11 @@ public class Admin_Steps extends Base_Steps {
         click(supportAdminPageObjects.Editviewdetailsbtn(),"View Product Details");
     }
 
+    public void agentconfignavigation (String role){
+        click(supportAdminPageObjects.userIcon(), "Account Header");
+        click(adminPageObjects.agentconfigbtn(),"Agent Config button");
+    }
+
     public void dashboardnavigation (String role){
         click(supportAdminPageObjects.userIcon(), "Account Header");
         click(supportAdminPageObjects.dashboardbtn(),"Dashboard button");
@@ -400,7 +405,7 @@ public class Admin_Steps extends Base_Steps {
 //        LoggingUtils.info("SBA TC 20: Edit Profile Functionality: Success");
     }
 
-    public void SBA_TC_21(){
+    public void SBA_TC_21_AddingAndRemovingStore(){
         dashboardnavigation("admin");
         //Add Sub Account
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
@@ -426,4 +431,203 @@ public class Admin_Steps extends Base_Steps {
             failTest("SBA_TC_21", "Failed to Validate Adding and Removing of Stores");
         }
     }
+
+    public void SBA_TC_22(){
+        dashboardnavigation("admin");
+
+        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+        waitSleep(2000);
+        type(adminPageObjects.namesub(),"Name","Cadoodle");
+        type(adminPageObjects.emailsub(),"Email","francis.mercadudes@mlhuillier.com");
+        click(adminPageObjects.submitbtn(),"Submit Button");
+        //reverse
+        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+        waitSleep(2000);
+        type(adminPageObjects.namesub(),"Name","RoginaTest");
+        type(adminPageObjects.emailsub(),"Email","rogina.rolloque@mlhuillier.com");
+        String currentEmail = getValue(adminPageObjects.emailsub());
+        click(adminPageObjects.submitbtn(),"Submit Button");
+
+
+//        Assert.assertNotEquals(currentEmail);
+
+        LoggingUtils.info("SBA TC 22: Edit Profile Functionality: Success");
+    }
+
+    public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount(){
+        dashboardnavigation("admin");
+        //Add Sub Account
+        click(adminPageObjects.subacctbtn(),"Sub Accounts");
+
+        //Deactivate and Activation of Merchant
+        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
+        waitSleep(1500);
+        click(adminPageObjects.deactivatemerchant(),"Deactivate Merchant Button");
+        waitSleep(2000);
+        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
+        waitSleep(1500);
+        click(adminPageObjects.activatemerchant(),"Activate Merchant Button");
+        LoggingUtils.info("Sub Account Added = Register As Merchant: Success");
+        waitSleep(3500);
+
+        LoggingUtils.info("SBA TC 22: Deactivate/Activate Functionality: Success");
+    }
+
+//        //Edit Sub Acount
+//        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+//        waitSleep(2000);
+//        type(adminPageObjects.namesub(),"Name","Cadoodle");
+//        type(adminPageObjects.emailsub(),"Email","francis.mercadudes@mlhuillier.com");
+//        click(adminPageObjects.submitbtn(),"Submit Button");
+//        //reverse
+//        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+//        waitSleep(2000);
+//        type(adminPageObjects.namesub(),"Name","RoginaTest");
+//        type(adminPageObjects.emailsub(),"Email","rogina.rolloque@mlhuillier.com");
+//        click(adminPageObjects.submitbtn(),"Submit Button");
+//        LoggingUtils.info("SBA TC 22: Sub Account Added = Edit Sub Account Information: Success");
+//
+//        String currentEmail = getValue();
+//        Assert.assertNotEquals(currentEmail);
+//
+//        LoggingUtils.info("SBA TC 20: Edit Profile Functionality: Success");
+
+public void SBA_TC_25_and_26() {
+    dashboardnavigation("admin");
+
+    click(adminPageObjects.mainaccountbtn(),"Main Accounts");
+    click(adminPageObjects.editablemerchantinfo(),"View Merchant Details button");
+    isDisplayed(supportAdminPageObjects.editinfomerchant());
+    waitSleep(2000);
+    click(supportAdminPageObjects.exitbutton(),"Exit Button");
+
+    LoggingUtils.info("SBA TC 25: Main Account Redirection: Success");
+}
+
+public void SBA_TC_27_statuschange() {
+    dashboardnavigation("admin");
+
+    click(adminPageObjects.mainaccountbtn(),"Main Accounts");
+    click(adminPageObjects.viewmerchantbtn(),"View Merchant Details button");
+    waitSleep(1500);
+    typeEnter(adminPageObjects.Statusdropdown(),"Status","deactivate");
+    waitSleep(1500);
+    click(adminPageObjects.submitbtnmerchant(),"Submit button pressed");
+    waitSleep(1500);
+    //reversion
+    click(adminPageObjects.editablemerchantinfo(),"View Merchant Details button");
+    waitSleep(1500);
+    typeEnter(adminPageObjects.Statusdropdown(),"Status","activate");
+    waitSleep(1500);
+    click(adminPageObjects.submitbtnmerchant(),"Submit button pressed");
+    waitSleep(1500);
+    click(adminPageObjects.editablemerchantinfo(),"View Merchant Details button");
+    waitSleep(1500);
+    isDisplayed(adminPageObjects.Statusdropdown());
+    click(supportAdminPageObjects.exitbutton(),"exit");
+
+    LoggingUtils.info("SBA TC 27 Status Changes: Successful");
+}
+
+public void SBA_TC_28_EmptyFields() {
+    dashboardnavigation("admin");
+
+    click(adminPageObjects.mainaccountbtn(),"Main Accounts");
+    click(adminPageObjects.editablemerchantbtn(),"View Merchant Details button");
+    waitSleep(2000);
+    click(adminPageObjects.editinfomerchant(),"Edit Info");
+    waitSleep(2000);
+    adminPageObjects.contactnum().clear();
+    adminPageObjects.storeemail().clear();
+    waitSleep(2000);
+    typeEnter(adminPageObjects.provincedrop(),"Province Text box and Drop Down","abra");
+    waitSleep(3000);
+    click(adminPageObjects.submitbtnmerchant(),"Submit button pressed");
+    waitSleep(2500);
+    isVisible(adminPageObjects.errorstore(),"Error Prompt");
+    waitSleep(2000);
+    click(supportAdminPageObjects.exitbutton(),"Exit Button");
+
+    LoggingUtils.info("SBA TC 28: Empty Fields proceeds to Error: Successful");
+}
+
+
+public void SBA_TC_29_ValidateUpdatedMerchantInfo() {
+    dashboardnavigation("admin");
+    click(adminPageObjects.mainaccountbtn(),"Main Accounts");
+
+    click(adminPageObjects.editablemerchantbtn(),"View Merchant Details button");
+    waitSleep(2000);
+    click(adminPageObjects.editinfomerchant(),"Edit Info");
+    waitSleep(2000);
+    adminPageObjects.contactnum().clear();
+    adminPageObjects.storeemail().clear();
+    waitSleep(2000);
+    type(adminPageObjects.contactnum(),"Contact number", "09667363535");
+    type(adminPageObjects.storeemail(),"Store Email","dboss.melgs@mlhuillier.com");
+    waitSleep(2000);
+    typeEnter(adminPageObjects.provincedrop(),"Province Text box and Drop Down","abra");
+    waitSleep(3000);
+    typeEnter(adminPageObjects.citydrop(),"City Text box and Drop Down","bang");
+    waitSleep(3000);
+    typeEnter(adminPageObjects.branchnamedrop(),"City Text box and Drop Down","ML");
+    waitSleep(3000);
+    click(adminPageObjects.submitbtnmerchant(),"Submit button pressed");
+    waitSleep(3500);
+
+    //Reversion
+    LoggingUtils.info("Update Reversal");
+    click(adminPageObjects.editablemerchantinfo(),"View Merchant Details button");
+    waitSleep(2000);
+    click(adminPageObjects.editinfomerchant(),"Edit Info");
+    waitSleep(2000);
+    adminPageObjects.contactnum().clear();
+    adminPageObjects.storeemail().clear();
+    waitSleep(2000);
+    type(adminPageObjects.contactnum(),"Contact number", "09479992152");
+    type(adminPageObjects.storeemail(),"Store Email","asdasd@sdfsdf.com");
+    waitSleep(2000);
+    typeEnter(adminPageObjects.provincedrop(),"Province Text box and Drop Down","ceb");
+    waitSleep(3000);
+    typeEnter(adminPageObjects.citydrop(),"City Text box and Drop Down","cebu cit");
+    waitSleep(3000);
+    typeEnter(adminPageObjects.branchnamedrop(),"City Text box and Drop Down","ML NRA");
+    waitSleep(3000);
+    click(adminPageObjects.submitbtnmerchant(),"Submit button pressed");
+    waitSleep(2500);
+
+    LoggingUtils.info("SBA TC 29: Update Info : Successful");
+}
+
+public void SBA_TC_30_AgentConfigNavigation() {
+    agentconfignavigation("admin");
+
+    isDisplayed(adminPageObjects.SearchOrderID());
+    isVisible(adminPageObjects.SearchOrderID(),"Search Order Textbox");
+    isDisplayed(adminPageObjects.Searchbtn());
+    isVisible(adminPageObjects.Searchbtn(),"Search Button");
+
+    LoggingUtils.info("SBA TC 30: Agent Config Navigation: Successful");
+}
+
+//    public void SBA_TC_31() {
+//        agentconfignavigation("admin");
+//
+//        LoggingUtils.info("SBA TC 31: : Successful");
+//    }
+//
+//    public void SBA_TC_32() {
+//        agentconfignavigation("admin");
+//
+//        LoggingUtils.info("SBA TC 32: : Successful");
+//    }
+
+public void SBA_TC_33_Logout() {
+    agentconfignavigation("admin");
+
+    click(supportAdminPageObjects.userIcon(), "Account Header");
+    click(merchantObjects.MLogoutbtn(),"Logout");
+
+    LoggingUtils.info("SBA TC 32: : Successful");
+}
 }
