@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
+import java.util.Random;
 import java.util.Set;
 import java.util.List;
 
@@ -336,5 +337,21 @@ public class GeneralMethod extends ExtentReporter{
         }catch (Exception e){
             throw new AssertionError("No Selected Value" + e.getMessage());
         }
+    }
+    public static int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(500) + 1;
+    }
+    public String getValue(WebElement locator){
+        String val = null;
+        try{
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+            val = element.getAttribute("value");
+        }catch(Exception e){
+            ExtentReporter.logFail("Cannot get text for element" + e.getMessage(), "Caused: "+ e);
+            LoggingUtils.error("Cannot get text for element" + e.getMessage());
+            throw new AssertionError("Cannot get text for element" + e.getMessage());
+        }
+        return val;
     }
 }

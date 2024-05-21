@@ -1,11 +1,15 @@
 package mlshopbuilder.testSteps;
 
 import mlshopbuilder.pageObject.SupportAdmin_PageObjects;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.PropertyReader.propertyReader;
 import utilities.Logger.LoggingUtils;
+
+import java.util.List;
 
 public class Admin_Steps extends Base_Steps {
 
@@ -323,36 +327,49 @@ public class Admin_Steps extends Base_Steps {
     }
 
     //change
-//    public void SBA_TC_20() {
-//        dashboardnavigation("admin");
-//
-//        //Add Sub Account
-//        click(adminPageObjects.subacctbtn(),"Sub Accounts");
-//        click(adminPageObjects.addaccountbtn(),"Add Sub Account");
-//
-//        waitSleep(2000);
-//        type(adminPageObjects.namesub(),"Name","Jessie Mendiola");
-//        type(adminPageObjects.emailsub(),"Email","esconomy.jessie6@mlhuillier.com");
-//        type(adminPageObjects.passSub(),"Password","cadocoolboy");
-//        type(adminPageObjects.repassSub(),"Re-enter Password","cadocoolboy");
-//        waitSleep(2500);
-//
-//        click(adminPageObjects.mainaccttxtbox2(),"Dropdown");
-//        waitSleep(2000);
-//        arrowKeyDown(1);
-//        waitSleep(2000);
-//        arrowKeyUp(1);
-//        waitSleep(2000);
-//        click(adminPageObjects.submitbtn(),"Submit Button");
-//        LoggingUtils.info("SBA TC 20: Sub Account Added: Success");
-//        waitSleep(3500);
-//
-//        //Registering As merchant
-//        click(adminPageObjects.registerasmerchantbtn(),"Edit Button");
-//        waitSleep(1500);
-//        click(adminPageObjects.registerAsmerchantbtn(),"Register Button");
-//        LoggingUtils.info("Sub Account Added = Register As Merchant: Success");
-//        waitSleep(3500);
+    public void SBA_TC_20() {
+        dashboardnavigation("admin");
+        //Add Sub Account
+        click(adminPageObjects.subacctbtn(),"Sub Accounts");
+        click(adminPageObjects.addaccountbtn(),"Add Sub Account");
+        waitSleep(2000);
+        click(adminPageObjects.mainaccttxtbox2(),"Dropdown");
+        waitSleep(1000);
+        arrowKeyDown(1);
+        waitSleep(1000);
+        type(adminPageObjects.namesub(),"Name","Test Automation"+getRandomNumber()+"");
+        type(adminPageObjects.emailsub(),"Email","test.automation"+getRandomNumber()+"@mlhuillier.com");
+        type(adminPageObjects.passSub(),"Password","12345678");
+        type(adminPageObjects.repassSub(),"Re-enter Password","12345678");
+        waitSleep(2000);
+        String inputtedEmail = getValue(adminPageObjects.emailsub());
+        LoggingUtils.info("inputtedEmail: " + inputtedEmail);
+        click(adminPageObjects.submitbtn(),"Submit Button");
+        waitSleep(2000);
+
+        LoggingUtils.info("::::::::::::Looping Through Sub Accounts::::::::::::::::");
+        boolean isEmailFound = false; // Add a flag to track if the email is found
+        for (WebElement trElement : adminPageObjects.subAccTr()) {
+            List<WebElement> tdElements = trElement.findElements(By.cssSelector("td.jsx-b09e653eba0e5d15")); //TD locator
+            for (WebElement tdElement : tdElements) {
+                String tdText = tdElement.getText();
+                if (tdText.equals(inputtedEmail)) {
+                    LoggingUtils.info("Email: " + tdText);
+                    isEmailFound = true; // Set the flag to true if the email is found in any TD element
+                    break; // Exit the inner loop once the email is found
+                }
+            }
+            if (isEmailFound) {
+                break; // Exit the outer loop since the email is found
+            }
+        }
+        // Assert if the email is found or not
+        if (isEmailFound) {
+            passTest("SBA_TC_20", "Validate Adding Sub Accounts");
+        } else {
+            failTest("SBA_TC_20", "Failed to Validate Adding Sub Account");
+        }
+
 //
 //        //Deactivate and Activation of Merchant
 //        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
@@ -381,12 +398,32 @@ public class Admin_Steps extends Base_Steps {
 //
 //
 //        LoggingUtils.info("SBA TC 20: Edit Profile Functionality: Success");
-//    }
+    }
 
-
-
-
-
-
-
+    public void SBA_TC_21(){
+        dashboardnavigation("admin");
+        //Add Sub Account
+        click(adminPageObjects.subacctbtn(),"Sub Accounts");
+        click(adminPageObjects.viewMerchantIcon(),"Merchant Button");
+        waitSleep(1500);
+        click(adminPageObjects.viewStores(),"View Stores");
+        click(adminPageObjects.firstStore(),getText(adminPageObjects.firstStore()));
+        boolean isRemoved = false;
+        boolean isAdded = false;
+        if(isDisplayed(adminPageObjects.notificationStatus())){
+            isRemoved = true;
+            ExtentReporter.logInfo("Update Status", " is Displayed");
+        }
+        waitSleep(3000);
+        click(adminPageObjects.firstStore(),getText(adminPageObjects.firstStore()));
+        if(isDisplayed(adminPageObjects.notificationStatus())){
+            isAdded = true;
+            ExtentReporter.logInfo("Update Status", " is Displayed");
+        }
+        if(isAdded && isRemoved){
+            passTest("SBA_TC_21", "Validated Adding and Removing of Stores");
+        }else{
+            failTest("SBA_TC_21", "Failed to Validate Adding and Removing of Stores");
+        }
+    }
 }

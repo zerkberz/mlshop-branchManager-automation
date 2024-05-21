@@ -3,6 +3,9 @@ package mlshopbuilder.pageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static utilities.Driver.DriverManager.getDriver;
 
 public class Admin_PageObjects {
@@ -96,10 +99,10 @@ public class Admin_PageObjects {
     public WebElement addaccountbtn() {return getDriver().findElement(By.xpath("//p[@class='text-white' and contains(text(), 'Add')]"));}
     public WebElement mainaccttxtbox() {return getDriver().findElement(By.xpath("(//div[@class=' css-hlgwow'])[1]"));}
     public WebElement mainaccttxtbox2() {return getDriver().findElement(By.id("react-select-2-input"));}
-    public WebElement namesub() {return getDriver().findElement(By.xpath("//input[@id='name']"));}
-    public WebElement emailsub() {return getDriver().findElement(By.xpath("//input[@id='email']"));}
-    public WebElement passSub() {return getDriver().findElement(By.xpath("//input[@id='initialPassword']"));}
-    public WebElement repassSub() {return getDriver().findElement(By.xpath("//input[@id='password']"));}
+    public WebElement namesub() {return getDriver().findElement(By.id("name"));}
+    public WebElement emailsub() {return getDriver().findElement(By.id("email"));}
+    public WebElement passSub() {return getDriver().findElement(By.id("initialPassword"));}
+    public WebElement repassSub() {return getDriver().findElement(By.id("password"));}
     public WebElement registerAsmerchantbtn() {return getDriver().findElement(By.xpath("//button[normalize-space()='Register as merchant']"));}
     public WebElement editbuttonSubacct2() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[16]"));};
     public WebElement editbuttonSubacct3() {return getDriver().findElement(By.xpath("//tbody/tr[5]/td[6]/div[1]/div[1]//*[name()='svg']"));};
@@ -116,8 +119,24 @@ public class Admin_PageObjects {
     public WebElement editbuttonSubacct() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[20]"));}
     public WebElement registerasmerchantbtn() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[24]"));}
 
+    //tr
+    public List<WebElement> subAccTr(){return getDriver().findElements(By.xpath("//tr[@class='jsx-b09e653eba0e5d15']"));}
 
-    //
+    public WebElement notificationStatus(){
+        return getDriver().findElement(By.cssSelector("[role='status']"));
+    }
+    public WebElement viewMerchantIcon(){
+        return getDriver().findElement(By.xpath("//tr/td[6]/child::div/child::div[2]"));
+    }
+    public WebElement editIcon(){
+        return getDriver().findElement(By.xpath("//tr/td[6]/child::div/child::div"));
+    }
+    public WebElement viewStores(){
+        return getDriver().findElement(By.xpath("//p[text()='View Stores']"));
+    }
+    public WebElement firstStore(){
+        return getDriver().findElement(By.xpath("(//div[@class='border border-red-500 bg-red-500 text-white rounded-md p-3 cursor-pointer text-center text-[14px] md:text-[12px]'])[1]"));
+    }
 
 
 

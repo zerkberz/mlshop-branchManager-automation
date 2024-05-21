@@ -8,10 +8,10 @@ public class SupportAdminT extends BaseTest{
 
 
 
-//    @Test(priority =1)
-//    public void SBL_TC_01_SuppAdminLogIn() throws Exception {
-//        supportAdminSteps.SBL_TC_01_SuppAdminLogIn();
-//    }
+    @Test(priority =1)
+    public void SBL_TC_01_SuppAdminLogIn() throws Exception {
+        supportAdminSteps.SBL_TC_01_SuppAdminLogIn();
+    }
 //    @Test(priority =2)
 //    public void SBL_TC_02_ShopbuilderpageNavigation() throws Exception {
 //        supportAdminSteps.SBL_TC_02_ShopbuilderpageNavigation();

@@ -27,7 +27,8 @@
         <loggerjava.version>5.0.1</loggerjava.version>
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
-        <targetUrl>https://mlshoppreprod.mlhuillier.com/shopbuilder/</targetUrl>
+        <preprod>https://mlshoppreprod.mlhuillier.com/shopbuilder/</preprod>
+        <qa>https://mlshopdev.mlhuillier.com/shopbuilder/</qa>
         <homeUrl></homeUrl>
         <threads>1</threads>
         <browser>chrome</browser>
@@ -152,7 +153,7 @@
                         <projectBuildDir>${projectBuildDir}</projectBuildDir>
                         <remoteDriver>${remote}</remoteDriver>
                         <gridURL>${seleniumGridURL}</gridURL>
-                        <targetUrl>${targetUrl}</targetUrl>
+                        <targetUrl>${preprod}</targetUrl>
                         <homeUrl>${homeUrl}</homeUrl>
                         <desiredPlatform>${platform}</desiredPlatform>
                         <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
