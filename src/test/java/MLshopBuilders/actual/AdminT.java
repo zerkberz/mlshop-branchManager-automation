@@ -82,10 +82,10 @@ public class AdminT extends BaseTest {
 //    public void SBA_TC_20() throws Exception {
 //    adminSteps.SBA_TC_20();
 //}
-//    @Test(priority = 17)
-//    public void SBA_TC_20() throws Exception {
-//        adminSteps.SBA_TC_20();
-//    }
+    @Test(priority = 17)
+    public void SBA_TC_20() throws Exception {
+        adminSteps.SBA_TC_20();
+    }
 
     @Test(priority = 18)
     public void SBA_TC_21() throws Exception {

@@ -135,7 +135,7 @@ public class Admin_PageObjects {
         return getDriver().findElement(By.xpath("//p[text()='View Stores']"));
     }
     public WebElement firstStore(){
-        return getDriver().findElement(By.xpath("(//div[@class='border border-red-500 bg-red-500 text-white rounded-md p-3 cursor-pointer text-center text-[14px] md:text-[12px]'])[1]"));
+        return getDriver().findElement(By.xpath("(//div[@class='mt-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-2'])[1]/child::div[1]"));
     }
 
 
