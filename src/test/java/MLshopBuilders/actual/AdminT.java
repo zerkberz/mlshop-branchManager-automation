@@ -1,8 +1,8 @@
 package MLshopBuilders.actual;
 
-import MLshopBuilders.base.BaseTest;
-import mlshopbuilder.testSteps.SupportAdmin_Steps;
 import org.testng.annotations.Test;
+
+import MLshopBuilders.base.BaseTest;
 import utilities.ExtentReport.ExtentReporter;
 
 public class AdminT extends BaseTest {
@@ -14,7 +14,7 @@ public class AdminT extends BaseTest {
             ExtentReporter.logPass("SBA_TC_01_Login", "Successfully Logged in Administrator");
         }
     }
-<<<<<<< HEAD
+
 
     @Test(priority = 1, description = "Redirection to ShopBuilder Page")
     public void SBA_TC_02_ShopBuilderRedirection() throws Exception {
@@ -119,7 +119,7 @@ public class AdminT extends BaseTest {
     public void SBA_TC_29_AgentConfigNavigation() throws Exception {
         adminSteps.SBA_TC_29_AgentConfigNavigation();
     }
-=======
+
 //    @Test(priority = 1)
 //    public void SBA_TC_02_ShopBuilderRedirection() throws Exception {
 //        adminSteps.SBA_TC_02_ShopBuilderRedirection();
@@ -225,7 +225,7 @@ public void SBA_TC_18_BannerFunctionality() throws Exception {
 //    public void SBA_TC_30_AgentConfigNavigation() throws Exception {
 //        adminSteps.SBA_TC_30_AgentConfigNavigation();
 //    }
->>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
+
 //    @Test(priority = 24)
 //    public void SBA_TC_30 () throws Exception {
 //        adminSteps.SBA_TC_30();

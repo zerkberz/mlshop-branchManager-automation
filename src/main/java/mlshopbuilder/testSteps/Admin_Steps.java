@@ -404,14 +404,6 @@ public class Admin_Steps extends Base_Steps {
 
     public void SBA_TC_22(){
         dashboardnavigation("admin");
-<<<<<<< HEAD
-
-        click(adminPageObjects.subacctbtn(),"Sub Account Button");
-        click(adminPageObjects.editbuttonSubacct2(),"Edit Button");
-        type(adminPageObjects.nametxt(),"Name","Cadoodle");
-        type(adminPageObjects.emailtxt(),"Email","francis.mercadudes"+getRandomNumber()+"@mlhuillier.com");
-        waitSleep(2000);
-=======
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
         click(adminPageObjects.editIcon1st(),"Edit Button");
         waitSleep(2000);
@@ -419,12 +411,8 @@ public class Admin_Steps extends Base_Steps {
         String currentName = getValue(adminPageObjects.namesub());
         type(adminPageObjects.namesub(),"Name","Cadoodle"+ getRandomNumber());
         type(adminPageObjects.emailsub(),"Email","francis.mercadudes"+getRandomNumber()+"@mlhuillier.com");
->>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
         click(adminPageObjects.submitbtn(),"Submit Button");
         waitSleep(2000);
-
-<<<<<<< HEAD
-        click(adminPageObjects.editbuttonSubacct2(),"Edit Button");
 
         LoggingUtils.info("SBA TC 22: Edit Sub Account Functionality: Success");
 =======
@@ -447,7 +435,6 @@ public class Admin_Steps extends Base_Steps {
 
         passTest("SBA_TC_22", "Successfully Validated Updating Sub Accounts Information");
 
->>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
     }
 
     public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount(){
