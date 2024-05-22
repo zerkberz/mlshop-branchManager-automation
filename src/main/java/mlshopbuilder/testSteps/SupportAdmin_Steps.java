@@ -423,12 +423,12 @@ public class SupportAdmin_Steps extends Base_Steps {
 //        type(supportAdminPageObjects.Size(), "Size Textbox", propertyReader.getproperty("Size"));
 //        type(supportAdminPageObjects.Diamondweight(), "Diamond Weight Textbox", propertyReader.getproperty("DiaWeight"));
 //        type(supportAdminPageObjects.Itemsweight(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
-        type(supportAdminPageObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"));
+        type(supportAdminPageObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"+getRandomNumber()));
         type(supportAdminPageObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
         LoggingUtils.info("SBL: Product info Inputs Successful");
 
-        type(supportAdminPageObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"));
-        type(supportAdminPageObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"));
+        type(supportAdminPageObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"+getRandomNumber()));
+        type(supportAdminPageObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"+getRandomNumber()));
         type(supportAdminPageObjects.Costofsalestxtbox(), "Cost of Sales Textbox", propertyReader.getproperty("costofsale"));
         type(supportAdminPageObjects.grosssalestxtbox(), "Gross Sales Textbox", propertyReader.getproperty("grosssale"));
         type(supportAdminPageObjects.pricetxtbox(), "Price Textbox", propertyReader.getproperty("price"));

@@ -54,11 +54,12 @@ public class Admin_PageObjects {
     public WebElement typename() {return getDriver().findElement(By.xpath("//input[@id='typeName']"));}
     public WebElement yourmytype() {return getDriver().findElement(By.xpath("(//label[contains(text(), \"You're My Type\")])[1]"));}
     // Sort Price
-    public WebElement sortprice() {return getDriver().findElement(By.xpath("(//div[contains(text(),'+')])[5]"));}
+    public WebElement sortprice() {return getDriver().findElement(By.xpath("(//div[contains(text(),'+')])[last()]"));}
+    public WebElement sortprice2() {return getDriver().findElement(By.cssSelector("mt-1 ml-2 mr-2 mx-auto md:block text-center text-sm font-semibold py-1 px-4 rounded-md w-auto bg-slate-300 hover:bg-neutral-100 transition cursor-pointer text-gray-500"));}
     public WebElement sortname() {return getDriver().findElement(By.xpath("//input[@id='sortName']"));}
-    public WebElement updatesortname() {return getDriver().findElement(By.xpath("(//*[name()='path' and contains(@d,'M4 21a1 1 ')])[10]"));}
-    public  WebElement hightolowvalidation() {return getDriver().findElement(By.xpath("//*[contains(text(), \"High to Low\")]"));}
-    public  WebElement lowtohighvalidation() {return getDriver().findElement(By.xpath("//*[contains(text(), \"Low to High\")]"));}
+    public WebElement updatesortname() {return getDriver().findElement(By.xpath("(//div[@class=\"mr-2 pt-[5px] pl-1 pr-1 text-xs md:block text-center font-semibold rounded-md w-auto bg-blue-400 hover:bg-slate-300 transition cursor-pointer text-white\"])[last()]"));}
+    public  WebElement hightolowvalidation() {return getDriver().findElement(By.xpath("(//*[contains(text(), \"High to Low\")])[1]"));}
+    public  WebElement lowtohighvalidation() {return getDriver().findElement(By.xpath("(//*[contains(text(), \"Low to High\")])[1]"));}
     //toggle
     public WebElement shoptoggle() {return getDriver().findElement(By.xpath("//div[@class='cursor-pointer']"));}
     public WebElement shoptogglev2() {return getDriver().findElement(By.xpath("//div[@class='cursor-pointer']//*[name()='svg']"));}
@@ -104,12 +105,14 @@ public class Admin_PageObjects {
     public WebElement passSub() {return getDriver().findElement(By.id("initialPassword"));}
     public WebElement repassSub() {return getDriver().findElement(By.id("password"));}
     public WebElement registerAsmerchantbtn() {return getDriver().findElement(By.xpath("//button[normalize-space()='Register as merchant']"));}
-    public WebElement editbuttonSubacct2() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[16]"));};
+    public WebElement editbuttonSubacct2() {return getDriver().findElement(By.xpath("//tbody/tr[last()]/td[6]/div[1]/div[1]//*[name()='svg']"));};
     public WebElement editbuttonSubacct3() {return getDriver().findElement(By.xpath("//tbody/tr[5]/td[6]/div[1]/div[1]//*[name()='svg']"));};
+    public WebElement nametxt() {return getDriver().findElement(By.xpath("//input[@id='name']"));}
+    public WebElement emailtxt() {return getDriver().findElement(By.xpath("//input[@id='email']"));}
 
-    public WebElement deactivateacctSUBACCOUNT() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[14]"));}
+    public WebElement deactivateacctSUBACCOUNT() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[6]"));}
     public WebElement deactivatemerchant() {return getDriver().findElement(By.xpath("//button[normalize-space()='Deactivate Merchant']"));}
-    public WebElement activatemerchant() {return getDriver().findElement(By.xpath("//button[normalize-space()='Deactivate Merchant']"));}
+    public WebElement activatemerchant() {return getDriver().findElement(By.xpath("//button[normalize-space()='Activate Merchant']"));}
     public WebElement testshop() {return getDriver().findElement(By.xpath("(//div[normalize-space()='Test'])[1]"));};
     public WebElement mercadodefrancisshop() {return getDriver().findElement(By.xpath("(//div[normalize-space()='Mercado de Francis'])[1]"));};
     public WebElement shopbutton() {return getDriver().findElement(By.xpath("(//*[name()='svg']//*[name()='path' and contains(@d,'M480 448h-')]))[6]"));};

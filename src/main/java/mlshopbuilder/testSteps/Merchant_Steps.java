@@ -189,14 +189,32 @@ public class Merchant_Steps extends Base_Steps {
         }
     }
 
-   public void SBR_TC_12_Publish(){
-        goingtoAddproductpage();
-        waitSleep(4000);
-        inputsAddproduct("merchant");
-        uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
-        uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
+   public void SBR_TC_12_Publish() {
+       goingtoAddproductpage();
+       waitSleep(4000);
+       click(supportAdminPageObjects.Type(), "Type of Accessory");
+       click(supportAdminPageObjects.eighteenk(), "18k btn");
+       click(supportAdminPageObjects.whitegold(), "White Gold btn");
+       click(supportAdminPageObjects.mens(), "Mens btn");
+       click(supportAdminPageObjects.diamond(), "Diamond btn");
+       click(supportAdminPageObjects.red(), "Red btn");
+       click(supportAdminPageObjects.newcondition(), "New Condition btn");
+       waitSleep(2500);
 
-        click(merchantObjects.publishbtn(),"Save button");
+       supportAdminPageObjects.Quantitytxtbox().clear();
+       type(supportAdminPageObjects.Quantitytxtbox(), "Quantity Textbox", ""+getRandomNumber());
+       type(supportAdminPageObjects.Size(), "Size Textbox",  ""+getRandomNumber());
+       type(supportAdminPageObjects.Diamondweight(), "Diamond Weight Textbox", ""+getRandomNumber());;
+       type(supportAdminPageObjects.Itemsweight(), "Item Weight Textbox", ""+getRandomNumber());
+       type(supportAdminPageObjects.StyleNametxtbox(), "Style Name Textbox", "wawser"+getRandomNumber());
+       type(supportAdminPageObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
+
+       type(supportAdminPageObjects.Barcodetxtbox(), "Barcode Textbox",""+getRandomNumber());
+       type(supportAdminPageObjects.Lotnumbertxtbox(), "Lot Number Textbox", ""+getRandomNumber());
+       type(supportAdminPageObjects.Costofsalestxtbox(), "Cost of Sales Textbox", propertyReader.getproperty("costofsale"));
+       type(supportAdminPageObjects.grosssalestxtbox(), "Gross Sales Textbox", propertyReader.getproperty("grosssale"));
+       type(supportAdminPageObjects.pricetxtbox(), "Price Textbox", propertyReader.getproperty("price"));
+
        LoggingUtils.info("SBR TC 12 Publishing Product: Successful");
    }
 

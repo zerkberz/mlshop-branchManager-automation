@@ -89,4 +89,16 @@ public class Merchant_Objects {
     public WebElement redselection(){return  getDriver().findElement(By.id("Red"));}
     public WebElement newselection(){return  getDriver().findElement(By.id("New"));}
 
+    //tags
+    public WebElement type(){return  getDriver().findElement(By.xpath("(//button[contains(text(),'Ring')])[1]"));}
+    public WebElement karat(){return  getDriver().findElement(By.xpath("//button[contains(text(),'18k')]"));}
+    public WebElement goldcolors(){return  getDriver().findElement(By.xpath("//button[contains(text(),'White Gold')]"));}
+    public WebElement gender(){return  getDriver().findElement(By.xpath("//button[contains(text(),'Mens')]"));}
+    public WebElement stone(){return  getDriver().findElement(By.xpath("//button[contains(text(),'Diamond')]"));}
+
+
+
+
+
+
 }

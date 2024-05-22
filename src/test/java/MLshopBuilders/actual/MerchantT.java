@@ -49,8 +49,7 @@ public class MerchantT extends BaseTest {
      public void SBR_TC_11_ValidateInputs() throws Exception {
          merchantSteps.SBR_TC_11_ValidateInputs();
      }
-   @Test(dependsOnMethods ="SBR_TC_01_Login",priority = 1, description = "Submit and publish product")
-//         @Test(priority =10)
+     @Test(priority =1)
    public void SBR_TC_12_Publish() throws Exception {
        merchantSteps.SBR_TC_12_Publish();
    }
