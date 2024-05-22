@@ -164,7 +164,9 @@ public class Admin_PageObjects {
     public WebElement mercadodefrancis(){return getDriver().findElement(By.xpath("//div[contains(text(),'Mercado de Francis')]"));}
     public WebElement mlshopjewlery(){return getDriver().findElement(By.xpath("//div[contains(text(),'ML Shop Jewelry Store')]"));}
     public WebElement statustextboxmerchant(){return getDriver().findElement(By.xpath("//div[@class=' css-19bb58m']"));}
-
+    public WebElement Store(int i){
+        return getDriver().findElement(By.xpath("(//img[@alt='Listing'])["+i+"]"));
+    }
 
     // Agent Config
     public WebElement SearchOrderID(){return getDriver().findElement(By.xpath("//input[@placeholder='Enter Order ID']"));}
@@ -176,6 +178,26 @@ public class Admin_PageObjects {
     }
     public WebElement td_firstName(){
         return getDriver().findElement(By.xpath("(//tr)[2]/td[1]"));
+    }
+
+    //banner
+    public WebElement bannerStatus_radioBtn(){
+        return getDriver().findElement(By.xpath("(//div[@class='relative cursor-pointer'])[2]"));
+    }
+    public WebElement bannerCameraEdit_btn(){
+        return getDriver().findElement(By.xpath("(//div[@class='relative cursor-pointer'])[1]"));
+    }
+    public WebElement editBanner_btn(){
+        return getDriver().findElement(By.xpath("(//p[@class='text-center text-xs text-white'])[2]"));
+    }
+    public WebElement addBanner_btn(){
+        return getDriver().findElement(By.xpath("(//p[@class='text-center text-xs text-white'])[1]"));
+    }
+    public WebElement bannerImg_alt(){
+        return getDriver().findElement(By.cssSelector("[alt='banner']"));
+    }
+    public WebElement bannerStatus(){
+        return getDriver().findElement(By.cssSelector("[class='go4109123758']"));
     }
 
 

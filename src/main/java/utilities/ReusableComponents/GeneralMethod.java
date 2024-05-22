@@ -340,7 +340,7 @@ public class GeneralMethod extends ExtentReporter{
     }
     public static int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(1000) + 1;
+        return random.nextInt(999) + 1;
     }
     public String getValue(WebElement locator){
         String val = null;

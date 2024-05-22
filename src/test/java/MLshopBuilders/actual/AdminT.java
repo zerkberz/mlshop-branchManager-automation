@@ -74,10 +74,10 @@ public class AdminT extends BaseTest {
 //    public void SBA_TC_17_ViiewLogsFunctionalities() throws Exception {
 //        adminSteps.SBA_TC_17_ViiewLogsFunctionalities();
 //    }
-//@Test(priority = 16)
-//public void SBA_TC_18_BannerFunctionality() throws Exception {
-//    adminSteps.SBA_TC_18_BannerFunctionality();
-//}
+@Test(priority = 16)
+public void SBA_TC_18_BannerFunctionality() throws Exception {
+    adminSteps.SBA_TC_18_BannerFunctionality();
+}
 //    @Test(priority = 17)
 //    public void SBA_TC_20() throws Exception {
 //    adminSteps.SBA_TC_20();
@@ -91,10 +91,10 @@ public class AdminT extends BaseTest {
 //    public void SBA_TC_21_AddingAndRemovingStore() throws Exception {
 //        adminSteps.SBA_TC_21_AddingAndRemovingStore();
 //    }
-    @Test(priority = 18)
-    public void SBA_TC_22() throws Exception {
-        adminSteps.SBA_TC_22();
-    }
+//    @Test(priority = 18)
+//    public void SBA_TC_22() throws Exception {
+//        adminSteps.SBA_TC_22();
+//    }
 //    @Test(priority = 18)
 //    public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount() throws Exception {
 //        adminSteps.SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount();
