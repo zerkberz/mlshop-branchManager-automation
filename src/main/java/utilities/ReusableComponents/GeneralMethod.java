@@ -340,7 +340,7 @@ public class GeneralMethod extends ExtentReporter{
     }
     public static int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(500) + 1;
+        return random.nextInt(999) + 1;
     }
     public String getValue(WebElement locator){
         String val = null;
@@ -354,4 +354,17 @@ public class GeneralMethod extends ExtentReporter{
         }
         return val;
     }
+
+    public void assertNotEqual(String actual, String expected){
+        try{
+            Assert.assertNotEquals(actual, expected);
+            LoggingUtils.info(actual +  " and " + expected + " are not matched");
+            ExtentReporter.logInfo("Assertion: "+actual +  " and " + expected + " are not matched" , "asserted values " + actual + " and " + expected);
+        }catch(Exception e){
+            LoggingUtils.error("Assertion error: "+ e.getMessage());
+            ExtentReporter.logFail("Assertion error: "+ e.getMessage(), "Caused: "+ e);
+            throw new AssertionError("Assertion error: "+ e.getMessage());
+        }
+    }
+
 }

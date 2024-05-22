@@ -317,7 +317,6 @@ public class SupportAdmin_Steps extends Base_Steps {
 
     /////////////////////////////////////////////////////////////// this
     public void SBL_TC_18_to_21_AddBanner() {
-       
 
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.addbannerbtn(), "Add Banner");

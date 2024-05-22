@@ -260,12 +260,42 @@ public class Admin_Steps extends Base_Steps {
         LoggingUtils.info("SBA TC 17: View Logs Functionality: Success");
     }
 
-//    public void SBA_TC_18_BannerFunctionality() {
-//        goToShopBuilder("admin");
+    public void SBA_TC_18_BannerFunctionality() {
+        goToShopBuilder("admin");
+        shopbuildernavigation("admin");
+        waitSleep(2000);
+        click(adminPageObjects.Store(1), "Store");
+        waitSleep(2000);
+//        click(adminPageObjects.addBanner_btn(), "Add Banner Button");
+//        waitSleep(2000);
 //
-//
-//        LoggingUtils.info("SBA TC 18: Banner Functionality: Success");
-//    }
+//        uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
+//        click(supportAdminPageObjects.bannerscreensize(),"banner screen size");
+//        waitSleep(2000);
+//        arrowKeyDown(4);
+//        waitSleep(1000);
+//        click(supportAdminPageObjects.bannerposition(),"Banner position");
+//        waitSleep(2000);
+//        arrowKeyDown(1);
+//        waitSleep(1000);
+//        click(supportAdminPageObjects.submitbutton(),"Submit Button");
+//        waitSleep(4000);
+//        isVisible(adminPageObjects.bannerImg_alt(), "Banner Image");
+
+        click(adminPageObjects.editBanner_btn(), "Edit Banner Button");
+        waitSleep(2000);
+        click(adminPageObjects.bannerCameraEdit_btn(), "Camera/Edit Icon");
+        uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
+        click(supportAdminPageObjects.submitbutton(),"Submit Button");
+        waitSleep(8000);
+        isVisible(adminPageObjects.bannerImg_alt(), "Banner Image");
+        click(adminPageObjects.bannerStatus_radioBtn(), "Banner Status Radio Button");
+        waitSleep(1000);
+        isVisible(adminPageObjects.bannerStatus(), "Banner Status Pop Up");
+        passTest("SBA_TC_18", "Successfully Validated Banner Functionality");
+
+
+    }
 
     public void SBA_TC_19_EditProfileFunctionalities() {
         goToShopBuilder("admin");
@@ -339,7 +369,10 @@ public class Admin_Steps extends Base_Steps {
         } else {
             failTest("SBA_TC_20", "Failed to Validate Adding Sub Account");
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
     }
 
     public void SBA_TC_21_AddingAndRemovingStore(){
@@ -371,17 +404,50 @@ public class Admin_Steps extends Base_Steps {
 
     public void SBA_TC_22(){
         dashboardnavigation("admin");
+<<<<<<< HEAD
 
         click(adminPageObjects.subacctbtn(),"Sub Account Button");
         click(adminPageObjects.editbuttonSubacct2(),"Edit Button");
         type(adminPageObjects.nametxt(),"Name","Cadoodle");
         type(adminPageObjects.emailtxt(),"Email","francis.mercadudes"+getRandomNumber()+"@mlhuillier.com");
         waitSleep(2000);
+=======
+        click(adminPageObjects.subacctbtn(),"Sub Accounts");
+        click(adminPageObjects.editIcon1st(),"Edit Button");
+        waitSleep(2000);
+        String currentEmail = getValue(adminPageObjects.emailsub());
+        String currentName = getValue(adminPageObjects.namesub());
+        type(adminPageObjects.namesub(),"Name","Cadoodle"+ getRandomNumber());
+        type(adminPageObjects.emailsub(),"Email","francis.mercadudes"+getRandomNumber()+"@mlhuillier.com");
+>>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
         click(adminPageObjects.submitbtn(),"Submit Button");
+        waitSleep(2000);
 
+<<<<<<< HEAD
         click(adminPageObjects.editbuttonSubacct2(),"Edit Button");
 
         LoggingUtils.info("SBA TC 22: Edit Sub Account Functionality: Success");
+=======
+        //TODO
+        // get value of first TD email
+        String newEmail = getText(adminPageObjects.td_firstEmail());
+        String newName = getValue(adminPageObjects.td_firstName());
+        assertNotEqual(newEmail,currentEmail);
+        assertNotEqual(newName, currentName);
+
+        //reverse
+        click(adminPageObjects.editbuttonSubacct3(),"Edit Button");
+        waitSleep(2000);
+        type(adminPageObjects.namesub(),"Name",currentName);
+        type(adminPageObjects.emailsub(),"Email",currentEmail);
+        assertEqual(getValue(adminPageObjects.namesub()), currentName);
+        assertEqual(getValue(adminPageObjects.emailsub()), currentEmail);
+        click(adminPageObjects.submitbtn(),"Submit Button");
+        waitSleep(2000);
+
+        passTest("SBA_TC_22", "Successfully Validated Updating Sub Accounts Information");
+
+>>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
     }
 
     public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount(){
