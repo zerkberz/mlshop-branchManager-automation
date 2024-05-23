@@ -124,80 +124,90 @@ public class SignUp_Steps extends Base_Steps {
     }
     public void SBSU_TC_06_InvalidNumber(){
             directToSignUp();
-            type(signUpRegisterPageObjects.signupEmailtxtbox(), "Email", propertyReader.getproperty("Email2"));
-            type(signUpRegisterPageObjects.signupNametxtbox(), "Name", propertyReader.getproperty("Name2"));
+            type(signUpRegisterPageObjects.signupEmailtxtbox(), "Email", "test.automation"+getRandomNumber()+"@mlhuillier.com");
+            type(signUpRegisterPageObjects.signupNametxtbox(), "Name", "test."+getRandomNumber()+"name");
             type(signUpRegisterPageObjects.signupPasswordtxtbox(), "Password", propertyReader.getproperty("Password2"));
             type(signUpRegisterPageObjects.signupRepasstxtbox(), "Password", propertyReader.getproperty("Password2"));
-            type(signUpRegisterPageObjects.ContactNumtxtbox(), "Contact Number", propertyReader.getproperty("InvStoreNum"));
-            type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", propertyReader.getproperty("Email2"));
-
+            type(signUpRegisterPageObjects.ContactNumtxtbox(), "Contact Number", "09"+getRandomNumber()+"69");
+            type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", "test.automation"+getRandomNumber()+"@mlhuillier.com");
             Dropdowns();
             click(signUpRegisterPageObjects.Continuebtn(),"Continue Button");
-
+            waitSleep(1000);
             if (isVisible(signUpRegisterPageObjects.ContactNumberError(), "Invalid Number")) {
-                ExtentReporter.logPass("SBSU TC 06", "Invalid Number: Successful");
+                passTest("SBSU_TC_06_InvalidNumber","Successfully Validate Invalid Contact Number Address");
             }
             else {
-                ExtentReporter.logFail("SBSU TC 06","Invalid Number: Failed");
-                Assert.fail("");
+                failTest("SBSU_TC_06_InvalidNumber","Invalid Number: Failed");
             }
     }
     public void SBSU_TC_07_InvalidBranchName(){
         directToSignUp();
-        type(signUpRegisterPageObjects.signupEmailtxtbox(), "Email", propertyReader.getproperty("Email2"));
-        type(signUpRegisterPageObjects.signupNametxtbox(), "Name", propertyReader.getproperty("Name2"));
+        type(signUpRegisterPageObjects.signupEmailtxtbox(), "Email", "test.automation"+getRandomNumber()+"@mlhuillier.com");
+        type(signUpRegisterPageObjects.signupNametxtbox(), "Name", "test."+getRandomNumber()+"name");
         type(signUpRegisterPageObjects.signupPasswordtxtbox(), "Password", propertyReader.getproperty("Password2"));
         type(signUpRegisterPageObjects.signupRepasstxtbox(), "Password", propertyReader.getproperty("Password2"));
         type(signUpRegisterPageObjects.ContactNumtxtbox(), "Contact Number", propertyReader.getproperty("phonenum"));
-        type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", propertyReader.getproperty("Email2"));
-
-        Dropdowns();
+        type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", "test.automation"+getRandomNumber()+"@mlhuillier.com");
+        //
+        waitSleep(1000);
+        click(signUpRegisterPageObjects.provincetxtbox(), "DropDown");
+        waitSleep(1000);
+        typeEnter(signUpRegisterPageObjects.ProvDropDown(), "Province Input", "Cebu");
+        waitSleep(1000);
+        click(signUpRegisterPageObjects.CityDropDown(), "City Dropdown");
+        waitSleep(1000);
+        typeEnter(signUpRegisterPageObjects.CityDropDown(), "City Input", "Cebu City");
+        waitSleep(1000);
+        click(signUpRegisterPageObjects.BranchDropDown(), "Branch Dropdown");
+        waitSleep(1000);
+        typeEnter(signUpRegisterPageObjects.BranchDropDown(), "Branch Name Input", "ML NRA");
+        waitSleep(1000);
+        //
         click(signUpRegisterPageObjects.Continuebtn(),"Continue Button");
-
-        if (isVisible(signUpRegisterPageObjects.BranchnameError(), "Invalid Branch Name")) {
-            ExtentReporter.logPass("SBSU TC 07", "Invalid Branch Name: Successful");
+        if (isVisible(signUpRegisterPageObjects.BranchnameError(), getText(signUpRegisterPageObjects.BranchnameError()))) {
+            passTest("PASSED: SBSU_TC_07", "Invalid Branch Name: Successful");
         }
         else {
-            ExtentReporter.logFail("SBSU TC 07","Invalid Branch Name: Failed");
-            Assert.fail("");
+            failTest("FAILED: SBSU_TC_07", "Invalid Branch Name: Failed");
         }
     }
 
     //update drop downs and branch name to successfully sign up
     public void SBSU_TC_08_SuccesfulSignUp(){
         directToSignUp();
-        type(signUpRegisterPageObjects.signupEmailtxtbox(), "Email", propertyReader.getproperty("Email2"));
-        type(signUpRegisterPageObjects.signupNametxtbox(), "Name", propertyReader.getproperty("Name2"));
+        type(signUpRegisterPageObjects.signupEmailtxtbox(), "Email", "test.automation"+getRandomNumber()+"@mlhuillier.com");
+        type(signUpRegisterPageObjects.signupNametxtbox(), "Name", "test."+getRandomNumber()+"name");
         type(signUpRegisterPageObjects.signupPasswordtxtbox(), "Password", propertyReader.getproperty("Password2"));
         type(signUpRegisterPageObjects.signupRepasstxtbox(), "Password", propertyReader.getproperty("Password2"));
         type(signUpRegisterPageObjects.ContactNumtxtbox(), "Contact Number", propertyReader.getproperty("phonenum"));
-        type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", propertyReader.getproperty("Email2"));
+        type(signUpRegisterPageObjects.StoreEmail(), "Store Email Address", "test.automation"+getRandomNumber()+"@mlhuillier.com");
 
-        waitSleep(2000);
+        waitSleep(1000);
         click(signUpRegisterPageObjects.provincetxtbox(), "DropDown");
-        waitSleep(2000);
-        typeEnter(signUpRegisterPageObjects.ProvDropDown(), "Province Input", "Cagayan");
-        waitSleep(2000);
+        waitSleep(1000);
+        arrowKeyDownv2(getThreeDigitRandomNumber());
+        waitSleep(1000);
         click(signUpRegisterPageObjects.CityDropDown(), "City Dropdown");
-        waitSleep(2000);
-        typeEnter(signUpRegisterPageObjects.CityDropDown(), "City Input", "Abulug");
-        waitSleep(2000);
+        waitSleep(1000);
+        arrowKeyDownv2(getThreeDigitRandomNumber());
+        waitSleep(1000);
         click(signUpRegisterPageObjects.BranchDropDown(), "Branch Dropdown");
+        waitSleep(1000);
+        arrowKeyDownv2(getThreeDigitRandomNumber());
         waitSleep(2000);
-        typeEnter(signUpRegisterPageObjects.BranchDropDown(), "Branch Name Input", "Ml junction luna");
-        waitSleep(2000);
-
         click(signUpRegisterPageObjects.Continuebtn(),"Continue Button");
-
-
-        if (isVisible(signUpRegisterPageObjects.SignUpsuccessful(), "Invalid Branch Name")) {
-            ExtentReporter.logPass("SBSU TC 08", "Sign Up Account: Successful");
+        waitSleep(2000);
+        boolean isSucess = false;
+        if (isVisible(signUpRegisterPageObjects.SignUpsuccessful(), getText(signUpRegisterPageObjects.SignUpsuccessful()))) {
+            isSucess = true;
         }
-        else {
-            ExtentReporter.logFail("SBSU TC 08","Sign Up Account: Failed");
-            Assert.fail("");
-        }
+
         click(signUpRegisterPageObjects.ConfirmBtn(), "Confirm Button");
+        if(isSucess){
+            passTest("PASSED: SBSU TC 08", "Sign Up Account: Successful");
+        }else{
+            failTest("SBSU TC 08","Sign Up Account: Failed");
+        }
     }
 }
 

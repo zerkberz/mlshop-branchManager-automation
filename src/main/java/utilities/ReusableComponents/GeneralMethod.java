@@ -22,7 +22,7 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
     protected final WebDriver driver = getDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
     
@@ -94,9 +94,11 @@ public class GeneralMethod extends ExtentReporter{
     public boolean isDisplayed(WebElement locator) {
         try {
             wait.until(ExpectedConditions.visibilityOf(locator));
-            return locator.isDisplayed();
-        } catch (NoSuchElementException | TimeoutException e) {
+            return true;
+        } catch (NoSuchElementException e) {
             return false;
+        } finally {
+
         }
     }
     public String getText(WebElement locator){
@@ -299,13 +301,30 @@ public class GeneralMethod extends ExtentReporter{
             LoggingUtils.info("Arrow key down option: " + option);
             Actions action = new Actions(driver);
             for(int i=0; i< option; i++){
+                LoggingUtils.info("Performing Arrow Key Down" + i);
                 action.keyDown(Keys.SHIFT).sendKeys(Keys.ENTER)
                 .perform();
             }
         }catch(Exception e){
             throw new AssertionError("Assertion error: "+ e.getMessage());
         }
-    }   
+    }
+    public void arrowKeyDownv2(int option){
+        Actions action = new Actions(driver);
+        try{
+            LoggingUtils.info("Arrow key down option: " + option);
+            for(int i=0; i< option; i++){
+                action.keyDown(Keys.SHIFT)
+                        .perform();
+            }
+        }catch(Exception e){
+            throw new AssertionError("Assertion error: "+ e.getMessage());
+        }
+        finally {
+            LoggingUtils.info("Entering Selected Value ");
+            action.sendKeys(Keys.ENTER).perform();
+        }
+    }
     public void arrowKeyUp(int option){
         try{
             LoggingUtils.info("Arrow key up option: " + option);
@@ -341,6 +360,14 @@ public class GeneralMethod extends ExtentReporter{
     public static int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(999) + 1;
+    }
+    public static int getThreeDigitRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(152) + 1;
+    }
+    public static int getFiveDigitsRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(999999) + 99999;
     }
     public String getValue(WebElement locator){
         String val = null;

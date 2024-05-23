@@ -2,6 +2,9 @@ package mlshopbuilder.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
 import static utilities.Driver.DriverManager.getDriver;
 
 public class Merchant_Objects {
@@ -15,7 +18,7 @@ public class Merchant_Objects {
     public WebElement Continuebtn() { return getDriver().findElement(By.xpath("(//button[contains(text(),'Continue')])"));}
     public WebElement shopbuilderbutton() {return getDriver().findElement(By.xpath("//div[normalize-space()='Shop Builder']"));}
     public WebElement TotalStore() {return getDriver().findElement(By.xpath("//div[@class='pt-3 sm:text-[16px] md:text-[20px]']"));}
-    public WebElement TotalNumberStore() {return getDriver().findElement(By.xpath("//b[normalize-space()='3']"));}
+    public WebElement TotalNumberStore() {return getDriver().findElement(By.xpath("//div[@class='pt-3 sm:text-[16px] md:text-[20px]']/child::b"));}
     public WebElement Searchtxtbox() {return getDriver().findElement(By.xpath("//input[@placeholder='Search store']"));}
     public WebElement ListingShop() {return getDriver().findElement(By.xpath("//img[@alt=\"Listing\"]"));}
     public WebElement StoreSearchWatches() {return getDriver().findElement(By.xpath("//div[contains(text(),'ML Shop Watch Store')]"));}
@@ -96,9 +99,57 @@ public class Merchant_Objects {
     public WebElement gender(){return  getDriver().findElement(By.xpath("//button[contains(text(),'Mens')]"));}
     public WebElement stone(){return  getDriver().findElement(By.xpath("//button[contains(text(),'Diamond')]"));}
 
+    //
+    public List<WebElement> Stores(){
+        return getDriver().findElements(By.cssSelector("[alt='Listing']"));
+    }
+    public WebElement Store(){
+        return getDriver().findElement(By.cssSelector("[alt='Listing']"));
+    }
+    public List<WebElement> StoreNames(){
+        return getDriver().findElements(By.cssSelector("[class='font-bold text-lg text-center']"));
+    }
+    public WebElement status(){
+        return getDriver().findElement(By.cssSelector("[role='status']"));
+    }
+    public WebElement viewStoreProducts_pageHeader(){
+        return getDriver().findElement(By.cssSelector("[class='text-[25px] font-semibold']"));
+    }
 
+    //TD
+    public List <WebElement> productId_TD(){
+        return getDriver().findElements(By.xpath("//tr[@class='jsx-9ed979a19a0f8424']//td[2]"));
+    }
 
-
-
+    public WebElement firstProductId(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[2]"));
+    }
+    public WebElement firstBarcode(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[3]"));
+    }
+    public WebElement firstLotNumber(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[4]"));
+    }
+    public WebElement firstStyleName(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[5]"));
+    }
+    public WebElement firstProductType(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[6]"));
+    }
+    public WebElement firstPrice(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[7]"));
+    }
+    public WebElement firstViewButton(){
+        return getDriver().findElement(By.xpath("//tr[1]/td[9]"));
+    }
+    public WebElement typeName(){
+        return getDriver().findElement(By.xpath("//div[@id='typeName']/child::div/child::div[1]/child::div[1]"));
+    }
+    public WebElement lotNumber(){
+        return getDriver().findElement(By.id("lotNum"));
+    }
+    public WebElement styleName(){
+        return getDriver().findElement(By.id("styleName"));
+    }
 
 }

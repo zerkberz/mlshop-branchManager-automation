@@ -1,6 +1,12 @@
 package mlshopbuilder.testSteps;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
+
+import java.util.List;
 
 public class Merchant_Steps extends Base_Steps {
 
@@ -45,12 +51,13 @@ public class Merchant_Steps extends Base_Steps {
         type(merchantObjects.ItemWeighttxtbox(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
         type(merchantObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"));
         type(merchantObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
-
+        //
         type(merchantObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"));
         type(merchantObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"));
         type(merchantObjects.Costofsalestxtbox(), "Cost of Sales Textbox", propertyReader.getproperty("costofsale"));
         type(merchantObjects.grosssalestxtbox(), "Gross Sales Textbox", propertyReader.getproperty("grosssale"));
         type(merchantObjects.pricetxtbox(), "Price Textbox", propertyReader.getproperty("price"));
+
     }
 
     public void goingtoAddproductpage(){
@@ -88,26 +95,38 @@ public class Merchant_Steps extends Base_Steps {
 
     public void SBR_TC_03_TotalStores() {
         goToShopBuilder();
+        int counter=0;
+        for(WebElement stores : merchantObjects.StoreNames()){
+            LoggingUtils.info("Store Name: " + stores.getText());
+            counter++;
+        }
+        ExtentReporter.logInfo("Counted Store: "+ (counter + 1) , " Total Store: "+ merchantObjects.TotalNumberStore().getText());
         if( isVisible(merchantObjects.TotalStore(), "Total Store") && 
             isVisible(merchantObjects.TotalNumberStore(), "Number of Stores")){
+            assertEqual(String.valueOf(counter+1), merchantObjects.TotalNumberStore().getText());
             passTest("SBR_TC_03", "VValidated Total Stores");    
         }else{
             failTest("SBR_TC_03", "Failed to Validate Total Stores");
         }
-        LoggingUtils.info("SBR_TC_03: Validated Total Stores");
-        
     }
     public void SBR_TC_04_InvStoreSearch(){
         goToShopBuilder();
-        waitSleep(2000);
+        waitSleep(1000);
         typeEnter(merchantObjects.Searchtxtbox(), "Search Textbox", propertyReader.getproperty("InvStorename"));
-        waitSleep(2000);
-        LoggingUtils.info("SBR_TC_04: Validated Invalid Store Search");
+        waitSleep(1000);
+        try{
+            if(isDisplayed(merchantObjects.Store())){
+                failTest("SBR_TC_04_InvStoreSearch", "Failed to Validate Invalid Store Search");
+            }
+        }catch (NoSuchElementException e){
+            passTest("SBR_TC_04_InvStoreSearch","Validated Invalid Store Search" );
+
+        }
     }
 
     public void SBR_TC_05_StoreSearch(){
         goToShopBuilder();
-        waitSleep(2000);
+        waitSleep(1000);
         type(merchantObjects.Searchtxtbox(), "Search Textbox", propertyReader.getproperty("ValidSearch"));
         waitSleep(2000);
         if(isInStoreSearch()){
@@ -128,7 +147,6 @@ public class Merchant_Steps extends Base_Steps {
         }
         else {
            failTest("SBR_TC_06_StoreRedirection", "Failed to directed Shop");
-            
         } 
     }
 
@@ -150,11 +168,18 @@ public class Merchant_Steps extends Base_Steps {
 
     public void SBR_TC_08_ProductinfoInputs_09_SalesInformationInputs(){
         goingtoAddproductpage();
-        waitSleep(4000);
+        waitSleep(2000);
         inputsAddproduct("merchant");
-        LoggingUtils.info("SBR TC 08 Product info Inputs Successful");
-        isDisplayed(merchantObjects.Amparitotickbox());
-        LoggingUtils.info("SBR TC 09 Sales info Inputs Successful");
+        assertEqual(getValue(merchantObjects.ItemWeighttxtbox()), propertyReader.getproperty("ItemWeight"));
+        assertEqual(getValue(merchantObjects.StyleNametxtbox()), propertyReader.getproperty("StyleName"));
+        assertEqual(getValue(merchantObjects.Notetxtbox()), propertyReader.getproperty("Notes"));
+        assertEqual(getValue(merchantObjects.Barcodetxtbox()), propertyReader.getproperty("barcode"));
+        assertEqual(getValue(merchantObjects.Lotnumbertxtbox()), propertyReader.getproperty("lotnumber"));
+        assertEqual(getValue(merchantObjects.Costofsalestxtbox()), propertyReader.getproperty("costofsale"));
+        assertEqual(getValue(merchantObjects.grosssalestxtbox()), propertyReader.getproperty("grosssale"));
+        assertEqual(getValue(merchantObjects.pricetxtbox()), propertyReader.getproperty("price"));
+        passTest("SBR TC 08 Product info Inputs Successful and SBR TC 09 Sales info Inputs Successful", "Passed!!!" );
+
     }
 
    public void SBR_TC_10_ImageUpload(){
@@ -182,7 +207,7 @@ public class Merchant_Steps extends Base_Steps {
         merchantObjects.Costofsalestxtbox().clear();
         merchantObjects.grosssalestxtbox().clear();
         merchantObjects.pricetxtbox().clear();
-        if(isVisible(merchantObjects.inputRequiredText(), "Input required text")){
+        if(isVisible(merchantObjects.inputRequiredText(), getText(merchantObjects.inputRequiredText()))){
             passTest("SBR_TC_11_ValidateInputs", "Input required text successfully displayed");
         }else{
             failTest("SBR_TC_11_ValidateInputs", "Failed to validate input required text");
@@ -214,14 +239,21 @@ public class Merchant_Steps extends Base_Steps {
        type(supportAdminPageObjects.Costofsalestxtbox(), "Cost of Sales Textbox", propertyReader.getproperty("costofsale"));
        type(supportAdminPageObjects.grosssalestxtbox(), "Gross Sales Textbox", propertyReader.getproperty("grosssale"));
        type(supportAdminPageObjects.pricetxtbox(), "Price Textbox", propertyReader.getproperty("price"));
-
-       LoggingUtils.info("SBR TC 12 Publishing Product: Successful");
+       click(merchantObjects.publishbtn(), "Publish Button");
+       if(isVisible(merchantObjects.status(), getText(merchantObjects.status()))){
+           passTest("BR TC 12", "Publishing Product: Successful");
+       }else{
+           failTest("BR TC 12", "Publishing Product: Successful");
+       }
    }
 
     public void SBR_TC_13_Viewproduct(){
         goingtoViewproductpage();
-        LoggingUtils.info("SBR TC 13 Redirection to View Products Successful");
-        
+        if(isVisible(merchantObjects.viewStoreProducts_pageHeader(), getText(merchantObjects.viewStoreProducts_pageHeader()))) {
+            passTest("SBR TC 13", "Redirection to View Products Successful");
+        }else{
+            failTest("SBR TC 13", "Failed to Validate Redirection to View Products");
+        }
     }
 
     public void SBR_TC_14_Incorrectsearch(){
@@ -234,34 +266,56 @@ public class Merchant_Steps extends Base_Steps {
     public void SBR_TC_15_ShowEntries() {
         goingtoViewproductpage();
         waitSleep(5000);
+
         click(merchantObjects.entrydropdown(),"Entries");
-        click(merchantObjects.entryoption10down(),"10 Entries");;
-        LoggingUtils.info("clicked 10");
-        click(merchantObjects.entrydropdown(),"Entries");
-        click(merchantObjects.entryoption25down(),"25 Entries");
-        LoggingUtils.info("clicked 25");
-        click(merchantObjects.entrydropdown(),"Entries");
-        click(merchantObjects.entryoption50down(),"50 Entries");
-        LoggingUtils.info("clicked 50");
+        click(merchantObjects.entryoption10down(),"10 Entries");
+        boolean isCorrect10 = false;
+        int counter = 0;
+        for (WebElement trElement : merchantObjects.productId_TD()) {
+            counter++;
+            LoggingUtils.info(">>>>>>>>>>>>>#Num"+counter+":::::::::Product ID: " + trElement.getText());
+        }
+        if(counter <= 10){
+            isCorrect10 = true;
+        }
+        boolean isCorrect75 = false;
         click(merchantObjects.entrydropdown(),"Entries");
         click(merchantObjects.entryoption75down(),"75 Entries");
-        LoggingUtils.info("clicked 75");
-        click(merchantObjects.entrydropdown(),"Entries");
-        click(merchantObjects.entryoption100down(),"100 Entries");
-        LoggingUtils.info("clicked 100");
-        click(merchantObjects.entrydropdown(),"Entries");
-        click(merchantObjects.entryoptionalldown(),"All Entries");
-        LoggingUtils.info("clicked All entries");
-        LoggingUtils.info("SBR_TC_15 Show Entries: Successful");
-        
+        for (WebElement trElement : merchantObjects.productId_TD()) {
+            counter++;
+            LoggingUtils.info(">>>>>>>>>>>>>#Num"+counter+":::::::::Product ID: " + trElement.getText());
+        }
+        if(counter <= 10){
+            isCorrect75 = true;
+        }
+
+        if(isCorrect10 && isCorrect75){
+            passTest("SBR_TC_15", "Show Entries: Successful");
+        }else{
+            failTest("SBR_TC_15", "Show Entries: Successful");
+        }
+
     }
 
     public void SBR_TC_16_Viewdetails() {
         goingtoViewproductpage();
-        click(merchantObjects.Viewdetailsbtn(),"View details button");
+        String productID = getText(merchantObjects.firstProductId());
+        String barCode = getText(merchantObjects.firstBarcode());
+        String lotNumber = getText(merchantObjects.firstLotNumber());
+        String styleName = getText(merchantObjects.firstStyleName());
+        String productType = getText(merchantObjects.firstProductType());
+        String price = getText(merchantObjects.firstPrice());
+
+        click(merchantObjects.firstViewButton(),"First View details button");
         waitSleep(1500);
         isDisplayed(merchantObjects.Amparitotickbox2());
         LoggingUtils.info("SBR_TC_16 View details: Successful");
+
+        assertEqual(getValue(merchantObjects.Barcodetxtbox()), barCode);
+        assertEqual(getValue(merchantObjects.lotNumber()), lotNumber);
+        assertEqual(getValue(merchantObjects.styleName()), styleName);
+        assertEqual(getText(merchantObjects.typeName()), productType);
+        assertEqual(getValue(merchantObjects.pricetxtbox()), price);
         
     }
 

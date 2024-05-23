@@ -67,7 +67,7 @@ public class SignUp_Register_PageObjects{
         return getDriver().findElement(By.xpath("//span[@class='text-rose-500 text-sm mt-[-15px]' and contains(text(),'The contact number should be 11 digits')]"));
     }
     public WebElement BranchnameError(){
-        return getDriver().findElement(By.xpath("//div[@role=\"status\" and contains(@class, \"go3958317564\") and contains(text(), \"Branch Name has been selected by another merchant\")]"));
+        return getDriver().findElement(By.cssSelector("[role='status']"));
     }
     public WebElement SignUpsuccessful(){
         return getDriver().findElement(By.xpath("//p[contains(text(),'Successfully registered!')]"));

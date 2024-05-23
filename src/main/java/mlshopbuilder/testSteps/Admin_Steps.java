@@ -1,14 +1,10 @@
 package mlshopbuilder.testSteps;
 
-import mlshopbuilder.pageObject.SupportAdmin_PageObjects;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import utilities.ExtentReport.ExtentReporter;
-import utilities.PropertyReader.propertyReader;
-import utilities.Logger.LoggingUtils;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import utilities.ExtentReport.ExtentReporter;
+import utilities.Logger.LoggingUtils;
 import java.util.List;
 
 public class Admin_Steps extends Base_Steps {
@@ -23,37 +19,36 @@ public class Admin_Steps extends Base_Steps {
         LoggingUtils.info("Successful Logged In");
     }
 
-    public void goToShopBuilder(String role){
+    public void goToShopBuilder(){
         click(loginPageObjects.userIcon(), "User Avatar");
         click(adminPageObjects.shopbuilderbutton(), "Shopbuilder Button");
     }
 
-    public void agentconfignavigation (String role){
+    public void agentconfignavigation (){
         click(supportAdminPageObjects.userIcon(), "Account Header");
         click(adminPageObjects.agentconfigbtn(),"Agent Config button");
     }
 
-    public void dashboardnavigation (String role){
+    public void dashboardnavigation (){
         click(supportAdminPageObjects.userIcon(), "Account Header");
         click(supportAdminPageObjects.dashboardbtn(),"Dashboard button");
     }
 
     public boolean isInStorePage() {
         if (isVisible(merchantObjects.Addproduct(),"ML Shop Jewelry Store")) {
+            return true;
+        }else{
+            return false;
         }
-        return true;
     }
 
-    // Test Scripts
     public void SBA_TC_01_Login() {
         loginByRole("admin");
-
         LoggingUtils.info("SBA_TC_01_LogIn_as_Admin");
     }
 
     public void SBA_TC_02_ShopBuilderRedirection() {
-        goToShopBuilder("admin");
-
+        goToShopBuilder();
         if(isDisplayed(adminPageObjects.totalstores())){
             passTest("SBA_TC_02", "Validated Navigation to ShopBuilder Page");
         }else{
@@ -62,7 +57,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_03_and_04_DashboardTotalStoreAndNewlyAddedStoreValidation() {
-        dashboardnavigation("admin");
+        dashboardnavigation();
 
         isDisplayed(supportAdminPageObjects.newlyaddedstore());
         isDisplayed(supportAdminPageObjects.totalstorecount());
@@ -72,7 +67,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_05_and_06_ShopBuilderNavigation_TotalStoreCount() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         if(isVisible(merchantObjects.TotalStore(), "Total Store")){
             passTest("SBA_TC_05", "Validated Navigation to ShopBuilder Page");
@@ -84,7 +79,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_07_InvalidSearches() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(3000);
         typeEnter(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watchzzz");
@@ -95,7 +90,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_08_ValidSearches() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(1500);
         typeEnter(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watch");
@@ -106,7 +101,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_09_SelectedStoreRedirection() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(2000);
         click(adminPageObjects.MLShopJewelryStore(),"ML Shop Jewelry Store" );
@@ -123,19 +118,17 @@ public class Admin_Steps extends Base_Steps {
 
     //Remove Exit Btn if actual demo
     public void SBA_TC_10_AddStore() {
-        goToShopBuilder("admin");
-
+        goToShopBuilder();
         click(adminPageObjects.addstorebtn(),"Add Store");
         type(adminPageObjects.storeName(),"Store Name","FranCheese and JustPear");
         type(adminPageObjects.descstore(),"Store Description","Cheesy diamond ang Pearfect Element");
 //        click(adminPageObjects.submitbtn(),"Submit Button");
         click(adminPageObjects.exitbtn(),"Exit btn");
-
         LoggingUtils.info("SBA TC 10: Add Store: Success");
     }
 
     public void SBA_TC_11_AddCategory() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(2000);
         click(adminPageObjects.Test(),"Test Store" );
@@ -149,7 +142,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_12_HideShowCategories() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(2000);
         click(adminPageObjects.Test(),"Test Store" );
@@ -171,7 +164,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_13_AddType() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(2000);
         click(adminPageObjects.Test(),"Test Store" );
@@ -186,7 +179,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_14_AddingSortPrice() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         waitSleep(2000);
         click(adminPageObjects.Test(),"Test Store" );
@@ -206,7 +199,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_15_Viewtoggling() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         click(adminPageObjects.MLWatches(),"ML Watches Store" );
         waitSleep(3000);
@@ -218,7 +211,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_16_ViewProduct() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         click(adminPageObjects.MLWatches(),"ML Watches Store" );
         waitSleep(3000);
@@ -238,7 +231,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_17_ViewLogsFunctionalities() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         click(adminPageObjects.MLWatches(),"ML Watches Store" );
         waitSleep(3000);
@@ -261,27 +254,10 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_18_BannerFunctionality() {
-        goToShopBuilder("admin");
-        shopbuildernavigation("admin");
+        goToShopBuilder();
         waitSleep(2000);
         click(adminPageObjects.Store(1), "Store");
         waitSleep(2000);
-//        click(adminPageObjects.addBanner_btn(), "Add Banner Button");
-//        waitSleep(2000);
-//
-//        uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
-//        click(supportAdminPageObjects.bannerscreensize(),"banner screen size");
-//        waitSleep(2000);
-//        arrowKeyDown(4);
-//        waitSleep(1000);
-//        click(supportAdminPageObjects.bannerposition(),"Banner position");
-//        waitSleep(2000);
-//        arrowKeyDown(1);
-//        waitSleep(1000);
-//        click(supportAdminPageObjects.submitbutton(),"Submit Button");
-//        waitSleep(4000);
-//        isVisible(adminPageObjects.bannerImg_alt(), "Banner Image");
-
         click(adminPageObjects.editBanner_btn(), "Edit Banner Button");
         waitSleep(2000);
         click(adminPageObjects.bannerCameraEdit_btn(), "Camera/Edit Icon");
@@ -298,7 +274,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_19_EditProfileFunctionalities() {
-        goToShopBuilder("admin");
+        goToShopBuilder();
 
         click(adminPageObjects.MLWatches(), "ML Watches");
         click(supportAdminPageObjects.EditProfile(), "Edit Profile Button");
@@ -328,7 +304,7 @@ public class Admin_Steps extends Base_Steps {
 
     //change
     public void SBA_TC_20_AddingSubaccount() {
-        dashboardnavigation("admin");
+        dashboardnavigation();
         //Add Sub Account
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
         click(adminPageObjects.addaccountbtn(),"Add Sub Account");
@@ -369,14 +345,10 @@ public class Admin_Steps extends Base_Steps {
         } else {
             failTest("SBA_TC_20", "Failed to Validate Adding Sub Account");
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 451fef0f167c3fb830c289d2e5a4a9f6ef51c687
     }
 
     public void SBA_TC_21_AddingAndRemovingStore(){
-        dashboardnavigation("admin");
+        dashboardnavigation();
         //Add Sub Account
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
         click(adminPageObjects.viewMerchantIcon(),"Merchant Button");
@@ -403,7 +375,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_22(){
-        dashboardnavigation("admin");
+        dashboardnavigation();
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
         click(adminPageObjects.editIcon1st(),"Edit Button");
         waitSleep(2000);
@@ -413,11 +385,7 @@ public class Admin_Steps extends Base_Steps {
         type(adminPageObjects.emailsub(),"Email","francis.mercadudes"+getRandomNumber()+"@mlhuillier.com");
         click(adminPageObjects.submitbtn(),"Submit Button");
         waitSleep(2000);
-
         LoggingUtils.info("SBA TC 22: Edit Sub Account Functionality: Success");
-=======
-        //TODO
-        // get value of first TD email
         String newEmail = getText(adminPageObjects.td_firstEmail());
         String newName = getValue(adminPageObjects.td_firstName());
         assertNotEqual(newEmail,currentEmail);
@@ -438,7 +406,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
     public void SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount(){
-        dashboardnavigation("admin");
+        dashboardnavigation();
         //Add Sub Account
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
 
@@ -456,7 +424,7 @@ public class Admin_Steps extends Base_Steps {
     }
 
 public void SBA_TC_24_and_25() {
-    dashboardnavigation("admin");
+    dashboardnavigation();
 
     click(adminPageObjects.mainaccountbtn(),"Main Accounts");
     click(adminPageObjects.editablemerchantinfo(),"View Merchant Details button");
@@ -468,7 +436,7 @@ public void SBA_TC_24_and_25() {
 }
 
     public void SBA_TC_26_statuschange() {
-    dashboardnavigation("admin");
+    dashboardnavigation();
 
     click(adminPageObjects.mainaccountbtn(),"Main Accounts");
     click(adminPageObjects.viewmerchantbtn(),"View Merchant Details button");
@@ -493,7 +461,7 @@ public void SBA_TC_24_and_25() {
 }
 
 public void SBA_TC_27_EmptyFields() {
-    dashboardnavigation("admin");
+    dashboardnavigation();
 
     click(adminPageObjects.mainaccountbtn(),"Main Accounts");
     click(adminPageObjects.editablemerchantbtn(),"View Merchant Details button");
@@ -516,7 +484,7 @@ public void SBA_TC_27_EmptyFields() {
 
 
 public void SBA_TC_28_ValidateUpdatedMerchantInfo() {
-    dashboardnavigation("admin");
+    dashboardnavigation();
     click(adminPageObjects.mainaccountbtn(),"Main Accounts");
 
     click(adminPageObjects.editablemerchantbtn(),"View Merchant Details button");
@@ -558,39 +526,32 @@ public void SBA_TC_28_ValidateUpdatedMerchantInfo() {
     waitSleep(3000);
     click(adminPageObjects.submitbtnmerchant(),"Submit button pressed");
     waitSleep(2500);
-
     LoggingUtils.info("SBA TC 29: Update Info : Successful");
 }
 
 public void SBA_TC_29_AgentConfigNavigation() {
-    agentconfignavigation("admin");
-
+    agentconfignavigation();
     isDisplayed(adminPageObjects.SearchOrderID());
     isVisible(adminPageObjects.SearchOrderID(),"Search Order Textbox");
     isDisplayed(adminPageObjects.Searchbtn());
     isVisible(adminPageObjects.Searchbtn(),"Search Button");
-
     LoggingUtils.info("SBA TC 30: Agent Config Navigation: Successful");
 }
 
+//TODO
 //    public void SBA_TC_30() {
-//        agentconfignavigation("admin");
-//
+//        agentconfignavigation();
 //        LoggingUtils.info("SBA TC 31: : Successful");
 //    }
-//
 //    public void SBA_TC_31() {
-//        agentconfignavigation("admin");
-//
+//        agentconfignavigation();
 //        LoggingUtils.info("SBA TC 32: : Successful");
 //    }
 
-public void SBA_TC_32_Logout() {
-    agentconfignavigation("admin");
-
-    click(supportAdminPageObjects.userIcon(), "Account Header");
-    click(merchantObjects.MLogoutbtn(),"Logout");
-
-    LoggingUtils.info("SBA TC 32: : Successful");
-}
+    public void SBA_TC_32_Logout() {
+        agentconfignavigation();
+        click(supportAdminPageObjects.userIcon(), "Account Header");
+        click(merchantObjects.MLogoutbtn(),"Logout");
+        LoggingUtils.info("SBA TC 32: : Successful");
+    }
 }

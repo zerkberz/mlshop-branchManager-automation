@@ -375,11 +375,10 @@ public class SupportAdmin_Steps extends Base_Steps {
 
     public void SBR_TC_25_ImageUpload(){
         goingtoAddproductpage("supportadmin");
-
         uploadFile(merchantObjects.coverPhoto(), filePathUtils.getAbsolutePath());
         uploadFile(merchantObjects.imageContent(), filePathUtils.getAbsolutePath());
         if(isVisible(merchantObjects.selectedCoverPhoto(), "Selected Photo" )||
-                isVisible(merchantObjects.selectedImageContent(), "Select Image Content")) {
+            isVisible(merchantObjects.selectedImageContent(), "Select Image Content")) {
             passTest("SBR_TC_25_ImageUpload", "Successfully uploaded photo");
         }else{
             failTest("SBR_TC_25_ImageUpload", "Failed to upload photo");

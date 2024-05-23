@@ -49,7 +49,7 @@ public class MerchantT extends BaseTest {
      public void SBR_TC_11_ValidateInputs() throws Exception {
          merchantSteps.SBR_TC_11_ValidateInputs();
      }
-     @Test(priority =1)
+     @Test(priority =10)
    public void SBR_TC_12_Publish() throws Exception {
        merchantSteps.SBR_TC_12_Publish();
    }
@@ -65,7 +65,7 @@ public class MerchantT extends BaseTest {
      public void SBR_TC_15_ShowEntries() throws Exception {
          merchantSteps.SBR_TC_15_ShowEntries();
      }
-     @Test(priority =14)
+     @Test(priority =1)
      private void SBR_TC_16_Viewdetails() throws Exception {
          merchantSteps.SBR_TC_16_Viewdetails();
      }

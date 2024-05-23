@@ -5,19 +5,19 @@ import org.testng.annotations.Test;
 
 public class LoginT extends BaseTest {
 
-    @Test(priority = 0)
+    @Test(priority = 0, description = "Verify login as Admin")
     public  void SBL_TC_01_AdminLogIn() throws Exception{
         loginSteps.SBL_TC_01_AdminLogIn();
     }
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Verify login as Support Admin")
     public  void SBL_TC_02_SuppAdminLogIn() throws Exception{
         loginSteps.SBL_TC_02_SuppAdminLogIn();
     }
-    @Test(priority = 2)
+    @Test(priority = 2, description = "Verify login as Regular")
     public  void SBL_TC_03_MerchantLogIn() throws Exception{
         loginSteps.SBL_TC_03_MerchantLogIn();
     }
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Verify enter no @gmail ")
     public  void SBL_TC_04_NoGmail_LogIn() throws Exception{
         loginSteps.SBL_TC_04_NoGmail_LogIn();
     }
