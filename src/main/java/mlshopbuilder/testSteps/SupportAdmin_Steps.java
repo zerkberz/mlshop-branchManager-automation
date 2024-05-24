@@ -27,13 +27,13 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void goingtoAddproductpage(String role){
-       
+        dashboardnavigation("supportadmin");
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.Addproduct(), "Add product button");
     }
 
     public void goingtoViewproductpage(String role){
-       
+        dashboardnavigation("supportadmin");
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.viewproductbtn(), "View products button");
     }
@@ -178,7 +178,6 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_02_ShopbuilderpageNavigation() {
-       
         dashboardnavigation("supportadmin");
         isDisplayed(supportAdminPageObjects.newlyaddedstore());
         isDisplayed(supportAdminPageObjects.totalstorecount());
@@ -189,8 +188,6 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_03_MerchantNavigation() {
-       
-
         dashboardnavigation("supportadmin");
         click(supportAdminPageObjects.merchantsbtn(),"Merchant button");
 
@@ -198,7 +195,6 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_04_and_05_TotalStores_and_NewlyAddedStore() {
-       
 
         dashboardnavigation("supportadmin");
         isDisplayed(supportAdminPageObjects.newlyaddedstore());
@@ -209,7 +205,6 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_06_and_07_ShopBuilderNavigation_and_TotalStoreCount() {
-       
 
         shopbuildernavigation("supportadmin");
         waitSleep(2000);
@@ -225,8 +220,7 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_08_InvalidStoreSearch() {
-       
-
+        shopbuildernavigation("supportadmin");
         waitSleep(2000);
         type(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "Watczzz");
         waitSleep(2000);
@@ -237,8 +231,8 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_09_ValidStoreSearch() {
-       
 
+        shopbuildernavigation("supportadmin");
         waitSleep(2000);
         type(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watch");
         waitSleep(2000);
@@ -249,8 +243,8 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_10_jewelryShopRedirection() {
-       
 
+        shopbuildernavigation("supportadmin");
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         isDisplayed(supportAdminPageObjects.Addproduct());
         isDisplayed(supportAdminPageObjects.viewproductbtn());
@@ -260,8 +254,8 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_11_MLWatchShopRedirection() {
-       
 
+        shopbuildernavigation("supportadmin");
         click(supportAdminPageObjects.StoreSearchWatches(), "ML Watch");
         isDisplayed(supportAdminPageObjects.Addproduct());
         isDisplayed(supportAdminPageObjects.viewproductbtn());
@@ -271,8 +265,8 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_12_to_15_EditProfile() {
-       
 
+        shopbuildernavigation("supportadmin");
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.EditProfile(), "Edit Profile Button");
         LoggingUtils.info("SBL TC 12 Edit Button: Success");
@@ -302,8 +296,8 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void SBL_TC_16_17_EditBannerAndCancelEditBanner() {
-       
 
+        shopbuildernavigation("supportadmin");
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.editbanner(), "ML Shop Jewelry Store Banner");
         LoggingUtils.info("SBL TC 16: Edit Banner function: Success");
@@ -317,7 +311,7 @@ public class SupportAdmin_Steps extends Base_Steps {
 
     /////////////////////////////////////////////////////////////// this
     public void SBL_TC_18_to_21_AddBanner() {
-
+        shopbuildernavigation("supportadmin");
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.addbannerbtn(), "Add Banner");
         waitSleep(2000);

@@ -21,8 +21,8 @@ public class SupportAdmin_PageObjects {
 
     //shopbuilder objects
     public WebElement InvalidSearch() {return getDriver().findElement(By.xpath("//div[contains(text(),'')]"));}
-    public WebElement StoreSearchWatches() {return getDriver().findElement(By.xpath("//div[contains(text(),'Watch')]"));}
-    public WebElement MLShopJewelryStore() {return getDriver().findElement(By.xpath("//div[contains(text(),'Jewelry')]"));}
+    public WebElement StoreSearchWatches() {return getDriver().findElement(By.xpath("//div[contains(text(),'ML Watches')]"));}
+    public WebElement MLShopJewelryStore() {return getDriver().findElement(By.xpath("//div[contains(text(),'ML Shop Jewelry Store')]"));}
     public WebElement TotalStore() {return getDriver().findElement(By.xpath("//div[@class='pt-3 sm:text-[16px] md:text-[20px]']"));}
     public WebElement TotalNumberStore() {return getDriver().findElement(By.xpath("//b[normalize-space()='3']"));}
     public WebElement Searchtxtbox() {return getDriver().findElement(By.xpath("//input[@placeholder='Search store']"));}
