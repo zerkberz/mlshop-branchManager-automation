@@ -171,7 +171,6 @@ public class SupportAdminT extends BaseTest{
     public void SBL_TC_55_AddstorestoMerchant() throws Exception {
         supportAdminSteps.SBL_TC_55_AddstorestoMerchant();
     }
-
 }
 //
 

@@ -27,13 +27,13 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void goingtoAddproductpage(String role){
-        dashboardnavigation("supportadmin");
+        shopbuildernavigation(role);
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.Addproduct(), "Add product button");
     }
 
     public void goingtoViewproductpage(String role){
-        dashboardnavigation("supportadmin");
+        shopbuildernavigation(role);
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.viewproductbtn(), "View products button");
     }
@@ -108,7 +108,7 @@ public class SupportAdmin_Steps extends Base_Steps {
     }
 
     public void goingtoViewDetailspage(String role){
-       
+        shopbuildernavigation(role);
         click(supportAdminPageObjects.MLShopJewelryStore(), "ML Shop Jewelry Store");
         click(supportAdminPageObjects.viewproductbtn(), "View products button");
         click(supportAdminPageObjects.Editviewdetailsbtn(),"View Product Details");
@@ -415,12 +415,12 @@ public class SupportAdmin_Steps extends Base_Steps {
 //        type(supportAdminPageObjects.Size(), "Size Textbox", propertyReader.getproperty("Size"));
 //        type(supportAdminPageObjects.Diamondweight(), "Diamond Weight Textbox", propertyReader.getproperty("DiaWeight"));
 //        type(supportAdminPageObjects.Itemsweight(), "Item Weight Textbox", propertyReader.getproperty("ItemWeight"));
-        type(supportAdminPageObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName"+getRandomNumber()));
+        type(supportAdminPageObjects.StyleNametxtbox(), "Style Name Textbox", propertyReader.getproperty("StyleName") + getRandomNumber());
         type(supportAdminPageObjects.Notetxtbox(), "Notes Textbox", propertyReader.getproperty("Notes"));
         LoggingUtils.info("SBL: Product info Inputs Successful");
 
-        type(supportAdminPageObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode"+getRandomNumber()));
-        type(supportAdminPageObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber"+getRandomNumber()));
+        type(supportAdminPageObjects.Barcodetxtbox(), "Barcode Textbox", propertyReader.getproperty("barcode")+ getRandomNumber());
+        type(supportAdminPageObjects.Lotnumbertxtbox(), "Lot Number Textbox", propertyReader.getproperty("lotnumber")+getRandomNumber());
         type(supportAdminPageObjects.Costofsalestxtbox(), "Cost of Sales Textbox", propertyReader.getproperty("costofsale"));
         type(supportAdminPageObjects.grosssalestxtbox(), "Gross Sales Textbox", propertyReader.getproperty("grosssale"));
         type(supportAdminPageObjects.pricetxtbox(), "Price Textbox", propertyReader.getproperty("price"));

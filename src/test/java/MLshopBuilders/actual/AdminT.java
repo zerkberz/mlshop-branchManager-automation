@@ -15,7 +15,6 @@ public class AdminT extends BaseTest {
         }
     }
 
-
     @Test(priority = 1, description = "Redirection to ShopBuilder Page", dependsOnMethods = "SBA_TC_01_Login")
     public void SBA_TC_02_ShopBuilderRedirection() throws Exception {
         adminSteps.SBA_TC_02_ShopBuilderRedirection();
