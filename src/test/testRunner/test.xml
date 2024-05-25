@@ -1,30 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SHOP" thread-count="6">
+<suite name="SHOP" thread-count="6" parallel="tests">
     <listeners>
         <listener class-name="utilities.ExtentReport.ExtentReporter" />
         <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>
     </listeners>
 
-<!--    <test name="BUILDERS">-->
-<!--        <parameter name="browser" value="chrome">-->
-<!--            <classes>-->
-<!--                <class name="MLshopBuilders.actual.LoginT">-->
-<!--                </class>-->
-<!--                <class name="MLshopBuilders.actual.MerchantT">-->
-<!--                </class>-->
-<!--            </classes>-->
-<!--        </parameter>-->
-<!--    </test>-->
-    <test name="BUILDERS2">
+    <test name="LOGIN">
         <parameter name="browser" value="chrome">
             <classes>
-<!--                <class name="MLshopBuilders.actual.SignUpT">-->
-<!--                </class>-->
+                <class name="MLshopBuilders.actual.LoginT">
+                </class>
+            </classes>
+        </parameter>
+    </test>
+    <test name="SIGNUP">
+        <parameter name="browser" value="chrome">
+            <classes>
+                <class name="MLshopBuilders.actual.SignUpT">
+                </class>
+            </classes>
+        </parameter>
+    </test>
+    <test name="MERCHANT">
+        <parameter name="browser" value="chrome">
+            <classes>
+                <class name="MLshopBuilders.actual.MerchantT">
+                </class>
+            </classes>
+        </parameter>
+    </test>
+    <test name="SUPPORT ADMIN">
+        <parameter name="browser" value="chrome">
+            <classes>
                 <class name="MLshopBuilders.actual.SupportAdminT">
                 </class>
-<!--                <class name="MLshopBuilders.actual.AdminT">-->
-<!--                </class>-->
+            </classes>
+        </parameter>
+    </test>
+    <test name="ADMIN">
+        <parameter name="browser" value="chrome">
+            <classes>
+                <class name="MLshopBuilders.actual.AdminT">
+                </class>
             </classes>
         </parameter>
     </test>

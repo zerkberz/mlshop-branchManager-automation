@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 import static utilities.Driver.DriverManager.getDriver;
 public class ExtentReporter implements ITestListener {
@@ -37,8 +38,9 @@ public class ExtentReporter implements ITestListener {
         String projectDirectory = System.getProperty("user.dir");
         String reportsDirectory = projectDirectory + "/Reports";
         String suiteName = context.getSuite().getName();
+        String testName = context.getCurrentXmlTest().getName();
         String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
-        String reportFileName = currentDate+"/"+suiteName+".html";
+        String reportFileName = currentDate+"/"+suiteName+"/"+testName+".html";
         ExtentSparkReporter spark = new ExtentSparkReporter(reportsDirectory + "/" + reportFileName);
         extent.attachReporter(spark);
     }
