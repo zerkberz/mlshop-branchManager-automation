@@ -22,9 +22,14 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
     protected final WebDriver driver = getDriver();
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    private final WebDriverWait wait;
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
+
+    public GeneralMethod(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
     
     public void click(WebElement locator, String elementName){
         try {

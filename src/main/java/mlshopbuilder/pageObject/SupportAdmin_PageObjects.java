@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 
 import static utilities.Driver.DriverManager.getDriver;
 
+import java.util.List;
+
 public class SupportAdmin_PageObjects {
 
     //user Avatar
@@ -16,6 +18,7 @@ public class SupportAdmin_PageObjects {
     //dashboard objects
     public WebElement totalstorecount() {return getDriver().findElement(By.xpath("//p[normalize-space()='Total Stores:']"));}
     public WebElement newlyaddedstore() {return getDriver().findElement(By.xpath("//p[normalize-space()='Newly added store:']"));}
+    public WebElement newlyaddedstore_name() {return getDriver().findElement(By.xpath("//p[normalize-space()='Newly added store:']/following-sibling::p"));}
     public WebElement dashboardpagebtn() {return getDriver().findElement(By.xpath("//a[normalize-space()='Dashboard']"));}
     public WebElement merchantsbtn() {return getDriver().findElement(By.xpath("//a[normalize-space()='Merchants']"));}
 
@@ -24,7 +27,8 @@ public class SupportAdmin_PageObjects {
     public WebElement StoreSearchWatches() {return getDriver().findElement(By.xpath("//div[contains(text(),'ML Watches')]"));}
     public WebElement MLShopJewelryStore() {return getDriver().findElement(By.xpath("//div[contains(text(),'ML Shop Jewelry Store')]"));}
     public WebElement TotalStore() {return getDriver().findElement(By.xpath("//div[@class='pt-3 sm:text-[16px] md:text-[20px]']"));}
-    public WebElement TotalNumberStore() {return getDriver().findElement(By.xpath("//b[normalize-space()='3']"));}
+    public List <WebElement> StoreNames() {return getDriver().findElements(By.cssSelector("[class='font-bold text-lg text-center']"));}
+    public WebElement TotalNumberStore() {return getDriver().findElement(By.xpath("//div[@class='pt-3 sm:text-[16px] md:text-[20px]']/b"));}
     public WebElement Searchtxtbox() {return getDriver().findElement(By.xpath("//input[@placeholder='Search store']"));}
     public WebElement viewproductbtn(){return  getDriver().findElement(By.xpath("//p[normalize-space()='View Products']"));}
     public WebElement Addproduct() {return getDriver().findElement(By.xpath("//p[normalize-space()='Add Product']"));}

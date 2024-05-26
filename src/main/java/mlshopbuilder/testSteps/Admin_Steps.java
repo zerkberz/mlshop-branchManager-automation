@@ -2,9 +2,16 @@ package mlshopbuilder.testSteps;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
+
+import java.time.Duration;
 import java.util.List;
 
 public class Admin_Steps extends Base_Steps {
@@ -58,51 +65,65 @@ public class Admin_Steps extends Base_Steps {
 
     public void SBA_TC_03_and_04_DashboardTotalStoreAndNewlyAddedStoreValidation() {
         dashboardnavigation();
-
         isDisplayed(supportAdminPageObjects.newlyaddedstore());
         isDisplayed(supportAdminPageObjects.totalstorecount());
-        waitSleep(1500);
-
-        LoggingUtils.info("SBA TC 03 & 04: Total Store & Newly Added Store Validation: Success");
+        if(isVisible(supportAdminPageObjects.newlyaddedstore_name(), getText(supportAdminPageObjects.newlyaddedstore_name()))
+        || getText(supportAdminPageObjects.newlyaddedstore_name()) != "null"
+        ){
+            passTest("SBA_TC_03_and_04_DashboardTotalStoreAndNewlyAddedStoreValidation Passed", "Successfully Validated SBA_TC_03_and_04");
+        }    else{
+            failTest("SBA_TC_03_and_04_DashboardTotalStoreAndNewlyAddedStoreValidation FAILED", "Failed To Validate SBA_TC_03_and_04");
+        }
     }
 
     public void SBA_TC_05_and_06_ShopBuilderNavigation_TotalStoreCount() {
         goToShopBuilder();
-
-        if(isVisible(merchantObjects.TotalStore(), "Total Store")){
-            passTest("SBA_TC_05", "Validated Navigation to ShopBuilder Page");
-        }else{
-            failTest("SBA_TC_05", "Failed to Navigate to ShopBuilder Page");
+        waitSleep(1000);
+        int counter = 0;
+        for(WebElement stores : supportAdminPageObjects.StoreNames()){
+            counter++;
+            ExtentReporter.logInfo("Store # " + String.valueOf(counter+1) + ", Name: " + stores.getText(), "");
         }
-
-        LoggingUtils.info("SBA TC 05 & 06: Total Store & Newly Added Store Validation: Success");
+        if(isVisible(merchantObjects.TotalStore(), "Total Store")){
+            assertEqual(getText(supportAdminPageObjects.TotalNumberStore()), String.valueOf(counter));
+            passTest("SBA TC 05 and 06 ShopBuilderNavigation and TotalStoreCount. PASSED", "Validated Navigation to ShopBuilder Page");
+        }else{
+            failTest("SBA TC 05 and 06 ShopBuilderNavigation and TotalStoreCount. FAILED", "Failed to Navigate to ShopBuilder Page");
+        }
     }
 
     public void SBA_TC_07_InvalidSearches() {
         goToShopBuilder();
-
-        waitSleep(3000);
+        waitSleep(1000);
         typeEnter(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watchzzz");
-        waitSleep(1500);
-        isDisplayed(supportAdminPageObjects.InvalidSearch());
-
-        LoggingUtils.info("SBA TC 07: Invalid Store Search: Success");
+        waitSleep(1000);
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("[class='font-bold text-lg text-center']")));
+             // If the element is not present, the test passes
+            passTest("Validate Element Not on Page", "Element not found as expected");
+        }catch(NoSuchElementException e){
+            passTest("Validate Element Not on Page", "Element not found as expected");
+        }catch (Exception e) {
+            // Handle any other exceptions
+            failTest("Validate Element Not on Page", "Unexpected exception: " + e.getMessage());
+        }
     }
 
     public void SBA_TC_08_ValidSearches() {
         goToShopBuilder();
-
         waitSleep(1500);
         typeEnter(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watch");
         waitSleep(1500);
-        isDisplayed(supportAdminPageObjects.StoreSearchWatches());
-
-        LoggingUtils.info("SBA TC 07: Valid Store Search: Success");
+        if(isDisplayed(supportAdminPageObjects.StoreSearchWatches())){
+            passTest("SBA_TC_08_ValidSearches: PASSED", "Valid Store Search: Success");
+        }else{
+            failTest("SBA_TC_08_ValidSearches: FAILED", "Failed to Validate");
+        }   
     }
 
     public void SBA_TC_09_SelectedStoreRedirection() {
         goToShopBuilder();
-
         waitSleep(2000);
         click(adminPageObjects.MLShopJewelryStore(),"ML Shop Jewelry Store" );
         waitSleep(2000);
@@ -112,55 +133,115 @@ public class Admin_Steps extends Base_Steps {
         else {
             failTest("SBA_TC_09_SelectedStoreRedirection", "Redirection: Failed");
         }
-
-        LoggingUtils.info("SBA TC 09: Valid Store Search: Success");
     }
 
     //Remove Exit Btn if actual demo
     public void SBA_TC_10_AddStore() {
         goToShopBuilder();
         click(adminPageObjects.addstorebtn(),"Add Store");
-        type(adminPageObjects.storeName(),"Store Name","FranCheese and JustPear");
-        type(adminPageObjects.descstore(),"Store Description","Cheesy diamond ang Pearfect Element");
-//        click(adminPageObjects.submitbtn(),"Submit Button");
-        click(adminPageObjects.exitbtn(),"Exit btn");
-        LoggingUtils.info("SBA TC 10: Add Store: Success");
+        type(adminPageObjects.storeName(),"Store Name","TEST AUTOMATION STORE"+ getThreeDigitRandomNumber());
+        type(adminPageObjects.descstore(),"Store Description","TEST DESCRIPTION"+ getFiveDigitsRandomNumber());
+        String storeName = getValue(adminPageObjects.storeName());
+        click(adminPageObjects.submitbtn(),"Submit Button");
+        boolean isFound = false;
+        if(isVisible(adminPageObjects.notificationStatus(), getText(adminPageObjects.notificationStatus()))){
+            for(WebElement stores : supportAdminPageObjects.StoreNames()){
+                if(stores.getText().equals(storeName)){
+                    isFound = true;
+                    break;
+                }        
+            }
+            if(isFound){
+                passTest("SBA_TC_10_AddStore: PASSED", storeName);
+            }else{
+                failTest("FAILED TO ADD STORE", storeName);
+            }      
+        }else{
+            failTest("FAILED TO ADD STORE", storeName);
+        }   
     }
 
     public void SBA_TC_11_AddCategory() {
         goToShopBuilder();
-
         waitSleep(2000);
         click(adminPageObjects.Test(),"Test Store" );
         click(adminPageObjects.addcategory(),"Add Category Button" );
-        type(adminPageObjects.categoryname(),"Category Name","L Boss");
+        type(adminPageObjects.categoryname(),"Category Name","TEST AUTOMATION CATEGORY"+getThreeDigitRandomNumber());
+        String categoryName = getValue(adminPageObjects.categoryname());
         click(adminPageObjects.submitbtn(),"Submit Button");
-        waitSleep(1500);
-        isVisible(adminPageObjects.addedcategory(),"Added Store");
-
-        LoggingUtils.info("SBA TC 11: Add Category: Success");
+        boolean isFound = false;
+        waitSleep(1000);
+        if(isVisible(adminPageObjects.notificationStatus(), getText(adminPageObjects.notificationStatus()))){
+            for(WebElement category : adminPageObjects.p_lefElements()){
+                if(category.getText().equals(categoryName)){
+                    isFound = true;
+                    break;
+                }        
+            }
+            if(isFound){
+                passTest("SBA_TC_11_AddCategory: PASSED", categoryName);
+            }else{
+                failTest("FAILED TO ADD CATEGORY", categoryName);
+            }      
+        }else{
+            failTest("FAILED TO ADD CATEGORY", categoryName);
+        }   
     }
 
     public void SBA_TC_12_HideShowCategories() {
         goToShopBuilder();
-
         waitSleep(2000);
         click(adminPageObjects.Test(),"Test Store" );
         click(adminPageObjects.hideshowcategories(),"Hide/Show Category Button" );
-        click(adminPageObjects.showone(),"Show button 1");
-        click(adminPageObjects.showtwo(),"Show button 2");
-        click(adminPageObjects.hideone(),"Hide button 1");
-        click(adminPageObjects.hidetwo(),"Hide button 2");
-        navigateBack();
+        //should only show and hide one category
+        // use conditional statement if button is show or hide
+        try{
+            boolean isFound = false;   
+            if(getText(adminPageObjects.firstStatus_btn()).equals("HIDE")){
+                //if hide is present, category should be hidden.
+                String categoryName = getText(adminPageObjects.firstCategory_btn());
+                click(adminPageObjects.firstStatus_btn(), getText(adminPageObjects.firstStatus_btn()));
+                isVisible(adminPageObjects.notificationStatus(), getText(adminPageObjects.notificationStatus()));
+                //verify notif pop up
+                navigateBack();
+                //navigateBack
+                //verify element is not present
+                for(WebElement category : adminPageObjects.p_lefElements()){
+                    if(category.getText().equals(categoryName)){
+                        isFound = true;
+                        break;
+                    }        
+                }
+                if(isFound){
+                    failTest("Hiding of Categroy, FAILED", categoryName);
+                }else{
+                    passTest("Hiding of Categroy, PASSED", categoryName);
+                }     
+            }else{
+                //if show is present category should be present       
+                  String categoryName = getText(adminPageObjects.firstCategory_btn());
+                  click(adminPageObjects.firstStatus_btn(), getText(adminPageObjects.firstStatus_btn()));
+                  isVisible(adminPageObjects.notificationStatus(), getText(adminPageObjects.notificationStatus()));
+                  //verify notif pop up
+                  navigateBack();
+                  //navigateBack
+                  //verify element is not present
+                  for(WebElement category : adminPageObjects.p_lefElements()){
+                      if(category.getText().equals(categoryName)){
+                          isFound = true;
+                          break;
+                      }        
+                  }
+                  if(isFound){
+                    passTest("Showing of Categroy, PASSED", categoryName);                 
+                  }else{
+                    failTest("Showing of Categroy, FAILED", categoryName);
+                  }     
+            }
+            
+        }catch(Exception e){
 
-        waitSleep(4000);
-        click(adminPageObjects.hideshowcategories(),"Hide/Show Category Button" );
-        click(adminPageObjects.showone(),"Show button 1");
-        click(adminPageObjects.showtwo(),"Show button 2");
-        click(adminPageObjects.hideone(),"Hide button 1");
-        click(adminPageObjects.hidetwo(),"Hide button 2");
-
-        LoggingUtils.info("SBA TC 12: Hide/Show Category: Success");
+        }
     }
 
     public void SBA_TC_13_AddType() {

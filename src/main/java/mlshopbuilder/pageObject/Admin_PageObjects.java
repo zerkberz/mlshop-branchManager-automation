@@ -42,12 +42,23 @@ public class Admin_PageObjects {
     public WebElement categoryname() {return getDriver().findElement(By.xpath("//input[@id='labelName']"));}
     //changename before test
     public WebElement addedcategory() {return getDriver().findElement(By.xpath("//p[normalize-space()='L Boss']"));}
+    public List <WebElement> p_lefElements() {
+        return getDriver().findElements(By.cssSelector("text-[#ff2800] text-[18px] font-semibold"));
+    }
     //categories
     public WebElement showone() {return getDriver().findElement(By.xpath("(//*[@class='jsx-d12142d8917979c2 text-white' and contains(text(),'SHOW')])[1]"));}
     public WebElement showtwo() {return getDriver().findElement(By.xpath("(//*[@class='jsx-d12142d8917979c2 text-white' and contains(text(),'SHOW')])[2]"));}
-
     public WebElement hideone() {return getDriver().findElement(By.xpath("(//*[@class='jsx-d12142d8917979c2 text-white' and contains(text(),'HIDE')])[1]"));}
     public WebElement hidetwo() {return getDriver().findElement(By.xpath("(//*[@class='jsx-d12142d8917979c2 text-white' and contains(text(),'HIDE')])[2]"));}
+    public WebElement firstCategory_btn(){
+        return getDriver().findElement(By.xpath("(//td[@class='jsx-d12142d8917979c2'][1])[1]"));
+    }
+    public WebElement firstStatus_btn(){
+        return getDriver().findElement(By.xpath("(//td[@class='jsx-d12142d8917979c2'][2])[1]/child::div/child::p"));
+    }
+    public List <WebElement> statusButtons(){
+        return getDriver().findElements(By.xpath("//td[@class='jsx-d12142d8917979c2'][2]/child::div/child::p"));
+    }
 
     // Type
     public WebElement addtype() {return getDriver().findElement(By.xpath("(//div[contains(text(),'+')])[1]"));}

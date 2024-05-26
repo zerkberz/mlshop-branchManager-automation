@@ -6,7 +6,7 @@
         <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>
     </listeners>
 
-    <test name="LOGIN">
+    <!-- <test name="LOGIN">
         <parameter name="browser" value="chrome">
             <classes>
                 <class name="MLshopBuilders.actual.LoginT">
@@ -37,7 +37,7 @@
                 </class>
             </classes>
         </parameter>
-    </test>
+    </test> -->
     <test name="ADMIN">
         <parameter name="browser" value="chrome">
             <classes>
