@@ -27,8 +27,8 @@
         <loggerjava.version>5.0.1</loggerjava.version>
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
-        <preprod>https://mlshoppreprod.mlhuillier.com/shopbuilder/</preprod>
-        <qa>https://mlshopdev.mlhuillier.com/shopbuilder/</qa>
+        <preprod>https://mlshoppreprod.mlhuillier.com/</preprod>
+        <qa>https://mlshopdev.mlhuillier.com/</qa>
         <homeUrl></homeUrl>
         <threads>1</threads>
         <browser>chrome</browser>
