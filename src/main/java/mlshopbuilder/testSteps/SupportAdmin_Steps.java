@@ -449,16 +449,13 @@ public class SupportAdmin_Steps extends Base_Steps {
     public void SBL_TC_28_ViewProductRedirection() {
         goingtoViewproductpage("supportadmin");
         waitSleep(2000);
-
         isVisible(supportAdminPageObjects.Viewdetailsbtn2(),"View Details Button");
-
         LoggingUtils.info("SBL TC 28: View Product Page Redirection: Successful");
        // logout("supportadmin");
     }
 
     public void SBL_TC_29_IncorrectSearch() {
         goingtoViewproductpage("supportadmin");
-
         type(supportAdminPageObjects.Searchtxtbx(), "Search Textbox", propertyReader.getproperty("InvStoreNum"));
         LoggingUtils.info("SBL TC 29: Incorrect search leads to blank page: Successful");
 

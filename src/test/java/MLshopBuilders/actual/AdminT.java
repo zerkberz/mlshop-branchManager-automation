@@ -71,7 +71,7 @@ public class AdminT extends BaseTest {
     public void SBA_TC_17_ViewLogsFunctionalities() throws Exception {
         adminSteps.SBA_TC_17_ViewLogsFunctionalities();
     }
-    @Test(priority = 16, dependsOnMethods = "SBA_TC_01_Login")
+    @Test(priority = 16, dependsOnMethods = "SBA_TC_10_AddStore")
     public void SBA_TC_18_BannerFunctionality() throws Exception {
         adminSteps.SBA_TC_18_BannerFunctionality();
     }

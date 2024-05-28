@@ -43,7 +43,7 @@ public class Admin_PageObjects {
     //changename before test
     public WebElement addedcategory() {return getDriver().findElement(By.xpath("//p[normalize-space()='L Boss']"));}
     public List <WebElement> p_lefElements() {
-        return getDriver().findElements(By.cssSelector("text-[#ff2800] text-[18px] font-semibold"));
+        return getDriver().findElements(By.cssSelector("[class='text-[#ff2800] text-[18px] font-semibold']"));
     }
     //categories
     public WebElement showone() {return getDriver().findElement(By.xpath("(//*[@class='jsx-d12142d8917979c2 text-white' and contains(text(),'SHOW')])[1]"));}
@@ -122,8 +122,8 @@ public class Admin_PageObjects {
     public WebElement emailtxt() {return getDriver().findElement(By.xpath("//input[@id='email']"));}
 
     public WebElement deactivateacctSUBACCOUNT() {return getDriver().findElement(By.xpath("(//*[name()='svg'])[6]"));}
-    public WebElement deactivatemerchant() {return getDriver().findElement(By.xpath("//button[normalize-space()='Deactivate Merchant']"));}
-    public WebElement activatemerchant() {return getDriver().findElement(By.xpath("//button[normalize-space()='Activate Merchant']"));}
+    public WebElement deactivatemerchantbtn() {return getDriver().findElement(By.xpath("//button[normalize-space()='Deactivate Merchant']"));}
+    public WebElement activatemerchantbtn() {return getDriver().findElement(By.xpath("//button[normalize-space()='Activate Merchant']"));}
     public WebElement testshop() {return getDriver().findElement(By.xpath("(//div[normalize-space()='Test'])[1]"));};
     public WebElement mercadodefrancisshop() {return getDriver().findElement(By.xpath("(//div[normalize-space()='Mercado de Francis'])[1]"));};
     public WebElement shopbutton() {return getDriver().findElement(By.xpath("(//*[name()='svg']//*[name()='path' and contains(@d,'M480 448h-')]))[6]"));};
@@ -193,7 +193,12 @@ public class Admin_PageObjects {
     public WebElement td_firstName(){
         return getDriver().findElement(By.xpath("(//tr)[2]/td[1]"));
     }
-
+    public WebElement td_firstEditIcon(){
+        return getDriver().findElement(By.xpath("(//tr)[2]/td[6]/child::div/child::div[1]"));
+    }
+    public WebElement td_firstHouseIcon(){
+        return getDriver().findElement(By.xpath("(//tr)[2]/td[6]/child::div/child::div[2]"));
+    }
     //banner
     public WebElement bannerStatus_radioBtn(){
         return getDriver().findElement(By.xpath("(//div[@class='relative cursor-pointer'])[2]"));
@@ -213,13 +218,12 @@ public class Admin_PageObjects {
     public WebElement bannerStatus(){
         return getDriver().findElement(By.cssSelector("[class='go4109123758']"));
     }
-
-
-
-
-
-
-
+    public WebElement merchantStatus_notif(){
+        return getDriver().findElement(By.xpath("//div[@role='status']/child::div"));
+    }
+    public WebElement merchantButton(){
+        return getDriver().findElement(By.xpath("(//div/child::button)[2]"));
+    }
 
 }
 

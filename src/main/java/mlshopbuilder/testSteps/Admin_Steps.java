@@ -115,11 +115,18 @@ public class Admin_Steps extends Base_Steps {
         waitSleep(1500);
         typeEnter(supportAdminPageObjects.Searchtxtbox(), "Search Textbox", "watch");
         waitSleep(1500);
-        if(isDisplayed(supportAdminPageObjects.StoreSearchWatches())){
+        boolean isFound = false;
+        for(WebElement stores: supportAdminPageObjects.StoreNames()){
+            if(stores.getText().toLowerCase().contains("ml watches")){
+                isFound = true;
+                break;
+            }
+        }
+        if(isFound){
             passTest("SBA_TC_08_ValidSearches: PASSED", "Valid Store Search: Success");
         }else{
             failTest("SBA_TC_08_ValidSearches: FAILED", "Failed to Validate");
-        }   
+        }
     }
 
     public void SBA_TC_09_SelectedStoreRedirection() {
@@ -281,13 +288,11 @@ public class Admin_Steps extends Base_Steps {
 
     public void SBA_TC_15_Viewtoggling() {
         goToShopBuilder();
-
-        click(adminPageObjects.MLWatches(),"ML Watches Store" );
+        click(adminPageObjects.mlshopjewlery(),getText(adminPageObjects.mlshopjewlery()) );
         waitSleep(3000);
         click(adminPageObjects.shoptoggle(),"View Logs toggle");
         waitSleep(3000);
         click(adminPageObjects.shoptogglev2(),"View Products toggle");
-
         LoggingUtils.info("SBA TC 15: View Toggling Functionalities: Success");
     }
 
@@ -339,8 +344,23 @@ public class Admin_Steps extends Base_Steps {
         waitSleep(2000);
         click(adminPageObjects.Store(1), "Store");
         waitSleep(2000);
+        //add banner
+        click(adminPageObjects.addBanner_btn(), getText(adminPageObjects.addBanner_btn()));
+        waitSleep(1000);
+        uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
+        waitSleep(1000);
+        click(adminPageObjects.mainaccttxtbox2(), "Screen Size DropDown");
+        waitSleep(1000);
+        arrowKeyDown(1);
+        click(adminPageObjects.provincedrop(), "Position DropDown");
+        waitSleep(1000);
+        arrowKeyDown(1);
+        click(supportAdminPageObjects.submitbutton(),"Submit Button");
+        isVisible(adminPageObjects.bannerStatus(), "Banner Status Pop Up");
+        //
+        waitSleep(3000);
         click(adminPageObjects.editBanner_btn(), "Edit Banner Button");
-        waitSleep(2000);
+        waitSleep(1000);
         click(adminPageObjects.bannerCameraEdit_btn(), "Camera/Edit Icon");
         uploadFile(supportAdminPageObjects.chooseBanner(), filePathUtils.getAbsolutePath());
         click(supportAdminPageObjects.submitbutton(),"Submit Button");
@@ -350,37 +370,35 @@ public class Admin_Steps extends Base_Steps {
         waitSleep(1000);
         isVisible(adminPageObjects.bannerStatus(), "Banner Status Pop Up");
         passTest("SBA_TC_18", "Successfully Validated Banner Functionality");
-
-
     }
 
     public void SBA_TC_19_EditProfileFunctionalities() {
         goToShopBuilder();
-
-        click(adminPageObjects.MLWatches(), "ML Watches");
+        for(WebElement store: supportAdminPageObjects.StoreNames()){
+            click(store, store.getText());
+            break;
+        }
         click(supportAdminPageObjects.EditProfile(), "Edit Profile Button");
         waitSleep(2500);
-
         click(supportAdminPageObjects.Editname(), "Edit name Feature");
         waitSleep(2000);
-        type(supportAdminPageObjects.Updatenametxtbox(),"Update Name textbox","Wow Nice");
+        type(supportAdminPageObjects.Updatenametxtbox(),"Update Name textbox","EditStore"+getFiveDigitsRandomNumber());
         type(supportAdminPageObjects.Updatebiotextbox(),"Update Bio", "Nice it's working");
+        String newName = getValue(supportAdminPageObjects.Updatenametxtbox());
         click(supportAdminPageObjects.submitbutton(),"Submit Button");
-        waitSleep(3000);
-        isVisible(supportAdminPageObjects.changename(),"Changed Profile Name");
+        waitSleep(2000);
+        assertEqual(getText(supportAdminPageObjects.changename()), newName);
 
     //revert changes
         waitSleep(2000);
         click(supportAdminPageObjects.EditProfile(), "Edit Profile Button");
-        type(supportAdminPageObjects.Updatenametxtbox(),"Update Name textbox","ML Watches");
+        type(supportAdminPageObjects.Updatenametxtbox(),"Update Name textbox","EditStore2"+getFiveDigitsRandomNumber());
         type(supportAdminPageObjects.Updatebiotextbox(),"Update Bio", "An intellectual is someone whose mind watches itself");
+        String originName = getValue(supportAdminPageObjects.Updatenametxtbox());
         click(supportAdminPageObjects.submitbutton(),"Submit Button");
         waitSleep(2100);
-        isVisible(adminPageObjects.originalname(),"Original Name");
-        LoggingUtils.info("Successfully Reverted Changes");
-
-
-        LoggingUtils.info("SBA TC 19: Edit Profile Functionality: Success");
+        assertEqual(getText(supportAdminPageObjects.changename()), originName);
+        passTest("SBA TC 19: Edit Profile Functionality: Success", "");
     }
 
     //change
@@ -433,7 +451,10 @@ public class Admin_Steps extends Base_Steps {
         //Add Sub Account
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
         click(adminPageObjects.viewMerchantIcon(),"Merchant Button");
-        waitSleep(1500);
+        waitSleep(2000);
+        if(adminPageObjects.merchantButton().getText().equals("Activate Merchant")){
+            click(adminPageObjects.merchantButton(),getText(adminPageObjects.merchantButton()));
+        }
         click(adminPageObjects.viewStores(),"View Stores");
         click(adminPageObjects.firstStore(),getText(adminPageObjects.firstStore()));
         boolean isRemoved = false;
@@ -492,16 +513,17 @@ public class Admin_Steps extends Base_Steps {
         click(adminPageObjects.subacctbtn(),"Sub Accounts");
 
         //Deactivate and Activation of Merchant
-        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
-        waitSleep(1500);
-        click(adminPageObjects.deactivatemerchant(),"Deactivate Merchant Button");
+        click(adminPageObjects.td_firstHouseIcon(),"First House Icon");
         waitSleep(2000);
-        click(adminPageObjects.deactivateacctSUBACCOUNT(),"Account to deactivate");
-        waitSleep(1500);
-        click(adminPageObjects.activatemerchant(),"Activate Merchant Button");
-        waitSleep(3500);
-
-        LoggingUtils.info("SBA TC 23: Deactivate/Activate Functionality: Success");
+        click(adminPageObjects.merchantButton(),getText(adminPageObjects.merchantButton()));
+        waitSleep(1000);
+        isVisible(adminPageObjects.merchantStatus_notif(), getText(adminPageObjects.merchantStatus_notif()));
+        click(adminPageObjects.td_firstHouseIcon(),"First House Icon");
+        waitSleep(1000);
+        click(adminPageObjects.merchantButton(),getText(adminPageObjects.merchantButton()));
+        waitSleep(1000);
+        isVisible(adminPageObjects.merchantStatus_notif(), getText(adminPageObjects.merchantStatus_notif()));
+        passTest("SBA_TC_23_DeactivatingAndActivatingOfMerchantAccount: PASSED", "PASSED");
     }
 
 public void SBA_TC_24_and_25() {

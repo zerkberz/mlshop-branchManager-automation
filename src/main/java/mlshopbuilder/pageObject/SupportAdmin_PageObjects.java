@@ -39,7 +39,7 @@ public class SupportAdmin_PageObjects {
     public WebElement submitbutton() {return getDriver().findElement(By.xpath("//button[contains(text(), 'Submit')]"));}
     public WebElement exitbutton() {return getDriver().findElement(By.xpath("//button[@class='p-1 border-0 hover:opacity-70 transition absolute left-9']//*[name()='svg']"));}
     public WebElement originalname() {return getDriver().findElement(By.xpath("//p[@class='font-medium text-2xl' and contains(text(), 'ML Shop Jewelry Store')]"));}
-    public WebElement changename() {return getDriver().findElement(By.xpath("//p[@class='font-medium text-2xl' and contains(text(), 'Wow Nice')]"));}
+    public WebElement changename() {return getDriver().findElement(By.cssSelector("[class='font-medium text-2xl']"));}
     public WebElement editbanner() {return getDriver().findElement(By.xpath("//p[normalize-space()='Edit Banner']"));}
     public WebElement canceleditbanner() {return getDriver().findElement(By.xpath("//p[normalize-space()='Cancel Edit']"));}
     public WebElement addbannerbtn() {return getDriver().findElement(By.xpath("//p[normalize-space()='Add Banner']"));}
