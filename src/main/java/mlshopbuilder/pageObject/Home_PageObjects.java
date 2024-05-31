@@ -36,5 +36,7 @@ public class Home_PageObjects {
     public List<WebElement> itemPrices(){
         return getDriver().findElements(By.cssSelector("[class=' text-[#444444] text-xs text-center 2sm:text-[9px] truncate overflow-hidden']"));
     }
+   
+   
 
 }

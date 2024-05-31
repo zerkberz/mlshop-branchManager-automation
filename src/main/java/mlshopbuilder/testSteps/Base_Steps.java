@@ -4,11 +4,11 @@ import mlshopbuilder.pageObject.*;
 import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
 import utilities.FileUtils.FilePathUtils;
-import org.testng.Assert;
 
 public abstract class Base_Steps extends GeneralMethod {
 
     Login_PageObjects loginPageObjects = new Login_PageObjects();
+    Home_PageObjects home_PageObjects = new Home_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     final String imgName = "testImage.jpg";
 

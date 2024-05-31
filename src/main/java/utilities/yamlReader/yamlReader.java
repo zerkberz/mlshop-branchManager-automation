@@ -75,20 +75,42 @@ public class yamlReader {
     public String getAccessKey() {
         return (String) yamlData.get("AccessKey");
     }
-    public String getRandomTags(String tagName){
+    public String getRandomUser(){
+        String user = "Users";
             try {
-            List<String> randomTags = (List<String>) yamlData.get(tagName);
-            if (randomTags == null || randomTags.isEmpty()) {
+            @SuppressWarnings("unchecked")
+            List<String> randomUser = (List<String>) yamlData.get(user);
+            if (randomUser == null || randomUser.isEmpty()) {
                 LoggingUtils.error("Tag not available");
                 return null;
             }
-            int randomIndex = new Random().nextInt(randomTags.size());
-            String randomTagValue = randomTags.get(randomIndex);
-            randomTags.remove(randomIndex);   
+            int randomIndex = new Random().nextInt(randomUser.size());
+            String randomTagValue = randomUser.get(randomIndex);
+            // randomUser.remove(randomIndex);   
             return randomTagValue;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
+    // public String getRemoteKPTN() {
+    //     try {
+    //         List<String> remoteKptnList = (List<String>) yamlData.get("remoteSendoutKPTN");
+
+    //         if (remoteKptnList == null || remoteKptnList.isEmpty()) {
+    //             System.out.println("No remote KPTN values available.");
+    //             return null;
+    //         }
+
+    //         String randomRemoteKptn = remoteKptnList.get(remoteKptnList.size() - 1);
+    //         remoteKptnList.remove(remoteKptnList.size() - 1);
+    //         saveYamlData();
+    //         return randomRemoteKptn;
+
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         return null;
+    //     }
+    // }
 }

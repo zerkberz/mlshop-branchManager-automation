@@ -35,10 +35,9 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void clean(){
-        LoggingUtils.info("------>>>Test Ended<<<-------");
+       
 
     }
-
     @AfterClass(alwaysRun = true)
     public void tearDown () {
         closeWebBrowser();

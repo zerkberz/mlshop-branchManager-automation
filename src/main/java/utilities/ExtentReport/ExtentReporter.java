@@ -119,33 +119,41 @@ public class ExtentReporter implements ITestListener {
         try{
             ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
             extentTestThreadLocal.set(extentTest);
-            LoggingUtils.info("------->>>Test: "+ result.getName() + " Started<<<--------");
+            LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
+            LoggingUtils.info("\t\t//:::::::::::::Test: "+ result.getName() + " Started ::::::::::://");
+            LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
         }catch (Exception e){
             LoggingUtils.error(e.getMessage());
         }
     }
     @Override
     public synchronized void onFinish(ITestContext context){
-            extent.flush();
+        extent.flush();
     }
-
+    
     @Override
     public synchronized void onTestFailure(ITestResult result){
         if(getDriver() != null){
              logFail(result.getName(),result.getThrowable().getMessage());
             //extentTestThreadLocal.get().log(Status.FAIL, result.getName()+ " is Failed " + result.getThrowable().getLocalizedMessage());
-            LoggingUtils.error("------->>>Test: "+ result.getName() + " Failed<<<--------");
+            LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
+            LoggingUtils.info("\t\t//:::::::::::::Test: "+ result.getName() + " FAILED ::::::::::://");
+            LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
         }
     }
     @Override
     public synchronized void onTestSkipped(ITestResult result){
         extentTestThreadLocal.get().log(Status.SKIP, result.getName()+ " has been Skipped");
-        LoggingUtils.info("------->>>Test: "+ result.getName() + " Skipped<<<--------");
+        LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
+        LoggingUtils.info("\t\t//:::::::::::::Test: "+ result.getName() + " Skipped ::::::::::://");
+        LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
     }
     @Override
     public synchronized void onTestSuccess(ITestResult result){
         extentTestThreadLocal.get().log(Status.PASS, result.getName()+ " Passed");
-        LoggingUtils.info("------->>>Test: "+ result.getName() + " Passed<<<--------");
+        LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
+        LoggingUtils.info("\t\t//:::::::::::::Test: "+ result.getName() + " Passed ::::::::::://");
+        LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
     }
 
 }

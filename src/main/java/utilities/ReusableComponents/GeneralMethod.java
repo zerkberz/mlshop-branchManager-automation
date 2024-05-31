@@ -16,8 +16,6 @@ import utilities.Logger.LoggingUtils;
 import utilities.yamlReader.yamlReader;
 import org.testng.Assert;
 
-import com.aventstack.extentreports.model.Log;
-
 import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
@@ -25,6 +23,7 @@ public class GeneralMethod extends ExtentReporter{
     private final WebDriverWait wait;
     public final yamlReader reader = new yamlReader();
     private JavascriptExecutor js;
+    protected final Actions actions = new Actions(driver);
 
     public GeneralMethod(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -35,7 +34,8 @@ public class GeneralMethod extends ExtentReporter{
         try {
             if (isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-                element.click();
+                // element.click();
+                actions.click(element).perform();
                 LoggingUtils.info("Clicked on element: " + elementName);
                 ExtentReporter.logInfo("Clicked on element: " + elementName, "");
             }
@@ -51,7 +51,9 @@ public class GeneralMethod extends ExtentReporter{
             if(isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
                 element.clear();
-                element.sendKeys(text);
+                // element.sendKeys(text);          
+                actions.sendKeys(element, text)
+                .perform();;
                 LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
                 ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
             }
@@ -398,5 +400,14 @@ public class GeneralMethod extends ExtentReporter{
             throw new AssertionError("Assertion error: "+ e.getMessage());
         }
     }
-
+    public void typeActiveElement(String text){
+        try{
+            actions.
+            sendKeys(text).
+            perform();
+        }finally{
+            LoggingUtils.info("Entering text: " + text);
+            ExtentReporter.logInfo("Entering text: " + text, "");
+        }
+    }
 }
