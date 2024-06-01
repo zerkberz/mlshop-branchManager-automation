@@ -35,9 +35,9 @@ public class GeneralMethod extends ExtentReporter{
             if (isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
                 // element.click();
-                actions.click(element).perform();
                 LoggingUtils.info("Clicked on element: " + elementName);
                 ExtentReporter.logInfo("Clicked on element: " + elementName, "");
+                actions.click(element).perform();          
             }
         } catch (Exception e) {
             ExtentReporter.logFail("Failed to click element: " + elementName, "Caused: " + e);
@@ -50,12 +50,12 @@ public class GeneralMethod extends ExtentReporter{
         try {
             if(isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
+                LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
+                ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
                 element.clear();
                 // element.sendKeys(text);          
                 actions.sendKeys(element, text)
-                .perform();;
-                LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
-                ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
+                .perform();;       
             }
         } catch (NoSuchElementException e) {
         LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);
@@ -68,9 +68,9 @@ public class GeneralMethod extends ExtentReporter{
         try {
             if(isDisplayed(locator)) {
                 WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
-                element.sendKeys(text + Keys.ENTER);
                 LoggingUtils.info("Typed into field: " + elementName + ", Value: "+ text);
                 ExtentReporter.logInfo("Typed into field: " + elementName , "Typed Value: "+ text);
+                element.sendKeys(text + Keys.ENTER);           
             }
         } catch (NoSuchElementException e) {
             LoggingUtils.error("Failed to type into field: "+ elementName + ", Value: "+ text);

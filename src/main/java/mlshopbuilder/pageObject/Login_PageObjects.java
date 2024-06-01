@@ -36,6 +36,48 @@ public class Login_PageObjects {
     public WebElement okay_Btn(){
         return getDriver().findElement(By.xpath("//button[normalize-space()='Okay']"));
     }
-
-
+    public WebElement accNotFound_Element(){
+        return getDriver().findElement(By.cssSelector("[class='py-[30px] px-[45px] text-[22px]']"));
+    }
+    public WebElement proceed_Btn(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='Proceed']"));
+    }
+    public WebElement cancel_Btn(){
+        return getDriver().findElement(By.xpath("//button[normalize-space()='Cancel']"));
+    }
+    
+    //registration
+    public WebElement mobileNumber_fieldRegister(){
+        return getDriver().findElement(By.cssSelector("[placeholder='Mobile number']"));
+    }
+    public WebElement firstName_fieldRegister(){
+        return getDriver().findElement(By.cssSelector("[placeholder='First Name']"));
+    }
+    public WebElement middleName_fieldRegister(){
+        return getDriver().findElement(By.cssSelector("[placeholder='Middle Name ']"));
+    }
+    public WebElement lastName_fieldRegister(){
+        return getDriver().findElement(By.cssSelector("[placeholder='Last Name ']"));
+    }
+    public WebElement email_fieldRegister(){
+        return getDriver().findElement(By.cssSelector("[placeholder='Email']"));
+    }
+    public WebElement province_dropDown(){
+        return getDriver().findElement(By.cssSelector("[name='Province State']"));
+    }
+    public WebElement city_dropDown(){
+        return getDriver().findElement(By.cssSelector("[name='City/State']"));
+    }
+    public WebElement streetField(){
+        return getDriver().findElement(By.cssSelector("[placeholder='Street']"));
+    }
+    public WebElement zipCodeField(){
+        return getDriver().findElement(By.cssSelector("[placeholder='Zip Code']"));
+    }
+    public WebElement register_Btn(){
+        return getDriver().findElement(By.cssSelector("[type='submit']"));
+    }
+    public List <WebElement> errorMessage_text(){
+        return getDriver().findElements(By.cssSelector("[class=' text-[12px] text-red-500']"));
+    }
 }

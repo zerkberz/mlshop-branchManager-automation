@@ -9,6 +9,7 @@ public abstract class Base_Steps extends GeneralMethod {
 
     Login_PageObjects loginPageObjects = new Login_PageObjects();
     Home_PageObjects home_PageObjects = new Home_PageObjects();
+    Cart_PageObjects cart_PageObjects = new Cart_PageObjects();
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     final String imgName = "testImage.jpg";
 

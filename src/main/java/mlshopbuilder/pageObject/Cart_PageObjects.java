@@ -23,13 +23,12 @@ public class Cart_PageObjects {
         return getDriver().findElement(By.xpath("//p[@class='text-center']"));
     }
 
-    
+
 
 
 
 
     //Shopping Cart Objects
-
     public WebElement checkOut_btn(){
         return getDriver().findElement(By.cssSelector("[type='button']"));
     }   
