@@ -6,10 +6,10 @@
         <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>
     </listeners>
 
-    <test name="ADMIN">
+    <test name="LOG IN Branch">
         <parameter name="browser" value="chrome">
             <classes>
-                <class name="MLshopBuilders.actual.LoginT">
+                <class name="MLShop_BRANCH.actual.LoginT">
                 </class>
             </classes>
         </parameter>

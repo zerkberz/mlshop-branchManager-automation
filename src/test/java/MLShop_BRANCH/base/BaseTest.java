@@ -1,6 +1,6 @@
-package MLshopBuilders.base;
+package MLShop_BRANCH.base;
 
-import mlshopbuilder.testSteps.*;
+import MLShop_BRANCH.testSteps.*;
 import org.testng.annotations.*;
 import static utilities.Driver.DriverManager.*;
 import utilities.Driver.DriverType;

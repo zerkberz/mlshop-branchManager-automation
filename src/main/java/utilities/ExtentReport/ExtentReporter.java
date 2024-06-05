@@ -119,9 +119,9 @@ public class ExtentReporter implements ITestListener {
         try{
             ExtentTest extentTest = extent.createTest(result.getMethod().getMethodName(), result.getMethod().getDescription());
             extentTestThreadLocal.set(extentTest);
-            LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
-            LoggingUtils.info("\t\t//:::::::::::::Test: "+ result.getName() + " Started ::::::::::://");
-            LoggingUtils.info("//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
+//            LoggingUtils.info("\t\t//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
+            LoggingUtils.info("\t\t//:::::::Test: "+ result.getName() + " Started::::::://");
+//            LoggingUtils.info("\t\t//**::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::://**");
         }catch (Exception e){
             LoggingUtils.error(e.getMessage());
         }

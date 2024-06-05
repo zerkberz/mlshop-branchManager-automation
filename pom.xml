@@ -27,7 +27,7 @@
         <loggerjava.version>5.0.1</loggerjava.version>
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
-        <preprod>https://mlshoppreprod.mlhuillier.com/</preprod>
+        <preprod>https://mlshoppreprod.mlhuillier.com/branch/</preprod>
         <qa>https://mlshopdev.mlhuillier.com/</qa>
         <homeUrl></homeUrl>
         <threads>1</threads>
