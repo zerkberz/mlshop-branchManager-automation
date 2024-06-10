@@ -28,6 +28,8 @@
         <log4japi.version>2.23.1</log4japi.version>
         <log4jcore.version>2.23.1</log4jcore.version>
         <preprod>https://mlshoppreprod.mlhuillier.com/branch/</preprod>
+        <branchPreprod>https://mlshoppreprod.mlhuillier.com/branch/</branchPreprod>
+        <adminPreprod>https://mlshoppreprod.mlhuillier.com/admin/</adminPreprod>
         <qa>https://mlshopdev.mlhuillier.com/</qa>
         <homeUrl></homeUrl>
         <threads>1</threads>
@@ -154,7 +156,9 @@
                         <remoteDriver>${remote}</remoteDriver>
                         <gridURL>${seleniumGridURL}</gridURL>
                         <targetUrl>${preprod}</targetUrl>
-                        <homeUrl>${homeUrl}</homeUrl>
+                        <homeUrl>${branchPreprod}</homeUrl>
+                        <adminUrl>${adminPreprod}</adminUrl>
+                        <branchUrl>${branchPreprod}</branchUrl>
                         <desiredPlatform>${platform}</desiredPlatform>
                         <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
                         <dataproviderthreadcount>${threads}</dataproviderthreadcount>

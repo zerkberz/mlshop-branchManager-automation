@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SHOP" thread-count="6" parallel="tests">
+<suite name="SHOP" thread-count="6" >
     <listeners>
         <listener class-name="utilities.ExtentReport.ExtentReporter" />
-        <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>
+<!--        <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>-->
     </listeners>
 
     <test name="LOG IN Branch">
-        <parameter name="browser" value="chrome">
-            <classes>
-                <class name="MLShop_BRANCH.actual.LoginT">
-                </class>
-            </classes>
-        </parameter>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="role" value="branch"/>
+        <classes>
+            <class name="MLShop_BRANCH.actual.LoginT"/>
+        </classes>
+    </test>
+
+    <test name="LOG IN Admin">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="role" value="admin"/>
+        <classes>
+            <class name="MLShop_BRANCH.actual.LoginT"/>
+        </classes>
     </test>
 </suite>

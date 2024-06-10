@@ -26,8 +26,8 @@ public class GeneralMethod extends ExtentReporter{
     protected final Actions actions = new Actions(driver);
 
     public GeneralMethod(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
     
     public void click(WebElement locator, String elementName){
