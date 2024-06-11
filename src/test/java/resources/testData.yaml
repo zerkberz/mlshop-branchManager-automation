@@ -3,6 +3,10 @@ Roles:
     gmail_email: norberto.dano@mlhuillier.com
     gmail_password: "123456q@"
 
+  - role: admin
+    gmail_email: norberto.dano@mlhuillier.com
+    gmail_password: "123456789"
+
 #Users: [09999999999, 09999999998, 09999999997, 09999999996, 09999999934]
 
 

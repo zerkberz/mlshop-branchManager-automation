@@ -1,4 +1,4 @@
-package MLShop_BRANCH.pageObject;
+package MLShop_BRANCHandADMIN.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,7 +15,8 @@ public class LoginBranch_PageObjects {
     public WebElement RegisterButton_LoginPage(){return getDriver().findElement(By.xpath("//span[@id='btnregister']"));}
 
     //User Avatar Object/s
-    public WebElement UserAvatar_HomePage(){return getDriver().findElement(By.xpath("//i[@class='fa fa-user']"));}
+    public WebElement UserAvatar_Icon_HomePage(){return getDriver().findElement(By.xpath("//i[@class='fas fa-caret-down']"));}
+    public WebElement UserAvatar_LogoutButton_HomePage(){return getDriver().findElement(By.xpath("//a[normalize-space()='Logout']"));}
 
     //Home Page Object/s
     public WebElement ReceiveItemFromMerchant_HomePage(){return getDriver().findElement(By.xpath("//a[normalize-space()='Receive Item from Merchant']"));}

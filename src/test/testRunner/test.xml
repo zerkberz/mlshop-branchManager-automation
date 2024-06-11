@@ -10,7 +10,7 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="role" value="branch"/>
         <classes>
-            <class name="MLShop_BRANCH.actual.LoginT"/>
+            <class name="MLShop_BRANCHandADMIN.actual.LoginT_Branch"/>
         </classes>
     </test>
 
@@ -18,7 +18,7 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="role" value="admin"/>
         <classes>
-            <class name="MLShop_BRANCH.actual.LoginT"/>
+            <class name="MLShop_BRANCHandADMIN.actual.LoginT_Admin"/>
         </classes>
     </test>
 </suite>
