@@ -6,19 +6,15 @@
 <!--        <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>-->
     </listeners>
 
-    <test name="LOG IN Branch">
-        <parameter name="browser" value="chrome"/>
-        <parameter name="role" value="branch"/>
-        <classes>
-            <class name="MLShop_BRANCHandADMIN.actual.LoginT_Branch"/>
-        </classes>
-    </test>
-
+<!--    Admin   -->
     <test name="LOG IN Admin">
         <parameter name="browser" value="chrome"/>
         <parameter name="role" value="admin"/>
         <classes>
-            <class name="MLShop_BRANCHandADMIN.actual.LoginT_Admin"/>
+<!--            <class name="MLShop_Admin.actual.LoginT"/>-->
+<!--            <class name="MLShop_Admin.actual.DashboardT"/>-->
+            <class name="MLShop_Admin.actual.OrdersT"/>
         </classes>
     </test>
+
 </suite>

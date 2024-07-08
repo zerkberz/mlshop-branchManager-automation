@@ -1,14 +1,18 @@
-package MLShop_BRANCHandADMIN.base;
+package MLShop_Admin.base;
 
-import MLShop_BRANCHandADMIN.testSteps.*;
+import MLShop_Admin.testSteps.*;
 import org.testng.annotations.*;
 import static utilities.Driver.DriverManager.*;
 import utilities.Driver.DriverType;
 import utilities.Logger.LoggingUtils;
 
 public class BaseTest {
-    protected LoginBranch_Steps loginBranchSteps;
-    protected LoginAdmin_Steps loginAdminSteps;
+
+    //ADMIN
+    protected Login_Steps adminLoginSteps;
+    protected Dashboard_Steps adminDashboardSteps;
+    protected Orders_Steps adminOrderSteps;
+
 
     @Parameters({"browser","role"})
     @BeforeClass (alwaysRun = true)
@@ -31,8 +35,12 @@ public class BaseTest {
         }
         getDriver().get(url);
         LoggingUtils.info("Redirecting back to home");
-        loginBranchSteps = new LoginBranch_Steps();
-        loginAdminSteps = new LoginAdmin_Steps();
+
+        //ADMIN
+        adminOrderSteps = new Orders_Steps();
+        adminLoginSteps = new Login_Steps();
+        adminDashboardSteps = new Dashboard_Steps();
+
     }
     private void initializeDriver(DriverType driverType) {
         createDriver(driverType);
