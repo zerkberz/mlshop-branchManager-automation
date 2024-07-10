@@ -7,7 +7,7 @@ import static utilities.Driver.DriverManager.getDriver;
 
 public class Login_PageObjects {
 
-
+    //Dashboard
     public WebElement EmailField_LoginPage(){return getDriver().findElement(By.xpath("//input[@id='email']"));}
     public WebElement PasswordField_LoginPage(){return getDriver().findElement(By.xpath("//input[@id='password']"));}
     public WebElement PasswordVisibility_LoginPage(){return getDriver().findElement(By.xpath("//input[@id='passVisibility']"));}
@@ -17,9 +17,27 @@ public class Login_PageObjects {
     public WebElement NoInputNotification_LoginPage(){return getDriver().findElement(By.xpath("//div[@class='toast-message' and contains(text(), 'Please provide email or password!')]"));}
     public WebElement InvalidLoginNotification_LoginPage(){return getDriver().findElement(By.xpath("//div[@class='toast-message' and contains(text(), 'No data found')]"));}
 
+    //    Header
+    public WebElement UserIcon_Header(){return getDriver().findElement(By.xpath("//*[@class='nav-dropdown']"));}
+    public WebElement Profile_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Profile']"));}
+    public WebElement Messages_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Messages']"));}
+    public WebElement Settings_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Settings']"));}
+    public WebElement Logout_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Logout']"));}
+
+    public WebElement Notification_Header(){return getDriver().findElement(By.cssSelector( "[class='notification fa fa-bell']"));}
+    public WebElement MLSHOPADMIN_Header(){return getDriver().findElement(By.xpath("//span[contains(.,'ML Shop Admin')]"));}
+    public WebElement MLHUILLIERSideBarLogo_Header(){return getDriver().findElement(By.xpath("//i[@class='fas fa-chevron-right sidebarLogo']"));}
+
     //User Avatar Object/s
     public WebElement UserAvatar_Icon_HomePage(){return getDriver().findElement(By.xpath("//i[@class='fas fa-caret-down']"));}
     public WebElement UserAvatar_LogoutButton_HomePage(){return getDriver().findElement(By.xpath("//a[normalize-space()='Logout']"));}
+
+    //      Overview Dashboard
+    public WebElement TotalSales_Dashboard(){return getDriver().findElement(By.xpath("//div[contains(text(),'Total Sales')]"));}
+    public WebElement ReturningCustomerRate_Dashboard(){return getDriver().findElement(By.xpath("//div[contains(text(),'Returning Customer Rate')]"));}
+    public WebElement AverageOrderValue_Dashboard(){return getDriver().findElement(By.xpath("//div[contains(text(),'Average Order Value')]"));}
+    public WebElement TotalOrders_Dashboard(){return getDriver().findElement(By.xpath("//div[contains(text(),'Total Orders')]"));}
+    public WebElement TopProductsByUnitsSold_Dashboard(){return getDriver().findElement(By.xpath("//div[contains(text(),'Top Products by Units Sold')]"));}
 
     //Home Page Object/s
     public WebElement ReceiveItemFromMerchant_HomePage(){return getDriver().findElement(By.xpath("//a[normalize-space()='Receive Item from Merchant']"));}

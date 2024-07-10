@@ -37,15 +37,15 @@ public class Login_Steps extends Base_Steps{
     public void Admin_Login() {
         loginByRole("admin");
 
-        if (isVisible(adminDashboardPageObjects.UserIcon_Header(), "User Icon") &&
-                isVisible(adminDashboardPageObjects.Notification_Header(), "Notification Header") &&
-                isVisible(adminDashboardPageObjects.MLSHOPADMIN_Header(), "ML Shop Admin Header") &&
-                isVisible(adminDashboardPageObjects.MLHUILLIERSideBarLogo_Header(), "ML Logo") &&
-                isVisible(adminDashboardPageObjects.TotalSales_Dashboard(), "Total Sales Graph") &&
-                isVisible(adminDashboardPageObjects.ReturningCustomerRate_Dashboard(), "Returning Customer Rate Graph") &&
-                isVisible(adminDashboardPageObjects.AverageOrderValue_Dashboard(), "Average Order Value Graph") &&
-                isVisible(adminDashboardPageObjects.TotalOrders_Dashboard(), "Total Orders Graph") &&
-                isVisible(adminDashboardPageObjects.TopProductsByUnitsSold_Dashboard(), "Top Products By Unit Sold Graph")) {
+        if (isVisible(adminLoginPageObjects.UserIcon_Header(), "User Icon") &&
+                isVisible(adminLoginPageObjects.Notification_Header(), "Notification Header") &&
+                isVisible(adminLoginPageObjects.MLSHOPADMIN_Header(), "ML Shop Admin Header") &&
+                isVisible(adminLoginPageObjects.MLHUILLIERSideBarLogo_Header(), "ML Logo") &&
+                isVisible(adminLoginPageObjects.TotalSales_Dashboard(), "Total Sales Graph") &&
+                isVisible(adminLoginPageObjects.ReturningCustomerRate_Dashboard(), "Returning Customer Rate Graph") &&
+                isVisible(adminLoginPageObjects.AverageOrderValue_Dashboard(), "Average Order Value Graph") &&
+                isVisible(adminLoginPageObjects.TotalOrders_Dashboard(), "Total Orders Graph") &&
+                isVisible(adminLoginPageObjects.TopProductsByUnitsSold_Dashboard(), "Top Products By Unit Sold Graph")) {
             ExtentReporter.logPass("AL_001", "Admin Log In: Successful");
             waitSleep(1000);
             logoutByRole("admin");

@@ -47,7 +47,7 @@ public class BaseTest {
     }
 
     @Parameters({"role"})
-    @BeforeMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void setUpTests(final String role){
         String url = null;
         if (role != null && role.equals("branch")) {
@@ -55,15 +55,15 @@ public class BaseTest {
             url = System.getProperty("branchUrl");
         } else if (role != null && role.equals("admin")) {
             LoggingUtils.info("Admin Role");
-            url = System.getProperty("adminUrl");
+            url = System.getProperty("adminUrl") + "Home/Dashboard";
         } else {
             throw new IllegalArgumentException("Invalid role parameter: " + role);
         }
         getDriver().get(url);
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void clean(){}
+//    @AfterMethod(alwaysRun = true)
+//    public void clean(){}
     @AfterClass(alwaysRun = true)
     public void tearDown () {
         closeWebBrowser();
