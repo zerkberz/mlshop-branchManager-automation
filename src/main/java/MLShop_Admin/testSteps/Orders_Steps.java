@@ -184,6 +184,10 @@ public class Orders_Steps extends Base_Steps {
         click(adminOrdersPageObjects.ViewDetailsFirstRow_Button(),"View Order Details");
         isVisible(adminOrdersPageObjects.PrintInvoice(),"Print Invoice Button");
         click(adminOrdersPageObjects.PrintInvoice(),"Print Invoice");
+
+        waitSleep(3000);
+        isFileExist("Order Details.pdf");
+      
     }
 
     //Print_001 > AO_006

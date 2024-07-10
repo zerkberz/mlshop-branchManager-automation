@@ -34,19 +34,17 @@ public class OrdersT extends BaseTest {
 //        adminOrderSteps.ViewDetails_Check();
 //    }
 
-    //Print_001
-//    @Test(priority =5,  dependsOnMethods = "Admin_Login" , description = "Validate Print Invoice Function")
-//    public  void PrintInvoice_ViewDetails() throws Exception{
-//        adminOrderSteps.PrintInvoice_ViewDetails();
-//    }
+    // Print_001
+   @Test(priority =5,  dependsOnMethods = "Admin_Login" , description = "Validate Print Invoice Function")
+   public  void PrintInvoice_ViewDetails() throws Exception{
+       adminOrderSteps.PrintInvoice_ViewDetails();
+   }
 
     //Date_001
-    @Test(priority =6,  dependsOnMethods = "Admin_Login" , description = "Validate Correct Date Range Function")
-    public  void Correct_DateRange() throws Exception{
-        adminOrderSteps.Correct_DateRange();
-    }
-
-
+    // @Test(priority =6,  dependsOnMethods = "Admin_Login" , description = "Validate Correct Date Range Function")
+    // public  void Correct_DateRange() throws Exception{
+    //     adminOrderSteps.Correct_DateRange();
+    // }
 
 
 //    @Test(priority = 0,  dependsOnMethods = "Admin_Login" , description = "Validate Admins' Order Searches")

@@ -3,6 +3,8 @@ package utilities.ReusableComponents;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.File;
+import java.sql.DriverManager;
 import java.time.Duration;
 import java.util.Random;
 import java.util.Set;
@@ -11,11 +13,13 @@ import java.util.List;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.remote.LocalFileDetector;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 import utilities.yamlReader.yamlReader;
 import org.testng.Assert;
 
+import static utilities.Driver.DriverManager.downloadFilepath;
 import static utilities.Driver.DriverManager.getDriver;
 
 public class GeneralMethod extends ExtentReporter{
@@ -408,6 +412,15 @@ public class GeneralMethod extends ExtentReporter{
         }finally{
             LoggingUtils.info("Entering text: " + text);
             ExtentReporter.logInfo("Entering text: " + text, "");
+        }
+    }
+    public boolean isFileExist(String fileName){
+        File downloadFile = new File(downloadFilepath + File.separator + fileName);
+        if(downloadFile.exists()){
+            passTest(fileName+" File Exist", "downloaded file exists");
+            return true;
+        }else{
+            return false;
         }
     }
 }
