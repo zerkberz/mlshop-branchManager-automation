@@ -34,10 +34,10 @@ public class Orders_Steps extends Base_Steps {
                 isVisible(adminOrdersPageObjects.AverageOrderValue_Dashboard(), "Average Order Value Graph") &&
                 isVisible(adminOrdersPageObjects.TotalOrders_Dashboard(), "Total Orders Graph") &&
                 isVisible(adminOrdersPageObjects.TopProductsByUnitsSold_Dashboard(), "Top Products By Unit Sold Graph")) {
-            ExtentReporter.logPass("AL_001", "Admin Log In: Successful");
+            ExtentReporter.logPass("", "Admin Log In: Successful");
             waitSleep(1000);
         } else {
-            ExtentReporter.logFail("AL_001", "Admin Log In: Failed");
+            ExtentReporter.logFail("", "Admin Log In: Failed");
             Assert.fail("Failed Logging In.");
         }
     }
@@ -187,66 +187,178 @@ public class Orders_Steps extends Base_Steps {
 
         waitSleep(3000);
         isFileExist("Order Details.pdf");
-      
     }
 
     //Print_001 > AO_006
     public void Correct_DateRange() {
         navigateToOrders("admin");
 
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(1000);
+        typeEnter(adminOrdersPageObjects.Date_From(), "Date Picker: From", "2024-06-01");
+        typeEnter(adminOrdersPageObjects.Date_To(), "Date Picker: To", "2024-07-01");
+        waitSleep(1000);
 
+        LoggingUtils.info("Date Range Testing");
+        int ctr = 0;
+        for(WebElement  orderNo : adminOrdersPageObjects.dates()){
+            LoggingUtils.info("Date: " + getText(orderNo));
+            ctr++;
+            if(ctr == 10){
+                passTest("Correct_DateRange", "Date Range = Listed Dates");
+                break;
+            }
+        }
+    }
+
+    //Date_001 > AO_007
+    public void Incorrect_DateRange() {
+        navigateToOrders("admin");
+
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(1000);
+        type(adminOrdersPageObjects.Date_From(), "Date Picker: From", "1999-12-25");
+        typeEnter(adminOrdersPageObjects.Date_To(), "Date Picker: To", "2000-12-25");
+        waitSleep(1000);
+
+        LoggingUtils.info("Date Range Testing");
+        int ctr = 0;
+        for(WebElement  orderNo : adminOrdersPageObjects.dates()){
+            LoggingUtils.info("Date: " + getText(orderNo));
+            ctr++;
+            if(ctr == 0){
+                passTest("Correct_DateRange", "Date Range = Listed Dates");
+                break;
+            }
+        }
     }
 
 
-
-
-
-
-
-    public void Admin_Search() {
+    //Search_001 > AO_008
+    public void Seller_Search() {
         navigateToOrders("admin");
 
         //Seller Search
-        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "Francis");
-        waitSleep(1500);
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "ML TG QA TEAM");
+        waitSleep(8000);
         String SellerInput = getValue(adminOrdersPageObjects.Searchbar_Orders());
+        waitSleep(2000);
+
         getValue(adminOrdersPageObjects.firstOrderSellerName());
         assertEqual(getText(adminOrdersPageObjects.firstOrderSellerName()), SellerInput);
 
-        LoggingUtils.info("Seller Search: Successful");
-        adminOrdersPageObjects.Searchbar_Orders().clear();
+        LoggingUtils.info("Seller Search and Validation: Successful");
+    }
 
-        LoggingUtils.info("Searches: Successful");
+    //AO_009
+    public void PaymentMethod_Search() {
+        navigateToOrders("admin");
+
+        //Payment Method Search
+        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "ML WALLET");
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(8000);
+        String SellerInput = getValue(adminOrdersPageObjects.Searchbar_Orders());
+        waitSleep(2000);
+
+        getValue(adminOrdersPageObjects.firstOrderModeOfPayment());
+        assertEqual(getText(adminOrdersPageObjects.firstOrderModeOfPayment()), SellerInput);
+
+        //Check View Details
+        click(adminOrdersPageObjects.ViewDetailsFirstRow_Button(),"View Details");
+        waitSleep(2000);
+        getValue(adminOrdersPageObjects.ModeOfPayment_ViewDetails());
+        assertEqual(getText(adminOrdersPageObjects.ModeOfPayment_ViewDetails()), SellerInput);
+
+        LoggingUtils.info("Mode of Payment Search and Validation: Successful");
+    }
+
+    //AO_010
+    public void OrderStatus_Search() {
+        navigateToOrders("admin");
+
+        //Order Status Search
+        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "PENDING");
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(8000);
+        String SellerInput = getValue(adminOrdersPageObjects.Searchbar_Orders());
+        waitSleep(2000);
+
+        getValue(adminOrdersPageObjects.firstOrderStatus());
+        assertEqual(getText(adminOrdersPageObjects.firstOrderStatus()), SellerInput);
+
+        //Check View Details
+        click(adminOrdersPageObjects.ViewDetailsFirstRow_Button(),"View Details");
+        waitSleep(2000);
+        getValue(adminOrdersPageObjects.OrderStatus_ViewDetails());
+        assertEqual(getText(adminOrdersPageObjects.OrderStatus_ViewDetails()), SellerInput);
+
+        LoggingUtils.info("Order Status Search and Validation: Successful");
+    }
+
+    //Search_002 > AO_011
+    public void IncorrectSeller_Search() {
+        navigateToOrders("admin");
+
+        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "Jasper QT");
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(3000);
+
+        int ctr = 0;
+        for(WebElement  sellerList : adminOrdersPageObjects.sellerList()){
+            LoggingUtils.info("Seller: " + getText(sellerList));
+            ctr++;
+            if(ctr == 0){
+                passTest("IncorrectSeller_Search", "Seller List is Empty");
+                break;
+            }
+        }
+        LoggingUtils.info("Incorrect Seller Search and Validation: Successful");
     }
 
 
+    //AO_012
+    public void IncorrectPaymentMethod_Search() {
+        navigateToOrders("admin");
 
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(3000);
+        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "MELGO DE BANKO");
+        waitSleep(4000);
 
+        int ctr = 0;
+        for(WebElement  paymentMethod : adminOrdersPageObjects.paymentMethodList()){
+            LoggingUtils.info("Payment Method: " + getText(paymentMethod));
+            ctr++;
+            if(ctr == 0){
+                passTest("IncorrectPaymentMethod_Search", "Payment Method List is Empty");
+                break;
+            }
+        }
+        LoggingUtils.info("Incorrect Payment Method Search and Validation: Successful");
+    }
 
+    //AO_013
+    public void IncorrectOrderStatus_Search() {
+        navigateToOrders("admin");
 
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+        waitSleep(3000);
+        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "ZESTY");
+        waitSleep(4000);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        int ctr = 0;
+        for(WebElement  orderStatus : adminOrdersPageObjects.orderStatusList()){
+            LoggingUtils.info("Payment Method: " + getText(orderStatus));
+            ctr++;
+            if(ctr == 0){
+                passTest("IncorrectOrderStatus_Search", "Order Status List is Empty");
+                break;
+            }
+        }
+        LoggingUtils.info("Incorrect Order Status Search and Validation: Successful");
+    }
 }
 
 

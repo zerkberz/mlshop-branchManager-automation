@@ -12,7 +12,9 @@ public class BaseTest {
     protected Login_Steps adminLoginSteps;
     protected Dashboard_Steps adminDashboardSteps;
     protected Orders_Steps adminOrderSteps;
-
+    protected  SellerList_Steps adminSellerListSteps;
+    protected  Reports_ProductList_Steps adminReportsProductListSteps;
+    protected  Reports_ProductInventory_Steps adminReportsProductInventorySteps;
 
     @Parameters({"browser","role"})
     @BeforeClass (alwaysRun = true)
@@ -40,6 +42,9 @@ public class BaseTest {
         adminOrderSteps = new Orders_Steps();
         adminLoginSteps = new Login_Steps();
         adminDashboardSteps = new Dashboard_Steps();
+        adminSellerListSteps = new SellerList_Steps();
+        adminReportsProductListSteps = new Reports_ProductList_Steps();
+        adminReportsProductInventorySteps = new Reports_ProductInventory_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {

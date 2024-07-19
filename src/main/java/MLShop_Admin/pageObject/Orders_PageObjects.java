@@ -18,10 +18,6 @@ public class Orders_PageObjects {
 
     //    Header
     public WebElement UserIcon_Header(){return getDriver().findElement(By.xpath("//*[@class='nav-dropdown']"));}
-    public WebElement Profile_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Profile']"));}
-    public WebElement Messages_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Messages']"));}
-    public WebElement Settings_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Settings']"));}
-    public WebElement Logout_UserIcon(){return getDriver().findElement(By.xpath("//a[normalize-space()='Logout']"));}
 
     public WebElement Notification_Header(){return getDriver().findElement(By.cssSelector( "[class='notification fa fa-bell']"));}
     public WebElement MLSHOPADMIN_Header(){return getDriver().findElement(By.id("sidebarCollapse"));}
@@ -35,14 +31,6 @@ public class Orders_PageObjects {
 
     //Entries
     public WebElement Entry_DropDown(){return getDriver().findElement(By.xpath("//select[@name='dataTables-example_length']"));}
-
-//    public WebElement Entry_5(){return getDriver().findElement(By.xpath("//option[@value='5']"));}
-//    public WebElement Entry_10(){return getDriver().findElement(By.xpath("//option[@value='10']"));}
-//    public WebElement Entry_25(){return getDriver().findElement(By.xpath("//option[@value='25']"));}
-//    public WebElement Entry_50(){return getDriver().findElement(By.xpath("//option[@value='50']"));}
-//    public WebElement Entry_75(){return getDriver().findElement(By.xpath("//option[@value='75']"));}
-//    public WebElement Entry_100(){return getDriver().findElement(By.xpath("//option[@value='100']"));}
-//    public WebElement Entry_All(){return getDriver().findElement(By.xpath("//option[@value='-1']"));}
 
     //Order Row
     public WebElement firstOrderNumber(){return getDriver().findElement(By.xpath("(//td[@class='orderNo'])[1]"));}
@@ -62,7 +50,6 @@ public class Orders_PageObjects {
     public WebElement CustomerName_ViewDetails(){return getDriver().findElement(By.xpath("(//td[@class='billingdata'])[2]"));}
     public WebElement TotalAmountPaid_ViewDetails(){return getDriver().findElement(By.xpath("(//td[@class='totaldataAmountPaid'])[1]"));}
     public WebElement Quantity_ViewDetails(){return getDriver().findElement(By.xpath("(//td[@style='text-align: center'])[4]"));}
-//    public WebElement SellerName_ViewDetails(){return getDriver().findElement(By.xpath("(//td[@style='text-align: center'])[4]"));}
     public WebElement ModeOfPayment_ViewDetails(){return getDriver().findElement(By.xpath("(//td[@class='statusdata'])[4]"));}
     public WebElement OrderStatus_ViewDetails(){return getDriver().findElement(By.xpath("//span[@class='orderStatusHighlight']"));}
 
@@ -73,7 +60,15 @@ public class Orders_PageObjects {
     //Print Invoice
     public WebElement PrintInvoice(){return getDriver().findElement(By.xpath("//button[@id='printOrderDetailsInvoice']"));}
 
+    //Date Picker
+    public WebElement Date_From(){return getDriver().findElement(By.xpath("//input[@id='datepicker_from']"));}
+    public WebElement Date_To(){return getDriver().findElement(By.xpath("//input[@id='datepicker_to']"));}
 
-    //
+    //List
     public List<WebElement> orderNumbers(){return getDriver().findElements(By.cssSelector("[class='orderNo']"));}
+    public List<WebElement> dates(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[2]"));}
+    public List<WebElement> sellerList(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[6]"));}
+    public List<WebElement> paymentMethodList(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[7]"));}
+    public List<WebElement> orderStatusList(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[8]"));}
+
 }

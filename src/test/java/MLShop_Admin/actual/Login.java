@@ -3,7 +3,7 @@ package MLShop_Admin.actual;
 import MLShop_Admin.base.BaseTest;
 import org.testng.annotations.Test;
 
-public class LoginT extends BaseTest {
+public class Login extends BaseTest {
 
     //LogIn_001
     @Test(priority = 0, description = "Successful Login: Validate Admin Log In")

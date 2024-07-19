@@ -11,9 +11,18 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="role" value="admin"/>
         <classes>
-<!--            <class name="MLShop_Admin.actual.LoginT"/>-->
-<!--            <class name="MLShop_Admin.actual.DashboardT"/>-->
-            <class name="MLShop_Admin.actual.OrdersT"/>
+<!--            <class name="MLShop_Admin.actual.Login"/>-->
+
+<!--            <class name="MLShop_Admin.actual.Dashboard"/>-->
+
+<!--            <class name="MLShop_Admin.actual.Orders"/>-->
+
+<!--            <class name="MLShop_Admin.actual.Seller"/>-->
+
+<!--            <class name="MLShop_Admin.actual.Reports_ProductList"/>-->
+
+            <class name="MLShop_Admin.actual.Reports_ProductInventory"/>
+
         </classes>
     </test>
 

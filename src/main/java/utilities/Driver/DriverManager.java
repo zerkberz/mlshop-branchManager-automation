@@ -20,7 +20,7 @@ public class DriverManager {
     private static final Duration IMPLICIT_WAIT = Duration.ofSeconds(10);
     private static final Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(20);
     private static final Duration SCRIPT_TIMEOUT = Duration.ofSeconds(10);
-    public static final String downloadFilepath = "D:\\";
+    public static final String downloadFilepath = "E:\\";
 
     private DriverManager(){}
 
