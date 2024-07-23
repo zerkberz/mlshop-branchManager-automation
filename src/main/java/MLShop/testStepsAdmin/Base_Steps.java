@@ -1,6 +1,6 @@
-package MLShop_Admin.testSteps;
+package MLShop.testStepsAdmin;
 
-import MLShop_Admin.pageObject.*;
+import MLShop.pageObjectAdmin.*;
 import utilities.ReusableComponents.GeneralMethod;
 import utilities.PropertyReader.propertyReader;
 import utilities.FileUtils.FilePathUtils;

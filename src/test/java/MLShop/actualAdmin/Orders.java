@@ -1,6 +1,6 @@
-package MLShop_Admin.actual;
+package MLShop.actualAdmin;
 
-import MLShop_Admin.base.BaseTest;
+import MLShop.base.BaseTest;
 import org.testng.annotations.Test;
 
 public class Orders extends BaseTest {

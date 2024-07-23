@@ -1,12 +1,11 @@
-package MLShop_Admin.testSteps;
+package MLShop.testStepsAdmin;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
-public class Reports_SalesReport_Steps extends Base_Steps{
+public class Reports_SalesReport_Steps extends MLShop.testStepsAdmin.Base_Steps {
 
     //Methods
     public void loginByRole(String role) {

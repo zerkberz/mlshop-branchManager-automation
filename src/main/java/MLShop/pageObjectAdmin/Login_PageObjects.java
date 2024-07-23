@@ -1,4 +1,4 @@
-package MLShop_Admin.pageObject;
+package MLShop.pageObjectAdmin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

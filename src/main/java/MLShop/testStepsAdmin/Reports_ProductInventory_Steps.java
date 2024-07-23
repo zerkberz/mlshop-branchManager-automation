@@ -1,11 +1,11 @@
-package MLShop_Admin.testSteps;
+package MLShop.testStepsAdmin;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utilities.ExtentReport.ExtentReporter;
 import utilities.Logger.LoggingUtils;
 
-public class Reports_ProductInventory_Steps extends Base_Steps{
+public class Reports_ProductInventory_Steps extends MLShop.testStepsAdmin.Base_Steps {
     //Methods
     public void loginByRole(String role) {
         type(adminLoginPageObjects.EmailField_LoginPage(), "Email Field", reader.getEmailByRole(role));

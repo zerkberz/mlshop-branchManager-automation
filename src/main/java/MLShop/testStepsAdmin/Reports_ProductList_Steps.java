@@ -1,4 +1,4 @@
-package MLShop_Admin.testSteps;
+package MLShop.testStepsAdmin;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;

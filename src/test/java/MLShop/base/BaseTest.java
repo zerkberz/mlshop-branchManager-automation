@@ -1,6 +1,6 @@
-package MLShop_Admin.base;
+package MLShop.base;
 
-import MLShop_Admin.testSteps.*;
+import MLShop.testStepsAdmin.*;
 import org.testng.annotations.*;
 import static utilities.Driver.DriverManager.*;
 import utilities.Driver.DriverType;

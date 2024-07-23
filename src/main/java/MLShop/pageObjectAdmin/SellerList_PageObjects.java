@@ -1,4 +1,4 @@
-package MLShop_Admin.pageObject;
+package MLShop.pageObjectAdmin;
 
 public class SellerList_PageObjects {
 
