@@ -1,7 +1,7 @@
 Roles:
-  - role: branch
+  - role: login
     gmail_email: norberto.dano@mlhuillier.com
-    gmail_password: "123456q@"
+    gmail_password: "123456789"
 
   - role: admin
     gmail_email: norberto.dano@mlhuillier.com

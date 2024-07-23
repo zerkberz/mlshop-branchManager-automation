@@ -19,7 +19,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         waitSleep(1000);
         click(adminReportsProductInventoryObjects.Reports_Sidebar(), "Reports Sidebar Button");
         waitSleep(1200);
-        click(adminReportsProductInventoryObjects.ProductInventory_Sidebar(), "Product Lists Sidebar Button");
+        click(adminReportsProductInventoryObjects.ProductInventory_Sidebar(), "Product Inventorys Sidebar Button");
     }
 
     //For Log-In Only
@@ -48,7 +48,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
     //Test Cases
 
     //Search_001
-    //APL_001
+    //API_001
     public void CategoryFilter_Search() {
         navigateToProductList("admin");
 
@@ -71,17 +71,14 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Category Search and Validation: Successful");
     }
 
-    //APL_002
+    //API_002
     public void LotNumberFilter_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "06282024");
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String LotNumberInput = getValue(adminReportsProductInventoryObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductInventoryObjects.LotNumber_FirstRow());
-        assertEqual(getText(adminReportsProductInventoryObjects.LotNumber_FirstRow()), LotNumberInput);
+        String LotNumber_FirstRow = getText(adminReportsProductInventoryObjects.LotNumber_FirstRow());
+        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "" +LotNumber_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductInventoryObjects.LotNumber_FirstRow()), LotNumber_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -96,17 +93,14 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Lot Number Search and Validation: Successful");
     }
 
-    //APL_003
+    //API_003
     public void ProductTypeFilter_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "Rolex");
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String ProductTypeInput = getValue(adminReportsProductInventoryObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductInventoryObjects.ProductType_FirstRow());
-        assertEqual(getText(adminReportsProductInventoryObjects.ProductType_FirstRow()), ProductTypeInput);
+        String ProductType_FirstRow = getText(adminReportsProductInventoryObjects.ProductType_FirstRow());
+        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "" +ProductType_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductInventoryObjects.ProductType_FirstRow()), ProductType_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -121,17 +115,14 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Product Type Search and Validation: Successful");
     }
 
-    //APL_004
+    //API_004
     public void SellerName_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "ML TG QA TEAM");
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String ProductTypeInput = getValue(adminReportsProductInventoryObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductInventoryObjects.SellerName_FirstRow());
-        assertEqual(getText(adminReportsProductInventoryObjects.SellerName_FirstRow()), ProductTypeInput);
+        String SellerName_FirstRow = getText(adminReportsProductInventoryObjects.SellerName_FirstRow());
+        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "" +SellerName_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductInventoryObjects.SellerName_FirstRow()), SellerName_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -146,17 +137,14 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Seller Name Search and Validation: Successful");
     }
 
-    //APL_005
+    //API_005
     public void BarcodeSKU_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "1111105282024");
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String BarcodeSKUInput = getValue(adminReportsProductInventoryObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductInventoryObjects.BarcodeSKU_FirstRow());
-        assertEqual(getText(adminReportsProductInventoryObjects.BarcodeSKU_FirstRow()), BarcodeSKUInput);
+        String BarcodeSKU_FirstRow = getText(adminReportsProductInventoryObjects.BarcodeSKU_FirstRow());
+        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "" +BarcodeSKU_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductInventoryObjects.BarcodeSKU_FirstRow()), BarcodeSKU_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -171,17 +159,14 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("ALL Barcode/SKU Search and Validation: Successful");
     }
 
-    //APL_006
+    //API_006
     public void ProductID_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "P20240628164351890");
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String ProductIDInput = getValue(adminReportsProductInventoryObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductInventoryObjects.ProductID_FirstRow());
-        assertEqual(getText(adminReportsProductInventoryObjects.ProductID_FirstRow()), ProductIDInput);
+        String ProductID_FirstRow = getText(adminReportsProductInventoryObjects.ProductID_FirstRow());
+        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "" +ProductID_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductInventoryObjects.ProductID_FirstRow()), ProductID_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -194,20 +179,16 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
             }
         }
         LoggingUtils.info("Product ID Search and Validation: Successful");
-
     }
 
-    //APL_007 //Not Applicable Yet
+    //API_007 //Not Applicable Yet
     public void Region_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "HO");
-        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String RegionInput = getValue(adminReportsProductInventoryObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductInventoryObjects.Region_FirstRow());
-        assertEqual(getText(adminReportsProductInventoryObjects.Region_FirstRow()), RegionInput);
+        String Region_FirstRow = getText(adminReportsProductInventoryObjects.Region_FirstRow());
+        typeEnter(adminReportsProductInventoryObjects.Searchbar_ProductList(), "Searchbar", "" +Region_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductInventoryObjects.Region_FirstRow()), Region_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -224,7 +205,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
 
 
     //Search_002
-    //APL_008
+    //API_008
     public void InvalidCategoryFilter_Search() {
         navigateToProductList("admin");
 
@@ -248,7 +229,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Invalid Category Search and Validation: Successful");
     }
 
-    //APL_009
+    //API_009
     public void InvalidLotNumberFilter_Search() {
         navigateToProductList("admin");
 
@@ -272,7 +253,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Invalid Lot Number Search and Validation: Successful");
     }
 
-    //APL_010
+    //API_010
     public void InvalidProductTypeFilter_Search() {
         navigateToProductList("admin");
 
@@ -296,7 +277,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Invalid Product Type Search and Validation: Successful");
     }
 
-    //APL_011
+    //API_011
     public void InvalidSellerName_Search() {
         navigateToProductList("admin");
 
@@ -320,7 +301,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Invalid Seller Name Search and Validation: Successful");
     }
 
-    //APL_012
+    //API_012
     public void InvalidBarcodeSKU_Search() {
         navigateToProductList("admin");
 
@@ -344,7 +325,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Invalid ALL Barcode/SKU Search and Validation: Successful");
     }
 
-    //APL_013
+    //API_013
     public void InvalidProductID_Search() {
         navigateToProductList("admin");
 
@@ -368,7 +349,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         LoggingUtils.info("Invalid Product ID Search and Validation: Successful");
     }
 
-    //APL_014//Not Applicable Yet
+    //API_014//Not Applicable Yet
     public void InvalidRegion_Search() {
         navigateToProductList("admin");
 
@@ -393,7 +374,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
     }
 
     //Date_001
-    // APL_015
+    // API_015
     public void Correct_DateRange() {
         navigateToProductList("admin");
 
@@ -404,8 +385,8 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
 
         LoggingUtils.info("Date Range Testing");
         int ctr = 0;
-        for(WebElement  orderNo : adminReportsProductInventoryObjects.dates()){
-            LoggingUtils.info("Date: " + getText(orderNo));
+        for(WebElement  dates : adminReportsProductInventoryObjects.dates()){
+            LoggingUtils.info("Date: " + getText(dates));
             ctr++;
             if(ctr > 1){
                 passTest("Correct_DateRange", "Date Range = Listed Dates");
@@ -414,7 +395,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         }
     }
 
-    //APL_016
+    //API_016
     public void Incorrect_DateRange() {
         navigateToProductList("admin");
 
@@ -425,8 +406,8 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
 
         LoggingUtils.info("Date Range Testing");
         int ctr = 0;
-        for(WebElement  orderNo : adminReportsProductInventoryObjects.dates()){
-            LoggingUtils.info("Date: " + getText(orderNo));
+        for(WebElement  dates : adminReportsProductInventoryObjects.dates()){
+            LoggingUtils.info("Date: " + getText(dates));
             ctr++;
             if(ctr > 1){
                 failTest("Incorrect_DateRange", "Date Range Has Listed Dates");
@@ -438,7 +419,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
     }
 
     //Nav_001
-    //APL_017
+    //API_017
     public void Pagination() {
         navigateToProductList("admin");
 
@@ -464,7 +445,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
     }
 
     //XPRT_001
-    //APL_018
+    //API_018
     public void PDF_Export(){
         navigateToProductList("admin");
 
@@ -476,12 +457,12 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         click(adminReportsProductInventoryObjects.Export_PDF_Button(),"Export PDF button");
         waitSleep(4000);
 
-        if (isFileExist("Product List_7-16-2024 .pdf")){
+        if (isFileExist("Product Inventory_7-16-2024 .pdf")){
             passTest("PDF_Export","PDF File Downloaded");
         }
     }
 
-    //APL_019
+    //API_019
     public void Excel_Export(){
         navigateToProductList("admin");
 
@@ -493,12 +474,12 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
         click(adminReportsProductInventoryObjects.Export_Excel_Button(),"Export PDF button");
         waitSleep(4000);
 
-        if (isFileExist("Product List_7-16-2024 .xlsx")){
+        if (isFileExist("Product Inventory_7-16-2024 .xlsx")){
             passTest("Excel_Export","PDF File Downloaded");
         }
     }
 
-    //APL_020
+    //API_020
     public void YearlyExcel_Export(){
         navigateToProductList("admin");
 
@@ -511,7 +492,7 @@ public class Reports_ProductInventory_Steps extends Base_Steps{
 
         click(adminReportsProductInventoryObjects.ExportALL_Button(),"Export Button");
 
-        if (isFileExist("Product List (Yearly)_7-16-2024 .xlsx")){
+        if (isFileExist("Product Inventory (Yearly)_7-16-2024 .xlsx")){
             passTest("YearlyExcel_Export","Excel File Downloaded");
         }
         waitSleep(4000);

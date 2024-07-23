@@ -15,6 +15,7 @@ public class BaseTest {
     protected  SellerList_Steps adminSellerListSteps;
     protected  Reports_ProductList_Steps adminReportsProductListSteps;
     protected  Reports_ProductInventory_Steps adminReportsProductInventorySteps;
+    protected  Reports_SalesReport_Steps adminReportsSalesReportSteps;
 
     @Parameters({"browser","role"})
     @BeforeClass (alwaysRun = true)
@@ -26,12 +27,13 @@ public class BaseTest {
         getDriver().manage().deleteAllCookies();
         Thread.sleep(3000);
         String url = null;
-        if (role != null && role.equals("branch")) {
-            LoggingUtils.info("Branch Role");
-            url = System.getProperty("branchUrl");
+        if (role != null && role.equals("login")) {
+            LoggingUtils.info("Login Role");
+            url = System.getProperty("adminUrl");
         } else if (role != null && role.equals("admin")) {
             LoggingUtils.info("Admin Role");
             url = System.getProperty("adminUrl");
+//            url = System.getProperty("adminUrl")+ "Home/Dashboard";
         } else {
             throw new IllegalArgumentException("Invalid role parameter: " + role);
         }
@@ -45,6 +47,7 @@ public class BaseTest {
         adminSellerListSteps = new SellerList_Steps();
         adminReportsProductListSteps = new Reports_ProductList_Steps();
         adminReportsProductInventorySteps = new Reports_ProductInventory_Steps();
+        adminReportsSalesReportSteps = new Reports_SalesReport_Steps();
 
     }
     private void initializeDriver(DriverType driverType) {
@@ -55,12 +58,12 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void setUpTests(final String role){
         String url = null;
-        if (role != null && role.equals("branch")) {
-            LoggingUtils.info("Branch Role");
-            url = System.getProperty("branchUrl");
-        } else if (role != null && role.equals("admin")) {
+        if (role != null && role.equals("admin")) {
             LoggingUtils.info("Admin Role");
             url = System.getProperty("adminUrl") + "Home/Dashboard";
+        } else if (role != null && role.equals("login")) {
+            LoggingUtils.info("Login Role");
+            url = System.getProperty("adminUrl");
         } else {
             throw new IllegalArgumentException("Invalid role parameter: " + role);
         }

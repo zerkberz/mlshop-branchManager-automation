@@ -35,7 +35,7 @@ public class Login_Steps extends Base_Steps{
     //Test Cases
     //Login_001 >AL_001
     public void Admin_Login() {
-        loginByRole("admin");
+        loginByRole("login");
 
         if (isVisible(adminLoginPageObjects.UserIcon_Header(), "User Icon") &&
                 isVisible(adminLoginPageObjects.Notification_Header(), "Notification Header") &&
@@ -48,7 +48,7 @@ public class Login_Steps extends Base_Steps{
                 isVisible(adminLoginPageObjects.TopProductsByUnitsSold_Dashboard(), "Top Products By Unit Sold Graph")) {
             ExtentReporter.logPass("AL_001", "Admin Log In: Successful");
             waitSleep(1000);
-            logoutByRole("admin");
+            logoutByRole("login");
         } else {
             ExtentReporter.logFail("AL_001", "Admin Log In: Failed");
             Assert.fail("Failed Logging In.");
@@ -57,6 +57,7 @@ public class Login_Steps extends Base_Steps{
 
     //Login_002 > AL_002
     public void IncorrectEmail_Login() {
+
         type(adminLoginPageObjects.EmailField_LoginPage(), "Email Field", "norberto.danosaur.com");
         type(adminLoginPageObjects.PasswordField_LoginPage(), "Email Field", "123456789");
         String inputtedEmail = getValue(adminLoginPageObjects.EmailField_LoginPage());

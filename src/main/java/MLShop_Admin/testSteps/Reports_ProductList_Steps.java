@@ -53,17 +53,15 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void CategoryFilter_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "Watch");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String CategoryInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.Category_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.Category_FirstRow()), CategoryInput);
+        //copy to all searches
+        String CategoryFirstRow = getText(adminReportsProductListObjects.Category_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +CategoryFirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.Category_FirstRow()), CategoryFirstRow);
 
         //List Validation
         int ctr = 0;
-        for(WebElement  categoryFilterList : adminReportsProductListObjects.categoryList()){
+        for(WebElement categoryFilterList : adminReportsProductListObjects.categoryList()){
             LoggingUtils.info("Category: " + getText(categoryFilterList));
             ctr++;
             if(ctr == 5){
@@ -78,13 +76,10 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void LotNumberFilter_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "1111100002");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String LotNumberInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.LotNumber_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.LotNumber_FirstRow()), LotNumberInput);
+        String LotNumber_FirstRow = getText(adminReportsProductListObjects.LotNumber_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +LotNumber_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.LotNumber_FirstRow()), LotNumber_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -103,13 +98,10 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void ProductTypeFilter_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "Rolex");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String ProductTypeInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.ProductType_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.ProductType_FirstRow()), ProductTypeInput);
+        String ProductType_FirstRow = getText(adminReportsProductListObjects.ProductType_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +ProductType_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.ProductType_FirstRow()), ProductType_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -128,13 +120,10 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void SellerName_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "Francis");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String ProductTypeInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.SellerName_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.SellerName_FirstRow()), ProductTypeInput);
+        String SellerName_FirstRow = getText(adminReportsProductListObjects.SellerName_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +SellerName_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.SellerName_FirstRow()), SellerName_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -153,13 +142,10 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void BarcodeSKU_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "413431235191");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String BarcodeSKUInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.BarcodeSKU_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.BarcodeSKU_FirstRow()), BarcodeSKUInput);
+        String BarcodeSKU_FirstRow = getText(adminReportsProductListObjects.BarcodeSKU_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +BarcodeSKU_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.BarcodeSKU_FirstRow()), BarcodeSKU_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -178,13 +164,10 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void ProductID_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "P20240628164351890");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String ProductIDInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.ProductID_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.ProductID_FirstRow()), ProductIDInput);
+        String ProductID_FirstRow = getText(adminReportsProductListObjects.ProductID_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +ProductID_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.ProductID_FirstRow()), ProductID_FirstRow);
 
         //List Validation
         int ctr = 0;
@@ -204,13 +187,10 @@ public class Reports_ProductList_Steps extends Base_Steps {
     public void Region_Search() {
         navigateToProductList("admin");
 
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "HO");
-        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "");
-        waitSleep(4000);
-        String RegionInput = getValue(adminReportsProductListObjects.Searchbar_ProductList());
-
-        getValue(adminReportsProductListObjects.Region_FirstRow());
-        assertEqual(getText(adminReportsProductListObjects.Region_FirstRow()), RegionInput);
+        String Region_FirstRow = getText(adminReportsProductListObjects.Region_FirstRow());
+        typeEnter(adminReportsProductListObjects.Searchbar_ProductList(), "Searchbar", "" +Region_FirstRow);
+        waitSleep(5000);
+        assertEqual(getText(adminReportsProductListObjects.Region_FirstRow()), Region_FirstRow);
 
         //List Validation
         int ctr = 0;

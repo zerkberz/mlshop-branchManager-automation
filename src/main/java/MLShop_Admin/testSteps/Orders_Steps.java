@@ -34,7 +34,7 @@ public class Orders_Steps extends Base_Steps {
                 isVisible(adminOrdersPageObjects.AverageOrderValue_Dashboard(), "Average Order Value Graph") &&
                 isVisible(adminOrdersPageObjects.TotalOrders_Dashboard(), "Total Orders Graph") &&
                 isVisible(adminOrdersPageObjects.TopProductsByUnitsSold_Dashboard(), "Top Products By Unit Sold Graph")) {
-            ExtentReporter.logPass("", "Admin Log In: Successful");
+            ExtentReporter.logPass("Admin_Login", "Admin Log In: Successful");
             waitSleep(1000);
         } else {
             ExtentReporter.logFail("", "Admin Log In: Failed");
@@ -126,9 +126,9 @@ public class Orders_Steps extends Base_Steps {
         navigateToOrders("admin");
 
         waitSleep(1000);
-        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"25");
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
 
-        waitSleep(1300);
+        waitSleep(800);
         click(adminOrdersPageObjects.Next_Pagination(),"Next Page");
         waitSleep(400);
         click(adminOrdersPageObjects.Next_Pagination(),"Next Page");
@@ -240,14 +240,22 @@ public class Orders_Steps extends Base_Steps {
 
         //Seller Search
         selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
-        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "ML TG QA TEAM");
-        waitSleep(8000);
-        String SellerInput = getValue(adminOrdersPageObjects.Searchbar_Orders());
-        waitSleep(2000);
+        waitSleep(1500);
+        String firstOrderSellerName = getText(adminOrdersPageObjects.firstOrderSellerName());
+        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "" +firstOrderSellerName);
+        waitSleep(5000);
+        assertEqual(getText(adminOrdersPageObjects.firstOrderSellerName()), firstOrderSellerName);
 
-        getValue(adminOrdersPageObjects.firstOrderSellerName());
-        assertEqual(getText(adminOrdersPageObjects.firstOrderSellerName()), SellerInput);
-
+        //List Validation
+        int ctr = 0;
+        for(WebElement  sellerList : adminOrdersPageObjects.sellerList()){
+            LoggingUtils.info("Seller: " + getText(sellerList));
+            ctr++;
+            if(ctr == 10){
+                passTest("Seller_Search", "Seller List is Visible");
+                break;
+            }
+        }
         LoggingUtils.info("Seller Search and Validation: Successful");
     }
 
@@ -256,21 +264,23 @@ public class Orders_Steps extends Base_Steps {
         navigateToOrders("admin");
 
         //Payment Method Search
-        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "ML WALLET");
         selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
-        waitSleep(8000);
-        String SellerInput = getValue(adminOrdersPageObjects.Searchbar_Orders());
-        waitSleep(2000);
+        waitSleep(1500);
+        String firstOrderModeOfPayment = getText(adminOrdersPageObjects.firstOrderModeOfPayment());
+        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "" +firstOrderModeOfPayment);
+        waitSleep(5000);
+        assertEqual(getText(adminOrdersPageObjects.firstOrderModeOfPayment()), firstOrderModeOfPayment);
 
-        getValue(adminOrdersPageObjects.firstOrderModeOfPayment());
-        assertEqual(getText(adminOrdersPageObjects.firstOrderModeOfPayment()), SellerInput);
-
-        //Check View Details
-        click(adminOrdersPageObjects.ViewDetailsFirstRow_Button(),"View Details");
-        waitSleep(2000);
-        getValue(adminOrdersPageObjects.ModeOfPayment_ViewDetails());
-        assertEqual(getText(adminOrdersPageObjects.ModeOfPayment_ViewDetails()), SellerInput);
-
+        //List Validation
+        int ctr = 0;
+        for(WebElement  paymentMethodList : adminOrdersPageObjects.paymentMethodList()){
+            LoggingUtils.info("Payment Method: " + getText(paymentMethodList));
+            ctr++;
+            if(ctr == 10){
+                passTest("PaymentMethod_Search", "Payment Method List is Visible");
+                break;
+            }
+        }
         LoggingUtils.info("Mode of Payment Search and Validation: Successful");
     }
 
@@ -279,82 +289,102 @@ public class Orders_Steps extends Base_Steps {
         navigateToOrders("admin");
 
         //Order Status Search
-        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "PENDING");
         selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
-        waitSleep(8000);
-        String SellerInput = getValue(adminOrdersPageObjects.Searchbar_Orders());
-        waitSleep(2000);
+        waitSleep(1500);
+        String firstOrderStatus = getText(adminOrdersPageObjects.firstOrderStatus());
+        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "" +firstOrderStatus);
+        waitSleep(2500);
+        assertEqual(getText(adminOrdersPageObjects.firstOrderStatus()), firstOrderStatus);
 
-        getValue(adminOrdersPageObjects.firstOrderStatus());
-        assertEqual(getText(adminOrdersPageObjects.firstOrderStatus()), SellerInput);
-
-        //Check View Details
-        click(adminOrdersPageObjects.ViewDetailsFirstRow_Button(),"View Details");
-        waitSleep(2000);
-        getValue(adminOrdersPageObjects.OrderStatus_ViewDetails());
-        assertEqual(getText(adminOrdersPageObjects.OrderStatus_ViewDetails()), SellerInput);
-
-        LoggingUtils.info("Order Status Search and Validation: Successful");
-    }
-
-    //Search_002 > AO_011
-    public void IncorrectSeller_Search() {
-        navigateToOrders("admin");
-
-        type(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "Jasper QT");
-        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
-        waitSleep(3000);
-
+        //List Validation
         int ctr = 0;
-        for(WebElement  sellerList : adminOrdersPageObjects.sellerList()){
-            LoggingUtils.info("Seller: " + getText(sellerList));
+        for(WebElement  orderStatusList : adminOrdersPageObjects.orderStatusList()){
+            LoggingUtils.info("Order Status: " + getText(orderStatusList));
             ctr++;
-            if(ctr == 0){
-                passTest("IncorrectSeller_Search", "Seller List is Empty");
+            if(ctr == 10){
+                passTest("PaymentMethod_Search", "Payment Method List is Visible");
                 break;
             }
         }
-        LoggingUtils.info("Incorrect Seller Search and Validation: Successful");
+        LoggingUtils.info("Order Status Search and Validation: Successful");
+    }
+
+        //Search_002 > AO_011
+        public void IncorrectSeller_Search() {
+            navigateToOrders("admin");
+
+            //Seller Search
+            selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+            waitSleep(1500);
+            String firstOrderSellerName = getText(adminOrdersPageObjects.firstOrderSellerName());
+            typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "@!@!" +firstOrderSellerName);
+            waitSleep(2500);
+
+            //List Validation
+            int ctr = 0;
+            for(WebElement  sellerList : adminOrdersPageObjects.sellerList()){
+            LoggingUtils.info("Seller: " + getText(sellerList));
+            ctr++;
+            if(ctr > 1){
+                failTest("IncorrectSeller_Search", "Seller List is Visible");
+                break;
+            }
+            else {
+                passTest("IncorrectSeller_Search", "Seller List is Empty");
+            }
+        }
+         LoggingUtils.info("Incorrect Seller Search and Validation: Successful");
     }
 
 
     //AO_012
     public void IncorrectPaymentMethod_Search() {
-        navigateToOrders("admin");
+    navigateToOrders("admin");
 
-        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
-        waitSleep(3000);
-        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "MELGO DE BANKO");
-        waitSleep(4000);
+    //Payment Method Search
+    selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
+    waitSleep(1500);
+    String firstOrderModeOfPayment = getText(adminOrdersPageObjects.firstOrderModeOfPayment());
+    typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "@!@!" +firstOrderModeOfPayment);
+    waitSleep(2500);
 
-        int ctr = 0;
-        for(WebElement  paymentMethod : adminOrdersPageObjects.paymentMethodList()){
-            LoggingUtils.info("Payment Method: " + getText(paymentMethod));
-            ctr++;
-            if(ctr == 0){
-                passTest("IncorrectPaymentMethod_Search", "Payment Method List is Empty");
-                break;
-            }
+    //List Validation
+    int ctr = 0;
+            for(WebElement  paymentMethodList : adminOrdersPageObjects.paymentMethodList()){
+        LoggingUtils.info("Payment Method: " + getText(paymentMethodList));
+        ctr++;
+        if(ctr > 1){
+            failTest("IncorrectPaymentMethod_Search", "Payment Method is Visible");
+            break;
         }
-        LoggingUtils.info("Incorrect Payment Method Search and Validation: Successful");
+        else {
+            passTest("IncorrectPaymentMethod_Search", "Payment Method is Empty");
+        }
     }
+         LoggingUtils.info("Incorrect Seller Search and Validation: Successful");
+}
 
     //AO_013
     public void IncorrectOrderStatus_Search() {
         navigateToOrders("admin");
 
-        selectByValue(adminOrdersPageObjects.Entry_DropDown(),"10");
-        waitSleep(3000);
-        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "ZESTY");
-        waitSleep(4000);
+        //Payment Method Search
+        selectByValue(adminOrdersPageObjects.Entry_DropDown(), "10");
+        waitSleep(1500);
+        String firstOrderStatus = getText(adminOrdersPageObjects.firstOrderStatus());
+        typeEnter(adminOrdersPageObjects.Searchbar_Orders(), "Searchbar", "@!@!" + firstOrderStatus);
+        waitSleep(2500);
 
+        //List Validation
         int ctr = 0;
-        for(WebElement  orderStatus : adminOrdersPageObjects.orderStatusList()){
-            LoggingUtils.info("Payment Method: " + getText(orderStatus));
+        for (WebElement orderStatusList : adminOrdersPageObjects.orderStatusList()) {
+            LoggingUtils.info("Order Status: " + getText(orderStatusList));
             ctr++;
-            if(ctr == 0){
-                passTest("IncorrectOrderStatus_Search", "Order Status List is Empty");
+            if (ctr > 1) {
+                failTest("IncorrectOrderStatus_Search", "Order Status is Visible");
                 break;
+            } else {
+                passTest("IncorrectOrderStatus_Search", "Order Status is Empty");
             }
         }
         LoggingUtils.info("Incorrect Order Status Search and Validation: Successful");

@@ -7,23 +7,26 @@
     </listeners>
 
 <!--    Admin   -->
+    <test name="LOG IN">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="role" value="login"/>
+        <classes>
+            <class name="MLShop_Admin.actual.Login"/>
+        </classes>
+    </test>
+
     <test name="LOG IN Admin">
         <parameter name="browser" value="chrome"/>
         <parameter name="role" value="admin"/>
         <classes>
-<!--            <class name="MLShop_Admin.actual.Login"/>-->
-
 <!--            <class name="MLShop_Admin.actual.Dashboard"/>-->
-
-<!--            <class name="MLShop_Admin.actual.Orders"/>-->
-
+            <class name="MLShop_Admin.actual.Orders"/>
 <!--            <class name="MLShop_Admin.actual.Seller"/>-->
-
-<!--            <class name="MLShop_Admin.actual.Reports_ProductList"/>-->
-
+            <class name="MLShop_Admin.actual.Reports_ProductList"/>
             <class name="MLShop_Admin.actual.Reports_ProductInventory"/>
-
+            <class name="MLShop_Admin.actual.Reports_SalesReport"/>
         </classes>
     </test>
+
 
 </suite>
