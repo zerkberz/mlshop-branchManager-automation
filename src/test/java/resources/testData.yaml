@@ -7,7 +7,14 @@ Roles:
     gmail_email: norberto.dano@mlhuillier.com
     gmail_password: "123456789"
 
-#Users: [09999999999, 09999999998, 09999999997, 09999999996, 09999999934]
+  - role: branch login
+    gmail_email: norberto.dano@mlhuillier.com
+    gmail_password: "123456q@"
 
+  - role: branch
+    gmail_email: norberto.dano@mlhuillier.com
+    gmail_password: "123456q@"
+
+#Users: [09999999999, 09999999998, 09999999997, 09999999996, 09999999934]
 
 

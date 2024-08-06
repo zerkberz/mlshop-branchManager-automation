@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SHOP" thread-count="6" >
+<suite name="SHOP" thread-count="6">
+<!--<suite name="SHOP" thread-count="6"  parallel="tests">-->
     <listeners>
         <listener class-name="utilities.ExtentReport.ExtentReporter" />
 <!--        <listener class-name="utilities.RetryAnalyzer.RetryTransformer"/>-->
@@ -11,7 +12,7 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="role" value="login"/>
         <classes>
-            <class name="MLShop.actualAdmin.Login"/>
+<!--            <class name="MLShop.actualAdmin.Login"/>-->
         </classes>
     </test>
 
@@ -20,13 +21,29 @@
         <parameter name="role" value="admin"/>
         <classes>
 <!--            <class name="MLShop.actualAdminAdmin.Dashboard"/>-->
-            <class name="MLShop.actualAdmin.Orders"/>
+<!--            <class name="MLShop.actualAdmin.Orders"/>-->
 <!--            <class name="MLShop.actualAdminAdmin.Seller"/>-->
-            <class name="MLShop.actualAdmin.Reports_ProductList"/>
-            <class name="MLShop.actualAdmin.Reports_ProductInventory"/>
-            <class name="MLShop.actualAdmin.Reports_SalesReport"/>
+<!--            <class name="MLShop.actualAdmin.Reports_ProductList"/>-->
+<!--            <class name="MLShop.actualAdmin.Reports_ProductInventory"/>-->
+<!--            <class name="MLShop.actualAdmin.Reports_SalesReport"/>-->
         </classes>
     </test>
 
+    <!--    Branch   -->
+    <test name="LOG IN Branch">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="role" value="branch login"/>
+        <classes>
+<!--            <class name="MLShop.actualBranch.Login"/>-->
+        </classes>
+    </test>
 
+    <test name="Branch">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="role" value="branch"/>
+        <classes>
+            <class name="MLShop.actualBranch.Branch"/>
+        </classes>
+    </test>
+    <!--    Branch   -->
 </suite>

@@ -241,6 +241,24 @@ public class GeneralMethod extends ExtentReporter{
 
     }
 
+    public void selectByVisibleText(WebElement locator, String value){
+        Select select = new Select(locator);
+        try{
+            wait.until(ExpectedConditions.visibilityOf(locator));
+            select.selectByVisibleText(value);
+            LoggingUtils.info("Selected Value: " + value);
+            ExtentReporter.logInfo("Selected Value: "+ value + " from " + locator , "");
+        }catch (Exception e){
+            throw new AssertionError("No Selected Value" + e.getMessage());
+        }
+    }
+
+    public void openNewTabWithUrl(String url) {
+        String originalWindow = driver.getWindowHandle();
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get(url);
+    }
+
     public  void scrollToTopOfPageWEB() {
         try{
             js= (JavascriptExecutor) getWebDriver();

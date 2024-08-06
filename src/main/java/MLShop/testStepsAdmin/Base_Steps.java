@@ -16,6 +16,10 @@ public abstract class Base_Steps extends GeneralMethod {
     Reports_ProductInventory_PageObjects adminReportsProductInventoryObjects = new Reports_ProductInventory_PageObjects();
     Reports_SalesReport_PageObjects adminReportsSalesReportObjects = new Reports_SalesReport_PageObjects();
 
+    //BRANCH
+    Login_PageObjects branchLoginPageObjects = new Login_PageObjects();
+
+
     final String filepath = "src\\test\\java\\resources\\testData.properties";
     final String imgName = "testImage.jpg";
 
