@@ -214,10 +214,9 @@ public class Branch_Steps extends Base_Steps{
 
     //Search_001 > B_003
 //    public void Search_via_Sidebars(String OrderNumber) {
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------
     public void Search_via_Sidebars() {
-                                                                                                                                                                                                                                                                 /* ML Shop Buyer*/
-        /* ---------------------------------------------------------------------------------------------------------------- */
+                                                                                                                                                                                /* ML Shop Buyer*/
         //LOG IN: Buyer
         openNewTabWithUrl("https://mlshoppreprod.mlhuillier.com/authlogin");
         click(branchPageObjects.MobileNumber_MLSHOPBUYER(),"Login Button");
@@ -226,8 +225,8 @@ public class Branch_Steps extends Base_Steps{
         waitSleep(6000);
         OTP_Buyer();
         click(branchPageObjects.OkayButton_MLSHOPBUYER(),"Okay Modal Button");
-        /* ---------------------------------------------------------------------------------------------------------------- */
-            //Gathering Customer Name
+
+        //Gathering Customer Name
         waitSleep(2000);
         click(branchPageObjects.AvatarIcon_MLSHOPBUYER(),"Avatar Icon");
         click(branchPageObjects.ProfileAvatar_MLSHOPBUYER(),"Profile Button in Avatar");
@@ -235,25 +234,25 @@ public class Branch_Steps extends Base_Steps{
         String UserFullName = getText(branchPageObjects.UserFullName_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Branch Status = " +UserFullName);
         waitSleep(1500);
-    /* ---------------------------------------------------------------------------------------------------------------- */
+
         //Selecting Product
         click(branchPageObjects.AmparitoCollections_MLSHOPBUYER(),"Amparito Collections");
         waitSleep(3000);
         String ProductName = getText(branchPageObjects.ProductName_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Product Name = " +ProductName);
         click(branchPageObjects.FirstItemAmparito_MLSHOPBUYER(),"First Item in Amparito");
-    /* ---------------------------------------------------------------------------------------------------------------- */
+
         //Add to Cart
         waitSleep(3000);
         click(branchPageObjects.AddToCard_MLSHOPBUYER(),"Add To Cart Button");
         click(branchPageObjects.ConfirmButtonCart_MLSHOPBUYER(),"Confirm Button");
         click(branchPageObjects.Cart_MLSHOPBUYER(),"Cart Button");
         waitSleep(3000);
-    /* ---------------------------------------------------------------------------------------------------------------- */
+
         //Shopping Cart
         click(branchPageObjects.Checkout_MLSHOPBUYER(),"Checkout Button");
         waitSleep(6000);
-    /* ---------------------------------------------------------------------------------------------------------------- */
+
         //Shipping Details
         scrollToElement(branchPageObjects.ProvinceState_MLSHOPBUYER());
         waitSleep(800);
@@ -263,7 +262,7 @@ public class Branch_Steps extends Base_Steps{
         waitSleep(1500);
         selectByVisibleText(branchPageObjects.Branch_MLSHOPBUYER(), "MLTG DIVISION 1");
         waitSleep(2000);
-    /* ---------------------------------------------------------------------------------------------------------------- */
+
         click(branchPageObjects.MLWallet_MLSHOPBUYER(),"ML Wallet Radio Button");
         waitSleep(500);
         click(branchPageObjects.PlaceOrder_MLSHOPBUYER(),"Place Order");
@@ -283,71 +282,51 @@ public class Branch_Steps extends Base_Steps{
         String OrderStatus = getText(branchPageObjects.ShopStatus_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Order Number = " +OrderNumber);
         LoggingUtils.info("Done Gathering Order Status = " +OrderStatus);
-     /* ---------------------------------------------------------------------------------------------------------------- */
+//     /* ---------------------------------------------------------------------------------------------------------------- */
         waitSleep(5000);
-        switchToPreviousTab();
-
 //        /* Redirects Back to ML Shop Branch */
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//                                                                               TEST DATA
-//
-//                                                                                String ProductName = "Mens wawser588 Necklace";
-//                                                                                String OrderNumber = "MLMD0805AAA"  ;
-//                                                                                String OrderNumber = "MLMD0805AAC"  ;
-//                                                                                String OrderStatus = "PENDING"  ;
-//                                                                                String ShopStatus = "PENDING";
-//                                                                                String MLBranchStatus = "PENDING";
-
-//        MLMD0806AAE
-
         //Gathered ProductName
         //Gathered OrderNumber
         //Gathered OrderStatus
         //Gathered DestinationAddress
         //Gathered UserFullName
-
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /* ML Shop Branch */
+        switchToPreviousTab();
 /*Receive Item from Merchant*/
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         click(branchPageObjects.ReceiveItemFromMerchant_HomePage(),"Receive Item from Merchant");
         typeEnter(branchPageObjects.ReceiveItemFromMerchant_Searchbar(),"Receive Item From Merchant Search Bar",""+ OrderNumber);
         waitSleep(3000);
-//        ------------------------------------------------------------------------------------------------------
+
         String BranchOrderNumber = getText(branchPageObjects.OrderNumberFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchOrderNumber);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductName = getText(branchPageObjects.ProductNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Product Name = " +BranchProductName);
-//        ------------------------------------------------------------------------------------------------------
         String BranchCustomerName = getText(branchPageObjects.CustomerNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchCustomerName);
-//        ------------------------------------------------------------------------------------------------------
         String BranchDestinationAddress = getText(branchPageObjects.DestinationAddressFirstRow());
         LoggingUtils.info("Done Gathering Branch Destination Address = " +BranchDestinationAddress);
-//        ------------------------------------------------------------------------------------------------------
         String BranchStatus = getText(branchPageObjects.StatusFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchStatus);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(OrderNumber, BranchOrderNumber);
         assertEqual(ProductName, BranchProductName);
         assertEqual(UserFullName, BranchCustomerName);
 //        assertEqual(DestinationAddress, BranchDestinationAddress);
         assertEqual(OrderStatus, BranchStatus);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+
         click(branchPageObjects.SelectButton(),"Select Row Button");
-//        ------------------------------------------------------------------------------------------------------
+
         String BranchOrderNumberPopUp = getValue(branchPageObjects.OrderNumberPOPUP_RIFM());
         LoggingUtils.info("Done Gathering Branch Order Number on Pop Up Detail = " +BranchOrderNumberPopUp);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductNamePopUp = getValue(branchPageObjects.ProductNamePOPUP_RIFM());
         LoggingUtils.info("Done Gathering Branch Product Name on Pop Up Detail = " +BranchProductNamePopUp);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(OrderNumber, BranchOrderNumberPopUp);
         assertEqual(ProductName, BranchProductNamePopUp);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+
         //Modal Message
         waitSleep(2000);
         click(branchPageObjects.ReprintButton_RIFM(),"Reprint Button");
@@ -359,15 +338,13 @@ public class Branch_Steps extends Base_Steps{
         waitSleep(1200);
         click(branchPageObjects.CloseButton_RIFM(),"Close Button");
 //        ------------------------------------------------------------------------------------------------------
-
-        //Validate Delivery Status
+        //Validate Delivery Status for "Pick-up Item by Cargo"
         switchToNextTab();
         driver.navigate().refresh();
         waitSleep(5000);
         String OrderStatus2 = getText(branchPageObjects.ShopStatus_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Updated Order Status = " +OrderStatus2);
         switchToPreviousTab();
-
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /*Pick-up Item by Cargo*/
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -378,38 +355,31 @@ public class Branch_Steps extends Base_Steps{
 
         String BranchOrderNumber_PUIBC = getText(branchPageObjects.OrderNumberFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchOrderNumber_PUIBC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductName_PUIBC = getText(branchPageObjects.ProductNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Product Name = " +BranchProductName_PUIBC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchCustomerName_PUIBC = getText(branchPageObjects.CustomerNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchCustomerName_PUIBC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchDestinationAddress_PUIBC = getText(branchPageObjects.DestinationAddressFirstRow());
         LoggingUtils.info("Done Gathering Branch Destination Address = " +BranchDestinationAddress_PUIBC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchStatus_PUIBC = getText(branchPageObjects.StatusFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchStatus);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(OrderNumber, BranchOrderNumber_PUIBC);
         assertEqual(ProductName, BranchProductName_PUIBC);
         assertEqual(UserFullName, BranchCustomerName_PUIBC);
         assertEqual(BranchDestinationAddress, BranchDestinationAddress_PUIBC);
         assertEqual(OrderStatus2, BranchStatus_PUIBC);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+
         click(branchPageObjects.SelectButton(),"Select Row Button");
-//        ------------------------------------------------------------------------------------------------------
+
         String BranchCustomerNamePopUP_PUIBC = getValue(branchPageObjects.CustomerFullNamePOPUP_PIUBC());
         LoggingUtils.info("Done Gathering Branch Customer Name on Pop Up Detail = " +BranchCustomerNamePopUP_PUIBC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductNamePopUp2 = getValue(branchPageObjects.ProductName_PUIBC());
         LoggingUtils.info("Done Gathering Branch Product Name on Pop Up Detail = " +BranchProductNamePopUp2);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(UserFullName, BranchCustomerNamePopUP_PUIBC);
         assertEqual(ProductName, BranchProductNamePopUp2);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+
         //Modal Message
         waitSleep(2000);
         click(branchPageObjects.ReprintButton_RIFM(),"Reprint Button");
@@ -420,30 +390,27 @@ public class Branch_Steps extends Base_Steps{
         LoggingUtils.info("Pop-up Message: " + ModalMesssage2);
         waitSleep(1200);
         click(branchPageObjects.CloseButton_PUIBC(),"Close Button");
+
         //Dispatch
-                                                    //error somewhere here
+        driver.navigate().refresh();
+        waitSleep(3000);
+        selectByVisibleText(branchPageObjects.PickUpItemByCargo_Courier(),"3PL");
         click(branchPageObjects.PlainDispatchButton_PUIBC(),"Dispatch Button");
-////        waitSleep(2000);
-//        if (isDisplayed(branchPageObjects.SubmitButton_PUIBC())){
-            click(branchPageObjects.SubmitButton_PUIBC(),"Submit Button");
-//            waitSleep(1000);
-//        } else {
-//            LoggingUtils.info("Failed to click Submit Button");
-//        }
+        waitSleep(3000);
+        click(branchPageObjects.SubmitButton_PUIBC(),"Submit Button");
+        waitSleep(3000);
         click(branchPageObjects.FormDispatchButton_PUIBC(),"Form Dispatch Button");
         waitSleep(1000);
         click(branchPageObjects.ExitFormButton_PUIBC(),"Exit Form Button");
         waitSleep(1000);
 //        ------------------------------------------------------------------------------------------------------
-
-        //Validate Delivery Status
+        //Validate Delivery Status for "Receive Item from Cargo"
         switchToNextTab();
         driver.navigate().refresh();
         waitSleep(5000);
         String OrderStatus3 = getText(branchPageObjects.ShopStatus_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Updated Order Status = " +OrderStatus3);
         switchToPreviousTab();
-
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /*Receive Item from Cargo*/
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -453,38 +420,31 @@ public class Branch_Steps extends Base_Steps{
 
         String BranchOrderNumber_RIFC = getText(branchPageObjects.OrderNumberFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchOrderNumber_RIFC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductName_RIFC = getText(branchPageObjects.ProductNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Product Name = " +BranchProductName_RIFC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchCustomerName_RIFC = getText(branchPageObjects.CustomerNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchCustomerName_RIFC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchDestinationAddress_RIFC = getText(branchPageObjects.DestinationAddressFirstRow());
         LoggingUtils.info("Done Gathering Branch Destination Address = " +BranchDestinationAddress_RIFC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchStatus_RIFC = getText(branchPageObjects.StatusFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchStatus_RIFC);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(OrderNumber, BranchOrderNumber_RIFC);
         assertEqual(ProductName, BranchProductName_RIFC);
         assertEqual(UserFullName, BranchCustomerName_RIFC);
         assertEqual(BranchDestinationAddress, BranchDestinationAddress_RIFC);
-        assertEqual(OrderStatus2, BranchStatus_RIFC);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+        assertEqual(OrderStatus3, BranchStatus_RIFC);
+
         click(branchPageObjects.SelectButton(),"Select Row Button");
-//        ------------------------------------------------------------------------------------------------------
+
         String BranchCustomerNamePopUP_RIFC = getValue(branchPageObjects.CustomerFullNamePOPUP_PIUBC());
         LoggingUtils.info("Done Gathering Branch Customer Name on Pop Up Detail = " +BranchCustomerNamePopUP_RIFC);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductNamePopUp_RIFC = getValue(branchPageObjects.ProductName_PUIBC());
         LoggingUtils.info("Done Gathering Branch Product Name on Pop Up Detail = " +BranchProductNamePopUp_RIFC);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(UserFullName, BranchCustomerNamePopUP_RIFC);
         assertEqual(ProductName, BranchProductNamePopUp_RIFC);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+
         //Modal Message
         waitSleep(2000);
         click(branchPageObjects.ReprintButton_RIFM(),"Reprint Button");
@@ -494,19 +454,17 @@ public class Branch_Steps extends Base_Steps{
         String ModalMesssage3 = getText(branchPageObjects.ConfirmationMessage_RIFC());
         LoggingUtils.info("Pop-up Message: " + ModalMesssage3);
         waitSleep(1200);
-        click(branchPageObjects.CloseButton_RIFM(),"Close Button");
+        click(branchPageObjects.CloseButton_RIFC(),"Close Button");
 //        ------------------------------------------------------------------------------------------------------
-
-        //Validate Delivery Status
+        //Validate Delivery Status for "For Customer Pick-Up"
         switchToNextTab();
         driver.navigate().refresh();
         waitSleep(5000);
         String OrderStatus4 = getText(branchPageObjects.ShopStatus_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Updated Order Status = " +OrderStatus4);
         switchToPreviousTab();
-
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        /*Receive Item from Cargo*/
+        /*For Customer Pick-Up*/
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         click(branchPageObjects.ForCustomerPickUp_HomePage(),"For Customer Pick-up");
         typeEnter(branchPageObjects.ForCustomerPickUp_Searchbar(), "For Customer Pick-up Search Bar", "" +OrderNumber);
@@ -514,38 +472,31 @@ public class Branch_Steps extends Base_Steps{
 
         String BranchOrderNumber_FCPU = getText(branchPageObjects.OrderNumberFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchOrderNumber_FCPU);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductName_FCPU = getText(branchPageObjects.ProductNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Product Name = " +BranchProductName_FCPU);
-//        ------------------------------------------------------------------------------------------------------
         String BranchCustomerName_FCPU = getText(branchPageObjects.CustomerNameFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchCustomerName_FCPU);
-//        ------------------------------------------------------------------------------------------------------
         String BranchDestinationAddress_FCPU = getText(branchPageObjects.DestinationAddressFirstRow());
         LoggingUtils.info("Done Gathering Branch Destination Address = " +BranchDestinationAddress_FCPU);
-//        ------------------------------------------------------------------------------------------------------
         String BranchStatus_FCPU = getText(branchPageObjects.StatusFirstRow());
         LoggingUtils.info("Done Gathering Branch Status = " +BranchStatus_FCPU);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(OrderNumber, BranchOrderNumber_FCPU);
         assertEqual(ProductName, BranchProductName_FCPU);
         assertEqual(UserFullName, BranchCustomerName_FCPU);
         assertEqual(BranchDestinationAddress, BranchDestinationAddress_FCPU);
-        assertEqual(OrderStatus2, BranchStatus_FCPU);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+        assertEqual(OrderStatus4, BranchStatus_FCPU);
+
         click(branchPageObjects.SelectButton(),"Select Row Button");
-//        ------------------------------------------------------------------------------------------------------
+
         String BranchCustomerNamePopUP_FCPU = getValue(branchPageObjects.CustomerFullNamePOPUP_PIUBC());
         LoggingUtils.info("Done Gathering Branch Customer Name on Pop Up Detail = " +BranchCustomerNamePopUP_FCPU);
-//        ------------------------------------------------------------------------------------------------------
         String BranchProductNamePopUp_FCPU = getValue(branchPageObjects.ProductName_PUIBC());
         LoggingUtils.info("Done Gathering Branch Product Name on Pop Up Detail = " +BranchProductNamePopUp_FCPU);
-//        ------------------------------------------------------------------------------------------------------
+
         assertEqual(UserFullName, BranchCustomerNamePopUP_FCPU);
         assertEqual(ProductName, BranchProductNamePopUp_FCPU);
-//        ------------------------------------------------------------------------------------------------------
-//        ------------------------------------------------------------------------------------------------------
+
         //Modal Message
         waitSleep(2000);
         click(branchPageObjects.ReprintButton_RIFM(),"Reprint Button");
@@ -555,7 +506,18 @@ public class Branch_Steps extends Base_Steps{
         String ModalMesssage4 = getText(branchPageObjects.ConfirmationMessage_FCPU());
         LoggingUtils.info("Pop-up Message: " + ModalMesssage4);
         waitSleep(1200);
-        click(branchPageObjects.CloseButton_RIFM(),"Close Button");
+        click(branchPageObjects.CloseButton_FCPU(),"Close Button");
+
+        //Validate Delivery Status
+        switchToNextTab();
+        driver.navigate().refresh();
+        waitSleep(5000);
+        String OrderStatusFinal = getText(branchPageObjects.ShopStatus_MLSHOPBUYER());
+        LoggingUtils.info("Done Gathering Updated Order Status = " +OrderStatusFinal);
+        switchToPreviousTab();
+
+        String FinalStatus = "COMPLETED";
+        assertEqual(FinalStatus, OrderStatusFinal);
 //        ------------------------------------------------------------------------------------------------------
         }
 

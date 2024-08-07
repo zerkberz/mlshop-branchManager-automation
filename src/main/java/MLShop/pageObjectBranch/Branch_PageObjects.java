@@ -80,7 +80,10 @@ public class Branch_PageObjects {
     public WebElement ExitFormButton_PUIBC(){return getDriver().findElement(By.xpath("//button[.='×']"));}
     public WebElement OrderReceived_FCPU(){return getDriver().findElement(By.xpath("//button[normalize-space()='Order Received']"));}
     public WebElement PlainDispatchButton_PUIBC(){return getDriver().findElement(By.xpath("//div[@class='btn-dispatch-group']/button[@class='btn btn-warning font-white']"));}
+    public WebElement CloseButton_RIFC(){return getDriver().findElement(By.xpath("//div[@id='receivedcargomodalsuccess']//button[@class='btn btn-danger']"));}
+    public WebElement CloseButton_FCPU(){return getDriver().findElement(By.xpath("//div[@id='customerpickupmodalsuccess']//button[@class='btn btn-danger']"));}
 
+//div[@id='customerpickupmodalsuccess']//button[@class='btn btn-danger']
 
     //Receive Item From Merchant Information
     public WebElement OrderNumberPOPUP_RIFM(){return getDriver().findElement(By.xpath("//input[@id='order-number']"));}
