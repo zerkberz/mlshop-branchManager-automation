@@ -37,12 +37,13 @@ public class Branch_PageObjects {
     public WebElement Modal_Close(){return getDriver().findElement(By.cssSelector("#modalfailed .btn"));}
     public WebElement Modal_Text(){return getDriver().findElement(By.xpath("//label[@id='modalfailedmsg']"));}
 
-
     //ML SHOP Objects
     public WebElement MobileNumber_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//input[@id='OTP']"));}
     public WebElement Login_Button_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//button[@type='submit']"));}
     public WebElement OkayButton_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//button[normalize-space()='Okay']"));}
     public WebElement AmparitoCollections_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//p[contains(@class,'px-[20px] text-[16px]')][normalize-space()='Amparito Collections']"));}
+    public WebElement SortBy_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//button[@title='Sort by']"));}
+    public WebElement LowToHigh_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//span[normalize-space()='Low to High']"));}
     public WebElement FirstItemAmparito_MLSHOPBUYER(){return getDriver().findElement(By.xpath("(//h1[.])[1]"));}
     public WebElement AddToCard_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//button[normalize-space()='Add To Cart']"));}
     public WebElement ConfirmButtonCart_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//button[contains(@class,'flex justify-center rounded-md')]"));}
@@ -58,7 +59,6 @@ public class Branch_PageObjects {
     public WebElement PurchaseHistory_FirstOrderNumber_MLSHOPBUYER(){return getDriver().findElement(By.xpath("(//span[contains(@class,' font-semibold')])[1]"));}
     public WebElement ProductName_MLSHOPBUYER(){return getDriver().findElement(By.xpath("(//h1[.])[1]"));}
     public WebElement ShopStatus_MLSHOPBUYER(){return getDriver().findElement(By.xpath("(//span[contains(@class, 'text-red-600 font-semibold')])[1]"));}
-
     public WebElement AvatarIcon_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//p[@class='text-[#333333] text-[14px] pl-[5px]']"));}
     public WebElement ProfileAvatar_MLSHOPBUYER(){return getDriver().findElement(By.xpath("//p[.='Profile']"));}
     public WebElement UserFullName_MLSHOPBUYER(){return getDriver().findElement(By.xpath("(//p[.])[16]"));}
@@ -66,7 +66,6 @@ public class Branch_PageObjects {
 
     public List<WebElement> orderNumberListTr(){return getDriver().findElements(By.xpath("//span[@class=' font-semibold' or @class='even']"));}
     public List<WebElement> orderStatusListTr(){return getDriver().findElements(By.xpath("//span[@class='text-red-600 font-semibold' or @class='even']"));}
-
 
     //Buttons
     public WebElement SelectButton(){return getDriver().findElement(By.xpath("//button[contains(.,'Select')]"));}
@@ -83,8 +82,6 @@ public class Branch_PageObjects {
     public WebElement CloseButton_RIFC(){return getDriver().findElement(By.xpath("//div[@id='receivedcargomodalsuccess']//button[@class='btn btn-danger']"));}
     public WebElement CloseButton_FCPU(){return getDriver().findElement(By.xpath("//div[@id='customerpickupmodalsuccess']//button[@class='btn btn-danger']"));}
 
-//div[@id='customerpickupmodalsuccess']//button[@class='btn btn-danger']
-
     //Receive Item From Merchant Information
     public WebElement OrderNumberPOPUP_RIFM(){return getDriver().findElement(By.xpath("//input[@id='order-number']"));}
     public WebElement ProvincePOPUP_RIFM(){return getDriver().findElement(By.xpath("//input[@id='province']"));}
@@ -96,7 +93,6 @@ public class Branch_PageObjects {
     public WebElement PricePOPUP_RIFM(){return getDriver().findElement(By.xpath("//input[@id='price']"));}
     public WebElement ProductNamePOPUP_RIFM(){return getDriver().findElement(By.xpath("//input[@id='details']"));}
 
-
     //Pick up Item by Cargo
     public WebElement Courier_PUIBC(){return getDriver().findElement(By.xpath("//input[@id='order-provider']"));}
     public WebElement CustomerFullNamePOPUP_PIUBC(){return getDriver().findElement(By.xpath(" //input[@id='order-customer']"));}
@@ -105,9 +101,6 @@ public class Branch_PageObjects {
 
     //Receive Item From Cargo
     public WebElement ProductName_RIFC(){return getDriver().findElement(By.xpath("//input[@id='order-itemdetail']"));}
-
-    //For Customer Pick-up
-
 
     //Pop Up
     public WebElement ConfirmationMessage_RIFM(){return getDriver().findElement(By.xpath("//label[@id='receivedmerchantmodalsuccessmsg']\n"));}
@@ -130,5 +123,4 @@ public class Branch_PageObjects {
     public List<WebElement> customerNameList(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[5]"));}
     public List<WebElement> destinationAddressList(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[6]"));}
     public List<WebElement> statusList(){return getDriver().findElements(By.xpath("//tr[@class='odd' or @class='even']/td[7]"));}
-
 }

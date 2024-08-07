@@ -31,10 +31,10 @@ public class Login extends BaseTest {
 
     //FP_001
 //    failed due to number cannot go through without OTP
-    @Test(priority = 5,  description = "Password Change Using Phone Number")
-    public  void PasswordChange_PhoneNumber_ForgotPassword() throws Exception{
-        branchLoginSteps.PasswordChange_PhoneNumber_ForgotPassword();
-    }
+//    @Test(priority = 5,  description = "Password Change Using Phone Number")
+//    public  void PasswordChange_PhoneNumber_ForgotPassword() throws Exception{
+//        branchLoginSteps.PasswordChange_PhoneNumber_ForgotPassword();
+//    }
 //    @Test(priority = 6,  description = "Password Change Using Email")
 //    public  void PasswordChange_Email_ForgotPassword() throws Exception{
 //        branchLoginSteps.PasswordChange_Email_ForgotPassword();

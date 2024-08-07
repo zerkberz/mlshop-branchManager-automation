@@ -11,17 +11,17 @@ public class Branch extends BaseTest {
         branchSteps.Branch_Login();
     }
 
-//    //Nav_001
-//    @Test(priority = 1,  dependsOnMethods = "Branch_Login" , description = "Validate Sidebar Navigation")
-//    public  void Sidebar_Navigation() throws Exception{
-//        branchSteps.Sidebar_Navigation();
-//    }
-//
-//    //Entry_001
-//    @Test(priority = 2,  dependsOnMethods = "Branch_Login" , description = "Validate Entry Selection")
-//    public  void Entries() throws Exception{
-//        branchSteps.Entries();
-//    }
+    //Nav_001
+    @Test(priority = 1,  dependsOnMethods = "Branch_Login" , description = "Validate Sidebar Navigation")
+    public  void Sidebar_Navigation() throws Exception{
+        branchSteps.Sidebar_Navigation();
+    }
+
+    //Entry_001
+    @Test(priority = 2,  dependsOnMethods = "Branch_Login" , description = "Validate Entry Selection")
+    public  void Entries() throws Exception{
+        branchSteps.Entries();
+    }
 
     //Search_001
     @Test(priority = 3,  dependsOnMethods = "Branch_Login" , description = "Validate Search via Sidebars")
@@ -29,9 +29,9 @@ public class Branch extends BaseTest {
         branchSteps.Search_via_Sidebars();
     }
 
-//    //Search_002
-//    @Test(priority = 4,  dependsOnMethods = "Branch_Login" , description = "Validate Invalid Search via Sidebars")
-//    public  void InvalidSearch_via_Sidebars() throws Exception{
-//        branchSteps.InvalidSearch_via_Sidebars();
-//    }
+    //Search_002
+    @Test(priority = 4,  dependsOnMethods = "Branch_Login" , description = "Validate Invalid Search via Sidebars")
+    public  void InvalidSearch_via_Sidebars() throws Exception{
+        branchSteps.InvalidSearch_via_Sidebars();
+    }
 }

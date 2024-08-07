@@ -30,15 +30,6 @@ public class Branch_Steps extends Base_Steps{
         waitSleep(1000);
     }
 
-    public void OTP(String role){
-        type(branchLoginPageObjects.VerificationCode1_OTP(),"1","1");
-        type(branchLoginPageObjects.VerificationCode2_OTP(),"1","1");
-        type(branchLoginPageObjects.VerificationCode3_OTP(),"1","1");
-        type(branchLoginPageObjects.VerificationCode4_OTP(),"1","1");
-        type(branchLoginPageObjects.VerificationCode5_OTP(),"1","1");
-        type(branchLoginPageObjects.VerificationCode6_OTP(),"1","1");
-    }
-
     public void OTP_Buyer(){
             for(int i = 1; i <= 6 ; i++){
                 typeActiveElement(String.valueOf(i));
@@ -238,6 +229,9 @@ public class Branch_Steps extends Base_Steps{
         //Selecting Product
         click(branchPageObjects.AmparitoCollections_MLSHOPBUYER(),"Amparito Collections");
         waitSleep(3000);
+        click(branchPageObjects.SortBy_MLSHOPBUYER(),"Sort By");
+        click(branchPageObjects.LowToHigh_MLSHOPBUYER(),"Selected Low to High");
+        waitSleep(2000);
         String ProductName = getText(branchPageObjects.ProductName_MLSHOPBUYER());
         LoggingUtils.info("Done Gathering Product Name = " +ProductName);
         click(branchPageObjects.FirstItemAmparito_MLSHOPBUYER(),"First Item in Amparito");

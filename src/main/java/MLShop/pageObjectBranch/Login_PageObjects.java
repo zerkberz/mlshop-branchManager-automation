@@ -57,6 +57,7 @@ public class Login_PageObjects {
     public WebElement LessThan8CharacterNotification_ForgetPassword(){return getDriver().findElement(By.xpath("//div[@class='toast-message' and contains(text(), 'The Passwords must have at least 8 characters')]"));}
     public WebElement SimilarPasswordNotification_ForgetPassword(){return getDriver().findElement(By.xpath("//div[@class='toast-message' and contains(text(), 'Your new password is too similar to your current password. Please try another password.')]"));}
     public WebElement InvalidOTPNotification_ForgetPassword(){return getDriver().findElement(By.xpath("//div[@class='toast-message' and contains(text(), 'The one-time PIN (OTP) you entered is invalid. Please try again.')]"));}
+
     //Reset Password
     public WebElement NewPassword_ForgetPassword(){return getDriver().findElement(By.xpath("//input[@id='newpassword']"));}
     public WebElement ConfirmPassword_ForgetPassword(){return getDriver().findElement(By.xpath("//input[@id='confirmpassword']"));}
